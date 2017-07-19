@@ -50,24 +50,9 @@
 
                 {% keywords_for event as tags %}
 
-                <div class="event-line-box__category">
-                    {% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}
-                </div>
-
-                <div class="event-line-box__body">
-                    {% if event.location %}
-                        <div class="event-line-box__location">
-                            {{ event.location }}
-                            {% if event.location.room %}
-                                 / {{ event.location.room }}
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                    <div class="event-line-box__title">
+                <div class="event-line-box__body-center">
+                    <div class="event-line-box__title-center">
                         {{ event.title }}
-                    </div>
-                    <div class="event-line-box__date">
-                        {% include 'agenda/includes/event_date_line.html' with object=event %}
                     </div>
                 </div>
             </div>

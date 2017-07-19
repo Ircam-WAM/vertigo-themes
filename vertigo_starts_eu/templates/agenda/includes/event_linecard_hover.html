@@ -4,7 +4,7 @@
 
     <div class="col-sm-16">
 
-        <a class="event-line-box" href="{{ event.get_absolute_url }}">
+        <a class="event-line-box-hover" href="{{ event.get_absolute_url }}">
 
             {% with event.images.all|get_type:'card' as images %}
                 {% if images %}
@@ -50,25 +50,30 @@
 
                 {% keywords_for event as tags %}
 
+                {% comment %}
                 <div class="event-line-box__category">
                     {% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}
                 </div>
+                {% endcomment %}
 
                 <div class="event-line-box__body">
+
+                    <div class="event-line-box__title-list event-line-box__white-color">
+                        {{ event.title }}
+                    </div>
+                    <div class="event-line-box__date-list event-line-box__small-margin">
+                        {% include 'agenda/includes/event_date_line.html' with object=event %}
+                    </div>
                     {% if event.location %}
-                        <div class="event-line-box__location">
+                        <div class="event-line-box__location-list">
                             {{ event.location }}
+                            {% comment %}
                             {% if event.location.room %}
                                  / {{ event.location.room }}
                             {% endif %}
+                            {% endcomment %}
                         </div>
                     {% endif %}
-                    <div class="event-line-box__title">
-                        {{ event.title }}
-                    </div>
-                    <div class="event-line-box__date">
-                        {% include 'agenda/includes/event_date_line.html' with object=event %}
-                    </div>
                 </div>
             </div>
         </a>
