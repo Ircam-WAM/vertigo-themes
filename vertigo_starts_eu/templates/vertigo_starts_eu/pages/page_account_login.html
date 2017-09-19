@@ -20,7 +20,7 @@
     {% block hero %}
     {% endblock %}
 
-    <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
+    <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}" style="padding-top:100px;background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 15, 36, 1) 0%, rgba(211,211,211, 1) 40%);">
         <div class="container">
 
             <div class="row">
@@ -37,12 +37,10 @@
 
                 <div class="col-md-2 page__sidebar">
 
-                    {% comment %}
                     <div style="position: relative;">
                         {% block page_sidebar %}
                         {% endblock %}
                     </div>
-                    {% endcomment %}
 
                 </div>
 
@@ -165,16 +163,11 @@
     <div>
 
         {% block page_related_content %}
-            {% with dynamic_content=page.dynamic_content_pages.all object=page %}
+            {% with dynamic_content=page.dynamic_content_pages.all|filter_content object=page %}
                 {% include "core/inc/related_content.html" %}
             {% endwith %}
         {% endblock %}
 
-    </div>
-    
-    <div>
-        {% block page_extra_content %}
-        {% endblock %}
     </div>
 
 
