@@ -17,8 +17,8 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     sourcemaps = require('gulp-sourcemaps');
 
-var srcFolder = 'static/src/',
-    destFolder = 'static/'
+var srcFolder = 'static/vertigo_starts_eu/src/',
+    destFolder = 'static/vertigo_starts_eu/'
 
 gulp.task('copy-assets-img', function() {
     gulp.src([srcFolder + 'assets/img/**/*'])

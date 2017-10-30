@@ -17,8 +17,8 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     sourcemaps = require('gulp-sourcemaps');
 
-var srcFolder = 'app/themes/base/static/src/',
-    destFolder = 'app/themes/base/static/'
+var srcFolder = 'static/src/',
+    destFolder = 'static/'
 
 gulp.task('copy-assets-img', function() {
     gulp.src([srcFolder + 'assets/img/**/*'])
