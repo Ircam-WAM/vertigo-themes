@@ -1,5 +1,5 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags %}
-{% if home.dynamiccontenthomeslider_set.all|length > 0 %}
+{% if home.dynamiccontenthomeslider_set.all|length > 0 or home.images.all %}
     <div class="container">
         <div class="row">
             <div class="col-sm-16">
@@ -82,7 +82,6 @@
                                         </li>
                                     {% endif %}
                                 {% endwith %}
-
                         {% endfor %}
                     </ul>
                 </div>
