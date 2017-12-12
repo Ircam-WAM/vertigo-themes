@@ -1,4 +1,4 @@
-{% extends "starts_eu/base.html" %}
+{% extends "base.html" %}
 {% load i18n mezzanine_tags keyword_tags organization_tags pages_tags %}
 
 {% block meta_title %}{{ page.meta_title }}{% endblock %}
@@ -37,10 +37,12 @@
 
                 <div class="col-md-2 page__sidebar">
 
+                    {% comment %}
                     <div style="position: relative;">
                         {% block page_sidebar %}
                         {% endblock %}
                     </div>
+                    {% endcomment %}
 
                 </div>
 
@@ -163,7 +165,7 @@
     <div>
 
         {% block page_related_content %}
-            {% with dynamic_content=page.dynamic_content_pages.all|filter_content object=page %}
+            {% with dynamic_content=page.dynamic_content_pages.all object=page %}
                 {% include "core/inc/related_content.html" %}
             {% endwith %}
         {% endblock %}

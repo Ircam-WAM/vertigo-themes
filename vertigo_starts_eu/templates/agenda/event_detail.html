@@ -1,4 +1,4 @@
-{% extends "vertigo_starts_eu/agenda/event_base.html" %}
+{% extends "agenda/event_base.html" %}
 {% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags event_tags organization_tags pages_tags %}
 
 {% block meta_title %}{{ event.meta_title }}{% endblock %}
@@ -21,7 +21,7 @@
 
 {% block page_title %}
     <div class="event-line-box__top-space"></div>
-    {% include 'vertigo_starts_eu/agenda/includes/event_linecard.html' %}
+    {% include 'agenda/includes/event_linecard.html' %}
     <div class="event-line-detail-box__container-back-link">
         <a class="event-line-detail-box__back-link" href="{% url 'event_list' %}"><span class="event-line-detail-box__arrow-align">&#x21DA;</span> {% trans "Back to all events" %}</a>
     </div>

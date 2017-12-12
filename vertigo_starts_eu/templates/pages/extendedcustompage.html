@@ -1,4 +1,4 @@
-{% extends "vertigo_starts_eu/pages/page.html" %}
+{% extends "pages/page.html" %}
 {% load i18n mezzanine_tags keyword_tags pages_tags organization_tags %}
 
 {% block page_class %}
@@ -54,7 +54,7 @@
 
 {% block page_sub_content %}
     {% with page.extendedcustompage.blocks.all as blocks %}
-        {% include "vertigo_starts_eu/pages/vertigopage/includes/vertigo_block.html" %}
+        {% include "pages/vertigopage/includes/vertigo_block.html" %}
     {% endwith %}
 {% endblock %}
 

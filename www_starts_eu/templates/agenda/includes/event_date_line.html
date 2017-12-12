@@ -3,6 +3,7 @@
     <!-- Start date only  -->
     {% if event.start and not event.end %}
         {{ event.start|date:"DATE_EVENT_FORMAT" }}
+        , {{ event.start|date:"Y" }}
         <!-- Start date with hour  -->
         {% if event.start and event.start|date:"H:i" != "23:59" %}
             <span>{{ event.start|time:"TIME_FORMAT" }}</span>
@@ -13,6 +14,7 @@
         {% if event.start|date:"d.m.y" == event.end|date:"d.m.y" %}
             {% if not periods %}
                 {{ event.start|date:"DATE_EVENT_FORMAT" }}
+                , {{ event.start|date:"Y" }}
                 <!-- Start date with hour  -->
                 {% if event.end and event.end|date:"H:i" != "23:59" %}
                     <span>{{ event.start|time:"TIME_FORMAT" }} - {{ event.end|time:"TIME_FORMAT" }}</span>
@@ -21,6 +23,7 @@
                 {% endif %}
             {% else %}
                 {{ event.start|date:"DATE_EVENT_FORMAT" }}
+                , {{ event.start|date:"Y" }}
                 {% for period in periods %}
                     {% if period.date_to and period.date_to|date:"H:i" != "23:59" %}
                         <span>{{ period.date_from|time:"TIME_FORMAT" }} - {{ period.date_to|time:"TIME_FORMAT" }}</span>
@@ -39,6 +42,7 @@
                 {% trans "and" %}
             {% endif %}
             {{ event.end|date:"DATE_EVENT_FORMAT" }}
+            , {{ event.start|date:"Y" }}
             {% if event.end and event.end|date:"H:i" != "23:59" %}
                 <span>{{ event.start|time:"TIME_FORMAT" }} - {{ event.end|time:"TIME_FORMAT" }}</span>
             {% else %}
@@ -47,6 +51,11 @@
         <!-- Start and end date are completely different  -->
         {% else %}
             {{ event.start|date:"DATE_EVENT_FORMAT" }} {% trans "through" %} {{ event.end|date:"DATE_EVENT_FORMAT" }}
+            {% if event.start|date:"Y" == event.end|date:"Y" %}
+                , {{ event.start|date:"Y" }}
+            {% else %}
+                , {{ event.start|date:"Y" }} - {{ event.end|date:"Y" }}
+            {% endif %}
             <!-- Start date with hour  -->
             {% if event.end and event.end|date:"H:i" != "23:59" %}
                 <span>{{ event.start|time:"TIME_FORMAT" }} - {{ event.end|time:"TIME_FORMAT" }}</span>
@@ -54,6 +63,7 @@
                 <span>{{ event.start|time:"TIME_FORMAT" }}</span>
             {% endif %}
         {% endif %}
+        
 
     {% endif %}
 {% endwith %}
