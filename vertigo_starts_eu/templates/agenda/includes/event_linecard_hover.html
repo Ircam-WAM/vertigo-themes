@@ -66,7 +66,7 @@
                     </div>
                     {% if event.location %}
                         <div class="event-line-box__location-list">
-                            {{ event.location }}
+                            {{ event.location.title }}
                             {% comment %}
                             {% if event.location.room %}
                                  / {{ event.location.room }}
