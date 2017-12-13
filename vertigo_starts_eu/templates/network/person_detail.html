@@ -1,4 +1,4 @@
-{% extends "pages/page.html" %}
+{% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags keyword_tags i18n organization_tags pages_tags %}
 
 {% block meta_title %}{{ person.meta_title }}{% endblock %}
@@ -127,7 +127,7 @@
                                 {% with app_label=concrete_object|app_label_short classname=concrete_object|classname|lower object=concrete_object  %}
                                     {% with object.images.all|get_type:'card' as images %}
                                         {% if images %}
-                                            {% with ""|add:app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card.html" as template %}
+                                            {% with "vertigo_starts_eu/"|add:app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card.html" as template %}
                                                 {% include template %}
                                             {% endwith %}
                                         {% else %}
