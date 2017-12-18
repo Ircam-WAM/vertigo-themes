@@ -16,7 +16,7 @@
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
                              {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" width="120" />
+                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" width="242" height="70" />
                              {% endwith %}
                             {% endif %}
                           {% endwith %}
@@ -49,9 +49,9 @@
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                {# <li class="nav-header__item nav-header__item--right nav-header__item--separator">#}
-                    {# {% include "includes/languages.html" %}#}
-                {# </li>#}
+                <li class="nav-header__item nav-header__item--right nav-header__item--separator">
+                    {% include "includes/languages.html" %}
+                </li>
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
                     <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>
