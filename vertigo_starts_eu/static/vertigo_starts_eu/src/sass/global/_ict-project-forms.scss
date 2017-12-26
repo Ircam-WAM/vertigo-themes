@@ -233,6 +233,20 @@ main #{$module} p.link-item-form {
   }
 }
 
+main #{$module} p.ict-project-style__field-style {
+
+  a {
+
+    background: transparent;
+    color: black !important;
+    box-shadow: inset 0 0px transparent !important;
+    border-bottom: 3px solid #50E3C2 !important;
+    font-weight: bold !important;
+    font-size: 13px;
+    display: inline-block;
+  }
+}
+
 main #{$module} p.keywords-field {
 
   a {

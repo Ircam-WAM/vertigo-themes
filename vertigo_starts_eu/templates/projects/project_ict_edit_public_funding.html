@@ -74,7 +74,7 @@
           var arrayText = textValue.split(",");
           var arrayLenght = arrayText.length;
 
-          if (arrayLenght < 6) {
+          if (arrayLenght < 3) {
 
             if (!checkObject(valueLink, arrayText)) {
               document.getElementById(id_box).value += "," + valueLink;
@@ -311,6 +311,22 @@
     }*/
 
     //document.addEventListener('DOMContentLoaded', getInputTypes, false);
+
+    function addOnclick() {
+
+      var element = document.getElementsByClassName("keywords-field")[0];
+
+      element.addEventListener('click', function(event) {
+
+        if (event.target && event.target.nodeName == "A") {
+          addTag(event.target,event);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+       addOnclick();
+    }, false);
 
     function showHideDivider(object, event) {
 
