@@ -20,7 +20,9 @@
             {% if childrens|length > 1 %}
                 {# TODO: Multititle #}
                 {% for children in childrens %}
-                    <a href="{{ children.get_absolute_url }}"><h1 class="vertigopage__section-title section-title--uppercase section-title--main {% if page == children %}event-line-box__underline-text-green{% endif %} vertigopage__margin-collapse">{{ children.title }}</h1></a>
+                    {% if children.status == 2 or request.user.is_superuser or request.user.is_staff %}
+                        <a href="{{ children.get_absolute_url }}"><h1 class="vertigopage__section-title section-title--uppercase section-title--main {% if page == children %}event-line-box__underline-text-green{% endif %} vertigopage__margin-collapse">{{ children.title }}</h1></a>
+                    {% endif %}
                 {% endfor %}
                 {# TODO end #}
             {% else %}
