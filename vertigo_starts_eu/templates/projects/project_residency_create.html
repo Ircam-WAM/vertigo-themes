@@ -1,7 +1,9 @@
-{% extends "vertigo_starts_eu/pages/page.html" %}
+{% extends "vertigo_starts_eu/pages/page_ict_projects.html" %}
 {% load mezzanine_tags keyword_tags i18n organization_tags pages_tags %}
 
-{% block meta_title %}{% endblock %}
+{% block meta_title %}
+    {% trans "Producer submission" %}
+{% endblock %}
 
 {% block meta_keywords %}{% endblock %}
 
@@ -18,25 +20,309 @@
 {% endblock %}
 
 {% block page_title %}
-    {% editable object.title %}
-        <h1 class="dotted">{% trans "New residency form" %}</h1>
-    {% endeditable %}
+    <!-- <h1 class="dotted">{% trans "Framework and submission process for producers" %}</h1>-->
+{% endblock %}
+
+{% block hero %}
+<script>
+
+    function showHideDivider(object, event) {
+
+      event.preventDefault();
+
+      var id_item = object.id;
+      var chevronId = id_item.replace("divider", "chevron");
+      var chevronItem = document.getElementById(chevronId);
+      var itemsClass = chevronItem.classList;
+
+      var fieldDivId = id_item.replace("divider", "field-form");
+      var formDivItem = document.getElementById(fieldDivId);
+
+      var openChevron = false;
+
+      for (var i = 0; i < itemsClass.length; i++) {
+
+        if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
+
+          openChevron = true;
+          break;
+        }
+      }
+
+      if (openChevron) {
+
+        chevronItem.classList.remove("fa-chevron-down");
+        chevronItem.classList.add("fa-chevron-up");
+        formDivItem.style.display = 'none';
+      } else {
+
+        chevronItem.classList.remove("fa-chevron-up");
+        chevronItem.classList.add("fa-chevron-down");
+        formDivItem.style.display = 'block';
+      }
+    }
+
+    function checkObject(object, array) {
+
+      var exists = false;
+
+      for (var i = 0; i < array.length; i++) {
+
+        if (array[i] == object) {
+          exists = true;
+          break;
+        }
+      }
+
+      return exists;
+    }
+
+    function addTag(object, event) {
+
+      if (event != null) {
+        event.preventDefault();
+      }
+
+      var id_box = "id_Public data-0-keywords_1";
+      var valueLink = object.innerText.replace("+", "");
+      var textBox = document.getElementById(id_box);
+      var textValue = textBox.value;
+
+      if (valueLink.length > 0) {
+        if (textValue == "") {
+
+          document.getElementById(id_box).value = valueLink;
+        } else {
+
+          var arrayText = textValue.split(",");
+          var arrayLenght = arrayText.length;
+
+          if (arrayLenght < 3) {
+
+            if (!checkObject(valueLink, arrayText)) {
+              document.getElementById(id_box).value += "," + valueLink;
+            }
+          }
+        }
+      }
+    }
+
+    function addOnclick() {
+
+      var element = document.getElementsByClassName("keywords-field")[0];
+
+      element.addEventListener('click', function(event) {
+
+        if (event.target && event.target.nodeName == "A") {
+          addTag(event.target,event);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+       addOnclick();
+    }, false);
+
+</script>
 {% endblock %}
 
 {% block page_content %}
-    <div class="row">
+
+    <div class="row" style="background-color:white">
+        <div class="ict-project-style__title-header">
+          {% if call.project_form_content %}
+            <div class="ict-project-style__title-style" style="padding-top:50px;">
+                {{ call.project_form_content|richtext_filters|safe }}
+                <br/>
+                <p style="color:black">{% trans "Call for artistic residencies (all fields required)" %}</p>
+            </div>
+          {% else %}
+            <h2 style="text-align:center;color:black;padding-top:50px;">{% trans "Call for artistic residencies (all fields required)" %}</h2>
+          {% endif %}
+        </div>
+    </div>
+    <div class="row" style="background-color:white">
         {% errors_for form %}
-        <form class="mezzanine-form form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-            {% fields_for form %}
-            {% for formset in inlines %}
-                {{ formset.management_form }}
-                {% for form in formset %}
-                   {% fields_for form %}
-                {% endfor %}
-            {% endfor %}
-          <div class="form-actions">
-              <input class="btn btn-primary btn-lg" type="submit"
-                  value="{% if page.form.button_text %}{{ page.form.button_text }}{% else %}{% trans "Submit" %}{% endif %}">
+        <form class="form ict-project-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+          {% csrf_token %}
+          {% for formset in inlines %}
+              {{ formset.management_form }}
+          {% endfor %}
+          {% if form.errors or inlines.0.0.errors %}
+              <div class="ict-project-style__errors-form-style">
+                  <b>The data provided is not valid. Please review the red fields and save again.</b>
+              </div>
+          {% endif %}
+          <div id="divider-444" class="ict-project-style__divider-section" onclick="showHideDivider(this, event);">
+            <span class="ict-project-style__divider-title-section">
+              Proposal
+            </span>
+            <i id="chevron-444" class="fa fa-chevron-down ict-project-style__divider-chevron-section" aria-hidden="true"></i>
+          </div>
+          <div id="field-form-444" style="margin-left:30px;margin-right:30px">
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;">
+                    <p class="ict-project-style__title-field" {% if inlines.0.0.descriptive_title.errors %}style="color:red;"{% endif %}>{{ inlines.0.0.descriptive_title.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if form.country.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if inlines.0.0.descriptive_title.errors %}style="color:red"{% endif %}>{{ inlines.0.0.descriptive_title.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if inlines.0.0.descriptive_title.errors %}error_field_style{% endif %}">{{ inlines.0.0.descriptive_title }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if inlines.0.0.brief_description.errors %}style="color:red;"{% endif %}>{{ inlines.0.0.brief_description.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if inlines.0.0.brief_description.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if inlines.0.0.brief_description.errors %}style="color:red"{% endif %}>{{ inlines.0.0.brief_description.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if inlines.0.0.brief_description.errors %}error_field_style{% endif %}">{{ inlines.0.0.brief_description }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;margin-top:-200px">
+                    <p class="ict-project-style__title-field" {% if inlines.0.0.keywords.errors %}style="color:red;"{% endif %}>{{ inlines.0.0.keywords.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if inlines.0.0.keywords.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if inlines.0.0.keywords.errors %}style="color:red"{% endif %}>{{ inlines.0.0.keywords.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if inlines.0.0.keywords.errors %}error_field_style{% endif %}">{{ inlines.0.0.keywords }}</p>
+                </div>
+            </div>
+            <!--
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if person.first_name.errors %}style="color:red;"{% endif %}>{{ person.first_name.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if person.first_name.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.first_name.errors %}style="color:red"{% endif %}>{{ person.first_name.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if person.first_name.errors %}error_field_style{% endif %}">{{ person.first_name }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;">
+                    <p class="ict-project-style__title-field" {% if person.last_name.errors %}style="color:red;"{% endif %}>{{ person.last_name.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if person.first_name.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.last_name.errors %}style="color:red"{% endif %}>{{ person.last_name.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if person.last_name.errors %}error_field_style{% endif %}">{{ person.last_name }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if person.image.errors %}style="color:red;"{% endif %}>{{ person.image.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if person.image.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.image.errors %}style="color:red"{% endif %}>{{ person.image.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if person.image.errors %}error_field_style{% endif %}">{{ person.image }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;">
+                    <p class="ict-project-style__title-field" {% if person.bio.errors %}style="color:red;"{% endif %}>{{ person.bio.label }}</p>
+                    <i class="fa fa-globe ict-project-style__icon-field" aria-hidden="true" {% if person.bio.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.bio.errors %}style="color:red"{% endif %}>{{ person.bio.help_text }}</p>
+                    <p class="ict-project-style__field-style select_style {% if person.bio.errors %}error_field_style{% endif %}">{{ person.bio }}</p>
+                </div>
+            </div>
+          -->
+            <div style="float:left;width:100%;height:10px;"></div>
+          </div>
+          <div id="divider-0" class="ict-project-style__divider-section" onclick="showHideDivider(this, event);">
+            <span class="ict-project-style__divider-title-section">
+              Artist contact details
+            </span>
+            <i id="chevron-0" class="fa fa-chevron-down ict-project-style__divider-chevron-section" aria-hidden="true"></i>
+          </div>
+          <div id="field-form-0" style="margin-left:30px;margin-right:30px">
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;">
+                    <p class="ict-project-style__title-field" {% if person.address.errors %}style="color:red;"{% endif %}>{{ form.address.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if form.name.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.address.errors %}style="color:red"{% endif %}>{{ form.address.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if person.address.errors %}error_field_style{% endif %}">{{ form.address }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if person.postal_code.errors %}style="color:red;"{% endif %}>{{ person.postal_code.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if form.url.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.postal_code.errors %}style="color:red"{% endif %}>{{ person.postal_code.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if person.postal_code.errors %}error_field_style{% endif %}">{{ person.postal_code }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;">
+                    <p class="ict-project-style__title-field" {% if person.city.errors %}style="color:red;"{% endif %}>{{ person.city.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if person.city.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.city.errors %}style="color:red"{% endif %}>{{ person.city.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if person.city.errors %}error_field_style{% endif %}">{{ person.city }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if person.country.errors %}style="color:red;"{% endif %}>{{ person.country.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if person.country.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.country.errors %}style="color:red"{% endif %}>{{ person.country.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if person.country.errors %}error_field_style{% endif %}">{{ person.country }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px;">
+                    <p class="ict-project-style__title-field" {% if person.telephone.errors %}style="color:red;"{% endif %}>{{ person.telephone.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if form.address.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.telephone.errors %}style="color:red"{% endif %}>{{ person.telephone.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if person.telephone.errors %}error_field_style{% endif %}">{{ person.telephone }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if person.email.errors %}style="color:red;"{% endif %}>{{ person.email.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if form.postal_code.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if person.email.errors %}style="color:red"{% endif %}>{{ person.email.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if person.email.errors %}error_field_style{% endif %}">{{ person.email }}</p>
+                </div>
+            </div>
+            <div style="float:left;width:100%;height:10px"></div>
+          </div>
+          <div id="divider-1" class="ict-project-style__divider-section" onclick="showHideDivider(this, event);">
+            <span class="ict-project-style__divider-title-section">
+              Artist CV
+            </span>
+            <i id="chevron-1" class="fa fa-chevron-down ict-project-style__divider-chevron-section" aria-hidden="true"></i>
+          </div>
+          <div id="field-form-1" style="margin-left:30px;margin-right:30px">
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px">
+                    <p class="ict-project-style__title-field" {% if inlines.1.0.artist_cv.errors %}style="color:red;"{% endif %}>{{ inlines.1.0.artist_cv.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if inlines.1.0.artist_cv.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if inlines.1.0.artist_cv.errors %}style="color:red"{% endif %}>{{ inlines.1.0.artist_cv.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if inlines.1.0.artist_cv.errors %}error_field_style{% endif %}">{{ inlines.1.0.artist_cv }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if inlines.1.0.motivation_letter.errors %}style="color: red;"{% endif %}>{{ inlines.1.0.motivation_letter.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if inlines.1.0.motivation_letter.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if iinlines.1.0.motivation_letter.errors %}style="color:red"{% endif %}>{{ inlines.1.0.motivation_letter.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if inlines.1.0.motivation_letter.errors %}error_field_style{% endif %}">{{ inlines.1.0.motivation_letter }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;margin-right:40px">
+                    <p class="ict-project-style__title-field" {% if inlines.1.0.comments.errors %}style="color:red;"{% endif %}>{{ inlines.1.0.comments.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if inlines.1.0.comments.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if inlines.1.0.comments.errors %}style="color:red"{% endif %}>{{ inlines.1.0.comments.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if inlines.1.0.comments.errors %}error_field_style{% endif %}">{{ inlines.1.0.comments }}</p>
+                </div>
+            </div>
+            <div style="display:block">
+                <div style="float:left;width:48%;">
+                    <p class="ict-project-style__title-field" {% if inlines.1.0.other.errors %}style="color: red;"{% endif %}>{{ inlines.1.0.other.label }}</p>
+                    <i class="fa fa-lock ict-project-style__icon-field" aria-hidden="true" {% if inlines.1.0.other.errors %}style="color:red;"{% endif %}></i>
+                    <p class="ict-project-style__description-field" {% if iinlines.1.0.other.errors %}style="color:red"{% endif %}>{{ inlines.1.0.other.help_text }}</p>
+                    <p class="ict-project-style__field-style {% if inlines.1.0.other.errors %}error_field_style{% endif %}">{{ inlines.1.0.other }}</p>
+                </div>
+            </div>
+            <div style="float:left;width:100%;height:10px;"></div>
+          </div>
+          <div class="form-actions" style="display:block;float:center;margin-left:30px;margin-right:30px;margin-top:10px;">
+              <div style="text-align:center;padding-bottom:20px;">
+                <input class="ict-project-style__button-submit" type="submit" style="background:#50E3C2;color:white;margin-top:20px;padding-top:5px;padding-bottom:5px;"
+                    value="{% if page.form.button_text %}{{ page.form.button_text }}{% else %}{% trans "Save" %}{% endif %}">
+              </div>
           </div>
         </form>
     </div>
