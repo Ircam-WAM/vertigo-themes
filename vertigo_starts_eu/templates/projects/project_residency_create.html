@@ -143,7 +143,7 @@
     </div>
     <div class="row" style="background-color:white">
       {#  {% errors_for form %} #}
-        <form class="form ict-project-form" method="post" enctype="multipart/form-data">
+        <form class="form ict-project-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
           {% csrf_token %}
           {% for formset in inlines %}
               {{ formset.management_form }}
