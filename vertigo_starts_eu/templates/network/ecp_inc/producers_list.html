@@ -3,21 +3,21 @@
 <div class="page">
     <div class="container">
 
-        {% if objects.jury|length > 0 %}
+        {% if objects.producers|length > 0 %}
             <div class="col-md-8 col-md-push-4 tac">
                 <div class="row">
                     <div>
-                        {% for member in objects.jury %}
-                            <div class="col-md-8">
-                                {# Card included for each jury #}
-                                {% include "network/inc/jury/jury_card_box.html" %}
+                        {% for producer in objects.producers %}
+                            <div class="col-md-16">
+                                {# Card included for each producer #}
+                                {% include "network/inc/producers/producers_card_box.html" %}
                             </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
         {% else %}
-            <p class="jury-box__top-margin">No jury members found.</p>
+            <p class="producers-box__top-margin">No producers found.</p>
         {% endif %}
 
     </div>
