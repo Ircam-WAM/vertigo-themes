@@ -1,0 +1,24 @@
+{% load i18n future mezzanine_tags event_tags keyword_tags disqus_tags organization_tags staticfiles pages_tags %}
+
+<div class="page">
+    <div class="container">
+
+        {% if objects.producers|length > 0 %}
+            <div class="col-md-8 col-md-push-4 tac">
+                <div class="row">
+                    <div>
+                        {% for producer in objects.producers %}
+                            <div class="col-md-16">
+                                {# Card included for each producer #}
+                                {% include "network/inc/producers/producers_card_box.html" %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p class="producers-box__top-margin">No producers found.</p>
+        {% endif %}
+
+    </div>
+</div>
