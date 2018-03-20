@@ -25,13 +25,14 @@
         <h1 class="section-title section-title--big section-title--uppercase section-title--main">{{ person.title }}</h1>
     {% endeditable %}
 
-    {% with person.images.all|get_type:'page_featured' as card_images %}
+    {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
             <div class="page__image-container">
-                <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
+              <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
             </div>
         {% endif %}
     {% endwith %}
+
 {% endblock %}
 
 {% block page_content %}
