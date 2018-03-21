@@ -13,8 +13,8 @@
                     <img class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 427 500 top=0.5 %}" alt="producer"/>
                 </figure>
 
-                {% if card_images.credits %}
-                  <p>Credits: {{ card_image.credits }}</p>
+                {% if card_images.first.credits %}
+                  <p style="color:white;font-size:12px">Credits: {{ card_image.first.credits }}</p>
                 {% endif %}
             </div>
 

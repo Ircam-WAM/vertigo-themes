@@ -29,6 +29,11 @@
         {% if card_images %}
             <div class="page__image-container">
               <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
+              {% if card_images.first.credits %}
+                <div style="text-align:left">
+                  <p sytle="color:white;font-size:12px;">Credits: {{ card_images.first.credits }}</p>
+                </div>
+              {% endif %}
             </div>
         {% endif %}
     {% endwith %}
