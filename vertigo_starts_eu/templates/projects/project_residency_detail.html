@@ -303,7 +303,7 @@
                                                         {% if user_image.description %}
                                                             {{ user_image.description }}
                                                         {% endif %}
-                                                        {% if user_image.credits %}
+                                                        {% if user_image.credits|length > 0 %}
                                                             {{ user_image.credits }}
                                                         {% endif %}
                                                     </div>
