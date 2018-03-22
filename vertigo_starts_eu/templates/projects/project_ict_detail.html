@@ -146,8 +146,8 @@
                                 {% if image.description %}
                                     {{ image.description }}
                                 {% endif %}
-                                {% if image.credits %}
-                                    {{ image.credits }}
+                                {% if image.credits|length > 0 %}
+                                    Credits: {{ image.credits }}
                                 {% endif %}
                             </div>
                         </div>
