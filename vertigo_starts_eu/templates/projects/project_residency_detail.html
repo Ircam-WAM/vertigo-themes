@@ -147,7 +147,7 @@
                 <div>
                     <div class="residency-detail__image-left">
                       <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
-                      {% if object.artist.images.all.0.credits %}
+                      {% if object.artist.images.all.0.credits|length > 0 %}
                         <div style="text-align:left">
                           <p sytle="color:black;font-size:12px;">Credits: {{ object.artist.images.all.0.credits }}</p>
                         </div>
@@ -333,7 +333,7 @@
                             {% else %}
                                 <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
                             {% endif %}
-                            {% if object.project.public_data.all.0.credits %}
+                            {% if object.project.public_data.all.0.credits|length > 0 %}
                               <div style="text-align:left">
                                 <p sytle="color:black;font-size:12px;">Credits: {{ object.project.public_data.all.0.credits }}</p>
                               </div>
