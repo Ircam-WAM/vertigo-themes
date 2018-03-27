@@ -7,6 +7,11 @@
                 <figure>
                     <img class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 427 500 top=0.5 %}" alt="member"/>
                 </figure>
+                {% if card_images.first.credits|length > 0 %}
+                  <div style="text-align:left">
+                    <p sytle="color:white;font-size:12px;">Credits: {{ card_images.first.credits }}</p>
+                  </div>
+                {% endif %}
             </div>
         {% endif %}
     {% endwith %}

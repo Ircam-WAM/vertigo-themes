@@ -80,7 +80,7 @@
         <div class="detail_img">
             {% if object.public_data.all.0.image %}
                 <img id="detail_img" src="{{ MEDIA_URL }}{{ object.public_data.all.0.image }}" />
-                {% if object.public_data.all.0.image_credits %}
+                {% if object.public_data.all.0.image_credits|length > 0 %}
                     <span>{% trans "Credits" %}: {{ object.public_data.all.0.image_credits }}</span>
                 {% endif %}
             {% endif %}
@@ -146,8 +146,8 @@
                                 {% if image.description %}
                                     {{ image.description }}
                                 {% endif %}
-                                {% if image.credits %}
-                                    {{ image.credits }}
+                                {% if image.credits|length > 0 %}
+                                    Credits: {{ image.credits }}
                                 {% endif %}
                             </div>
                         </div>
