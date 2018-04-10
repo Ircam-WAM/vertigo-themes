@@ -5,7 +5,7 @@
 {% spaceless %}
 {% if page_branch_in_menu %}
 
-<div style="background:#011020;color:white;width:100%;text-align:center">
+<div style="background:#011020;color:white;width:100%;text-align:center" style="position:relative">
     {% for page in page_branch %}
         {% if page.content_model == "link" %}
             <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}" style="color:black">
@@ -13,12 +13,25 @@
             </li>
         {% endif %}
     {% endfor %}
+    <div class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator" style="position:absolute;padding-left:20%;font-size:13px">
+        {% if request.user.is_authenticated %}
+            <a href="/accounts/update/" style="color:white">
+                {{ request.user }} &nbsp;
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            </a>
+        {% else %}
+            <a href="/accounts/login/" style="color:white">
+                Sign In / Sign Up &nbsp;
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            </a>
+        {% endif %}
+    </div>
 </div>
 
     {% for page in page_branch %}
         {% if page.is_primary %}
             {% if forloop.first %}
-                <ul class="nav-header" role="navigation">
+                <ul class="nav-header" role="navigation" style="text-align:center">
                     <li class="nav-header__item menu-btn">
                         <span class="first"></span>
                         <span class="second"></span>
@@ -48,13 +61,13 @@
                             <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
                         </li>
                     {% else %}
-                        <li class="nav-header__item">
+                        <li class="nav-header__item" style="color:#011020">
                             <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}">{{ page.title }}</a>
                         </li>
                     {% endif %}
                 {% endwith %}
             {% else %}
-                <li class="nav-header__item">
+                <li class="nav-header__item" style="color:#011020">
                     <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
                     {% if page.has_children_in_menu %}
                         {% page_menu page "pages/menus/header_tree_primary.html" %}
@@ -74,6 +87,7 @@
                     <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>
                 {% endcomment %}
+                {% comment %}
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
                     {% if request.user.is_authenticated %}
                         <a href="/accounts/update/">
@@ -87,10 +101,12 @@
                         </a>
                     {% endif %}
                 </li>
+                {% endcomment %}
             </ul>
             {% endif %}
         {% endif %}
     {% endfor %}
     </ul>
 {% endif %}
+
 {% endspaceless %}
