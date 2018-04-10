@@ -5,15 +5,15 @@
 {% spaceless %}
 {% if page_branch_in_menu %}
 
-<div style="background:#011020;color:white;width:100%;text-align:center" style="position:relative">
+<div style="background:#011020;color:white;width:100%;text-align:center" style="position:relative;">
     {% for page in page_branch %}
         {% if page.content_model == "link" %}
-            <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}" style="color:black">
+            <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}" style="color:black;">
                 <a class="nav-actions__item-link" style="color:white" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
             </li>
         {% endif %}
     {% endfor %}
-    <div class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator" style="position:absolute;padding-left:20%;font-size:13px">
+    <div class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator" style="font-weight:bold;position:absolute;padding-left:20%;font-size:13px">
         {% if request.user.is_authenticated %}
             <a href="/accounts/update/" style="color:white">
                 {{ request.user }} &nbsp;
