@@ -2,6 +2,29 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 {% spaceless %}
+<script>
+    function highlight_item_option(link,event) {
+
+        var idLinkItem = link.id.replace("item-option", "item-option-link");
+
+        document.getElementById(idLinkItem).style.color = "#000f24";
+        document.getElementById(idLinkItem).style.background = "#ffffff";
+
+        document.getElementById(link.id).style.color = "#000f24";
+        document.getElementById(link.id).style.background = "#ffffff";
+    }
+
+    function restore_style_option(link, event) {
+
+        var idLinkItem = link.id.replace("item-option", "item-option-link");
+
+        document.getElementById(idLinkItem).style.color = "#ffffff";
+        document.getElementById(idLinkItem).style.background = "#000f24";
+
+        document.getElementById(link.id).style.color = "#ffffff";
+        document.getElementById(link.id).style.background = "#000f24";
+    }
+</script>
 {% if page_branch_in_menu %}
    <div class="nav-header__submenu" style="background:#000f24;text-align:center;width:400px;left:0px;padding:0px">
      <!--
@@ -17,13 +40,13 @@
             {% for page in page_branch %}
                 {% if page.in_menu %}
                     <ul style="padding-left:0px"><!--class="unstyled-list col-sm-3 col-md-3">-->
-                        <div style="width:100%;height:1px;background:white;margin-bottom:10px">
-                        </div>
-                        <li class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %}">
-
-                            <a class="" href="{{ page.get_absolute_url }}" title="{{ page.title }}" style="color:white;background:#000f24;">{{ page.title }}</a>
+                      <li id="item-option{{forloop.counter0}}" class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %}" style="margin-bottom:0px;padding-bottom:12px" onmouseout="restore_style_option(this,event)" onmouseover="highlight_item_option(this,event)">
+                          <div style="width:100%;height:1px;background:white;margin-bottom:10px">
+                          </div>
+                          <a id="item-option-link{{forloop.counter0}}" class="" href="{{ page.get_absolute_url }}" title="{{ page.title }}" style="color:white;background:#000f24;">{{ page.title }}</a>
 
                 {% endif %}
+
                 {% if page.has_children_in_menu %}
                     {% page_menu page "pages/menus/header_tree_secondary.html" %}
                 {% endif %}
