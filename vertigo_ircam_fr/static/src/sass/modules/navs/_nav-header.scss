@@ -54,6 +54,48 @@ $module: ".nav-header";
          width: 196px;
     }
 
+    &__item-user {
+
+        display: inline-block;
+        color: black;
+        vertical-align: top;
+        position: relative;
+        display: block;
+
+        &:before {
+            content: "";
+            display: block;
+            height: $header-height;
+            width: 1px;
+            background: black;
+            position: absolute;
+            top: 0;
+
+            @include mq($until: lg) {
+                height: $header-height - 10px;
+            }
+        }
+
+        &.hover {
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 1px;
+                right: 0;
+                bottom: -1px;
+                z-index: 3;
+
+                background: #F8F8F8;
+                border-top: 1px solid #E3E3E3;
+                border-left: 1px solid #E3E3E3;
+                border-right: 1px solid #E3E3E3;
+                border-bottom: 1px solid #F8F8F8;
+            }
+
+        }
+    }
 
     &__item {
 
