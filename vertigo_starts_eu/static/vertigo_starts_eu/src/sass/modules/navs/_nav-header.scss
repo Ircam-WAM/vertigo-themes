@@ -60,6 +60,14 @@ $module: ".nav-header";
       background:white;
     }
 
+    &__item-separator-user-menu {
+
+      width:100%;
+      height:1px;
+      background:white;
+      margin-bottom:10px;
+    }
+
     &__content-header {
 
       background:#000f24;
@@ -86,7 +94,7 @@ $module: ".nav-header";
       padding-top:10px;
       padding-bottom:10px;
       font-family:Oswald,sans-serif;
-      font-size:15px
+      font-size:15px;
     }
 
     &__item-user {
@@ -374,7 +382,7 @@ $module: ".nav-header";
 
         &:before {
             display: inline-block;
-            content: '.';
+            content: '';
             vertical-align: top;
             @include margin-right(.25);
         }

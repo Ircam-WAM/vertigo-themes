@@ -6,7 +6,9 @@
     {% for page in page_branch %}
         {% if page.is_primary %}
             {% if forloop.first %}
-                <ul class="nav-actions">
+              {% comment %}
+               <ul class="nav-actions">
+              {% endcomment %}
             {% endif %}
         {% endif %}
         {% if page.in_menu %}
@@ -21,7 +23,9 @@
                 <!--<li class="nav-actions__item">
                     {% page_menu "pages/menus/vous_etes.html" %}
                 </li>-->
+                {% comment %}
                 </ul>
+                {% endcomment %}
             {% endif %}
         {% endif %}
     {% endfor %}
