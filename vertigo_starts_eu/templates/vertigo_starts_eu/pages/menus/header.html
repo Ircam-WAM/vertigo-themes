@@ -39,7 +39,7 @@
     {% endfor %}
     <div class="nav-header__item nav-header__item--right nav-header__item--no-separator" style="font-weight:bold;position:relative;align:right;font-size:13px;float:right;margin-right:5px">
         {% if request.user.is_authenticated %}
-            <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseover="hide_user_menu_(this,event)">
+            <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
               <a href="/accounts/update/" style="color:white">
                   {{ request.user }}&nbsp;
                   <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
@@ -47,7 +47,7 @@
             </div>
             <div id="item_user_menu" style="background: rgb(0, 15, 36) none repeat scroll 0% 0%; text-align: center; width: 200px; display:none;position:absolute;">
               <div class="row" style="margin:0px;">
-                <ul style="padding:0px;margin:0px;list-style:none;text-align:left">
+                <ul style="padding:0px;margin:0px;list-style:none;text-align:left" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
                   <li class="nav-header__item-user">
                     <div style="width:100%;height:1px;background:white;"></div>
                     <a href="/accounts/update/" style="display:block;color:white;padding-left:5px;padding-top:10px;padding-bottom:10px;font-family:Oswald,sans-serif;font-size:15px" title="Profile">Profile</a>
