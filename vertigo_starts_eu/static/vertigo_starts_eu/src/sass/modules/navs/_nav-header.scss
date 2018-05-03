@@ -53,6 +53,42 @@ $module: ".nav-header";
          width: 196px;
     }
 
+    &__item-separator {
+
+      width:100%;
+      height:1px;
+      background:white;
+    }
+
+    &__content-header {
+
+      background:#000f24;
+      color:white;
+      width:100%;
+      text-align:center;
+      position:relative;
+    }
+
+    &__item-user-menu {
+
+      background: rgb(0, 15, 36) none repeat scroll 0% 0%;
+      text-align: center;
+      width: 200px;
+      display:none;
+      position:absolute;
+    }
+
+    &__link-user-menu {
+
+      display:block;
+      color:white;
+      padding-left:5px;
+      padding-top:10px;
+      padding-bottom:10px;
+      font-family:Oswald,sans-serif;
+      font-size:15px
+    }
+
     &__item-user {
 
         display: inline-block;
@@ -651,7 +687,5 @@ $module: ".nav-header";
             display: none !important;
 
         }
-
     }
-
 }

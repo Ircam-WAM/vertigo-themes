@@ -1,10 +1,6 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-
-{% spaceless %}
-{% if page_branch_in_menu %}
-
 <script>
     function highlight_item(link,event) {
 
@@ -29,7 +25,9 @@
     }
 </script>
 
-<div style="background:#000f24;color:white;width:100%;text-align:center" style="position:relative;">
+{% spaceless %}
+{% if page_branch_in_menu %}
+<div class="nav-header__content-header">
     {% for page in page_branch %}
         {% if page.content_model == "link" %}
             <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}" style="color:black;">
@@ -45,16 +43,16 @@
                   <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
               </a>
             </div>
-            <div id="item_user_menu" style="background: rgb(0, 15, 36) none repeat scroll 0% 0%; text-align: center; width: 200px; display:none;position:absolute;">
+            <div id="item_user_menu" class="nav-header__item-user-menu">
               <div class="row" style="margin:0px;">
                 <ul style="padding:0px;margin:0px;list-style:none;text-align:left" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
                   <li class="nav-header__item-user">
-                    <div style="width:100%;height:1px;background:white;"></div>
-                    <a href="/accounts/update/" style="display:block;color:white;padding-left:5px;padding-top:10px;padding-bottom:10px;font-family:Oswald,sans-serif;font-size:15px" title="Profile">Profile</a>
+                    <div class="nav-header__item-separator"></div>
+                    <a href="/accounts/update/" class="nav-header__link-user-menu" title="Profile">Profile</a>
                   </li>
                   <li class="nav-header__item-user">
-                    <div style="width:100%;height:1px;background:white;"></div>
-                    <a href="/accounts/logout/" style="display:block;color:white;padding-left:5px;padding-top:10px;padding-bottom:10px;font-family:Oswald,sans-serif;font-size:15px" title="Logout">Logout</a>
+                    <div class="nav-header__item-separator"></div>
+                    <a href="/accounts/logout/" class="nav-header__link-user-menu" title="Logout">Logout</a>
                   </li>
                 </ul>
               </div>
