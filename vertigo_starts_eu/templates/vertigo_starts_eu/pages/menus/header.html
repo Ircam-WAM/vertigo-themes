@@ -29,11 +29,13 @@
 {% if page_branch_in_menu %}
 <div class="nav-header__content-header">
     {% for page in page_branch %}
+      {% if page.in_menu %}
         {% if page.content_model == "link" %}
             <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}" style="color:black;">
                 <a class="nav-actions__item-link" style="color:white" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
             </li>
         {% endif %}
+      {% endif %}
     {% endfor %}
     <div class="nav-header__item nav-header__item--right nav-header__item--no-separator" style="font-weight:bold;position:relative;align:right;font-size:13px;float:right;margin-right:5px">
         {% if request.user.is_authenticated %}
