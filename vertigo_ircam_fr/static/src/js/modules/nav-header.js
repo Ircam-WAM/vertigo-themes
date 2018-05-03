@@ -27,7 +27,7 @@ NavHeader.prototype.init = function() {
             $(this).toggleClass('hover');
 
             $submenu.css('left', 0); //-offsetLeft + originOffsetLeft);
-            $submenu.css('width', 400); //originWidth - 200);
+            $submenu.css('width', 200); //originWidth - 200);
             $submenu.toggle();
 
         }

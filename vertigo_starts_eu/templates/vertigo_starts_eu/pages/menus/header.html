@@ -39,7 +39,7 @@
     {% endfor %}
     <div class="nav-header__item nav-header__item--right nav-header__item--no-separator" style="font-weight:bold;position:relative;align:right;font-size:13px;float:right;margin-right:5px">
         {% if request.user.is_authenticated %}
-            <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseover="hide_user_menu(this,event)">
+            <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseover="hide_user_menu_(this,event)">
               <a href="/accounts/update/" style="color:white">
                   {{ request.user }}&nbsp;
                   <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
