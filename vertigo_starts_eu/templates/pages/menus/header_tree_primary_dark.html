@@ -44,15 +44,15 @@
                           <div style="width:100%;height:1px;background:white;margin-bottom:10px">
                           </div>
                           <a id="item-option-link{{forloop.counter0}}" class="" href="{{ page.get_absolute_url }}" title="{{ page.title }}" style="color:white;background:#000f24;">{{ page.title }}</a>
-
+                      </li>
+                    </ul>
                 {% endif %}
                 {% comment %}
                 {% if page.has_children_in_menu %}
                     {% page_menu page "pages/menus/header_tree_secondary.html" %}
                 {% endif %}
                 {% endcomment %}
-                      </li>
-                    </ul>
+                  
 
             {% endfor %}
         </div>
