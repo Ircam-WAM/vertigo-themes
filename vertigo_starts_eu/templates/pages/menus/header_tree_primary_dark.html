@@ -6,25 +6,25 @@
 {% if page_branch_in_menu %}
 <script>
 
-function highlight_item_option(link,event,status) {
+function highlight_item_option(event) {
 
-    var idLinkItem = link.id.replace("item-option-link-", "item-option-");
-console.log(status);
-    if (status) {
-      document.getElementById(idLinkItem).setAttribute('style','color: "#000f24"');
-      document.getElementById(idLinkItem).setAttribute('style','background: "#ffffff"');
+    var id_item = '#' + event.target.id;
+    var idLinkItem = id_item.replace("item-option-link-", "item-option-");
 
-      document.getElementById(link.id).setAttribute('style','color: "#000f24"');
-      document.getElementById(link.id).setAttribute('style','background: "#ffffff"');
+    if (event.type == 'mouseover') {
 
-    } else {
+      document.querySelectorAll(idLinkItem)[1].style.color = '#000f24';
+      document.querySelectorAll(idLinkItem)[1].style.background = '#ffffff';
+      document.querySelectorAll(id_item)[1].style.color = '#000f24';
+      document.querySelectorAll(id_item)[1].style.background = '#ffffff';
 
-      document.getElementById(idLinkItem).style.color = "#ffffff";
-      document.getElementById(idLinkItem).style.background = "#000f24";
+    } else if(event.type =='mouseout') {
 
-      document.getElementById(link.id).style.color = "#ffffff";
-      document.getElementById(link.id).style.background = "#000f24";
-  }
+      document.querySelectorAll(idLinkItem)[1].style.color = '#ffffff';
+      document.querySelectorAll(idLinkItem)[1].style.background = '#000f24';
+      document.querySelectorAll(id_item)[1].style.color = '#ffffff';
+      document.querySelectorAll(id_item)[1].style.background = '#000f24';
+    }
 }
 
 </script>
@@ -41,10 +41,10 @@ console.log(status);
         <div  style="margin-left:0px;margin-right:0px">
             {% for page in page_branch %}
                 {% if page.in_menu %}
-                    <ul style="padding-left:0px;list-style:none;" onmouseout="highlight_item_option(this,event,false)" onmouseover="highlight_item_option(this,event,true)"><!--class="unstyled-list col-sm-3 col-md-3">-->
-                      <li id="item-option-{{forloop.counter0}}" class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %}" style="margin-bottom:0px;" >
+                    <ul style="padding-left:0px;list-style:none;" ><!--class="unstyled-list col-sm-3 col-md-3">-->
+                      <li id="item-option-{{forloop.counter0}}"  class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %}" style="margin-bottom:0px;" >
                           <div class="nav-header__item-separator-user-menu"></div>
-                          <a id="item-option-link-{{forloop.counter0}}" href="{{ page.get_absolute_url }}" title="{{ page.title }}" style="color:white;background:clear;display:block;height:100%;padding-bottom:12px">{{ page.title }}</a>
+                          <a id="item-option-link-{{forloop.counter0}}" onmouseout="highlight_item_option(event)" onmouseover="highlight_item_option(event)" href="{{ page.get_absolute_url }}" style="display:block;color:white;padding-bottom:10px;margin-top:5px" title="{{ page.title }}">{{ page.title }}</a>
                       </li>
                     </ul>
                 {% endif %}
