@@ -43,7 +43,7 @@
 
     {% page_menu "pages/menus/action.html" %}
 
-    <div class="nav-header__item nav-header__item--right nav-header__item--no-separator" style="font-weight:bold;position:relative;align:right;font-size:13px;float:right;margin-right:5px">
+    <div class="nav-header__item nav-header__item--right nav-header__item--no-separator nav-header__dropdown-menu">
         {% if request.user.is_authenticated %}
             <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseout="hide_user_menu(this,event)">
               <a href="/accounts/update/" style="color:white">

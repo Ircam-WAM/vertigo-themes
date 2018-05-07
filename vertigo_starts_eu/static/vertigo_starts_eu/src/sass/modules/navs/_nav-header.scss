@@ -49,6 +49,16 @@ $module: ".nav-header";
         }*/
     }
 
+    &__dropdown-menu {
+
+      font-weight:bold;
+      position:relative;
+      align:right;
+      font-size:13px;
+      float:right;
+      margin-right:5px;
+    }
+    
     .translated {
          width: 196px;
     }
