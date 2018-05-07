@@ -28,7 +28,7 @@ function highlight_item_option(event) {
 }
 
 </script>
-   <div class="nav-header__submenu" style="background:#000f24;text-align:center;left:0px;padding:0px">
+   <div id="submenu-dropdown" class="nav-header__submenu" style="background:#000f24;text-align:center;left:0px;padding:0px;">
      <!--
         <div class="row">
             <div class="col-md-12">
@@ -38,13 +38,13 @@ function highlight_item_option(event) {
             </div>
         </div>
       -->
-        <div  style="margin-left:0px;margin-right:0px">
+        <div  style="margin-left:0px;margin-right:0px;overflow:hidden;white-space:nowrap;width:auto;">
             {% for page in page_branch %}
                 {% if page.in_menu %}
                     <ul style="padding-left:0px;list-style:none;" ><!--class="unstyled-list col-sm-3 col-md-3">-->
                       <li id="item-option-element-{{forloop.counter0}}"  class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %}" style="margin-bottom:0px;" >
                           <div class="nav-header__item-separator-user-menu"></div>
-                          <a id="item-option-element-link-{{forloop.counter0}}" onmouseout="highlight_item_option(event)" onmouseover="highlight_item_option(event)" href="{{ page.get_absolute_url }}" style="display:block;color:white;padding-bottom:10px;margin-top:5px" title="{{ page.title }}">{{ page.title }}</a>
+                          <a id="item-option-element-link-{{forloop.counter0}}" onmouseout="highlight_item_option(event)" onmouseover="highlight_item_option(event)" href="{{ page.get_absolute_url }}" style="display:block;color:white;padding-bottom:10px;margin-top:5px;padding-left:30px;padding-right:30px;" title="{{ page.title }}">{{ page.title }}</a>
                       </li>
                     </ul>
                 {% endif %}
