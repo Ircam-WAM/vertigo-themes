@@ -28,8 +28,8 @@ NavHeader.prototype.init = function() {
 
             $submenu.css('left', 0); //-offsetLeft + originOffsetLeft);
             //$submenu.css('width', auto);//originWidth - 500);
-            $submenu.css('overflow', hidden);
-            $submenu.css('white-space', nowrap);
+            //$submenu.css('overflow', hidden);
+            //$submenu.css('white-space', nowrap);
             $submenu.toggle();
 
         }
