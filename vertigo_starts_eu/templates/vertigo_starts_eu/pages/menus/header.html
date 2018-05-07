@@ -46,7 +46,7 @@
     <div class="nav-header__item nav-header__item--right nav-header__item--no-separator nav-header__dropdown-menu">
         {% if request.user.is_authenticated %}
             <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseout="hide_user_menu(this,event)">
-              <a href="/accounts/update/" style="color:white;font-family:Oswald,sans-serif;font-family:15px">
+              <a href="/accounts/update/" style="color:white;font-family:Oswald,sans-serif;font-family:1rem">
                   {{ request.user }}&nbsp;
                   <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
               </a>
