@@ -2,7 +2,7 @@
 
 <div class="producers-box producers-box__person producers-box__margin-right" >
 
-    <h3 class="producers-box__title" style="text-align:center;font-size:30px;margin-bottom:30px">Le CENTQUATRE-PARIS</h3>
+    <h3 class="producers-box__title producers-box__list-items">Le CENTQUATRE-PARIS</h3>
 
     {% with producer.images.all|get_type:'card' as card_images %}
         {% if card_images %}
@@ -14,7 +14,7 @@
                 </figure>
 
                 {% if card_images.first.credits|length > 0 %}
-                  <p style="color:white;font-size:12px">Credits: {{ card_image.first.credits }}</p>
+                  <p class="producers-box__image-credit">Credits: {{ card_image.first.credits }}</p>
                 {% endif %}
             </div>
 
