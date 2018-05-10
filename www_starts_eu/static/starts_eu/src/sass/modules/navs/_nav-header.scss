@@ -409,7 +409,7 @@ $module: ".nav-header";
 
         &:before {
             display: inline-block;
-            content: '.';
+            content: '';
             vertical-align: top;
             @include margin-right(.25);
         }
