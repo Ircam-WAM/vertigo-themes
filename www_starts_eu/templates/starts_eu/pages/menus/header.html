@@ -1,0 +1,82 @@
+{% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<script>
+
+    function show_user_menu(link, event) {
+
+      document.getElementById("item_user_menu").style.display = "block";
+    }
+
+    function hide_user_menu(link, event) {
+
+      document.getElementById("item_user_menu").style.display = "none";
+      restore_hyperlinks_menu();
+    }
+
+    function select_user_menu_option(linkItem, event) {
+
+      var selected_item = linkItem.id;
+      var restored_item = (selected_item == 'option-menu-1') ? 'option-menu-0' : 'option-menu-1';
+
+      document.getElementById(restored_item).style.background = "#000f24";
+      document.getElementById(restored_item).style.color = "#ffffff";
+
+      document.getElementById(selected_item).style.background = "#ffffff";
+      document.getElementById(selected_item).style.color = "#000f24";
+    }
+
+    function restore_hyperlinks_menu() {
+
+      document.getElementById("option-menu-link-0").style.background = "#000f24";
+      document.getElementById("option-menu-link-0").style.color = "#ffffff";
+
+      document.getElementById("option-menu-link-1").style.background = "#000f24";
+      document.getElementById("option-menu-link-1").style.color = "#ffffff";
+    }
+</script>
+
+{% spaceless %}
+{% if page_branch_in_menu %}
+
+<div class="nav-header__content-header">
+
+    {% page_menu "pages/menus/action.html" %}
+
+    <div class="nav-header__item nav-header__item--right nav-header__item--no-separator nav-header__dropdown-menu">
+        {% if request.user.is_authenticated %}
+            <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseout="hide_user_menu(this,event)">
+              <a href="/accounts/update/" class="nav-header__top-menu-user">
+                  {{ request.user }}&nbsp;
+                  <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
+              </a>
+            </div>
+            <div id="item_user_menu" class="nav-header__item-user-menu">
+              <div class="row" style="margin:0px;">
+                <ul class="nav-header__items-menu-user-dropdown" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
+                  <li id="option-menu-0" class="nav-header__item-user">
+                    <div class="nav-header__item-separator"></div>
+                    <a id="option-menu-link-0" href="/accounts/update/" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
+                  </li>
+                  <li id="option-menu-1" class="nav-header__item-user">
+                    <div class="nav-header__item-separator"></div>
+                    <a id="option-menu-link-1" href="/accounts/logout/" class=" nav-header__link-user-menu" title="Logout" onmouseover="select_user_menu_option(this,event)">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        {% else %}
+            <a href="/accounts/login/" style="color:white">Sign In</a>
+            <i style="color:white">&nbsp;/&nbsp;</i>
+            <a href="/accounts/signup/" style="color:white">
+                Sign Up&nbsp;
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+{% page_menu "pages/menus/header.html" %}
+
+{% endif %}
+{% endspaceless %}
