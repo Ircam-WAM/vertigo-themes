@@ -46,14 +46,14 @@
     <div class="nav-header__item nav-header__item--right nav-header__item--no-separator nav-header__dropdown-menu">
         {% if request.user.is_authenticated %}
             <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseout="hide_user_menu(this,event)">
-              <a href="/accounts/update/" style="color:white;font-family:Oswald,sans-serif;font-family:1rem">
+              <a href="/accounts/update/" class="nav-header__top-menu-user">
                   {{ request.user }}&nbsp;
                   <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
               </a>
             </div>
             <div id="item_user_menu" class="nav-header__item-user-menu">
               <div class="row" style="margin:0px;">
-                <ul style="padding:0px;margin:0px;list-style:none;text-align:left" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
+                <ul class="nav-header__items-menu-user-dropdown" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
                   <li id="option-menu-0" class="nav-header__item-user">
                     <div class="nav-header__item-separator"></div>
                     <a id="option-menu-link-0" href="/accounts/update/" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
