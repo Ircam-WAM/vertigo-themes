@@ -117,11 +117,13 @@ $module: ".nav-header";
     &__dropdown-menu {
 
       font-weight:bold;
-      position:relative;
+//      position:relative;
       align:right;
       font-size:13px;
       float:right;
       margin-right:5px;
+      position:absolute !important;
+      right:0px !important;
     }
 
     &__item-separator {
