@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "starts_eu/base.html" %}
 {% load i18n pages_tags mezzanine_tags %}
 
 {% block meta_title %}
@@ -15,14 +15,12 @@
 
     {# {% include "home/inc/hero.html" %}#}
 
-    {% include "home/inc/slider_large.html" %}
+    {% include "starts_eu/home/inc/slider_large.html" %}
 
-    {% include "home/inc/bio.html" %}
+    {% include "starts_eu/home/inc/bio.html" %}
 
     <div class="section">
-        {% include "home/inc/body.html" %}
+        {% include "starts_eu/home/inc/body.html" %}
     </div>
-
-    {% include "includes/social.html" %}
 
 {% endblock %}
