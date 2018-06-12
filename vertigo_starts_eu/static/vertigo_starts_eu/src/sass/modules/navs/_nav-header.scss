@@ -65,6 +65,22 @@ $module: ".nav-header";
       text-align:left !important;
     }
 
+    &__image-logo {
+
+      width:174px;
+      height:172.2px;
+    }
+
+    @media screen and (max-width: 480px) {
+      &__image-logo {
+
+        width:80px !important;
+        height:80px !important;
+        margin-top:10% !important;
+        margin-left:40% !important;
+      }
+    }
+
     &__main-submenu-items {
 
       background:#000f24 !important;
