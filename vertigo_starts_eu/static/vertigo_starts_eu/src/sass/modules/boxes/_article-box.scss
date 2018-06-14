@@ -79,13 +79,16 @@ $module: ".article-box";
 
         .article-box__card-subtag-event {
           background: rgba($color-background, 1);
-
+          @include transition(background 0.5s ease-in-out);
         }
 
         .article-box__card-tag-event {
           background: rgba($color-main, 1);
           border-right: 1px solid rgba($color-background, 1);
           border-bottom: 1px solid rgba($color-background, 1);
+          @include transition(background 0.5s ease-in-out);
+          @include transition(border-right 0.5s ease-in-out);
+          @include transition(border-bottom 0.5s ease-in-out);
         }
     }
 
