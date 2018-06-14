@@ -9,6 +9,63 @@ $module: ".event-line-detail-box";
 
     background-color : transparent;
 
+    &__tag-container {
+
+      padding-left:45%;
+      margin-bottom:20px;
+      margin-top:-80px;
+    }
+
+    &__tag-event {
+
+      background:clear;
+      color:white;
+      font-family:"Oswald",sans-serif;
+      @include font-size(s);
+      width:110px;
+      height:30px;
+      top:50%;
+      border-right: 1px solid rgba($color-main, 1);
+      border-bottom: 1px solid rgba($color-main, 1);
+      padding-left:18px;
+      text-align:left;
+      position:relative;
+    }
+
+    &__tag-event-content {
+
+      position: absolute;
+      bottom: 0;
+      margin-bottom:0px;
+      font-family:"Oswald",sans-serif;
+      font-size:14px;
+      color:white;
+    }
+
+    &__subtag-event {
+
+      background: rgba($color-main, 1);
+      color:white;
+      font-family:"Oswald",sans-serif;
+      @include font-size(s);
+      width:110px;
+      height:30px;
+      top:50%;
+      text-align:center;
+      position:relative;
+      margin-left:10%;
+    }
+
+    &__subtag-event-content {
+
+      bottom: 0;
+      margin-bottom:0px;
+      font-family:"Oswald",sans-serif;
+      font-size:14px;
+      text-align:center;
+      color:white;
+    }
+
     &__back-link {
 
         display: block;

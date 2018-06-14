@@ -31,6 +31,7 @@
                 {% if event.prices.all and not is_archive %}
                     {% if event.trainings.all|length %}
                         {% with event.links.all as links %}
+
                             {% if links %}
                                 <object class="event-line-box__button">
                                     <a href="{{ links|get_type_link:'link'|first }}" class="button button--accent">
@@ -49,12 +50,17 @@
                 {% endif %}
 
                 {% keywords_for event as tags %}
-
                 {% comment %}
                 <div class="event-line-box__category">
                     {% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}
                 </div>
                 {% endcomment %}
+                <div class="event-line-box__tag-event">
+                  <p class="event-line-box__tag-event-content">{{ event.departments.all.0 }}</p>
+                </div>
+                <div class="event-line-box__subtag-event">
+                  <p class="event-line-box__subtag-event-content">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>
+                </div>
 
                 <div class="event-line-box__body">
 

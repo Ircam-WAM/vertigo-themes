@@ -84,5 +84,12 @@ $module: ".event-line-box-hover";
             color: $color-main;
 
         }
+
+        .event-line-box__tag-event {
+
+            background: none;
+            border-right: 1px solid rgba($color-main, 1);
+            border-bottom: 1px solid rgba($color-main, 1);
+        }
     }
 }

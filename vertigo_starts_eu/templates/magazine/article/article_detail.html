@@ -28,6 +28,15 @@
         <h1 class="section-title section-title--uppercase section-title--main">{{ article.title }}</h1>
     {% endeditable %}
 
+    <div class="article-box__tag-container">
+      <div class="article-box__tag-event">
+        <p class="article-box__tag-event-content">{{ article.departments.all.0 }}</p>
+      </div>
+      <div class="article-box__subtag-event">
+        <p class="article-box__subtag-event-content">{% if article.category %}{{ article.category }}{% else %}{{ article.parent.category }}{% endif %}</p>
+      </div>
+    </div>
+
     {% if article.sub_title %}
         {% editable article.sub_title %}
             <div class="chapo">
