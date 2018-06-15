@@ -55,13 +55,14 @@
                     {% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}
                 </div>
                 {% endcomment %}
+                {% if event.departments %}
                 <div class="event-line-box__tag-event">
-                  <p class="event-line-box__tag-event-content">{{ event.departments.all.0 }}</p>
+                  <p class="event-line-box__tag-event-content">{{ event.departments.all|first }}</p>
                 </div>
                 <div class="event-line-box__subtag-event">
                   <p class="event-line-box__subtag-event-content">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>
                 </div>
-
+                {% endif %}
                 <div class="event-line-box__body">
 
                     <div class="event-line-box__title-list event-line-box__white-color">

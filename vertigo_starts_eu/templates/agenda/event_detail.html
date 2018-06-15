@@ -36,14 +36,16 @@
 {% endblock %}
 
 {% block page_content %}
+{% if event.departments %}
 <div class="event-line-detail-box__tag-container">
   <div class="event-line-detail-box__tag-event">
-    <p class="event-line-detail-box__tag-event-content">{{ event.departments.all.0 }}</p>
+    <p class="event-line-detail-box__tag-event-content">{{ event.departments.all|first }}</p>
   </div>
   <div class="event-line-detail-box__subtag-event">
     <p class="event-line-detail-box__subtag-event-content">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>
   </div>
 </div>
+{% endif %}
 <div class="row">
      <div class="col-xs-4 event-line-box__top-space-left event-line-box__text-color-date" style="margin-right: 50px;" id="left-item">
         {% include 'agenda/includes/event_detail_date_line.html' with object=event %}
