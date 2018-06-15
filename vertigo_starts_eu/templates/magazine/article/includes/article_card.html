@@ -41,7 +41,7 @@
             {% else %}
                 <figure class="article-box__image">
                     {% if object.department %}
-                        <div class="article-box__placeholder {{object.department.name|slugify}}"></div>
+                        <div class="article-box__placeholder {{ object.department.name|slugify }}"></div>
                     {% else %}
                         <div class="article-box__placeholder"></div>
                     {% endif %}
