@@ -33,7 +33,7 @@
           <p class="article-box__tag-event-content">{{ article.department }}</p>
         </div>
         <div class="article-box__subtag-event">
-          <p class="article-box__subtag-event-content">{% if article.category %}{{ article.category }}{% else %}{{ article.parent.category }}{% endif %}</p>
+          <p class="article-box__subtag-event-content">{{ article.categories.all|first }}</p>
         </div>
       </div>
     {% endif %}
