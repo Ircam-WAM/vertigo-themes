@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block page_content %}
-{% if event.departments %}
+{% if event.departments.all %}
 <div class="event-line-detail-box__tag-container">
   <div class="event-line-detail-box__tag-event">
     <p class="event-line-detail-box__tag-event-content">{{ event.departments.all|first }}</p>

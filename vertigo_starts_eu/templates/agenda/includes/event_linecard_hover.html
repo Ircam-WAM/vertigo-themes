@@ -55,7 +55,7 @@
                     {% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}
                 </div>
                 {% endcomment %}
-                {% if event.departments %}
+                {% if event.departments.all %}
                 <div class="event-line-box__tag-event">
                   <p class="event-line-box__tag-event-content">{{ event.departments.all|first }}</p>
                 </div>
