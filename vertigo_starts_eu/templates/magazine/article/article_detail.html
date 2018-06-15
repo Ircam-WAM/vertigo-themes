@@ -30,7 +30,7 @@
     {% if article.department %}
       <div class="article-box__tag-container">
         <div class="article-box__tag-event">
-          <p class="article-box__tag-event-content">{{ article.department }}</p>
+          <p class="article-box__tag-event-content">{{ article.department.name }}</p>
         </div>
         <div class="article-box__subtag-event">
           <p class="article-box__subtag-event-content">{{ article.topics.all|first }}</p>

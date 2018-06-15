@@ -39,7 +39,7 @@
 {% if event.departments.all %}
 <div class="event-line-detail-box__tag-container">
   <div class="event-line-detail-box__tag-event">
-    <p class="event-line-detail-box__tag-event-content">{{ event.departments.all.0.department }}</p>
+    <p class="event-line-detail-box__tag-event-content">{{ event.departments.all.0.department.name }}</p>
   </div>
   <div class="event-line-detail-box__subtag-event">
     <p class="event-line-detail-box__subtag-event-content">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>

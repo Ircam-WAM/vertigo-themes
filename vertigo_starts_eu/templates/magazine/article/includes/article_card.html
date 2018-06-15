@@ -27,7 +27,7 @@
             {% if object.department %}
               <div class="article-box__card-tag-container">
                 <div class="article-box__card-tag-event">
-                  <p class="article-box__card-tag-event-content">{{ object.department }}</p>
+                  <p class="article-box__card-tag-event-content">{{ object.department.name }}</p>
                 </div>
                 <div class="article-box__card-subtag-event">
                   <p class="article-box__card-subtag-event-content">{{ object.topics.all|first }}</p>
