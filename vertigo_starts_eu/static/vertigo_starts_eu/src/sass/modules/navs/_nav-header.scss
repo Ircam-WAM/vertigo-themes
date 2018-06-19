@@ -807,4 +807,13 @@ $module: ".nav-header";
 
         }
     }
+
+    &__search-magnify-style {
+
+      background:white;
+      float:right;
+      padding-right:2%;
+      padding-bottom:8px;
+      position:relative;
+    }
 }
