@@ -14,6 +14,18 @@
 {% endblock %}
 
 {% block page_title %}
+
+    {# TODO: Hardcoded image for Call Workflow as page_featured type #}
+    {% with page.images.all|get_type:'page_featured' as images %}
+        {% if images %}
+            {% with images|first as image %}
+                <div style="margin-top: 10em;">
+                    <img src="{{ MEDIA_URL }}/{{ image.file }}"/>
+                </div>
+            {% endwith %}
+        {% endif %}
+    {% endwith %}
+
     {% with page.get_ascendants|first as parent %}
         {% if parent %}
             {% children_pages parent.id as childrens %}
