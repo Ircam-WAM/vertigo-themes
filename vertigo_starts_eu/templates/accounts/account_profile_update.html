@@ -7,63 +7,67 @@
 
 {% block page_content %}
 <script>
-function select(type) {
 
-    s_profile = document.getElementById("select-profile");
-    s_message = document.getElementById("select-messages");
-    s_following = document.getElementById("select-following");
-    s_follower = document.getElementById("select-follower");
-    s_application_form = document.getElementById("select-application-form");
-    s_settings = document.getElementById("select-settings");
+  function select(type) {
 
-    i_profile = document.getElementById("info-profile");
-    i_message = document.getElementById("info-messages");
-    i_following = document.getElementById("info-following");
-    i_follower = document.getElementById("info-follower");
-    i_application_form = document.getElementById("info-application-form");
-    i_settings = document.getElementById("info-settings");
+      s_profile = document.getElementById("select-profile");
+      s_message = document.getElementById("select-messages");
+      s_following = document.getElementById("select-following");
+      s_follower = document.getElementById("select-follower");
+      s_application_form = document.getElementById("select-application-form");
+      s_settings = document.getElementById("select-settings");
 
-    s_profile.className = "page__option-unselected";
-    s_message.className = "page__option-unselected";
-    s_following.className = "page__option-unselected";
-    s_follower.className = "page__option-unselected";
-    s_application_form.className = "page__option-unselected";
-    s_settings.className = "page__option-unselected";
+      i_profile = document.getElementById("info-profile");
+      i_message = document.getElementById("info-messages");
+      i_following = document.getElementById("info-following");
+      i_follower = document.getElementById("info-follower");
+      i_application_form = document.getElementById("info-application-form");
+      i_settings = document.getElementById("info-settings");
 
-    i_profile.className = "page__info-block-hidden";
-    i_message.className = "page__info-block-hidden";
-    i_following.className = "page__info-block-hidden";
-    i_follower.className = "page__info-block-hidden";
-    i_application_form.className = "page__info-block-hidden";
-    i_settings.className = "page__info-block-hidden";
+      s_profile.className = "page__option-unselected";
+      s_message.className = "page__option-unselected";
+      s_following.className = "page__option-unselected";
+      s_follower.className = "page__option-unselected";
+      s_application_form.className = "page__option-unselected";
+      s_settings.className = "page__option-unselected";
 
-    if (type == "profile") {
+      i_profile.className = "page__info-block-hidden";
+      i_message.className = "page__info-block-hidden";
+      i_following.className = "page__info-block-hidden";
+      i_follower.className = "page__info-block-hidden";
+      i_application_form.className = "page__info-block-hidden";
+      i_settings.className = "page__info-block-hidden";
 
-        s_profile.className = "page__option-selected";
-        i_profile.className = "page__info-block";
-    } else if (type == "messages") {
+      document.getElementById("main-content").style.background = "linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 15, 36, 1) 0%, rgba(236,235,235, 1) 20%)"
 
-        s_message.className = "page__option-selected";
-        i_message.className = "page__info-block";
-    } else if (type == "following") {
+      if (type == "profile") {
 
-        s_following.className = "page__option-selected";
-        i_following.className = "page__info-block";
-    } else if (type == "follower") {
+          s_profile.className = "page__option-selected";
+          i_profile.className = "page__info-block";
+      } else if (type == "messages") {
 
-        s_follower.className = "page__option-selected";
-        i_follower.className = "page__info-block";
-    } else if (type == "application-form") {
+          s_message.className = "page__option-selected";
+          i_message.className = "page__info-block";
+      } else if (type == "following") {
 
-        s_application_form.className = "page__option-selected";
-        i_application_form.className = "page__info-block";
-    } else if (type == "settings") {
+          s_following.className = "page__option-selected";
+          i_following.className = "page__info-block";
+      } else if (type == "follower") {
 
-        s_settings.className = "page__option-selected";
-        i_settings.className = "page__info-block";
+          s_follower.className = "page__option-selected";
+          i_follower.className = "page__info-block";
+      } else if (type == "application-form") {
 
-    }
-}
+          s_application_form.className = "page__option-selected";
+          i_application_form.className = "page__info-block";
+      } else if (type == "settings") {
+
+          s_settings.className = "page__option-selected";
+          i_settings.className = "page__info-block";
+          document.getElementById("main-content").style.background = "linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 15, 36, 1) 0%, rgba(236,235,235, 1) 10%)"
+      }
+  }
+
 </script>
 
 <div class="page__call_info">
@@ -99,6 +103,7 @@ function select(type) {
         </div>
 
         <div id="info-settings" class="page__info-block-hidden">
+
           <div class="page__padding-settings-form">
 
               {{ block.super }}
