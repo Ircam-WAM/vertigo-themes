@@ -1,15 +1,113 @@
-{% extends "vertigo_starts_eu/accounts/account_form_operations.html" %}
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
 {% load i18n mezzanine_tags %}
+
 {% block page_title %}
-	<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>
+	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
 {% endblock %}
 
 {% block page_content %}
-<div style="padding-top:100px;background: linear-gradient(rgba(0, 0, 0, 1) 2%, rgba(0, 15, 36, 1) 2%, rgba(80,227,194, 1) 40%);">
-{#{ super.}}#}
-{{ block.super }}
-<div style="margin-top:100px;text-align:center;margin-right:15px">
-	<input class="btn btn-primary btn-lg" type="submit" value="Logout" onclick="window.location='/accounts/logout';" style="background:#1D1D1B;color:white;width:50%;padding-top:2px;padding-bottom:2px;font-size:20px;font-family:'Oswald'">
-</div>
+<script>
+function select(type) {
+
+    s_profile = document.getElementById("select-profile");
+    s_message = document.getElementById("select-messages");
+    s_following = document.getElementById("select-following");
+    s_follower = document.getElementById("select-follower");
+    s_application_form = document.getElementById("select-application-form");
+    s_settings = document.getElementById("select-settings");
+
+    i_profile = document.getElementById("info-profile");
+    i_message = document.getElementById("info-messages");
+    i_following = document.getElementById("info-following");
+    i_follower = document.getElementById("info-follower");
+    i_application_form = document.getElementById("info-application-form");
+    i_settings = document.getElementById("info-settings");
+
+    s_profile.className = "page__option-unselected";
+    s_message.className = "page__option-unselected";
+    s_following.className = "page__option-unselected";
+    s_follower.className = "page__option-unselected";
+    s_application_form.className = "page__option-unselected";
+    s_settings.className = "page__option-unselected";
+
+    i_profile.className = "page__info-block-hidden";
+    i_message.className = "page__info-block-hidden";
+    i_following.className = "page__info-block-hidden";
+    i_follower.className = "page__info-block-hidden";
+    i_application_form.className = "page__info-block-hidden";
+    i_settings.className = "page__info-block-hidden";
+
+    if (type == "profile") {
+
+        s_profile.className = "page__option-selected";
+        i_profile.className = "page__info-block";
+    } else if (type == "messages") {
+
+        s_message.className = "page__option-selected";
+        i_message.className = "page__info-block";
+    } else if (type == "following") {
+
+        s_following.className = "page__option-selected";
+        i_following.className = "page__info-block";
+    } else if (type == "follower") {
+
+        s_follower.className = "page__option-selected";
+        i_follower.className = "page__info-block";
+    } else if (type == "application-form") {
+
+        s_application_form.className = "page__option-selected";
+        i_application_form.className = "page__info-block";
+    } else if (type == "settings") {
+
+        s_settings.className = "page__option-selected";
+        i_settings.className = "page__info-block";
+
+    }
+}
+</script>
+
+<div class="page__call_info">
+
+    <div class="page__call_selector">
+        <span id="select-profile" class="page__option-selected" onclick='select("profile")'>Profile</span>
+        <span id="select-messages" class="page__option-unselected" onclick='select("messages")'>Message</span>
+        <span id="select-following" class="page__option-unselected" onclick='select("following")'>Following</span>
+        <span id="select-follower" class="page__option-unselected" onclick='select("follower")'>Follower</span>
+        <span id="select-application-form" class="page__option-unselected" onclick='select("application-form")'>Application form(s)</span>
+        <span id="select-settings" class="page__option-unselected" onclick='select("settings")'>Settings</span>
+    </div>
+
+    <div class="page__call_content">
+        <div id="info-profile" class="page__info-block">
+            Submit PROFILE
+        </div>
+
+        <div id="info-messages" class="page__info-block-hidden">
+            Submit MESSAGES
+        </div>
+
+        <div id="info-following" class="page__info-block-hidden">
+            Submit FOLLOWING
+        </div>
+
+        <div id="info-follower" class="page__info-block-hidden">
+            Submit FOLLOWER
+        </div>
+
+        <div id="info-application-form" class="page__info-block-hidden">
+            Submit APPLICATION FORM
+        </div>
+
+        <div id="info-settings" class="page__info-block-hidden">
+          <div class="page__padding-settings-form">
+              {{ block.super }}
+
+              <div style="margin-top:5%;text-align:center;margin-right:15px">
+                <input class="btn btn-primary btn-lg" type="submit" value="Logout" onclick="window.location='/accounts/logout';" style="background:#1D1D1B;color:white;width:50%;padding-top:2px;padding-bottom:2px;font-size:20px;font-family:'Oswald'">
+              </div>
+
+          </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

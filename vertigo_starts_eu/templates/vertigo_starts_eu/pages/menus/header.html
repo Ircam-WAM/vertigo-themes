@@ -6,11 +6,13 @@
     function show_user_menu(link, event) {
 
       document.getElementById("item_user_menu").style.display = "block";
+      document.getElementById("item_user_menu").style.zIndex = 100;
     }
 
     function hide_user_menu(link, event) {
 
       document.getElementById("item_user_menu").style.display = "none";
+      document.getElementById("item_user_menu").style.zIndex = 100;
       restore_hyperlinks_menu();
     }
 

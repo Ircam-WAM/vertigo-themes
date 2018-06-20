@@ -473,4 +473,57 @@ $module: ".page";
         min-height: 0px;
     }
 
+    &__call_info {
+
+      width: 100%;
+      margin: auto;
+      text-align: center;
+    }
+
+    &__call_selector {
+
+      margin-bottom: 0.3em;
+    }
+
+    &__call_content {
+
+      border-top: solid 2px #BBBABA;
+    }
+
+    &__info-block {
+
+        padding-top:2%;
+        color: white;
+        display: block;
+    }
+
+    &__info-block-hidden {
+
+        color: white;
+        display: none;
+    }
+
+    &__option-selected {
+
+      @include font-size(l);
+      font-family: "Oswald", sans-serif;
+      color: #000000;
+      margin: 1em;
+      padding-bottom: 0.1em;
+      border-bottom: 0.2em solid #000000;
+    }
+
+    &__option-unselected {
+
+      @include font-size(l);
+      font-family: "Oswald", sans-serif;
+      color: #767D86;
+      margin: 1em;
+    }
+
+    &__padding-settings-form {
+
+      padding-left:30%;
+      padding-right:30%;
+    }
 }
