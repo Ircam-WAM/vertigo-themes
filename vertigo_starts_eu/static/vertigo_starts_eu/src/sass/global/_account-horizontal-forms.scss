@@ -70,7 +70,7 @@ $module: ".account-horizontal-form";
         @include line-height(1);
         //@include typeface(sans-serif);
         font-family: "Helvetica";
-        font-weight: small;
+        font-weight: bold;
         text-transform: capitalize;
         color: rgba(0, 15, 36, 1);
         @include mq($until: xs) {
