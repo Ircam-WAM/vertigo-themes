@@ -1,5 +1,5 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
-{% load mezzanine_tags keyword_tags i18n organization_tags pages_tags %}
+{% load mezzanine_tags keyword_tags i18n organization_tags pages_tags staticfiles %}
 
 {% block meta_title %}{{ object.meta_title }}{% endblock %}
 
@@ -45,6 +45,7 @@
         <h1 class="dotted">{{ object.title }}</h1>
     {% endeditable %}
 
+    {% comment %}
     {% with page.get_ascendants|last as top_level_parent %}
         {% if linked_organization_content and research_slug == top_level_parent.slug %}
             {% include 'pages/page/includes/linked_organization_content.html' %}
@@ -58,75 +59,115 @@
             </div>
         {% endeditable %}
     {% endif %}
+    {% endcomment %}
 
 {% endblock %}
 
 {% block page_content %}
-    {% if object.content %}
-        {% editable object.content %}
-            {{ object.content|richtext_filters|safe }}
-        {% endeditable %}
-    {% endif %}
-{% endblock %}
 
-{% block page_sidebar %}
-    <ul class="nav-tree nav-tree--level-{{ branch_level }}" data-sticky data-sticky-parent="row" data-sticky-offset="100" data-sticky-detach-at="971">
-        <li class="nav-tree__item">
-            <a class="nav-tree__link" href="{{ page.get_ascendants.0.get_absolute_url }}">{% trans "Home" %}</a>
-        </li>
-        <li class="nav-tree__item">
-            <a class="nav-tree__link" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
-        </li>
-        <li class="nav-tree__item">
-            <a class="nav-tree__link active" href="{{ page.get_absolute_url }}">{{ object.title }}</a>
-            <ul class="nav-tree" data-summary>
-                <li class="nav-tree__item nav-tree__item--sub hide">
-                    <a class="nav-tree__link nav-tree__link--sub" href="#"></a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-{% endblock %}
+<div class="container">
 
-{% block page_link %}
-    {% with object.links.all as links %}
-        {% if links %}
-            {% include 'core/inc/link.html' %}
+    <div class="call__info">
+
+        <img id="call__workflow" class="call__workflow" src="{% static "img/calls/call_workflow_artist.svg" %}" alt="Call workflow">
+
+        <div class="call__selector">
+            <span id="call__select-artist" class="call__all call__artist-selected" onclick='Call.callSelect("artist", "{% static "img/calls/call_workflow_artist.svg" %}")'>As an Artist</span>
+            <span id="call__select-project" class="call__all call__project-unselected" onclick='Call.callSelect("project", "{% static "img/calls/call_workflow_project.svg" %}")'>As a Tech Project</span>
+            <span id="call__select-producer" class="call__all call__producer-unselected" onclick='Call.callSelect("producer", "{% static "img/calls/call_workflow_producer.svg" %}")'>As a Producer</span>
+        </div>
+
+        <div class="call__content">
+
+            <div id="call__info-artist" class="call__info-block">
+
+                <div class="call__steps">
+                    <a href="#"> {# TODO: Link #}
+                        <div class="call__button call__button-artist">
+                            <div class="call__button_text_top">SELECT</div>
+                            <div class="call__button_text_bottom">a Tech Project</div>
+                        </div>
+                    </a>
+                    <a href="#"> {# TODO: Link #}
+                        <div class="call__button call__button-artist">
+                            <div class="call__button_text_top">CHOOSE</div>
+                            <div class="call__button_text_bottom">a Producer (OPTIONAL)</div>
+                        </div>
+                    </a>
+                    <a href="#"> {# TODO: Link #}
+                        <div class="call__button call__button-artist">
+                            <div class="call__button_text_top">SUBMIT</div>
+                            <div class="call__button_text_bottom">an Artistic Proposal</div>
+                        </div>
+                    </a>
+                </div>
+
+                {% if object.residency_form_content %}
+                    {% editable object.residency_form_content %}
+                        {{ object.residency_form_content|richtext_filters|safe }}
+                    {% endeditable %}
+                {% endif %}
+
+            </div>
+
+            <div id="call__info-project" class="call__info-block-hidden">
+
+                <div class="call__steps">
+                    <a href="#"> {# TODO: Link #}
+                        <div class="call__button call__button-project">
+                            <div class="call__button_text_top">SUBMIT</div>
+                            <div class="call__button_text_bottom">a Tech Project</div>
+                        </div>
+                    </a>
+                </div>
+
+                {% if object.project_form_content %}
+                    {% editable object.project_form_content %}
+                        {{ object.project_form_content|richtext_filters|safe }}
+                    {% endeditable %}
+                {% endif %}
+
+            </div>
+
+            <div id="call__info-producer" class="call__info-block-hidden">
+
+                <div class="call__steps">
+                    <div class="call__button call__button-producer">
+                        <a href="#"> {# TODO: Link #}
+                            <div class="call__button_text_top">SUBMIT</div>
+                            <div class="call__button_text_bottom">a Production Offer</div>
+                        </a>
+                    </div>
+                </div>
+
+                {% if object.producer_form_content %}
+                    {% editable object.producer_form_content %}
+                        {{ object.producer_form_content|richtext_filters|safe }}
+                    {% endeditable %}
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% comment %}
+        {% if object.content %}
+            {% editable object.content %}
+                {{ object.content|richtext_filters|safe }}
+            {% endeditable %}
         {% endif %}
-    {% endwith %}
-{% endblock %}
+        {% endcomment %}
 
-{% block page_audio %}
-  {% with object as object %}
-      {{ block.super }}
-  {% endwith %}
-{% endblock %}
+    </div>
 
-{% block page_slider %}
-    {% with object as object %}
-        {{ block.super }}
-    {% endwith %}
-{% endblock %}
+</div>
 
-{% block page_video %}
-  {% with object as object %}
-      {{ block.super }}
-  {% endwith %}
 {% endblock %}
 
 {% block page_sub_content %}
     {% with object.blocks.all as blocks %}
         {% include "core/inc/block.html" %}
     {% endwith %}
-{% endblock %}
-
-{% block page_demo %}
-{% endblock %}
-
-{% block page_blog %}
-{% endblock %}
-
-{% block logo %}
 {% endblock %}
 
 {% block page_related_content %}

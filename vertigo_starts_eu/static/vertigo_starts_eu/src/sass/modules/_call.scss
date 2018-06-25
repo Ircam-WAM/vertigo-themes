@@ -1,0 +1,138 @@
+// -*- coding: utf-8 -*-
+
+// Copyright (c) 2016-2017 Ircam
+// Copyright (c) 2016-2017 Jérémy Fabre
+
+// This file is part of mezzanine-organization.
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+
+// You should have received a copy of the GNU Affero General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$module: ".call";
+
+$color-artist: $color-accent;
+$color-project: $color-main;
+$color-producer: $color-white;
+
+#{$module} {
+
+    &__info {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    &__workflow {
+        margin-top: 2em;
+        margin-bottom: 4em;
+    }
+
+    &__selector {
+        margin-bottom: 1em;
+    }
+
+    &__content {
+        border: solid 1px $color-white;
+    }
+
+    &__info-block {
+        display: block;
+    }
+
+    &__info-block-hidden {
+        display: none;
+    }
+
+    &__all {
+        margin: 1em;
+        font-size: larger;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    &__artist-selected {
+      color: $color-artist;
+      padding-bottom: 0.6em;
+      border-bottom: 0.2em solid $color-artist;
+    }
+
+    &__artist-unselected {
+      color: darken($color-artist, 25%);
+    }
+
+    &__project-selected {
+      color: $color-project;
+      padding-bottom: 0.6em;
+      border-bottom: 0.2em solid $color-project;
+    }
+
+    &__project-unselected {
+      color: darken($color-project, 25%);
+    }
+
+    &__producer-selected {
+      color: $color-producer;
+      padding-bottom: 0.6em;
+      border-bottom: 0.2em solid $color-producer;
+    }
+
+    &__producer-unselected {
+      color: darken($color-producer, 25%);
+    }
+
+    &__steps {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__button {
+        width: 12em;
+        height: 6em;
+        border-radius: 0.3em;
+        border-style: solid;
+        border-width: 1em;
+        padding: 0.3em;
+        margin: 2em;
+        cursor: pointer;
+
+        &-artist {
+            color: $color-white;
+            border-color: $color-artist;
+            background-color: $color-artist;
+        }
+
+        &-project {
+            color: $color-black;
+            border-color: $color-project;
+            background-color: $color-project;
+        }
+
+        &-producer {
+            color: $color-black;
+            border-color: $color-producer;
+            background-color: $color-producer;
+        }
+
+        &_text_top {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        &_text_bottom {
+            font-size: 0.8em;
+        }
+
+    }
+
+}

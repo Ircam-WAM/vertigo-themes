@@ -22,6 +22,7 @@ var Audio = require('./modules/audio');
 var Video = require('./modules/video');
 var VideoOverlay = require('./modules/video-overlay');
 var Instagram = require('./modules/instagram');
+var Call = require('./modules/call')
 
 //
 // Init all the modules
@@ -47,3 +48,4 @@ window['Audio'] = new Audio();
 window['Video'] = new Video();
 window[VideoOverlay] = new VideoOverlay();
 window[Instagram] = new Instagram();
+window['Call'] = new Call();
