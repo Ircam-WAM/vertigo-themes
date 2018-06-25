@@ -575,7 +575,7 @@ $module: ".page";
         margin-left:50%;
 
         @media screen and (max-width: 600px) {
-            margin-left:20%;
+            margin-left:5%;
         }
     }
 
@@ -595,10 +595,13 @@ $module: ".page";
         font-size:1.1em;
         margin-top: 1%;
         display: block;
+        transform: translate(0px, 0px);
+        float: left;
 
         @media screen and (max-width: 600px) {
             width: 40%;
-            margin-left:30%;
+            float: right;
+            transform: translate(0px, -120%);
         }
     }
 
@@ -618,10 +621,13 @@ $module: ".page";
         font-size:1.1em;
         margin-top: 1%;
         display: block;
+        transform: translate(0px, 0px);
+        float: left;
 
         @media screen and (max-width: 600px) {
             width: 40%;
-            margin-left:30%;
+            float: right;
+            transform: translate(0px, -120%);
         }
     }
 
