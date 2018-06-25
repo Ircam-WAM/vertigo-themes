@@ -1,0 +1,29 @@
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block page_title %}
+	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
+{% endblock %}
+
+{% block page_content %}
+
+<div class="page__call_info">
+
+    <div class="page__call_selector">
+        <a href="#"><span id="select-profile" class="page__option-unselected">Profile</span></a>
+        <a href="#"><span id="select-messages" class="page__option-unselected">Message</span></a>
+        <a href="#"><span id="select-following" class="page__option-unselected">Following</span></a>
+        <a href="#"><span id="select-follower" class="page__option-selected">Follower</span></a>
+        <a href="#"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
+        <a href="#"><span id="select-settings" class="page__option-unselected">Settings</span></a>
+    </div>
+
+    <div class="page__call_content">
+
+        <div id="info-follower" class="page__info-block-hidden">
+            Submit FOLLOWER
+        </div>
+
+    </div>
+</div>
+{% endblock %}

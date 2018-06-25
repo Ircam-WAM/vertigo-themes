@@ -6,114 +6,55 @@
 {% endblock %}
 
 {% block page_content %}
-<script>
 
-  function select(type) {
+<div class="container">
 
-      s_profile = document.getElementById("select-profile");
-      s_message = document.getElementById("select-messages");
-      s_following = document.getElementById("select-following");
-      s_follower = document.getElementById("select-follower");
-      s_application_form = document.getElementById("select-application-form");
-      s_settings = document.getElementById("select-settings");
+<div class="page__item_info">
 
-      i_profile = document.getElementById("info-profile");
-      i_message = document.getElementById("info-messages");
-      i_following = document.getElementById("info-following");
-      i_follower = document.getElementById("info-follower");
-      i_application_form = document.getElementById("info-application-form");
-      i_settings = document.getElementById("info-settings");
-
-      s_profile.className = "page__option-unselected";
-      s_message.className = "page__option-unselected";
-      s_following.className = "page__option-unselected";
-      s_follower.className = "page__option-unselected";
-      s_application_form.className = "page__option-unselected";
-      s_settings.className = "page__option-unselected";
-
-      i_profile.className = "page__info-block-hidden";
-      i_message.className = "page__info-block-hidden";
-      i_following.className = "page__info-block-hidden";
-      i_follower.className = "page__info-block-hidden";
-      i_application_form.className = "page__info-block-hidden";
-      i_settings.className = "page__info-block-hidden";
-
-      document.getElementById("main-content").style.background = "linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 15, 36, 1) 0%, rgba(236,235,235, 1) 20%)"
-
-      if (type == "profile") {
-
-          s_profile.className = "page__option-selected";
-          i_profile.className = "page__info-block";
-      } else if (type == "messages") {
-
-          s_message.className = "page__option-selected";
-          i_message.className = "page__info-block";
-      } else if (type == "following") {
-
-          s_following.className = "page__option-selected";
-          i_following.className = "page__info-block";
-      } else if (type == "follower") {
-
-          s_follower.className = "page__option-selected";
-          i_follower.className = "page__info-block";
-      } else if (type == "application-form") {
-
-          s_application_form.className = "page__option-selected";
-          i_application_form.className = "page__info-block";
-      } else if (type == "settings") {
-
-          s_settings.className = "page__option-selected";
-          i_settings.className = "page__info-block";
-          document.getElementById("main-content").style.background = "linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 15, 36, 1) 0%, rgba(236,235,235, 1) 13.2%)"
-      }
-  }
-
-</script>
-
-<div class="page__call_info">
-
-    <div class="page__call_selector">
-        <span id="select-profile" class="page__option-selected" onclick='select("profile")'>Profile</span>
-        <span id="select-messages" class="page__option-unselected" onclick='select("messages")'>Messages</span>
-        <span id="select-following" class="page__option-unselected" onclick='select("following")'>Following</span>
-        <span id="select-follower" class="page__option-unselected" onclick='select("follower")'>Followers</span>
-        <span id="select-application-form" class="page__option-unselected" onclick='select("application-form")'>Application form(s)</span>
-        <span id="select-settings" class="page__option-unselected" onclick='select("settings")'>Settings</span>
+    <div class="page__item_selector">
+        <a href="#"><span id="select-profile" class="page__option-selected">Profile</span></a>
+        <a href="#"><span id="select-messages" class="page__option-unselected">Message</span></a>
+        <a href="#"><span id="select-following" class="page__option-unselected">Following</span></a>
+        <a href="#"><span id="select-follower" class="page__option-unselected">Follower</span></a>
+        <a href="#"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
+        <a href="#"><span id="select-settings" class="page__option-unselected">Settings</span></a>
     </div>
 
-    <div class="page__call_content">
-        <div id="info-profile" class="page__info-block">
+
+    <div class="page__item_content">
+        <div id="info-profile" class="page__info-block" style="display:none">
             Submit PROFILE
         </div>
 
-        <div id="info-messages" class="page__info-block-hidden">
-            Submit MESSAGES
+        <div class="page__row-app-space-form page__row-app-space-bottom-form"></div>
+        <div class="page__row-app-form page__row-app-space-bottom-form">
+           <div class="page__column-app-form page__column-space">
+             <div class="page__inner-row-content page__inner-item-bold">AMORE</div>
+             <div class="page__inner-row-content page__inner-item">Call for Artistic Project</div>
+           </div>
+           <div class="page__column-app-form page__column-space">
+             <div class="page__inner-row-content page__inner-item">Submitted</div>
+             <div class="page__inner-row-content page__inner-item">Deadline: 12.10.18</div>
+           </div>
+           <div class="page__column-app-form">
+             <a href="#" class="page__button-view-row-profile">View form</a>
+           </div>
         </div>
 
-        <div id="info-following" class="page__info-block-hidden">
-            Submit FOLLOWING
-        </div>
-
-        <div id="info-follower" class="page__info-block-hidden">
-            Submit FOLLOWER
-        </div>
-
-        <div id="info-application-form" class="page__info-block-hidden">
-            Submit APPLICATION FORM
-        </div>
-
-        <div id="info-settings" class="page__info-block-hidden">
-
-          <div class="page__padding-settings-form">
-
-              {{ block.super }}
-              <!--
-              <div style="margin-top:5%;text-align:center;margin-right:15px">
-                <input class="btn btn-primary btn-lg page__button-logout" type="submit" value="Logout" onclick="window.location='/accounts/logout';">
-              </div>
-              -->
-          </div>
+        <div class="page__row-app-form page__row-app-space-bottom-form">
+           <div class="page__column-app-form page__column-space">
+             <div class="page__inner-row-content page__inner-item-bold">AMORE</div>
+             <div class="page__inner-row-content page__inner-item">Call for Artistic Project</div>
+           </div>
+           <div class="page__column-app-form page__column-space">
+             <div class="page__inner-row-content page__inner-item-red">Draft</div>
+             <div class="page__inner-row-content page__inner-item-red">Deadline: 12.10.18</div>
+           </div>
+           <div class="page__column-app-form">
+             <a href="#" class="page__button-edit-row-profile">Edit form</a>
+           </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

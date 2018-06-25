@@ -1,0 +1,37 @@
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block page_title %}
+	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
+{% endblock %}
+
+{% block page_content %}
+
+<div class="page__call_info">
+
+    <div class="page__call_selector">
+        <a href="#"><span id="select-profile" class="page__option-unselected">Profile</span></a>
+        <a href="#"><span id="select-messages" class="page__option-unselected">Message</span></a>
+        <a href="#"><span id="select-following" class="page__option-unselected">Following</span></a>
+        <a href="#"><span id="select-follower" class="page__option-unselected">Follower</span></a>
+        <a href="#"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
+        <a href="#"><span id="select-settings" class="page__option-selected">Settings</span></a>
+    </div>
+
+    <div class="page__call_content">
+
+        <div id="info-settings" class="page__info-block-hidden">
+
+          <div class="page__padding-settings-form">
+
+              {{ block.super }}
+<!--
+              <div style="margin-top:5%;text-align:center;margin-right:15px">
+                <input class="btn btn-primary btn-lg page__button-logout" type="submit" value="Logout" onclick="window.location='/accounts/logout';">
+              </div>
+            -->
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
