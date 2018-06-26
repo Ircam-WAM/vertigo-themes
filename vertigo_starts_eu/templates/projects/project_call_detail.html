@@ -82,18 +82,22 @@
             <div id="call__info-artist" class="call__info-block">
 
                 <div class="call__steps">
+                    {# Project list #}
                     <a href="#"> {# TODO: Link #}
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">SELECT</div>
                             <div class="call__button_text_bottom">a Tech Project</div>
                         </div>
                     </a>
+                    {# Producer list #}
                     <a href="#"> {# TODO: Link #}
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">CHOOSE</div>
-                            <div class="call__button_text_bottom">a Producer (OPTIONAL)</div>
+                            <div class="call__button_text_bottom">a Producer</div>
+                            <div class="call__button_text_bottom">(OPTIONAL)</div>
                         </div>
                     </a>
+                    {# Residency form #}
                     <a href="#"> {# TODO: Link #}
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">SUBMIT</div>
@@ -113,10 +117,20 @@
             <div id="call__info-project" class="call__info-block-hidden">
 
                 <div class="call__steps">
-                    <a href="#"> {# TODO: Link #}
+                    {# Public Project form #}
+                    <a href="{% url "organization-call-project-create" object.slug 'public' %}">
                         <div class="call__button call__button-project">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">a Tech Project</div>
+                            <div class="call__button_text_bottom">(PUBLIC FUNDED)</div>
+                        </div>
+                    </a>
+                     {# Private Project form #}
+                    <a href="{% url "organization-call-project-create" object.slug 'private' %}">
+                        <div class="call__button call__button-project">
+                            <div class="call__button_text_top">SUBMIT</div>
+                            <div class="call__button_text_bottom">a Tech Project</div>
+                            <div class="call__button_text_bottom">(PRIVATELY FUNDED)</div>
                         </div>
                     </a>
                 </div>
@@ -133,7 +147,8 @@
 
                 <div class="call__steps">
                     <div class="call__button call__button-producer">
-                        <a href="#"> {# TODO: Link #}
+                        {# Producer form #}
+                        <a href="{% url "organization-producer-create" %}">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">a Production Offer</div>
                         </a>
