@@ -21,7 +21,9 @@
 		<a href="/profiles/settings/"><span id="select-settings" class="page__option-unselected">Settings</span></a>
 </div>
 
+
 <div id="form-settings" style="display:none">
+<div class="page__padding-settings-form">
 {% errors_for form %}
 <form class="account-horizontal-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
     <fieldset>
@@ -33,5 +35,6 @@
     </div>
     </fieldset>
 </form>
+</div>
 </div>
 {% endblock %}
