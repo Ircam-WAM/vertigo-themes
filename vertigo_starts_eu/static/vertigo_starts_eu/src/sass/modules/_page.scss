@@ -662,4 +662,17 @@ $module: ".page";
         font-size:1em;
         font-family: 'Helvetica';
     }
+
+    &__center-bio {
+
+      text-align: center;
+      color: white;
+      font-size: 1em;
+      font-family: 'Helvetica';
+    }
+
+    &__clear-color {
+
+      color: white !important;
+    }
 }

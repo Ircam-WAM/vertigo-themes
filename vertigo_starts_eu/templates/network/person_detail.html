@@ -22,9 +22,9 @@
 
 {% block page_title %}
     {% editable person.title %}
-        <h1 class="section-title section-title--big section-title--uppercase section-title--main">{{ person.title }}</h1>
+        <h1 class="section-title section-title--big section-title--uppercase section-title--main page__clear-color">{{ person.title|upper }}</h1>
     {% endeditable %}
-
+{% comment %}
     {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
             <div class="page__image-container">
@@ -37,10 +37,33 @@
             </div>
         {% endif %}
     {% endwith %}
-
+{% endcomment %}
 {% endblock %}
 
 {% block page_content %}
+
+{% if person.address %}
+<div class="page__center-bio">
+  {{ person.address }}
+</div>
+{% endif %}
+
+{% if person.city and person.country %}
+<div class="page__center-bio">
+  {{ person.city }}, {{ person.country }}
+</div>
+{% endif %}
+
+{% if person.bio %}
+<div class="page__center-bio">
+  {% editable person.bio %}
+    {{ person.bio|richtext_filters|safe|truncatechars:50 }}
+  {% endeditable %}
+</div>
+{% endif %}
+
+
+{% comment %}
     {% editable person.bio %}
         {{ person.bio|richtext_filters|safe }}
     {% endeditable %}
@@ -73,7 +96,7 @@
         </ul>
       {% endif %}
     {% endwith %}
-
+{% endcomment %}
 {% endblock %}
 
 {% block page_related_content %}
