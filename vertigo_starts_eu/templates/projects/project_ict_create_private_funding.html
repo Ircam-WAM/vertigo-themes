@@ -160,6 +160,11 @@
                 {% csrf_token %}
                 {% for formset in inlines %}
                     {{ formset.management_form }}
+                    {% for form in formset %}
+                      <div style="display: none;">
+                        {{ form }}
+                      </div>
+                    {% endfor %}
                 {% endfor %}
                 {% if form.errors or inlines.0.0.errors or inlines.1.0.errors or inlines.2.0.errors or inlines.2.1.errors or inlines.2.2.errors or inlines.3.0.errors %}
                     <div class="ict-project-style__errors-form-style">

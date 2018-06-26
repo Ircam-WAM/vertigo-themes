@@ -9,18 +9,20 @@
 
 <div class="container">
 
-<div class="page__call_info">
+<div class="page__item_info">
 
-    <div class="page__call_selector">
-        <a href="#"><span id="select-profile" class="page__option-unselected">Profile</span></a>
-        <a href="#"><span id="select-messages" class="page__option-unselected">Message</span></a>
-        <a href="#"><span id="select-following" class="page__option-unselected">Following</span></a>
-        <a href="#"><span id="select-follower" class="page__option-selected">Follower</span></a>
-        <a href="#"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
-        <a href="#"><span id="select-settings" class="page__option-unselected">Settings</span></a>
-    </div>
+<script>
 
-    <div class="page__call_content">
+function selectCurrentTab() {
+
+  document.getElementById("select-follower").className = "page__option-selected";
+}
+
+window.onload = selectCurrentTab;
+
+</script>
+
+    <div class="page__item_content">
 
         <div id="info-follower" class="page__info-block-hidden">
             Submit FOLLOWER

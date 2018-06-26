@@ -5,56 +5,30 @@
 	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
 {% endblock %}
 
+
 {% block page_content %}
+<script>
+
+function selectCurrentTab() {
+
+  document.getElementById("select-profile").className = "page__option-selected";
+}
+
+window.onload = selectCurrentTab;
+
+</script>
 
 <div class="container">
 
-<div class="page__item_info">
+  <div class="page__item_info">
 
-    <div class="page__item_selector">
-        <a href="#"><span id="select-profile" class="page__option-selected">Profile</span></a>
-        <a href="#"><span id="select-messages" class="page__option-unselected">Message</span></a>
-        <a href="#"><span id="select-following" class="page__option-unselected">Following</span></a>
-        <a href="#"><span id="select-follower" class="page__option-unselected">Follower</span></a>
-        <a href="#"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
-        <a href="#"><span id="select-settings" class="page__option-unselected">Settings</span></a>
-    </div>
+      {{ block.super }}
 
-
-    <div class="page__item_content">
-        <div id="info-profile" class="page__info-block" style="display:none">
-            Submit PROFILE
-        </div>
-
-        <div class="page__row-app-space-form page__row-app-space-bottom-form"></div>
-        <div class="page__row-app-form page__row-app-space-bottom-form">
-           <div class="page__column-app-form page__column-space">
-             <div class="page__inner-row-content page__inner-item-bold">AMORE</div>
-             <div class="page__inner-row-content page__inner-item">Call for Artistic Project</div>
-           </div>
-           <div class="page__column-app-form page__column-space">
-             <div class="page__inner-row-content page__inner-item">Submitted</div>
-             <div class="page__inner-row-content page__inner-item">Deadline: 12.10.18</div>
-           </div>
-           <div class="page__column-app-form">
-             <a href="#" class="page__button-row-profile-view">View form</a>
-           </div>
-        </div>
-
-        <div class="page__row-app-form page__row-app-space-bottom-form">
-           <div class="page__column-app-form page__column-space">
-             <div class="page__inner-row-content page__inner-item-bold">AMORE</div>
-             <div class="page__inner-row-content page__inner-item">Call for Artistic Project</div>
-           </div>
-           <div class="page__column-app-form page__column-space">
-             <div class="page__inner-row-content page__inner-item-red">Draft</div>
-             <div class="page__inner-row-content page__inner-item-red">Deadline: 12.10.18</div>
-           </div>
-           <div class="page__column-app-form">
-             <a href="#" class="page__button-row-profile-edit">Edit form</a>
-           </div>
-        </div>
-    </div>
-</div>
+      <div class="page__item_content">
+          <div id="info-profile" class="page__info-block">
+              Submit PROFILE
+          </div>
+      </div>
+  </div>
 </div>
 {% endblock %}

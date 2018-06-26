@@ -9,46 +9,52 @@
 
 <div class="container">
 
-<div class="page__call_info">
+<div class="page__item_info">
+<script>
 
-    <div class="page__call_selector">
-        <a href="#"><span id="select-profile" class="page__option-unselected">Profile</span></a>
-        <a href="#"><span id="select-messages" class="page__option-unselected">Message</span></a>
-        <a href="#"><span id="select-following" class="page__option-unselected">Following</span></a>
-        <a href="#"><span id="select-follower" class="page__option-unselected">Follower</span></a>
-        <a href="#"><span id="select-application-form" class="page__option-selected">Application form(s)</span></a>
-        <a href="#"><span id="select-settings" class="page__option-unselected">Settings</span></a>
-    </div>
+function selectCurrentTab() {
 
-    <div class="page__call_content">
+  document.getElementById("select-application-form").className = "page__option-selected";
+}
+
+window.onload = selectCurrentTab;
+
+</script>
+
+    <div class="page__item_content">
 
         <div id="info-application-form" class="page__info-block-hidden">
             Submit APPLICATION FORM
         </div>
 
-
+        <div class="page__row-app-space-form page__row-app-space-bottom-form"></div>
         {% if projects %}
-            <h2 class="dotted">{% trans 'Tech Projects' %}</h2>
-            <ul class="unstyled-list">
-                {% for project in projects %}
-                    <li class="mb1">
-                        {{ project.title }}
-                        {{ project.call }}
-                        {{ project.validation_status }}
-                        {{ project.date_to }}
-                        {% if project.validation_status != 'accepted' %}
-                            {% if project.funding == 'private' %}
-                                <a href="{% url "organization-project-private-update" project.call.slug project.slug %}">Edit</a>
-                            {% elif project.funding == 'public' %}
-                                <a href="{% url "organization-project-public-update" project.call.slug project.slug %}">Edit</a>
-                            {% endif %}
-                        {% endif %}
-                    <br />
-                    </li>
-                {% endfor %}
-            </ul>
+          {% for project in projects %}
+              <div class="page__row-app-form page__row-app-space-bottom-form">
+                 <div class="page__column-app-form page__column-space">
+                   <div class="page__inner-row-content page__inner-item-bold">{{ project.title }}</div>
+                   <div class="page__inner-row-content page__inner-item">{{ project.call }}</div>
+                 </div>
+                 <div class="page__column-app-form page__column-space">
+                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
+                     {% if project.validation_status == 'accepted' %}
+                        Submitted
+                     {% else %}
+                        Draft
+                     {% endif %}
+                   </div>
+                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ project.date_to }}</div>
+                 </div>
+                 <div class="page__column-app-form">
+                   {% if project.validation_status == 'accepted' %}
+                      <a href="{% url "organization-call-project-detail" project.call.slug project.slug %}" class="page__button-row-profile-view">View form</a>
+                   {% else %}
+                      <a href="{% url "organization-call-project-update" project.call.slug project.slug %}" class="page__button-row-profile-edit">Edit form</a>
+                   {% endif %}
+                 </div>
+              </div>
+          {% endfor %}
         {% endif %}
-        
 
     </div>
 </div>
