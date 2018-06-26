@@ -58,6 +58,7 @@ $color-producer: $color-white;
         font-size: larger;
         font-weight: bold;
         cursor: pointer;
+        font-family:"Oswald",sans-serif !important;
     }
 
     &__artist-selected {
@@ -96,6 +97,11 @@ $color-producer: $color-white;
         justify-content: center;
     }
 
+    &__subcall_info {
+        text-align: left;
+        padding: 1em 4em 1em 4em;
+    }
+
     &__button {
         width: 12em;
         height: 6em;
@@ -105,6 +111,7 @@ $color-producer: $color-white;
         padding: 0.3em;
         margin: 2em;
         cursor: pointer;
+        font-family:"Oswald",sans-serif !important;
 
         &-artist {
             color: $color-white;
