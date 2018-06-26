@@ -23,7 +23,10 @@
 
 
 <div id="form-settings" style="display:none">
-<div class="page__padding-settings-form">
+
+	<div class="page__item_content">
+
+			<div id="info-follower" class="page__info-block">
 {% errors_for form %}
 <form class="account-horizontal-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
     <fieldset>
@@ -35,6 +38,7 @@
     </div>
     </fieldset>
 </form>
+</div>
 </div>
 </div>
 {% endblock %}
