@@ -47,9 +47,9 @@ window.onload = selectCurrentTab;
                  </div>
                  <div class="page__column-app-form">
                    {% if project.validation_status == 'accepted' %}
-                      <a href="#" class="page__button-row-profile-view">View form</a>
+                      <a href="{% url "organization-call-project-detail" project.call.slug project.slug %}" class="page__button-row-profile-view">View form</a>
                    {% else %}
-                      <a href="#" class="page__button-row-profile-edit">Edit form</a>
+                      <a href="{% url "organization-call-project-update" project.call.slug project.slug %}" class="page__button-row-profile-edit">Edit form</a>
                    {% endif %}
                  </div>
               </div>
