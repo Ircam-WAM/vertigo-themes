@@ -7,10 +7,6 @@
 
 {% block page_content %}
 
-<div class="container">
-
-<div class="page__item_info">
-
 <script>
 
 function selectCurrentTab() {
@@ -22,16 +18,18 @@ window.onload = selectCurrentTab;
 
 </script>
 
+<div class="container">
+  <div class="page__item_info">
+  {{ block.super }}
 
-    <div class="page__item_content">
+      <div class="page__item_content">
 
-        <div id="info-following" class="page__info-block">
-            Submit FOLLOWING
-        </div>
+          <div id="info-following" class="page__info-block">
+              Submit FOLLOWING
+          </div>
 
-    </div>
-</div>
-
+      </div>
+  </div>
 </div>
 
 {% endblock %}

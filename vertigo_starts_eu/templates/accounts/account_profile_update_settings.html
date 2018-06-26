@@ -6,28 +6,20 @@
 {% endblock %}
 
 {% block page_content %}
-
-<div class="container">
-
-<div class="page__item_info">
-
 <script>
 
 function selectCurrentTab() {
 
-  document.getElementById("select-settings").className = "page__option-selected";
-  document.getElementById("form-settings").style = "display:block";
+    document.getElementById("select-settings").className = "page__option-selected";
+    document.getElementById("form-settings").style = "display:block";
 }
 
 window.onload = selectCurrentTab;
 
 </script>
 
-    <div class="page__item_content">
-
-        <div id="info-settings" class="page__info-block">
-
-
+<div class="container">
+  <div class="page__item_info">
 
               {{ block.super }}
 <!--
@@ -35,9 +27,6 @@ window.onload = selectCurrentTab;
                 <input class="btn btn-primary btn-lg page__button-logout" type="submit" value="Logout" onclick="window.location='/accounts/logout';">
               </div>
             -->
-        </div>
-    </div>
 </div>
-
 </div>
 {% endblock %}
