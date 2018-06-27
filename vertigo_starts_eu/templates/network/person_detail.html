@@ -56,8 +56,14 @@
 
 {% if person.short_url %}
 <div class="page__center-bio">
-  {{ person.short_url }}
+  <a href="{{ person.short_url }}">{{ person.short_url }}</a>
 </div>
+{% else %}
+  {% if person.site %}
+    <div class="page__center-bio">
+      <a href="{{ person.site }}">{{ person.site }}</a>
+    </div>
+  {% endif %}
 {% endif %}
 
 {% if person.bio %}
