@@ -54,14 +54,17 @@
 </div>
 {% endif %}
 
-{% if person.bio %}
+{% if person.short_url %}
 <div class="page__center-bio">
-  {% editable person.bio %}
-    {{ person.bio|richtext_filters|safe|truncatechars:50 }}
-  {% endeditable %}
+  {{ person.short_url }}
 </div>
 {% endif %}
 
+{% if person.bio %}
+<div class="page__center-bio">
+  {{ person.bio|richtext_filters|safe|truncatechars:100 }}
+</div>
+{% endif %}
 
 {% comment %}
     {% editable person.bio %}
