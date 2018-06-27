@@ -42,7 +42,7 @@
 {% block page_title %}
 
     {% editable object.title %}
-        <h1 class="dotted">{{ object.title }}</h1>
+        <h1 class="section-title section-title--uppercase section-title--main">{{ object.title }}</h1>
     {% endeditable %}
 
     {% comment %}
@@ -106,11 +106,13 @@
                     </a>
                 </div>
 
-                {% if object.residency_form_content %}
-                    {% editable object.residency_form_content %}
-                        {{ object.residency_form_content|richtext_filters|safe }}
-                    {% endeditable %}
-                {% endif %}
+                <div class="call__subcall_info">
+                    {% if object.residency_form_content %}
+                        {% editable object.residency_form_content %}
+                            {{ object.residency_form_content|richtext_filters|safe }}
+                        {% endeditable %}
+                    {% endif %}
+                </div>
 
             </div>
 
@@ -135,11 +137,13 @@
                     </a>
                 </div>
 
-                {% if object.project_form_content %}
-                    {% editable object.project_form_content %}
-                        {{ object.project_form_content|richtext_filters|safe }}
-                    {% endeditable %}
-                {% endif %}
+                <div class="call__subcall_info">
+                    {% if object.project_form_content %}
+                        {% editable object.project_form_content %}
+                            {{ object.project_form_content|richtext_filters|safe }}
+                        {% endeditable %}
+                    {% endif %}
+                </div>
 
             </div>
 
@@ -155,11 +159,13 @@
                     </div>
                 </div>
 
-                {% if object.producer_form_content %}
-                    {% editable object.producer_form_content %}
-                        {{ object.producer_form_content|richtext_filters|safe }}
-                    {% endeditable %}
-                {% endif %}
+                <div class="call__subcall_info">
+                    {% if object.producer_form_content %}
+                        {% editable object.producer_form_content %}
+                            {{ object.producer_form_content|richtext_filters|safe }}
+                        {% endeditable %}
+                    {% endif %}
+                </div>
 
             </div>
 
