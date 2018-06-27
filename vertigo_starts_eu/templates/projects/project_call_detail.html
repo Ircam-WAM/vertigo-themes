@@ -173,13 +173,13 @@
 
         </div>
 
-        {% comment %}
         {% if object.content %}
-            {% editable object.content %}
-                {{ object.content|richtext_filters|safe }}
-            {% endeditable %}
+            <div class="call__main_info">
+                {% editable object.content %}
+                    {{ object.content|richtext_filters|safe }}
+                {% endeditable %}
+            </div>
         {% endif %}
-        {% endcomment %}
 
     </div>
 

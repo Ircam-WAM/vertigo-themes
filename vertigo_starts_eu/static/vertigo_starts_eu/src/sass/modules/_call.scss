@@ -97,6 +97,12 @@ $color-producer: $color-white;
         justify-content: center;
     }
 
+    &__main_info {
+        text-align: left;
+        margin-top: 4em;
+        margin-bottom: 4em;
+    }
+
     &__subcall_info {
         text-align: left;
         padding: 1em 4em 1em 4em;
