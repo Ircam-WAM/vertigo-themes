@@ -69,6 +69,14 @@
 
     <div class="call__info">
 
+        {% if object.content %}
+            <div class="call__main_info">
+                {% editable object.content %}
+                    {{ object.content|richtext_filters|safe }}
+                {% endeditable %}
+            </div>
+        {% endif %}
+
         {% with "vertigo_starts_eu/img/calls/call_workflow_"|add:object.call_default_profile|add:".svg" as image_path %}
             <img id="call__workflow" class="call__workflow" src="{% static image_path %}" alt="Call workflow">
         {% endwith%}
@@ -172,14 +180,6 @@
             </div>
 
         </div>
-
-        {% if object.content %}
-            <div class="call__main_info">
-                {% editable object.content %}
-                    {{ object.content|richtext_filters|safe }}
-                {% endeditable %}
-            </div>
-        {% endif %}
 
     </div>
 
