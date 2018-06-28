@@ -66,11 +66,6 @@
   {% endif %}
 {% endif %}
 
-{% if person.bio %}
-<div class="page__center-bio">
-  {{ person.bio|richtext_filters|safe|truncatechars:100 }}
-</div>
-{% endif %}
 
 {% comment %}
     {% editable person.bio %}
