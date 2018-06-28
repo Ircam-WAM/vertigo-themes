@@ -23,8 +23,12 @@ $module: ".footer";
 #{$module} {
 
     /* Rectangle 2: */
+    /* OLD STARTS THEME 
     background-color: $color-main;
     @include margin-top(1);
+    */
+    background-image: linear-gradient(-180deg, #000F24 0%, #FF203C 100%);
+    @include margin-top(10);
 
     @include mq($until: xs) {
         div[class^="col-"] {
@@ -39,8 +43,8 @@ $module: ".footer";
 
     &__pre {
 
-        border-bottom: 3px solid black;
-        color: black;
+        border-bottom: 3px solid white;
+        color: white;
 
         @include padding(1 0);
 
@@ -59,7 +63,7 @@ $module: ".footer";
         @include typeface(sans-serif);
         font-weight: weight(light);
 
-        color: black;
+        color: white;
 
         @include mq($until: xs) {
             @include padding(0);
@@ -69,7 +73,7 @@ $module: ".footer";
 
     &__follow-link {
 
-        color: black;
+        color: white;
         @include font-size(xxl);
         display: inline-block;
 
@@ -98,7 +102,7 @@ $module: ".footer";
 
     &__link {
 
-        color: black;
+        color: white;
         border-bottom: 1px solid $color-main;
         font-weight: weight(regular);
 
@@ -107,7 +111,7 @@ $module: ".footer";
     &__separator {
 
         width: 100%;
-        background: black;
+        background: white;
         height: 3px;
 
         @include margin(1 0);
@@ -147,13 +151,13 @@ $module: ".footer";
         position: relative;
         top: -30px;
         @include mq($until: xs) {
-            color: black;
+            color: white;
         }
     }
 
     .section-title {
         @include mq($until: xs) {
-            color: black;
+            color: white;
         }
     }
 
