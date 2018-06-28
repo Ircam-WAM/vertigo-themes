@@ -69,17 +69,19 @@
 
     <div class="call__info">
 
-        <img id="call__workflow" class="call__workflow" src="{% static "vertigo_starts_eu/img/calls/call_workflow_artist.svg" %}" alt="Call workflow">
+        {% with "vertigo_starts_eu/img/calls/call_workflow_"|add:object.call_default_profile|add:".svg" as image_path %}
+            <img id="call__workflow" class="call__workflow" src="{% static image_path %}" alt="Call workflow">
+        {% endwith%}
 
         <div class="call__selector">
-            <span id="call__select-artist" class="call__all call__artist-selected" onclick='Call.callSelect("artist", "{% static "vertigo_starts_eu/img/calls/call_workflow_artist.svg" %}")'>As an Artist</span>
-            <span id="call__select-project" class="call__all call__project-unselected" onclick='Call.callSelect("project", "{% static "vertigo_starts_eu/img/calls/call_workflow_project.svg" %}")'>As a Tech Project</span>
-            <span id="call__select-producer" class="call__all call__producer-unselected" onclick='Call.callSelect("producer", "{% static "vertigo_starts_eu/img/calls/call_workflow_producer.svg" %}")'>As a Producer</span>
+            <span id="call__select-artist" class="call__all call__artist-{% if object.call_default_profile == 'artist' %}selected{% else %}unselected{% endif %}" onclick='Call.callSelect("artist", "{% static "vertigo_starts_eu/img/calls/call_workflow_artist.svg" %}")'>As an Artist</span>
+            <span id="call__select-project" class="call__all call__project-{% if object.call_default_profile == 'project' %}selected{% else %}unselected{% endif %}" onclick='Call.callSelect("project", "{% static "vertigo_starts_eu/img/calls/call_workflow_project.svg" %}")'>As a Tech Project</span>
+            <span id="call__select-producer" class="call__all call__producer-{% if object.call_default_profile == 'producer' %}selected{% else %}unselected{% endif %}" onclick='Call.callSelect("producer", "{% static "vertigo_starts_eu/img/calls/call_workflow_producer.svg" %}")'>As a Producer</span>
         </div>
 
         <div class="call__content">
 
-            <div id="call__info-artist" class="call__info-block">
+            <div id="call__info-artist" class="call__info-block{% if object.call_default_profile != 'artist' %}-hidden{% endif %}">
 
                 <div class="call__steps">
                     {# Project list #}
@@ -116,7 +118,7 @@
 
             </div>
 
-            <div id="call__info-project" class="call__info-block-hidden">
+            <div id="call__info-project" class="call__info-block{% if object.call_default_profile != 'project' %}-hidden{% endif %}">
 
                 <div class="call__steps">
                     {# Public Project form #}
@@ -147,7 +149,7 @@
 
             </div>
 
-            <div id="call__info-producer" class="call__info-block-hidden">
+            <div id="call__info-producer" class="call__info-block{% if object.call_default_profile != 'producer' %}-hidden{% endif %}">
 
                 <div class="call__steps">
                     <div class="call__button call__button-producer">
@@ -171,13 +173,13 @@
 
         </div>
 
-        {% comment %}
         {% if object.content %}
-            {% editable object.content %}
-                {{ object.content|richtext_filters|safe }}
-            {% endeditable %}
+            <div class="call__main_info">
+                {% editable object.content %}
+                    {{ object.content|richtext_filters|safe }}
+                {% endeditable %}
+            </div>
         {% endif %}
-        {% endcomment %}
 
     </div>
 

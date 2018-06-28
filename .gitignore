@@ -16,12 +16,9 @@ develop-eggs
 .tmp
 *.lock
 .init
-<<<<<<< HEAD
-=======
 data
 postgres
 mysql
->>>>>>> dev
 
 # Installer logs
 pip-log.txt
@@ -48,17 +45,14 @@ bower_components
 node_modules
 .sass-cache
 .bundle
-<<<<<<< HEAD
-*/static/js
-*/static/css
-*/static/img
-*/static/vendors
-=======
 **/static/js/
 **/static/css/
-**/static/img/
+**/static/img
 **/static/vendors/
->>>>>>> dev
+**/static/*/js/
+**/static/*/css/
+**/static/*/img/
+**/static/*/vendors/
 
 ### SublimeText ###
 ###################

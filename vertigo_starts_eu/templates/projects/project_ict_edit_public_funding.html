@@ -1,7 +1,9 @@
 {% extends "vertigo_starts_eu/pages/page_ict_projects.html" %}
 {% load mezzanine_tags keyword_tags i18n organization_tags pages_tags projects_tags %}
 
-{% block meta_title %}{% endblock %}
+{% block meta_title %}
+    {% trans "Public funded Project submission" %}
+{% endblock %}
 
 {% block meta_keywords %}{% endblock %}
 
@@ -480,10 +482,11 @@
                     <h3 style="color:#1D1D1B;">All fields are mandatory / required</h3>
                     <p style="color:#1D1D1B;">With the submission of data and documents about your project, you declare, that you are allowed to establish a cooperation with an artist funded by the VERTIGO project.</p>
                     <p style="color:#1D1D1B;">After you press save, you will be able to edit the form up until the deadline.</p>
+                    <p style="color:#1D1D1B;">Please fill in the entire form before pressing submit.</p>
                     <br>
                     <div style="text-align:center;padding-bottom:20px">
-                      <input class="ict-project-style__button-submit" type="submit" style="background:#50E3C2;color:white;"
-                          value="{% if page.form.button_text %}{{ page.form.button_text }}{% else %}{% trans "Save" %}{% endif %}">
+                        <input class="ict-project-style__button ict-project-style__button--save" type="submit" name="save" value="Save">
+                        <input class="ict-project-style__button ict-project-style__button--submit" type="submit" name="submit" value="Submit">
                     </div>
                 </div>
             </form>
