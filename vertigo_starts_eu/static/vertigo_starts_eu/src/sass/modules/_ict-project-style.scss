@@ -186,6 +186,43 @@ $module: ".ict-project-style";
     text-align:center;
     padding-bottom:10px;
   }
+
+  &__block {
+      display: block;
+  }
+
+  &__field {
+      float: left;
+      width: 48%;
+      color: black;
+      
+      @include mq($until: lg) {
+          float: none;
+          width: 100%;
+      }
+      
+      &--left {
+          margin-right: 40px;
+          
+          @include mq($until: lg) {
+              margin-right: 0px;
+          }
+      }
+      
+      &--keywords {
+          margin-top:-275px;
+          
+          @include mq($until: lg) {
+              margin-top: 0px;
+          }
+      }
+      
+  }
+  
+  &__error {
+      color: red;
+  }
+  
 }
 
 h1, h2 {
