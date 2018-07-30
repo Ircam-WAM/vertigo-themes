@@ -11,7 +11,9 @@
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big">
+                    <li class="nav-header__item nav-header__item--image-big ">
+
+                      <div class="nav-header__non-responsive-image">
                         <a href="{% url "home" %}" title="{% trans 'Home' %}">
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
@@ -21,7 +23,22 @@
                             {% endif %}
                           {% endwith %}
                         </a>
+                      </div>
+
+                      {% comment %}
+                      Place here a call to menu pushy from left
+                      {% endcomment %}
+                      <div class="nav-header__responsive-image">
+                          {% with host_organization.images|get_type:"logo_header" as images %}
+                            {% if images %}
+                             {% with images|first as img %}
+                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" />
+                             {% endwith %}
+                            {% endif %}
+                          {% endwith %}
+                      </div>
                     </li>
+
             {% endif %}
         {% endif %}
         {% if page.in_menu %}
