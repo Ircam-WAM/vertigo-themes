@@ -71,6 +71,16 @@ $module: ".nav-header";
       height:172.2px;
     }
 
+    &__switch-display {
+
+      display:block;
+    }
+
+    &__space-responsive {
+
+      padding-bottom:0% !important;
+    }
+
     @media screen and (max-width: 480px) {
       &__image-logo {
 
@@ -78,6 +88,27 @@ $module: ".nav-header";
         height:80px !important;
         margin-top:10% !important;
         margin-left:40% !important;
+      }
+
+      //&__item--image-big {
+
+          //float:left;
+          //clear:left;
+          //position:relative !important;
+          //display:block !important;
+          //height:100%;
+          //margin:0 !important;
+        //}
+      //}
+
+      &__switch-display {
+
+        display:none;
+      }
+
+      &__space-responsive {
+
+        padding-bottom:15% !important;
       }
     }
 
@@ -383,7 +414,6 @@ $module: ".nav-header";
             }
 
             height: $header-height;
-
         }
 
         &--special {

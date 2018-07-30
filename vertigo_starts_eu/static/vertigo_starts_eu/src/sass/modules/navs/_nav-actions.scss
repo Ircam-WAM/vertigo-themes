@@ -115,4 +115,16 @@ $module: ".nav-actions";
 
     }
 
+    &__transform-word {
+
+      text-transform: lowercase;
+    }
+
+    @media screen and (max-width: 480px) {
+
+      &__transform-word {
+        text-transform: uppercase;
+      }
+    }
+
 }

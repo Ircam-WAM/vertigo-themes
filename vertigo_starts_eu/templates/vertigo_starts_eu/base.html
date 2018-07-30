@@ -43,6 +43,9 @@
         <div class="pushy pushy-left">
             {% include "includes/sidebar.html" %}
         </div>
+        <div class="pushy pushy-left" style="display:none">
+            {% include "includes/sidebar_upper_black.html" %}
+        </div>
     {% endblock %}
 
     {% block site_overlay %}
@@ -54,7 +57,7 @@
         <div class="header push">
             <div class="container" style="max-width:100%;padding-left:0px;padding-right:0px">
                 <div class="row header__nav">
-                    <div class="col-md-16 tal">
+                    <div class="col-md-16 tal nav-header__space-responsive">
                         <div id="navHeader">
                             {% page_menu "vertigo_starts_eu/pages/menus/header.html" %}
                         </div>
