@@ -40,10 +40,10 @@
     {% spaceless %}
 
     {% block sidebar %}
-        <div class="pushy pushy-left">
+        <div id="first-menu" class="pushy pushy-left">
             {% include "includes/sidebar.html" %}
         </div>
-        <div class="pushy pushy-left" style="none">
+        <div id="second-menu" class="pushy pushy-left">
             {% include "includes/sidebar_upper_black.html" %}
         </div>
     {% endblock %}

@@ -25,14 +25,11 @@
                         </a>
                       </div>
 
-                      {% comment %}
-                      Place here a call to menu pushy from left
-                      {% endcomment %}
                       <div class="nav-header__responsive-image">
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
                              {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" />
+                              <img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" />
                              {% endwith %}
                             {% endif %}
                           {% endwith %}

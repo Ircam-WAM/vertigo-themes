@@ -16,5 +16,27 @@
       </li>
 
       {% page_menu "pages/menus/action.html" %}
+
+      <li>
+        <div class="nav-actions__separator_responsive_menu"></div>
+      </li>
+
+      {% if request.user.is_authenticated %}
+        <li class="nav-actions__item">
+          <a href="/accounts/update/" class="nav-actions__item-link nav-actions__transform-word" title="Profile">Profile</a>
+        </li>
+
+        <li class="nav-actions__item">
+          <a href="/accounts/logout/" class="nav-actions__item-link nav-actions__transform-word" title="Logout">Logout</a>
+        </li>
+      {% else %}
+        <li class="nav-actions__item">
+          <a href="/accounts/login/" class="nav-actions__item-link nav-actions__transform-word" title="Sign In">Sign In</a>
+        </li>
+
+        <li class="nav-actions__item">
+          <a href="/accounts/signup/" class="nav-actions__item-link nav-actions__transform-word" title="Sign Up">Sign Up</a>
+        </li>
+      {% endif %}
   </ul>
 </div>

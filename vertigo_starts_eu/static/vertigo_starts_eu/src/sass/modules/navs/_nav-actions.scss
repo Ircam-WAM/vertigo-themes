@@ -120,6 +120,13 @@ $module: ".nav-actions";
       text-transform: lowercase;
     }
 
+    &__separator_responsive_menu {
+      width:auto;
+      height:1px;
+      background:black;
+      margin-bottom:5%;
+    }
+
     @media screen and (max-width: 480px) {
 
       &__transform-word {
