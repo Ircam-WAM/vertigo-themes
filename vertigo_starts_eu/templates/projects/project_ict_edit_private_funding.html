@@ -391,6 +391,11 @@
                 {% csrf_token %}
                 {% for formset in inlines %}
                     {{ formset.management_form }}
+                    {% for form in formset %}
+                      <div style="display: none;">
+                        {{ form }}
+                      </div>
+                    {% endfor %}
                 {% endfor %}
                 {% if form.errors or inlines.0.0.errors or inlines.1.0.errors or inlines.2.0.errors or inlines.2.1.errors or inlines.2.2.errors or inlines.3.0.errors %}
                     <div class="ict-project-style__errors-form-style">
@@ -453,7 +458,7 @@
                   <i id="chevron-2" class="fa fa-chevron-down ict-project-style__divider-chevron-section" aria-hidden="true"></i>
                 </div>
                 <div id="field-form-2" style="margin-left:30px;margin-right:30px">
-                  <div class="ict-project-style__description-field" style="margin-top:20px;">Please upload at least one, and up to three, images to represent your project. The first image will be used as thumbnail and banner image for your project if selected. The size and colour of the images may be adjusted to fit the screen layout. Please use the preview function to see how your images will work. Please also provide short captions to describe the image and credits where relevant. Note that logos will not be accepted as images.</div>
+                  <div class="ict-project-style__description-field" style="margin-top:20px;">Please upload at least one, and up to three, images to represent your project. Note that logos will not be accepted as images.</div>
                   {% projects_form_field inlines.2.0.file False True %}
                   {% projects_form_field inlines.2.0.credits False False %}
                   {% projects_form_field inlines.2.1.file False True %}
