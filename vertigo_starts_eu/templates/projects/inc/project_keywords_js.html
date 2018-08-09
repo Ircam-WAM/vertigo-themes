@@ -1,0 +1,7 @@
+{% load staticfiles %}
+<script>
+    window.__admin_keywords_submit_url = '{% url "front_keywords_submit" %}';
+    window.__csrf_token = '{{ csrf_token }}';
+</script>
+<script type="text/javascript" charset="UTF-8" src="{% static "mezzanine/js/admin/ajax_csrf.js" %}"></script>
+<script type="text/javascript" charset="UTF-8" src="{% static "mezzanine/js/admin/keywords_field.js" %}"></script>
