@@ -1,6 +1,7 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
+
 {% spaceless %}
 {% if page_branch_in_menu %}
     {% for page in page_branch %}
@@ -11,7 +12,9 @@
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big">
+                    <li class="nav-header__item nav-header__item--image-big ">
+
+                      <div class="nav-header__non-responsive-image">
                         <a href="{% url "home" %}" title="{% trans 'Home' %}">
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
@@ -21,7 +24,19 @@
                             {% endif %}
                           {% endwith %}
                         </a>
+                      </div>
+
+                      <div class="nav-header__responsive-image">
+                          {% with host_organization.images|get_type:"logo_header" as images %}
+                            {% if images %}
+                             {% with images|first as img %}
+                              <img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" />
+                             {% endwith %}
+                            {% endif %}
+                          {% endwith %}
+                      </div>
                     </li>
+
             {% endif %}
         {% endif %}
         {% if page.in_menu %}

@@ -63,6 +63,7 @@
                             {{ organization.name }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                         <br />
+                        
                     {% elif employers %}
                         <strong>{% trans 'Organization' %} : </strong>
                         {% for employer in employers %}

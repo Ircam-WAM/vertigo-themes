@@ -23,6 +23,9 @@ var Video = require('./modules/video');
 var VideoOverlay = require('./modules/video-overlay');
 var Instagram = require('./modules/instagram');
 var Call = require('./modules/call')
+var NewPushy = require('./modules/newpushy')
+
+
 
 //
 // Init all the modules
@@ -49,3 +52,4 @@ window['Video'] = new Video();
 window[VideoOverlay] = new VideoOverlay();
 window[Instagram] = new Instagram();
 window['Call'] = new Call();
+window['NewPushy'] = new NewPushy();

@@ -49,10 +49,14 @@ node_modules
 **/static/css/
 **/static/img
 **/static/vendors/
-**/static/*/js/
-**/static/*/css/
-**/static/*/img/
-**/static/*/vendors/
+**/static/vertigo_starts_eu/js/
+**/static/vertigo_starts_eu/css/
+**/static/vertigo_starts_eu/img/
+**/static/vertigo_starts_eu/vendors/
+**/static/starts_eu/js/
+**/static/starts_eu/css/
+**/static/starts_eu/img/
+**/static/starts_eu/vendors/
 
 ### SublimeText ###
 ###################
