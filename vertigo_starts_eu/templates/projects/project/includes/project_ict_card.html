@@ -17,6 +17,10 @@
     {{ object.title }}
 {% endblock %}
 
+{% block tags %}
+    {{ object.call.title }}
+{% endblock%}
+
 {% block url %}
     {{ object.get_absolute_url }}
 {% endblock %}
@@ -24,9 +28,9 @@
     {% if object.public_data.all.0.image %}
         <figure class="list_image">
             {% if object.public_data.all.0.image_is_panoramic %}
-                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 0 padding=true %}" class="lazyload" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" class="lazyload" />
             {% else %}
-                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 0 286 padding=true %}" class="lazyload" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" class="lazyload" />
             {% endif %}
         </figure>
     {% endif %}
