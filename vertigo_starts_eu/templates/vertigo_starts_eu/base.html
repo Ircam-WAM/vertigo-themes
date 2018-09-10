@@ -59,7 +59,7 @@
 
     {% block header %}
         <div class="header push">
-            <div class="container" style="max-width:100%;padding-left:0px;padding-right:0px">
+            <div class="container-full" style="max-width:100%;padding-left:0px;padding-right:0px">
                 <div class="row header__nav">
                     <div class="col-md-16 tal nav-header__space-responsive">
                         <div id="navHeader">
@@ -72,7 +72,7 @@
     {% endblock %}
 
     {% block container %}
-        <div id="container">
+        <div id="container" class="container-vertigo">
             <main class="main" role="main">
                 {% block content_header %}{% endblock %}
                 {% block main %}{% endblock %}
