@@ -56,8 +56,8 @@ window.onload = selectCurrentTab;
           {% for draft_application in draft_applications %}
               <div class="page__row-app-form page__row-app-space-bottom-form">
                  <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item-bold">{{ draft_application.title }}</div>
-                   <div class="page__inner-row-content page__inner-item">{{ draft_application.call }}</div>
+                   <div class="page__inner-row-content page__inner-item-bold">{{ draft_application.competition.title }}</div>
+                   <!-- <div class="page__inner-row-content page__inner-item">{{ draft_application }}</div> -->
                  </div>
                  <div class="page__column-app-form page__column-space">
                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
@@ -67,14 +67,10 @@ window.onload = selectCurrentTab;
                         Draft
                      {% endif %}
                    </div>
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ project.date_to }}</div>
+                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ draft_application.competition.closing_date }}</div>
                  </div>
                  <div class="page__column-app-form">
-                   {% if project.validation_status == 3 %}
-                      <a href="{% url "organization-call-project-detail" project.call.slug project.slug %}" class="page__button-row-profile-view">View form</a>
-                   {% else %}
-                      <a href="{% url "organization-call-project-update" project.call.slug project.slug %}" class="page__button-row-profile-edit">Edit form</a>
-                   {% endif %}
+                      <a href="{% url 'web:show_application_form' draft_application.competition.url %}?show_draft" class="page__button-row-profile-edit">Edit form</a>
                  </div>
               </div>
           {% endfor %}

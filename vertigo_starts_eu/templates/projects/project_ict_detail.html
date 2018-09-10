@@ -159,9 +159,11 @@
 
     <div class="detail_separator"></div>
 
-    <div class="detail_section">
-        <a class="wys-button-xsmall detail_button" href="https://www.ulysses-network.eu/web/competitions/vertigo2018/">Apply</a>
-    </div>
+    {% if object.validation_status == 3 %}
+        <div class="detail_section">
+            <a class="wys-button-xsmall detail_button" href="/competitions/vertigo2019/application/">Apply</a>
+        </div>
+    {% endif %}
 
 {% endblock %}
 
