@@ -33,7 +33,11 @@
     <link rel="stylesheet" href="{% static "vertigo_starts_eu/css/index.min.css" %}">
     {% endcompress %}
 
+    {% block morescript %}{% endblock %}
+    {% block morestyle %}{% endblock %}
     {% block extra_head %}{% endblock %}
+    {% block extrascript %}{% endblock %}
+    {% block extrastyle %}{% endblock %}
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{% endblock %}">
@@ -72,6 +76,7 @@
             <main class="main" role="main">
                 {% block content_header %}{% endblock %}
                 {% block main %}{% endblock %}
+                {% block content_section %}{% endblock %}
                 {% block content_footer %}{% endblock %}
             </main>
 
