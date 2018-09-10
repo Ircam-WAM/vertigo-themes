@@ -2,23 +2,23 @@
 {% load i18n mezzanine_tags %}
 
 {% block meta_title %}
-	{% trans "Login" %}
+	{% trans "Profile" %}
 {% endblock %}
 
 {% block page_title %}
-	<h1>{% trans "Login" %}</h1>
+	<h1>{% trans "Profile" %}</h1>
 {% endblock %}
 
 
 {% block page_content %}
 
 <div class="page__item_selector">
-		<a href="/profiles/{{ request.user }}/detail/"><span id="select-profile" class="page__option-unselected">Profile</span></a>
+		<a href="{% url 'organization-network-profile' %}"><span id="select-profile" class="page__option-unselected">Profile</span></a>
 	<!--	<a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
-		<a href="/profiles/{{ request.user }}/following/"><span id="select-following" class="page__option-unselected">Following</span></a>
-		<a href="/profiles/{{ request.user }}/followers/"><span id="select-follower" class="page__option-unselected">Followers</span></a>
-		<a href="/profiles/{{ request.user }}/applications/"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
-		<a href="/profiles/settings/"><span id="select-settings" class="page__option-unselected">Settings</span></a>
+		<a href="{% url 'organization-network-profile-following' request.user %}"><span id="select-following" class="page__option-unselected">Following</span></a>
+		<a href="{% url 'organization-network-profile-followers' request.user %}><span id="select-follower" class="page__option-unselected">Followers</span></a>
+		<a href="{% url 'organization-network-profile-applications' %}"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
+		<a href="{% url 'organization-network-profile-settings' %}"><span id="select-settings" class="page__option-unselected">Settings</span></a>
 </div>
 
 
