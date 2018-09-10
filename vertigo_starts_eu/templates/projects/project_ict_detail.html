@@ -68,7 +68,7 @@
 
     <div class="row">
         <div class="col-sm-16 col-md-10 col-md-push-3 tac">
-            <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "ICT Project" %}</h1>
+            <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Tech Project" %}</h1>
         </div>
     </div>
 
@@ -106,7 +106,7 @@
     <div class="detail_section">
         <div class="detail_subsection_left">
             {% if object.public_data.all.0.challenges_description %}
-                <h3>{% trans "Description of the challenges faced by the ICT-Project" %}</h3>
+                <h3>{% trans "Description of the challenges faced by the Tech Project" %}</h3>
                 <p>{{ object.public_data.all.0.challenges_description }}<p>
             {% endif %}
             {% if object.public_data.all.0.challenges_description and object.public_data.all.0.technology_description %}
