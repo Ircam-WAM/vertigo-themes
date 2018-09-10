@@ -110,6 +110,10 @@
 
     {% search_form %}
 
+    {% block jquery_footer %}
+        <script src="{% static "vendors/jquery/jquery.js" %}"></script>
+    {% endblock %}
+
     {% block footer_scripts %}
         {% include "includes/footer_scripts.html" %}
     {% endblock %}
