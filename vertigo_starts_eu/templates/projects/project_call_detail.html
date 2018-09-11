@@ -85,14 +85,14 @@
 
                 <div class="call__steps">
                     {# Project list #}
-                    <a href="#"> {# TODO: Link #}
+                    <a href="{% url "organization-call-project-list" object.slug %}">
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">SELECT</div>
                             <div class="call__button_text_bottom">a Tech Project</div>
                         </div>
                     </a>
                     {# Producer list #}
-                    <a href="#"> {# TODO: Link #}
+                    <a href="{% url "organization-call-project-list" object.slug %}">
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">CHOOSE</div>
                             <div class="call__button_text_bottom">a Producer</div>
@@ -100,7 +100,7 @@
                         </div>
                     </a>
                     {# Residency form #}
-                    <a href="#"> {# TODO: Link #}
+                    <a href="{% url "organization-call-project-list" object.slug %}">
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">an Artistic Proposal</div>
