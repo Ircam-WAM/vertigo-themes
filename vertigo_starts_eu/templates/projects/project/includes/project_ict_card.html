@@ -19,7 +19,7 @@
 
 {% block apply_button %}
     {% if object.validation_status == 3 and not object.call.is_closed %}
-        <a href="#"> {# TODO: URL of the Residency form#}
+        <a href="{% url 'show_application_form' object.call.url %}?project={{ object.slug }}">
             <div class="article-box__apply_button">
                 <span>APPLY!</span>
             </div>
