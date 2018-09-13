@@ -25,6 +25,7 @@ var Instagram = require('./modules/instagram');
 var Call = require('./modules/call');
 var Project = require('./modules/project');
 var NewPushy = require('./modules/newpushy');
+var ProjectSelector = require('./modules/project-selector');
 
 
 
@@ -55,3 +56,4 @@ window[Instagram] = new Instagram();
 window['Call'] = new Call();
 window['Project'] = new Project();
 window['NewPushy'] = new NewPushy();
+window['ProjectSelector'] = new ProjectSelector();
