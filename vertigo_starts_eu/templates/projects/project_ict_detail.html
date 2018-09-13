@@ -95,7 +95,7 @@
 
     {# Apply button #}
     {% if object.validation_status == 3 %}
-        <a href="{% url 'web:show_application_form' object.call.slug %}?project={{ object.slug }}">
+        <a href="{% url 'web:show_application_form' object.call.slug %}?show_draft&?project={{ object.slug }}">
             <div class="project-ict-detail__apply_button">
                 <span>APPLY!</span>
             </div>
