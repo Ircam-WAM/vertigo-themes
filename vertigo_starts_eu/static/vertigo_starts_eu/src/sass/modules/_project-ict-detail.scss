@@ -1,0 +1,99 @@
+// -*- coding: utf-8 -*-
+
+// Copyright (c) 2016-2017 Ircam
+// Copyright (c) 2016-2017 Jérémy Fabre
+
+// This file is part of mezzanine-organization.
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+
+// You should have received a copy of the GNU Affero General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$module: ".project-ict-detail";
+
+#{$module} {
+
+    &__title {
+        margin: auto;
+        margin-bottom: 1em;
+        text-align: center;
+        font-size: 1.875em;
+        font-weight: bold;
+        line-height: 2.25rem;
+        font-family: Oswald,sans-serif;
+    }
+
+    &__slider {
+        margin: auto;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+    &__main_info {
+        margin: auto;
+        margin-bottom: 1em;
+        text-align: center;
+        font-size: 0.8em;
+        color: $color-white;
+        
+            &-description {
+                margin-bottom: 1em;
+            }
+
+            &-website {
+                margin-bottom: 1em;
+                & > a {
+                    color: $color-white;
+                    border-bottom: 2px solid $color-main;
+                    &:hover {
+                        color: $color-black;
+                        border: 2px solid $color-main;
+                        background-color: $color-main;
+                    }
+                }
+            }
+
+            &-date {
+                margin-bottom: 1em;
+            }
+
+            &-keywords {
+                margin-bottom: 1em;
+            }
+
+    }
+
+    &__apply_button {
+        margin: auto;
+        margin-bottom: 1em;
+        width: 6em;
+        height: 4em;
+        color: $color-white;
+        border-color: $color-accent;
+        background-color: $color-accent;
+        border-radius: 0.5em;
+        border-style: solid;
+        border-width: 1em;
+        padding: 0.3em;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.25em;
+        font-family:"Oswald",sans-serif !important;
+        text-align: center;
+    }
+
+    &__extra_info {
+        margin: auto;
+        margin-bottom: 2em;
+    }
+
+}
