@@ -92,7 +92,7 @@
                         </div>
                     </a>
                     {# Producer list #}
-                    <a href="{% url "organization-call-project-list" object.slug %}">
+                    <a href="{% url "organization-producer-list" %}">
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">CHOOSE</div>
                             <div class="call__button_text_bottom">a Producer</div>
@@ -100,7 +100,7 @@
                         </div>
                     </a>
                     {# Residency form #}
-                    <a href="{% url "organization-call-project-list" object.slug %}">
+                    <a href="{% url 'web:show_application_form' object.slug %}?show_draft">
                         <div class="call__button call__button-artist">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">an Artistic Proposal</div>
