@@ -26,8 +26,10 @@ $module: ".project-ict-detail";
         margin: auto;
         margin-bottom: 1em;
         text-align: center;
-        font-size: 2em;
+        font-size: 1.875em;
         font-weight: bold;
+        line-height: 2.25rem;
+        font-family: Oswald,sans-serif;
     }
 
     &__slider {
@@ -40,7 +42,7 @@ $module: ".project-ict-detail";
         margin: auto;
         margin-bottom: 1em;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 0.8em;
         color: $color-white;
         
             &-description {
