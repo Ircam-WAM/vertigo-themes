@@ -72,6 +72,25 @@
         </div>
     </div>
 
+    {# Edit message and button if user owns it and it is a draft #}
+    {% if user.is_authenticated %}
+        {% if user == object.user %}
+            <div class="project-ict-detail__editable">
+                <div>Welcome to your project detail page.</div>
+                <div>The status of your project is: {{ object.get_validation_status_display }}.</div>
+                {% if object.validation_status == 1 %}
+                    <a href="{% url "organization-call-project-update" object.call.slug object.slug %}">
+                        <div class="project-ict-detail__edit_button">
+                            <span>Edit</span>
+                        </div>
+                    </a>
+                {% else %}
+                    <div>You can no longer edit your project.</div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+
     {# Title #}
     <div class="project-ict-detail__title">
         {{ object.title }}
