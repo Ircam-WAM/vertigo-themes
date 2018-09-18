@@ -20,6 +20,7 @@
 </div>
 <div class="profile-content col-md-9">
     <h2>{{ profile_user.get_full_name }}</h2>
+    
     {% for field, value in profile_user|profile_fields %}
     <h3>{{ field }}</h3>
     <p>{{ value|linebreaksbr }}</p>
