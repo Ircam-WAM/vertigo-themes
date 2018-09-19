@@ -42,7 +42,7 @@ window.onload = selectCurrentTab;
                         Draft
                      {% endif %}
                    </div>
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ project.date_to }}</div>
+                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ project.call.date_to }}</div>
                  </div>
                  <div class="page__column-app-form">
                    {% if project.validation_status == 3 %}
