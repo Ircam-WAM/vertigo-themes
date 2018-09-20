@@ -141,9 +141,19 @@
         {% if object.date_from and object.date_to %}
             <div class="project-ict-detail__main_info-date">{% trans "From" %} {{ object.date_from }} {% trans "to" %} {{ object.date_to }}</div>
         {% endif %}
+        {% comment %}
         {% if object.keywords_string %}
             <div class="project-ict-detail__main_info-keywords">{% trans "Keywords" %}: {{ object.keywords_string }}</div>
         {% endif %}
+        {% endcomment %}
+        {% if object.keywords.all %}
+            <div class="project-ict-detail__main_info-keywords">
+                {% for kw in object.keywords.all %}
+                    <span class="project-ict-detail__main_info-keywords-tags">{{ kw }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        </ul>
     </div>
 
     {# Apply button #}
