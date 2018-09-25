@@ -40,9 +40,13 @@
     {% spaceless %}
 
     {% block sidebar %}
-        <div class="pushy pushy-left">
+        <div id="first-menu" class="pushy pushy-left">
             {% include "includes/sidebar.html" %}
         </div>
+        <div id="second-menu" class="pushy pushy-left">
+            {% include "includes/sidebar_upper_black.html" %}
+        </div>
+
     {% endblock %}
 
     {% block site_overlay %}
@@ -55,7 +59,7 @@
             <!--<div class="container">-->
               <div >
                 <div class="row header__nav">
-                    <div class="col-md-16 tal">
+                    <div class="col-md-16 tal nav-header__space-responsive">
                         <div id="navHeader">
                             {% page_menu "starts_eu/pages/menus/header.html" %}
                         </div>
