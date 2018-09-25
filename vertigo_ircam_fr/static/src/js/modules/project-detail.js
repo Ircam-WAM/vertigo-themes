@@ -34,6 +34,9 @@ ProjectDetail.prototype.connect = function(id1, id2, idDivisor, idParent) {
     var el2 = document.getElementById(id2);
     var divisor = document.getElementById(idDivisor);
     var parent = document.getElementById(idParent);
+    if (el1 == null | el2 == null | divisor == null | parent == null) {
+        return;
+    }
     // Get offset of elements
     var off1 = this.getOffset(el1);
     var off2 = this.getOffset(el2);
@@ -61,10 +64,6 @@ ProjectDetail.prototype.drawLines = function() {
     this.connect("timeline-open-call", "timeline-in-residency", "timeline-divisor-left", "timeline-block");
     this.connect("timeline-in-residency", "timeline-residency-outcome", "timeline-divisor-right", "timeline-block");
 
-};
-
-window.onresize = function() {
-   document.write('Resized'); // or whatever you want to do...
 };
 
 module.exports = ProjectDetail;
