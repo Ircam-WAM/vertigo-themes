@@ -10,15 +10,18 @@
 {% endblock %}
 
 {% block page_content %}
-{% errors_for form %}
-<form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-    <fieldset>
-    {% fields_for form %}
-    <div class="form-actions" style="text-align:center">
-        {% block account_form_actions %}
-        <input class="btn btn-primary btn-lg" type="submit" value="{{ title }}" style="margin-right:0px;font-weight:bold;width:200px;background:#1D1D1B;color:white;padding-top:20px;padding-bottom:20px">
-        {% endblock %}
-    </div>
-    </fieldset>
-</form>
+    {% errors_for form %}
+
+    {% include 'core/inc/messages.html' %}
+
+    <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        <fieldset>
+        {% fields_for form %}
+        <div class="form-actions" style="text-align:center">
+            {% block account_form_actions %}
+            <input class="btn btn-primary btn-lg" type="submit" value="{{ title }}" style="margin-right:0px;font-weight:bold;width:200px;background:#1D1D1B;color:white;padding-top:20px;padding-bottom:20px">
+            {% endblock %}
+        </div>
+        </fieldset>
+    </form>
 {% endblock %}
