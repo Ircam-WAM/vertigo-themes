@@ -7,12 +7,11 @@
 
 
 {% block page_content %}
-
 <script>
 
 function selectCurrentTab() {
 
-  document.getElementById("select-profile").className = "page__option-selected";
+  document.getElementById("select-settings").className = "page__option-selected";
 }
 
 window.onload = selectCurrentTab;
@@ -23,15 +22,27 @@ window.onload = selectCurrentTab;
   <div class="page__item_info">
 
 
+
+
   {{ block.super }}
 
       <div class="page__item_content">
           <div id="info-profile" class="page__info-block">
-            <div class="page__center-bio section-title section-title--big" style="color:black">
 
-              {{ request.user.first_name|upper }}&nbsp;{{ request.user.last_name|upper }}
-            </div>
+            {% errors_for form %}
 
+            <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                <fieldset>
+                <legend>{% trans 'Private Informations' %}</legend>
+                {% fields_for form %}
+                <div class="form-actions">
+                    {% block account_form_actions %}
+                    <input class="btn btn-primary btn-lg pull-right" type="submit" value="{{ title }}">
+                    {% endblock %}
+                </div>
+                </fieldset>
+            </form>
+            <!--
             {% if request.user.address %}
               <div class="page__center-bio" style="color:white">
                 {{ request.user.address }}<br/><br/>
@@ -56,7 +67,7 @@ window.onload = selectCurrentTab;
                   <a href="{{ request.user.site }}" style="color:white">{{ request.user.site }}</a>
                 </div>
               {% endif %}
-            {% endif %}
+            {% endif %}-->
          </div>
       </div>
   </div>
