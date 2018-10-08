@@ -96,6 +96,40 @@
         {{ object.title }}
     </div>
 
+    {# Timeline #}
+    {% with object.validation_status as status %}
+        {% if status == 3 or status == 4 or status == 5 %} 
+            {# 3 = Validated (open call) #}
+            {# 4 = Implemented (in residency) #}
+            {# 5 = Closed (residency outcome) #}
+            <div id="timeline-block" class="project-ict-detail__timeline">
+                <div id="timeline-divisor-left" class="project-ict-detail__timeline-divisor{% if status == 3 %}-incomplete{% endif %}"></div>
+                <div id="timeline-divisor-right" class="project-ict-detail__timeline-divisor{% if status != 5 %}-incomplete{% endif %}"></div>
+                <div class="project-ict-detail__timeline-step-left">
+                    <div id="timeline-open-call" class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-bullhorn fa-stack-1x project-ict-detail__timeline-complete"></i>
+                    </div>
+                    <div>Open Call</div>
+                </div>
+                <div class="project-ict-detail__timeline-step-center">
+                    <div id="timeline-in-residency" class="fa-stack fa-lg {% if status == 3 %}project-ict-detail__timeline-incomplete{% endif %}">
+                        <i class="fa fa-circle{% if status == 3 %}-thin{% endif %} fa-stack-2x"></i>
+                        <i class="fa fa-ellipsis-h fa-stack-1x {% if status != 3 %}project-ict-detail__timeline-complete{% endif %}"></i>
+                    </div>
+                    <div>In Residency</div>
+                </div>
+                <div class="project-ict-detail__timeline-step-right">
+                    <div id="timeline-residency-outcome" class="fa-stack fa-lg {% if status != 5 %}project-ict-detail__timeline-incomplete{% endif %}">
+                        <i class="fa fa-circle{% if status != 5 %}-thin{% endif %} fa-stack-2x"></i>
+                        <i class="fa fa-check fa-stack-1x {% if status == 5 %}project-ict-detail__timeline-complete{% endif %}"></i>
+                    </div>
+                    <div>Residency Outcome</div>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
     {# Main info #}
     <div class="project-ict-detail__main_info">
         {% if object.public_data.all.0.brief_description %}
@@ -107,9 +141,19 @@
         {% if object.date_from and object.date_to %}
             <div class="project-ict-detail__main_info-date">{% trans "From" %} {{ object.date_from }} {% trans "to" %} {{ object.date_to }}</div>
         {% endif %}
+        {% comment %}
         {% if object.keywords_string %}
             <div class="project-ict-detail__main_info-keywords">{% trans "Keywords" %}: {{ object.keywords_string }}</div>
         {% endif %}
+        {% endcomment %}
+        {% if object.keywords.all %}
+            <div class="project-ict-detail__main_info-keywords">
+                {% for kw in object.keywords.all %}
+                    <span class="project-ict-detail__main_info-keywords-tags">{{ kw }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        </ul>
     </div>
 
     {# Apply button #}

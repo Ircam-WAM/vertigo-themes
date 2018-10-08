@@ -39,7 +39,7 @@
 {% spaceless %}
 {% if page_branch_in_menu %}
 
-<div class="nav-header__content-header">
+<div class="nav-header__content-header nav-header__switch-display">
 
     {% page_menu "pages/menus/action.html" %}
 
@@ -56,7 +56,7 @@
                 <ul class="nav-header__items-menu-user-dropdown" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
                   <li id="option-menu-0" class="nav-header__item-user">
                     <div class="nav-header__item-separator"></div>
-                    <a id="option-menu-link-0" href="/accounts/update/" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
+                    <a id="option-menu-link-0" href="{% url 'organization-network-profile' %}" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
                   </li>
                   <li id="option-menu-1" class="nav-header__item-user">
                     <div class="nav-header__item-separator"></div>

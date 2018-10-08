@@ -67,7 +67,25 @@ $module: ".project-ict-detail";
             }
 
             &-keywords {
-                margin-bottom: 1em;
+                margin: 3em auto 1em auto;
+                width: 75%;
+                
+                &-tags {
+                    display: inline-block;
+                    border: solid 0.2em $color-main;
+                    border-radius: 0.2em;
+                    color: $color-main;
+                    font-size: 1.2em;
+                    margin: 0.5em;
+                    padding: 0.5em 1em;
+                    
+                    &:hover {
+                        background-color: $color-main;
+                        color: $color-black;
+                    }
+                    
+                }
+                
             }
 
     }
@@ -126,6 +144,73 @@ $module: ".project-ict-detail";
         text-align: center;
         display: inline-block;
         vertical-align: middle;
+
+    }
+
+    &__timeline {
+
+        color: $color-main;
+        position: relative;
+        width: 75%;
+        height: 5em;
+        margin: 4em auto;
+
+        &-step-left {
+                position: absolute;
+                width: 10em;
+                text-align: center;
+                margin: auto;
+                left: 0;
+        }
+
+        &-step-center {
+                position: absolute;
+                width: 10em;
+                text-align: center;
+                margin: auto;
+                left: 50%;
+                margin-left: -5em;
+        }
+
+        &-step-right {
+                position: absolute;
+                width: 10em;
+                text-align: center;
+                margin: auto;
+                right: 0;
+        }
+
+        &-divisor {
+            padding: 0;
+            margin: 0;
+            height: 0;
+            background-color: $color-main;
+            line-height: 1px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+        
+            &-incomplete {
+                padding: 0;
+                margin: 0;
+                height: 0;
+                background-color: darken($color-main, 40%);
+                line-height: 1px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 0;
+            }
+        }
+
+        &-incomplete {
+            color: darken($color-main, 40%);
+        }
+
+        &-complete {
+            color: $color-background;
+        }
 
     }
 

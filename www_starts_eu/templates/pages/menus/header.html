@@ -12,15 +12,28 @@
                         <span class="second"></span>
                     </li>
                     <li class="nav-header__item nav-header__item--image-big">
-                        <a href="{% url "home" %}" title="{% trans 'Home' %}">
-                          {% with host_organization.images|get_type:"logo_header" as images %}
-                            {% if images %}
-                             {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" width="174" height="56" />
-                             {% endwith %}
-                            {% endif %}
-                          {% endwith %}
-                        </a>
+
+                        <div class="nav-header__non-responsive-image">
+                          <a href="{% url "home" %}" title="{% trans 'Home' %}">
+                            {% with host_organization.images|get_type:"logo_header" as images %}
+                              {% if images %}
+                               {% with images|first as img %}
+                                <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" />
+                               {% endwith %}
+                              {% endif %}
+                            {% endwith %}
+                          </a>
+                        </div>
+
+                        <div class="nav-header__responsive-image">
+                            {% with host_organization.images|get_type:"logo_header" as images %}
+                              {% if images %}
+                               {% with images|first as img %}
+                                <img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" />
+                               {% endwith %}
+                              {% endif %}
+                            {% endwith %}
+                        </div>
                     </li>
             {% endif %}
         {% endif %}
