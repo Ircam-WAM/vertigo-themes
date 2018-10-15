@@ -456,6 +456,13 @@ $module: ".nav-header";
             }
 
             height: $header-height;
+
+            float:left !important;
+
+            @media screen and (max-width: 480px) {
+
+              float:none !important;
+            }
         }
 
         &--special {
