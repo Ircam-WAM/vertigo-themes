@@ -85,6 +85,7 @@ $module: ".nav-header";
     &__responsive-image {
 
       display: none !important;
+      margin-top:0px;
     }
 
     &__non-responsive-image {
@@ -128,6 +129,7 @@ $module: ".nav-header";
       &__responsive-image {
 
         display: block !important;
+        margin-top:-35px !important;
       }
 
       &__non-responsive-image {
@@ -304,6 +306,16 @@ $module: ".nav-header";
             }
 
         }
+    }
+
+    &__item-responsive {
+
+      top:0 !important;
+
+      @media screen and (max-width: 480px) {
+
+        margin-top:-10px !important;
+      }
     }
 
     &__item {
