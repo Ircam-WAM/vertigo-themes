@@ -511,6 +511,13 @@ $module: ".page";
       margin: 1em;
       padding-bottom: 0.1em;
       border-bottom: 0.2em solid #000000;
+      font-size:20px !important;
+
+      @media screen and (max-width: 600px) {
+        
+          margin-left: 15px !important;
+          font-size:18px !important;
+      }
     }
 
     &__option-unselected {
@@ -518,9 +525,27 @@ $module: ".page";
       @include font-size(l);
       font-family: "Oswald", sans-serif;
       color: #767D86;
-      margin: 1em;
+      margin: 1em !important;
+      font-size:20px !important;
+
+      @media screen and (max-width: 600px) {
+
+          margin-left: 15px !important;
+          font-size:18px !important;
+          margin-right:0px !important;
+          margin-top:0px !important;
+      }
     }
 
+    &__margin-top {
+
+      margin-top:0px !important;
+
+      @media screen and (max-width: 600px) {
+
+          margin-top:-75px !important;
+      }
+    }
     &__padding-settings-form {
 
       padding-left: 30%;

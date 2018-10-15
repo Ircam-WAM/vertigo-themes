@@ -12,9 +12,9 @@
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big ">
+                    <li class="nav-header__item nav-header__item--image-big " style="float:left">
 
-                      <div class="nav-header__non-responsive-image">
+                      <div class="nav-header__non-responsive-image" >
                         <a href="{% url "home" %}" title="{% trans 'Home' %}">
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
