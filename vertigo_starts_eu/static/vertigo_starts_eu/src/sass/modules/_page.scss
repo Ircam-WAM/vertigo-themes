@@ -514,7 +514,7 @@ $module: ".page";
       font-size:20px !important;
 
       @media screen and (max-width: 600px) {
-        
+
           margin-left: 15px !important;
           font-size:18px !important;
       }
@@ -699,5 +699,33 @@ $module: ".page";
     &__clear-color {
 
       color: white !important;
+    }
+
+    &__space-row {
+
+      margin-left:3%;
+    }
+
+    &__row-responsive {
+
+      display:inline-block !important;
+
+      @media screen and (max-width: 480px) {
+
+          transform: scale(0.73) !important;
+          display:inline-block !important;
+          margin-left:-21.5% !important;
+          margin-top:-40% !important;
+      }
+    }
+
+    &__space-responsive {
+
+      margin-top:0% !important;
+
+      @media screen and (max-width: 480px) {
+
+        margin-top:-60% !important;
+      }
     }
 }
