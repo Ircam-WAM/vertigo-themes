@@ -73,17 +73,17 @@
             <img id="call__workflow" class="call__workflow" src="{% static image_path %}" alt="Call workflow">
         {% endwith%}
 
-        <div class="call__selector">
-            <span id="call__select-artist" class="call__all call__artist-{% if object.call_default_profile == 'artist' %}selected{% else %}unselected{% endif %}" onclick='Call.callSelect("artist", "{% static "vertigo_starts_eu/img/calls/call_workflow_artist.svg" %}")'>As an Artist</span>
-            <span id="call__select-project" class="call__all call__project-{% if object.call_default_profile == 'project' %}selected{% else %}unselected{% endif %}" onclick='Call.callSelect("project", "{% static "vertigo_starts_eu/img/calls/call_workflow_project.svg" %}")'>As a Tech Project</span>
-            <span id="call__select-producer" class="call__all call__producer-{% if object.call_default_profile == 'producer' %}selected{% else %}unselected{% endif %}" onclick='Call.callSelect("producer", "{% static "vertigo_starts_eu/img/calls/call_workflow_producer.svg" %}")'>As a Producer</span>
+        <div class="call__selector call__responsive-item">
+            <span id="call__select-artist" class="call__all call__artist-{% if object.call_default_profile == 'artist' %}selected{% else %}unselected{% endif %} call__selector-responsive-item" onclick='Call.callSelect("artist", "{% static "vertigo_starts_eu/img/calls/call_workflow_artist.svg" %}")'>As an Artist</span>
+            <span id="call__select-project" class="call__all call__project-{% if object.call_default_profile == 'project' %}selected{% else %}unselected{% endif %} call__selector-responsive-item" onclick='Call.callSelect("project", "{% static "vertigo_starts_eu/img/calls/call_workflow_project.svg" %}")'>As a Tech Project</span>
+            <span id="call__select-producer" class="call__all call__producer-{% if object.call_default_profile == 'producer' %}selected{% else %}unselected{% endif %} call__selector-responsive-item" onclick='Call.callSelect("producer", "{% static "vertigo_starts_eu/img/calls/call_workflow_producer.svg" %}")'>As a Producer</span>
         </div>
 
         <div class="call__content">
 
             <div id="call__info-artist" class="call__info-block{% if object.call_default_profile != 'artist' %}-hidden{% endif %}">
 
-                <div class="call__steps">
+                <div id="call-steps-list-artist" class="call__steps {% if object.call_default_profile == 'artist' %}call__call-step-artist-responsive{% endif %}">
                     {# Project list #}
                     <a href="{% url "organization-call-project-list" object.slug %}">
                         <div class="call__button call__button-artist">
@@ -108,7 +108,7 @@
                     </a>
                 </div>
 
-                <div class="call__subcall_info">
+                <div class="call__subcall_info call__responsive-text-section">
                     {% if object.residency_form_content %}
                         {% editable object.residency_form_content %}
                             {{ object.residency_form_content|richtext_filters|safe }}
@@ -120,7 +120,7 @@
 
             <div id="call__info-project" class="call__info-block{% if object.call_default_profile != 'project' %}-hidden{% endif %}">
 
-                <div class="call__steps">
+                <div id="call-steps-list-project" class="call__steps {% if object.call_default_profile == 'project'%}call__call-step-project-responsive{% endif %}">
                     {# Public Project form #}
                     <a href="{% url "organization-call-project-create" object.slug 'public' %}">
                         <div class="call__button call__button-project">
@@ -139,7 +139,7 @@
                     </a>
                 </div>
 
-                <div class="call__subcall_info">
+                <div class="call__subcall_info call__responsive-text-section">
                     {% if object.project_form_content %}
                         {% editable object.project_form_content %}
                             {{ object.project_form_content|richtext_filters|safe }}
@@ -161,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="call__subcall_info">
+                <div class="call__subcall_info call__responsive-text-section">
                     {% if object.producer_form_content %}
                         {% editable object.producer_form_content %}
                             {{ object.producer_form_content|richtext_filters|safe }}
