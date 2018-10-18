@@ -145,6 +145,11 @@ $color-producer: $color-white;
         &_text_bottom {
             font-size: 0.8em;
         }
+
+        @media screen and (max-width: 480px) {
+
+          margin: 1em;
+        }
     }
 
     &__responsive-item {
