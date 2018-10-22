@@ -152,7 +152,7 @@ function showHideChevronTags(object, event) {
             {# 3 = Validated (open call) #}
             {# 4 = Implemented (in residency) #}
             {# 5 = Closed (residency outcome) #}
-            <div id="timeline-block" class="project-ict-detail__timeline">
+            <div id="timeline-block" class="project-ict-detail__timeline project-ict-detail__responsive-tree">
                 <div id="timeline-divisor-left" class="project-ict-detail__timeline-divisor{% if status == 3 %}-incomplete{% endif %}"></div>
                 <div id="timeline-divisor-right" class="project-ict-detail__timeline-divisor{% if status != 5 %}-incomplete{% endif %}"></div>
                 <div class="project-ict-detail__timeline-step-left">
@@ -160,21 +160,21 @@ function showHideChevronTags(object, event) {
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-bullhorn fa-stack-1x project-ict-detail__timeline-complete"></i>
                     </div>
-                    <div>Open Call</div>
+                    <div class="project-ict-detail__responsive-tree-text">Open Call</div>
                 </div>
                 <div class="project-ict-detail__timeline-step-center">
                     <div id="timeline-in-residency" class="fa-stack fa-lg {% if status == 3 %}project-ict-detail__timeline-incomplete{% endif %}">
                         <i class="fa fa-circle{% if status == 3 %}-thin{% endif %} fa-stack-2x"></i>
                         <i class="fa fa-ellipsis-h fa-stack-1x {% if status != 3 %}project-ict-detail__timeline-complete{% endif %}"></i>
                     </div>
-                    <div>In Residency</div>
+                    <div class="project-ict-detail__responsive-tree-text">In Residency</div>
                 </div>
                 <div class="project-ict-detail__timeline-step-right">
                     <div id="timeline-residency-outcome" class="fa-stack fa-lg {% if status != 5 %}project-ict-detail__timeline-incomplete{% endif %}">
                         <i class="fa fa-circle{% if status != 5 %}-thin{% endif %} fa-stack-2x"></i>
                         <i class="fa fa-check fa-stack-1x {% if status == 5 %}project-ict-detail__timeline-complete{% endif %}"></i>
                     </div>
-                    <div>Residency Outcome</div>
+                    <div class="project-ict-detail__responsive-tree-text">Residency Outcome</div>
                 </div>
             </div>
         {% endif %}

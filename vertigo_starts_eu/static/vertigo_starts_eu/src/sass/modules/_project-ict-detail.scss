@@ -245,4 +245,21 @@ $module: ".project-ict-detail";
 
       margin-top:0.3em;
     }
+
+    &__responsive-tree {
+
+      @media screen and (max-width: 360px) {
+
+        width:120% !important;
+        margin-left:-12% !important;
+      }
+    }
+
+    &__responsive-tree-text {
+
+      @media screen and (max-width: 360px) {
+
+        font-size:8px !important;
+      }
+    }
 }
