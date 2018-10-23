@@ -93,14 +93,17 @@
             var firstDiv = document.getElementById("first_div");
             var secondDiv = document.getElementById("second_div");
             var thirdDiv = document.getElementById("third_div");
+            var fourthDiv = document.getElementById("fourth_div");
 
             firstDiv.style.display = 'none';
             secondDiv.style.display = 'none';
             thirdDiv.style.display = 'none';
+            fourthDiv.style.display = 'none';
 
             var linkArtist = document.getElementById("artist");
             var linkArtistResidency = document.getElementById("artist_residency");
             var linkProject = document.getElementById("project");
+            var linkOutcome = document.getElementById("outcome");
 
             var buttons = document.getElementsByClassName('residency-detail__button');
 
@@ -126,6 +129,12 @@
                 thirdDiv.style.display = 'block';
                 linkProject.classList.add('active');
             }
+
+            if (link.id === 'outcome')
+            {
+                fourthDiv.style.display = 'block';
+                linkOutcome.classList.add('active');
+            }
         }
     </script>
 
@@ -134,6 +143,7 @@
                 <a id='artist' class="button residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The artist" %}</a>
                 <a id='artist_residency' class="button residency-detail__button active" href="#" onclick="clickedLink(this,event);">{% trans "Artist residency" %}</a>
                 <a id='project' class="button residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The project" %}</a>
+                <a id='outcome' class="button residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "Outcome" %}</a>
             </div>
     </div>
     <div class="residency-detail__green-top-line"></div>
@@ -229,7 +239,7 @@
                 <div>
                     <div class="residency-detail__title">{{ object.title }}</div>
                     <p>{{ object.content|safe }}</p>
-                    
+
                     {% if object.date_from and object.date_to %}
 
                         <div class="residency-detail__title">{% trans "About this residency" %}</div>
@@ -354,6 +364,18 @@
         <a class="residency-detail__margin-block residency-detail__button-project residency-detail__margin-bottom-third-tab" href="{{ object.project.get_absolute_url }}">{% trans "Find more" %}</a>
     </div>
 
+    <div id="fourth_div" class="residency-detail__hide-container">
+        <div class="residency-detail__disable-overflow">
+            <div class="residency-detail__margin-block">
+                <div>
+                    <div class="residency-detail__title">{{ object.project.title }}</div>
+                    <br>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 {% if object.articles %}
