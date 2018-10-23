@@ -46,13 +46,28 @@ $module: ".header";
 
     }
 
-
-
     &__banner-responsive {
 
       @media only screen and (max-width: 360px) {
 
         display:block !important;
+      }
+    }
+
+    &__responsive-logo-footer {
+
+      @media only screen and (max-width: 360px) {
+
+        margin-left:30%;
+      }
+    }
+
+    &__responsive-frame-video {
+
+      @media only screen and (max-width: 360px) {
+
+        width:300px;
+        height:300px;
       }
     }
 }

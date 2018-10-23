@@ -6,7 +6,7 @@
     {% for page in page_branch %}
         {% if page.is_primary %}
             {% if forloop.first %}
-                <ul class="nav-header" role="navigation">
+                <ul class="nav-header" role="navigation" style="padding-right:10%">
                     <li class="nav-header__item menu-btn">
                         <span class="first"></span>
                         <span class="second"></span>
@@ -25,11 +25,11 @@
                           </a>
                         </div>
 
-                        <div class="nav-header__responsive-image">
+                        <div class="nav-header__responsive-image nav-header__image-logo-responsive">
                             {% with host_organization.images|get_type:"logo_header" as images %}
                               {% if images %}
                                {% with images|first as img %}
-                                <img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" />
+                                <img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="menu-btn-responsive nav-header__image-size-responsive-logo" />
                                {% endwith %}
                               {% endif %}
                             {% endwith %}
