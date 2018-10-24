@@ -81,7 +81,7 @@ $module: ".residency-detail";
         position:relative;
         background-image: url("");
         background-repeat: no-repeat;
-        background-position: center; 
+        background-position: center;
 
         & span {
             position:absolute;
@@ -94,9 +94,9 @@ $module: ".residency-detail";
             text-align: center;
         }
     }
-    
+
     &__header-title {
-        
+
     }
 
     &__header-text {
@@ -284,7 +284,7 @@ $module: ".residency-detail";
         white-space: pre-wrap;
         padding: 0px 25px 25px 0px;
         font-size: 0.9 rem;
-        
+
         p a {
             color: $color-black !important;
         }
@@ -330,7 +330,7 @@ $module: ".residency-detail";
     &__social-link {
         margin: 0px 5px 0px 0px;
     }
-    
+
     &__map {
         position: relative;
         width: 300px;
@@ -346,8 +346,145 @@ $module: ".residency-detail";
         }
 
     }
-    
+
     &__details {
         overflow: hidden;
+    }
+
+    &__content-detail {
+
+      margin-right:10%;
+      margin-left:10%;
+    }
+
+    &__single-margin-top {
+
+      margin-top:5%;
+    }
+
+    &__artist-section-margin {
+
+      margin-bottom:2%;
+      margin-left:10%
+    }
+
+    &__custom-image-margin {
+
+      margin-left:10%;
+      margin-right:10%;
+      border-color:gray;
+      border-width:1px;
+      border-style:solid;
+      padding-left:3%;
+      padding-right:3%;
+      padding-top:3%;
+    }
+
+    &__item-left-align {
+
+      text-align:left;
+    }
+
+    &__title-technology-section {
+
+      font-weight:bold;
+      font-size:30px;
+      margin-top:1%;
+      margin-bottom:1%;
+    }
+
+    &__green-style-color {
+
+      color:#50e3c2;
+    }
+
+    &__single-margin-top {
+
+      margin-bottom:1%;
+    }
+
+    &__margin-custom-residency {
+
+      margin-left:10%;
+      margin-right:10%;
+      margin-top:3%;
+    }
+
+    &__producer-margin {
+
+      margin-top:3%;
+      margin-bottom:5%;
+    }
+
+    &__frame-producer-square {
+
+      margin-top:3%;
+      margin-left:10%;
+      margin-right:10%;
+      border-color:gray;
+      border-width:1px;
+      border-style:solid;
+      padding-left:3%;
+      padding-right:3%;
+      padding-top:3%;
+    }
+
+    &__tile-producer-style {
+
+      font-size:16px;
+      font-weight:bold;
+      text-align:left;
+      color:black;
+    }
+
+    &__text-style-produces-top {
+
+      font-size:14px;
+      font-weight:bold;
+      text-align:left;
+    }
+
+    &__margin-main-top {
+
+      display: block;
+      margin-top:-50px;
+    }
+
+    &__banner-style-top {
+
+      background:#000f24;
+      width:100%;
+      height:auto;
+      display:block;
+      padding-right:20%;
+      padding-left:20%;
+      padding-top:2%;
+      padding-bottom:5%;
+      margin-bottom:3%;
+    }
+
+    &__first-row-style-banner {
+
+      text-align:center;
+      color:#50e3c2;
+      font-family:'Oswald',sans-serif;
+      font-size:17px;
+      margin-bottom:5%;
+    }
+
+    &__second-row-style-banner {
+
+      text-align:center;
+      color:white;
+      font-family:'Oswald',sans-serif;
+      font-size:30px;
+      line-height: 1.2em;
+    }
+
+    &__tags-style-banner {
+
+      text-align:center;
+      padding-left:15% !important;
+      padding-right:15% !important;
     }
 }
