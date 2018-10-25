@@ -388,6 +388,7 @@
                 </div>
             </div>
             <div class="residency-detail__header">
+              {% comment %}
                 <div class="residency-detail__header-previous">
                     <a href="{{ previous_residency.get_absolute_url }}"></a>
                 </div>
@@ -407,6 +408,29 @@
                         </span>
                     </div>
                 {% endwith %}
+                {% endcomment %}
+            </div>
+            <div class="project-ict-detail__slider">
+                <div class="page__slider detail_slider">
+                    <ul class="slider-page" data-slider-page>
+                        {% for image in object.user_images.all %}
+                            <li class="slider-page__slide" data-src="{{ MEDIA_URL }}{{ image.file }}">
+                                <div class="slider-page__wrapper">
+                                    <img title="{{ image.title }}" alt="{{ image.title }} {{ image.description }} {{ image.credits }}" class="slider-page__img" src="{{ MEDIA_URL}}{% thumbnail image.file 0 520 %}" alt="" />
+                                    <div class="slider-page__caption">
+                                        {{ image.title }}
+                                        {% if image.description %}
+                                            {{ image.description }}
+                                        {% endif %}
+                                        {% if image.credits|length > 0 %}
+                                            Credits: {{ image.credits }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
             <div class="residency-detail__margin-block residency-detail__single-margin-top">
                 <div>
