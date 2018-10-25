@@ -405,10 +405,6 @@
                                 <div class="slider-page__wrapper">
                                     <img title="{{ image.title }}" alt="{{ image.title }} {{ image.description }} {{ image.credits }}" class="slider-page__img" src="{{ MEDIA_URL}}{% thumbnail image.file 0 520 %}" alt="" />
                                     <div class="slider-page__caption">
-                                        {{ image.title }}
-                                        {% if image.description %}
-                                            {{ image.description }}
-                                        {% endif %}
                                         {% if image.credits|length > 0 %}
                                             Credits: {{ image.credits }}
                                         {% endif %}
