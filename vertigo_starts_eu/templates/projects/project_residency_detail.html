@@ -368,7 +368,7 @@
     <div id="fourth_div" class="residency-detail__hide-container residency-detail__margin-main-top">
 
         {% if object.images %}
-        <div class="residency-detail__container-image-banner-outcome" style="background-image: linear-gradient(to top, rgba(0, 15, 36, 1.0), rgba(0, 0, 0, 0.1)), url('/media/uploads/images/3-magic-lining-8.jpg')">
+        <div class="residency-detail__container-image-banner-outcome" style="background-image: linear-gradient(to top, rgba(0, 15, 36, 100%), rgba(0, 0, 0, 5%)), url('/media/uploads/images/3-magic-lining-8.jpg')">
             <div class="residency-detail__image-banner-outcome">{{ object.title }}</div>
         </div>
         {% endif %}
@@ -395,32 +395,7 @@
                 </div>
             </div>
 
-            {# SLIDER #}
-            {% comment %}
-            <div class="project-ict-detail__slider">
-                <div class="page__slider detail_slider">
-                    <ul class="slider-page" data-slider-page>
-                        {% for image in object.images.all %}
-                            <li class="slider-page__slide" data-src="{{ MEDIA_URL }}{{ image.file }}">
-                                <div class="slider-page__wrapper">
-                                    <img title="{{ image.title }}" alt="{{ image.title }} {{ image.description }} {{ image.credits }}" class="slider-page__img" src="{{ MEDIA_URL}}{% thumbnail image.file 0 520 %}" alt="" />
-                                    <div class="slider-page__caption">
-                                        {{ image.title }}
-                                        {% if image.description %}
-                                            {{ image.description }}
-                                        {% endif %}
-                                        {% if image.credits|length > 0 %}
-                                            Credits: {{ image.credits }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            {% endcomment %}
-
+            {% if object.images %}
             <div class="residency-detail__header">
                 <div class="residency-detail__header-previous">
                     <a href="{{ previous_residency.get_absolute_url }}"></a>
@@ -442,7 +417,7 @@
                     </div>
                 {% endwith %}
             </div>
-            
+            {% endif %}
             <div class="residency-detail__margin-block residency-detail__single-margin-top">
                 <div>
                   <div class="residency-detail__title residency-detail__artist-section-margin">About the artist</div>
