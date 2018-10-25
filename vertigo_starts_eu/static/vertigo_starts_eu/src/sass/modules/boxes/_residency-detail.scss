@@ -486,4 +486,24 @@ $module: ".residency-detail";
       padding-left:15% !important;
       padding-right:15% !important;
     }
+
+    &__container-image-banner-outcome {
+
+      height:300px;
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      text-align:center;
+      background:#000f24;
+    }
+
+    &__image-banner-outcome {
+
+      position: absolute;
+      top:40%;
+      width:100%;
+      font-family:'Oswald',sans-serif;
+      font-size:5em;
+      color:#50e3c2;
+    }
 }
