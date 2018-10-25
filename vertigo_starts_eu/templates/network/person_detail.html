@@ -69,7 +69,9 @@
 
       {% if person.address %}
       <div class="page__center-bio" style="color:white">
-        {{ person.address }}
+        {{ person.address }}<br/><br/>
+        {{ person.email }}<br/><br/>
+        ({{ person.telephone }})
       </div>
       {% endif %}
 
