@@ -368,7 +368,7 @@
     <div id="fourth_div" class="residency-detail__hide-container residency-detail__margin-main-top">
 
         {% if object.images %}
-        <div class="residency-detail__container-image-banner-outcome" style="background-image: linear-gradient(to top, rgba(0, 15, 36, 100%), rgba(0, 0, 0, 5%)), url('{{ MEDIA_URL }}{% thumbnail object.images.all|first 0 400 padding=true %}')">
+        <div class="residency-detail__container-image-banner-outcome" style="background-image: linear-gradient(to top, rgba(0, 15, 36, 100%), rgba(0, 0, 0, 5%)), url('{{ MEDIA_URL }}{% thumbnail object.images.all|first 0 0 padding=true %}')">
             <div class="residency-detail__image-banner-outcome">{{ object.title }}</div>
         </div>
         {% endif %}
