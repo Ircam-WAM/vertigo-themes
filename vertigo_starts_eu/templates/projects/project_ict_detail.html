@@ -60,6 +60,7 @@
 
 
 {% block page_title %}
+{% comment %}
 <script>
 function showHideChevronTags(object, event) {
 
@@ -96,7 +97,7 @@ function showHideChevronTags(object, event) {
 }
 
 </script>
-
+{% endcomment %}
 {% endblock %}
 
 
@@ -133,15 +134,16 @@ function showHideChevronTags(object, event) {
         {{ object.title }}
 
         {% if object.keywords.all %}
-            <div id="tags-detail-project" class="project-ict-detail__main_info-keywords" style="display:none">
+            <div id="tags-detail-project" class="project-ict-detail__main_info-keywords"> {# style="display:none"> #}
                 {% for kw in object.keywords.all %}
                     <span class="project-ict-detail__main_info-keywords-tags">{{ kw }}</span>
                 {% endfor %}
             </div>
-
+          {% comment %}
             <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator">
               <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
             </div>
+          {% endcomment %}
         {% endif %}
 
     </div>
