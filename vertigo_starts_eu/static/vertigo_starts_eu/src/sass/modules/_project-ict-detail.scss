@@ -89,6 +89,14 @@ $module: ".project-ict-detail";
 
                 }
 
+                @media screen and (max-width: 360px) {
+
+                  width: 100%;
+                  font-size: 9px;
+                  margin: 3em auto 0em auto;
+                  padding: 0.5em;
+                }
+
             }
 
     }
