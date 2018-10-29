@@ -19,17 +19,17 @@
 
     {% include "home/inc/slider_large.html" %}
 
-    {% include "home/inc/bio.html" %}
+    {# {% include "home/inc/bio.html" %} #}
 
     {% if request.user.is_authenticated %}
-{# {{ request.user }} #}
+    {# {{ request.user }} #}
 
     {% else %}
 
     {% endif %}
 
     {% include "home/inc/blocks_public.html" %}
-    
+
     {% comment %}
     <div class="section">
         {% include "home/inc/body.html" %}
