@@ -17,18 +17,21 @@
     {% include "vertigo_starts_eu/home/inc/hero.html" %}
     {% endcomment %}
 
-    {% include "home/inc/slider_large.html" %}
+
 
     {# {% include "home/inc/bio.html" %} #}
 
     {% if request.user.is_authenticated %}
     {# {{ request.user }} #}
 
+      {% include "home/inc/blocks_private.html" %}
+
     {% else %}
 
-    {% endif %}
+      {% include "home/inc/slider_large.html" %}
+      {% include "home/inc/blocks_public.html" %}
 
-    {% include "home/inc/blocks_public.html" %}
+    {% endif %}
 
     {% comment %}
     <div class="section">
