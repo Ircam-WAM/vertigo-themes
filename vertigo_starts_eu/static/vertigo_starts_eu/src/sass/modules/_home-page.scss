@@ -92,4 +92,143 @@ $module: ".home-page";
       height:60%;
       padding:10px;
     }
+
+    &__private-main-block {
+
+      width:100%;
+      height:1000px;
+      background:#EAEAEB !important;
+      background-image: linear-gradient(to bottom, rgba(0, 15, 36, 50%), rgba(0, 0, 0, 5%));
+      padding-top:5%;
+    }
+
+    &__private-main-menu {
+
+      text-align:center;
+      height:30px;
+      width:120px;
+      margin: 0 auto;
+    }
+
+    &__private-horizontal-separator {
+
+      width:100%;
+      height:1px;
+      background:black;
+    }
+
+    &__private-separator-space {
+
+      margin:5%;
+    }
+
+    &__private-black-bottom-border {
+
+      color:black;
+      border-bottom:black solid 4px;
+    }
+
+    &__private-gray-bottom-border {
+
+      color:rgb(92,101,114);
+      border-bottom:clear solid 4px;
+    }
+
+    &__private-style-left-option {
+
+      float:left;
+    }
+
+    &__private-option-style {
+
+      color:black;
+      padding-bottom:2%;
+      font-family:'Oswald',sans-serif;
+      width:50px;
+      margin-top: -13%;
+    }
+
+    &__private-style-right-option {
+
+      float:right;
+    }
+
+    &__private-big-dash {
+
+    	width: 10%;
+    	height: 40px;
+    	background: red;
+    	float: left;
+    }
+
+    &__private-minor-dash {
+
+    	width: 10%;
+    	height: 20px;
+    	float: left;
+    	display: block;
+    	vertical-align: middle;
+    	position: relative;
+    	margin-top: 20%;
+    }
+
+    &__margin-dash {
+
+      margin-left: 3%;
+    }
+
+    &__margin-left-dash {
+
+      margin-left: 25%;
+    }
+
+    &__private-horizontal-symbol {
+
+      float:right;
+      width:50px;
+      margin-top:-7%;
+      padding-bottom:3%;
+    }
+
+    &__big-dash-horizontal {
+
+      height: 6px;
+      width: 100%;
+      margin-top: 5%;
+    }
+
+    &__minor-dash-horizontal {
+
+      height: 6px;
+      width: 50%;
+      margin-top: 5%;
+      left: 25%;
+      position: relative;
+    }
+
+    &__dash-black {
+
+      background: black;
+    }
+
+    &__dash-gray {
+
+      background: rgb(92,101,114)
+    }
+
+    &__margin-dash-bottom {
+
+      margin-top:-11px;
+    }
+
+    &__hide-content {
+
+      display: none;
+    }
+
+    &__show-content {
+
+      display: block;
+    }
+
 }
