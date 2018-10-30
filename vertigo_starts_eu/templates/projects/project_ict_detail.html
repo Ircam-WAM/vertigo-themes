@@ -136,7 +136,7 @@ function showHideChevronTags(object, event) {
         {% if object.keywords.all %}
             <div id="tags-detail-project" class="project-ict-detail__main_info-keywords"> {# style="display:none"> #}
                 {% for kw in object.keywords.all %}
-                    <span class="project-ict-detail__main_info-keywords-tags">{{ kw|capfirst }}</span>
+                    <span class="project-ict-detail__tag-style-simple">{{ kw|capfirst }}</span>
                 {% endfor %}
             </div>
           {% comment %}
