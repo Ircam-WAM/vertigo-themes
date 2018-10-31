@@ -100,6 +100,9 @@ $module: ".home-page";
       background:#EAEAEB !important;
       background-image: linear-gradient(to bottom, rgba(0, 15, 36, 50%), rgba(0, 0, 0, 5%));
       padding-top:5%;
+      height:auto;
+      display:table;
+      padding-bottom: 2%;
     }
 
     &__private-main-menu {
@@ -231,4 +234,65 @@ $module: ".home-page";
       display: block;
     }
 
+    &__private-content-main-left {
+
+      width:1440px;
+      height:auto;
+      text-align:center;
+      font-size:15px;
+      color:black;
+      padding-top:2%;
+      position:relative;
+      margin: 0 auto;
+      transform: translateX(3.5%);
+    }
+
+    &__private-inner-margin-right {
+
+      margin-right:20px;
+    }
+
+    &__private-inner-margin-top {
+
+      margin-top:20px;
+    }
+
+    &__private-inner-margin-bottom {
+
+      margin-bottom:20px;
+    }
+
+    &__private-content-float-left {
+
+      float:left;
+    }
+
+    &__private-post-medium {
+
+        width:325px;
+        height:1015px;
+    }
+
+    &__private-margin-top-fixer {
+
+      margin-top:-670px;
+    }
+
+    &__private-post-large {
+
+      width:1015px;
+      height:325px;
+    }
+
+    &__private-profile-medium {
+
+      width:670px;
+      height:325px;
+    }
+
+    &__private-profile-large {
+
+      width:325px;
+      height:670px;
+    }
 }
