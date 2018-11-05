@@ -103,20 +103,15 @@ $module: ".event-line-detail-box";
         border-width: 1px;
         margin: 10px 0px 50px 0px;
 
-        @media only screen and (max-width: 360px) {
+        @media only screen and (max-width: 380px) {
 
           margin-right:14% !important;
-        }
-
-        @media only screen and (max-width: 320px) {
-
-          margin-right:9% !important;
         }
     }
 
     &__responsive-arrow {
 
-      @media only screen and (max-width: 360px) {
+      @media only screen and (max-width: 380px) {
 
         margin-top:14% !important;
         font-size:13px !important;
@@ -125,7 +120,7 @@ $module: ".event-line-detail-box";
 
     &__responsive-center-text {
 
-      @media only screen and (max-width: 360px) {
+      @media only screen and (max-width: 380px) {
 
         text-align: center !important;
       }

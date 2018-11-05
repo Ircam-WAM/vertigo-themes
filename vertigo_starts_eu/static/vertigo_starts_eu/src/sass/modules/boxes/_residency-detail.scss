@@ -188,6 +188,12 @@ $module: ".residency-detail";
 
     &__margin-white {
         margin:3px 0px 0px 0px;
+
+        @media only screen and (max-width: 380px) {
+
+          margin-right:-22% !important;
+          margin-left:-22% !important;
+        }
     }
 
     &__center-buttons {
@@ -259,6 +265,12 @@ $module: ".residency-detail";
 
     &__green-top-line {
         border-top: 2px solid $color-main;
+
+        @media only screen and (max-width: 380px) {
+
+          margin-right:-22% !important;
+          margin-left:-22% !important;
+        }
     }
 
     &__video-style {
