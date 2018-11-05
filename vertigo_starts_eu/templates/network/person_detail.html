@@ -93,6 +93,11 @@
         {% endif %}
       {% endif %}
 
+      {% if person.bio %}
+      <div class="page__center-bio" style="color:white">
+        {{ person.bio }}
+      </div>
+      {% endif %}
     {% endif %}
 
 {% comment %}
