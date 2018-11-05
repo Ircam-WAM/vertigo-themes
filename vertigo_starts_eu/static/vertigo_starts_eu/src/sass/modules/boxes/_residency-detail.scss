@@ -121,7 +121,7 @@ $module: ".residency-detail";
     &__button {
         background: none;
         border: none;
-        color: $color-gray;
+        color: white;//$color-gray;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -134,9 +134,9 @@ $module: ".residency-detail";
         margin-bottom: 0px;
 
         &:hover {
-            background: none;
-            color: $color-main;
-            font-size: 26px;
+            //background: none;
+            //color: $color-main;
+            //font-size: 26px;
         }
 
         &.active {
@@ -152,21 +152,21 @@ $module: ".residency-detail";
             font-size: 26px;
 
             &:hover {
-                background: none;
-                color: $color-main;
-                font-size: 26px;
+                //background: none;
+                //color: $color-main;
+                //font-size: 26px;
             }
         }
 
         &-unselected {
             background: none;
-            color: $color-gray;
+            color: white;//$color-gray;
             font-size: 22px;
 
             &:hover {
-                background: none;
-                color: $color-main;
-                font-size: 22px;
+                //background: none;
+                //color: $color-main;
+                //font-size: 22px;
             }
         }
     }
