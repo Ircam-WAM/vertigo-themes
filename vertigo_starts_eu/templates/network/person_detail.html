@@ -23,8 +23,7 @@
 
 {% block page_title %}
 
-    {% if request.user.is_authenticated %}
-      {# Private section #}
+
 
       <script type="text/javascript">
 
@@ -32,13 +31,13 @@
 
 
         //document.getElementById("select-messages").className = "page__option-selected";
-
       }
 
       window.onload = selectCurrentTab;
 
       </script>
-
+      {% if request.user.is_authenticated %}
+        {# Private section #}
       <div class="page__item_selector">
       		<a href="{% url 'profile_update' %}"><span id="select-profile" class="page__option-selected">Profile</span></a>
       	<!--	<a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
@@ -89,7 +88,7 @@
         Site: <a href="{{ person.site }}" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.site }}</a><br/><br/>
       </div>
 
-      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
+      <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         Bio: {{ person.bio|safe }}
       </div>
 
