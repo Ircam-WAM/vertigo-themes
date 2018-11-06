@@ -31,7 +31,7 @@
       function selectCurrentTab() {
 
 
-        document.getElementById("select-messages").className = "page__option-selected";
+        //document.getElementById("select-messages").className = "page__option-selected";
 
         var listLinks = document.getElementsByTagName("a");
 
@@ -41,7 +41,7 @@
 
             if (link.href)
             {
-                link.style.color = {% if request.user.is_authenticated %}black{% else %}white{% endif %};
+                link.style.color = "{% if request.user.is_authenticated %}black{% else %}white{% endif %}";
             }
         }
       }
