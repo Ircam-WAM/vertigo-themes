@@ -47,11 +47,13 @@
       		<a href="{% url 'organization-network-profile-settings' %}"><span id="select-settings" class="page__option-unselected">Settings</span></a>
       </div>
 
-      {% comment %}
+
       <div class="page__item_content">
+{% comment %}
           <div class="page__center-bio section-title section-title--big" style="color:black">{{ person.title|upper }}</h1>
+{% endcomment %}
       </div>
-      {% endcomment %}
+
     {% endif %}
       {# Public section #}
       <div style="margin-top:20px"></div>
