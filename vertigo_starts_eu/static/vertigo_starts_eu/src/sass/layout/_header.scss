@@ -48,7 +48,7 @@ $module: ".header";
 
     &__banner-responsive {
 
-      @media only screen and (max-width: 380px) {
+      @media only screen and (max-width: 780px) {
 
         display:block !important;
       }
@@ -56,7 +56,7 @@ $module: ".header";
 
     &__responsive-logo-footer {
 
-      @media only screen and (max-width: 380px) {
+      @media only screen and (max-width: 780px) {
 
         margin-left:30%;
       }
@@ -64,7 +64,7 @@ $module: ".header";
 
     &__responsive-frame-video {
 
-      @media only screen and (max-width: 380px) {
+      @media only screen and (max-width: 780px) {
 
         width:300px;
         height:300px;

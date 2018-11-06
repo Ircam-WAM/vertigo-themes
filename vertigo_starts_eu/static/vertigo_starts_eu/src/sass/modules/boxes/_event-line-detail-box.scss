@@ -103,7 +103,7 @@ $module: ".event-line-detail-box";
         border-width: 1px;
         margin: 10px 0px 50px 0px;
 
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 780px) {
 
           margin-right:14% !important;
         }
@@ -111,7 +111,7 @@ $module: ".event-line-detail-box";
 
     &__responsive-arrow {
 
-      @media only screen and (max-width: 380px) {
+      @media only screen and (max-width: 780px) {
 
         margin-top:14% !important;
         font-size:13px !important;
@@ -120,7 +120,7 @@ $module: ".event-line-detail-box";
 
     &__responsive-center-text {
 
-      @media only screen and (max-width: 380px) {
+      @media only screen and (max-width: 780px) {
 
         text-align: center !important;
       }

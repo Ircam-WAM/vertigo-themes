@@ -134,34 +134,34 @@ $module: ".residency-detail";
         margin-bottom: 0px;
 
         &:hover {
-            //background: none;
+            background: clear !important;
             //color: $color-main;
             //font-size: 26px;
         }
 
         &.active {
             cursor: normal;
-            background: none;
+            //background: none;
             color: $color-main;
-            font-size: 26px;
+            //font-size: 26px;
         }
 
         &-selected {
-            background: none;
+            background: clear !important;
             color: $color-main;
-            font-size: 26px;
+            //font-size: 26px;
 
             &:hover {
-                //background: none;
+                background: clear !important;
                 //color: $color-main;
                 //font-size: 26px;
             }
         }
 
         &-unselected {
-            background: none;
+            //background: none;
             color: white;//$color-gray;
-            font-size: 22px;
+            //font-size: 22px;
 
             &:hover {
                 //background: none;
@@ -189,7 +189,7 @@ $module: ".residency-detail";
     &__margin-white {
         margin:3px 0px 0px 0px;
 
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 780px) {
 
           margin-right:-22% !important;
           margin-left:-22% !important;
@@ -266,7 +266,7 @@ $module: ".residency-detail";
     &__green-top-line {
         border-top: 2px solid $color-main;
 
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 780px) {
 
           margin-right:-22% !important;
           margin-left:-22% !important;
@@ -517,5 +517,17 @@ $module: ".residency-detail";
       font-family:'Oswald',sans-serif;
       font-size:5em;
       color:#50e3c2;
+    }
+
+    &__button-residency-style {
+
+    	outline: 0;
+    	box-sizing: border-box;
+    	font-size: 20px;
+    	line-height: 1.5rem;
+    	font-family: Oswald,sans-serif;
+    	vertical-align: middle;
+    	cursor: pointer;
+    	transition: all .25s ease-in-out;
     }
 }

@@ -83,7 +83,7 @@ $module: ".account-horizontal-form";
         color: red;
         display: block !important;
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 780px) {
 
           display: none !important;
         }

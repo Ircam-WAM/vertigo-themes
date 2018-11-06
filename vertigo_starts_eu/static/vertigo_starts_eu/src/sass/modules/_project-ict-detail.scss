@@ -48,7 +48,7 @@ $module: ".project-ict-detail";
     	margin: .5em;
     	padding: .2em .5em;
 
-      @media screen and (max-width: 380px) {
+      @media screen and (max-width: 780px) {
 
         font-size: 9px;
 
@@ -107,7 +107,7 @@ $module: ".project-ict-detail";
 
                 }
 
-                @media screen and (max-width: 380px) {
+                @media screen and (max-width: 780px) {
 
                   width: 100%;
                   font-size: 9px;
@@ -274,7 +274,7 @@ $module: ".project-ict-detail";
 
     &__responsive-tree {
 
-      @media screen and (max-width: 380px) {
+      @media screen and (max-width: 780px) {
 
         width:120% !important;
         margin-left:-12% !important;
@@ -283,7 +283,7 @@ $module: ".project-ict-detail";
 
     &__responsive-tree-text {
 
-      @media screen and (max-width: 380px) {
+      @media screen and (max-width: 780px) {
 
         font-size:8px !important;
       }
@@ -291,7 +291,7 @@ $module: ".project-ict-detail";
 
     &__responsive-width-section {
 
-      @media screen and (max-width: 380px) {
+      @media screen and (max-width: 780px) {
 
         margin-left:-4% !important;
         margin-right:-4% !important;
