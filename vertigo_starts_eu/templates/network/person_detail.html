@@ -37,9 +37,9 @@
 
         for(i = 0;i < listLinks.length; i++)
         {
-            var link = input[i];
+            var link = listLinks[i];
 
-            if(link.href)
+            if (link.href)
             {
                 link.style.color = {% if request.user.is_authenticated %}black{% else %}white{% endif %};
             }
