@@ -32,6 +32,18 @@
 
 
         document.getElementById("select-messages").className = "page__option-selected";
+
+        var listLinks = document.getElementsByTagName("a");
+
+        for(i = 0;i < listLinks.length; i++)
+        {
+            var link = input[i];
+
+            if(link.href)
+            {
+                link.style.color = {% if request.user.is_authenticated %}black{% else %}white{% endif %};
+            }
+        }
       }
 
       window.onload = selectCurrentTab;
