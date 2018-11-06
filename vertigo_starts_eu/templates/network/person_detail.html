@@ -54,6 +54,7 @@
       {% endcomment %}
     {% endif %}
       {# Public section #}
+      <div style="margin-top:20px"></div>
       {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
           <div class="page__image-container">
@@ -88,7 +89,7 @@
       </div>
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        Bio: {{ person.bio }}
+        Bio: {{ person.bio|safe }}
       </div>
 
 {% comment %}
