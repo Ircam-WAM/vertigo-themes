@@ -123,13 +123,15 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:15% !important;
+        padding-bottom:8% !important;
       }
 
       &__responsive-image {
 
         display: block !important;
-        margin-top:-35px !important;
+        margin-top:-27px !important;
+        width: 60% !important;
+        margin-left:30px !important;
       }
 
       &__non-responsive-image {
@@ -315,6 +317,7 @@ $module: ".nav-header";
       @media screen and (max-width: 780px) {
 
         margin-top:-10px !important;
+        margin-left:10px !important;
       }
     }
 
@@ -894,5 +897,23 @@ $module: ".nav-header";
       padding-right:2%;
       padding-bottom:8px;
       position:relative;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:0% !important;
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+
+          margin-top:-5% !important;
+        }
+      }
+
+      @-moz-document url-prefix() {
+
+        @media screen and (max-width: 780px) {
+
+          margin-top:0% !important;
+        }
+      }
     }
 }
