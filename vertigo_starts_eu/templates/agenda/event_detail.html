@@ -23,7 +23,7 @@
     <div class="event-line-box__top-space"></div>
     {% include 'vertigo_starts_eu/agenda/includes/event_linecard.html' %}
     <div class="event-line-detail-box__container-back-link">
-        <a class="event-line-detail-box__back-link" href="{% url 'event_list' %}"><span class="event-line-detail-box__arrow-align">&#x21DA;</span> {% trans "Back to all events" %}</a>
+        <a class="event-line-detail-box__back-link event-line-detail-box__responsive-arrow" href="{% url 'event_list' %}"><span class="event-line-detail-box__arrow-align">&#x21DA;</span>{% trans "Back to all events" %}</a>
     </div>
 {% endblock %}
 
@@ -47,13 +47,13 @@
 </div>
 {% endif %}
 <div class="row">
-     <div class="col-xs-4 event-line-box__top-space-left event-line-box__text-color-date" style="margin-right: 50px;" id="left-item">
+     <div class="col-xs-4 event-line-box__top-space-left event-line-box__text-color-date event-line-detail-box__responsive-center-text" style="margin-right: 50px;" id="left-item">
         {% include 'agenda/includes/event_detail_date_line.html' with object=event %}
         <div class="event-line-box__top-space-left">
              {{ event.location }}
         </div>
         <div class="event-line-box__top-space-left">
-            <div class="event-line-detail-box__map-event" id="network-map-small"></div>
+            <div class="event-line-detail-box__map-event" id="network-map-small" ></div>
                 {% if event.location.lat and event.location.lon %}
                     <div class="container hide">
                         <div class="row">

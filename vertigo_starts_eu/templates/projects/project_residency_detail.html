@@ -93,14 +93,17 @@
             var firstDiv = document.getElementById("first_div");
             var secondDiv = document.getElementById("second_div");
             var thirdDiv = document.getElementById("third_div");
+            var fourthDiv = document.getElementById("fourth_div");
 
             firstDiv.style.display = 'none';
             secondDiv.style.display = 'none';
             thirdDiv.style.display = 'none';
+            fourthDiv.style.display = 'none';
 
             var linkArtist = document.getElementById("artist");
             var linkArtistResidency = document.getElementById("artist_residency");
             var linkProject = document.getElementById("project");
+            var linkOutcome = document.getElementById("outcome");
 
             var buttons = document.getElementsByClassName('residency-detail__button');
 
@@ -126,14 +129,21 @@
                 thirdDiv.style.display = 'block';
                 linkProject.classList.add('active');
             }
+
+            if (link.id === 'outcome')
+            {
+                fourthDiv.style.display = 'block';
+                linkOutcome.classList.add('active');
+            }
         }
     </script>
 
     <div class ="row residency-detail__margin-row">
             <div class="col-sm-16 col-md-12 residency-detail__center-buttons">
-                <a id='artist' class="button residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The artist" %}</a>
-                <a id='artist_residency' class="button residency-detail__button active" href="#" onclick="clickedLink(this,event);">{% trans "Artist residency" %}</a>
-                <a id='project' class="button residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The project" %}</a>
+                <a id='artist' class="residency-detail__button-residency-style residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The artist" %}</a>
+                <a id='artist_residency' class="residency-detail__button-residency-style residency-detail__button active" href="#" onclick="clickedLink(this,event);">{% trans "Artist residency" %}</a>
+                <a id='project' class="residency-detail__button-residency-style residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The project" %}</a>
+                <a id='outcome' class="residency-detail__button-residency-style residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "Outcome" %}</a>
             </div>
     </div>
     <div class="residency-detail__green-top-line"></div>
@@ -229,7 +239,7 @@
                 <div>
                     <div class="residency-detail__title">{{ object.title }}</div>
                     <p>{{ object.content|safe }}</p>
-                    
+
                     {% if object.date_from and object.date_to %}
 
                         <div class="residency-detail__title">{% trans "About this residency" %}</div>
@@ -268,6 +278,7 @@
                                         <br><br>
                                     {% endif %}
                                     {% with object.producers.all as producers %}
+
                                         {% if producers %}
                                             {% if producers|length == 1 %}
                                                 Producer: {{ producers.0.organization }}<br>
@@ -354,6 +365,157 @@
         <a class="residency-detail__margin-block residency-detail__button-project residency-detail__margin-bottom-third-tab" href="{{ object.project.get_absolute_url }}">{% trans "Find more" %}</a>
     </div>
 
+    <div id="fourth_div" class="residency-detail__hide-container residency-detail__margin-main-top">
+
+        {% if object.images %}
+        <div class="residency-detail__container-image-banner-outcome" style="background-image: linear-gradient(to top, rgba(0, 15, 36, 100%), rgba(0, 0, 0, 5%)), url('{{ MEDIA_URL }}{% thumbnail object.images.all|first 0 0 padding=true %}')">
+            <div class="residency-detail__image-banner-outcome">{{ object.title }}</div>
+        </div>
+        {% endif %}
+
+        <div class="residency-detail__banner-style-top">
+
+            <div class="residency-detail__first-row-style-banner">{{ object.artist.first_name }} {{ object.artist.last_name }} {% if object.producers.all %} X {{ object.producers.all.0.organization }}{% endif %}</div>
+            <div class="residency-detail__second-row-style-banner">{{ object.description }}</div>
+
+            {% if object.keywords.all %}
+            <div id="tags-detail-project" class="project-ict-detail__main_info-keywords residency-detail__tags-style-banner">
+            {% for kw in object.keywords.all %}
+                <span class="project-ict-detail__main_info-keywords-tags">{{ kw }}</span>
+            {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="residency-detail__disable-overflow">
+            <div class="residency-detail__margin-block">
+                <div class="residency-detail__content-detail">
+                  <div class="residency-detail__title">The artwork</div>
+                  <p>{{ object.content|safe }}</p>
+                </div>
+            </div>
+
+            {# SLIDER #}
+            {% if object.images %}
+            <div class="project-ict-detail__slider">
+                <div class="page__slider detail_slider">
+                    <ul class="slider-page" data-slider-page>
+                        {% for image in object.images.all %}
+                            <li class="slider-page__slide" data-src="{{ MEDIA_URL }}{{ image.file }}">
+                                <div class="slider-page__wrapper">
+                                    <img title="{{ image.title }}" alt="{{ image.title }} {{ image.description }} {{ image.credits }}" class="slider-page__img" src="{{ MEDIA_URL}}{% thumbnail image.file 0 520 %}" alt="" />
+                                    <div class="slider-page__caption">
+                                        {% if image.credits|length > 0 %}
+                                            Credits: {{ image.credits }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="residency-detail__margin-block residency-detail__single-margin-top">
+                <div>
+                  <div class="residency-detail__title residency-detail__artist-section-margin">About the artist</div>
+                  <div class="residency-detail__custom-image-margin">
+                    <div class="residency-detail__image-left">
+                      <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
+                      {% if object.artist.images.all.0.credits|length > 0 %}
+                        <div class="residency-detail__item-left-align">
+                          <p sytle="color:black;font-size:12px;">Credits: {{ object.artist.images.all.0.credits }}</p>
+                        </div>
+                      {% endif %}
+                    </img>
+                    </div>
+                    <div class="residency-detail__title">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+                    <div class="residency-detail__text-detail">
+                        <p>{{ object.artist.bio|safe }}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="residency-detail__margin-block residency-detail__single-margin-top">
+              <div class="residency-detail__disable-overflow">
+                  <div class="residency-detail__margin-block">
+                      <div>
+                        <div class="residency-detail__title">The technology</div>
+                        <div class="residency-detail__title-technology-section">{{ object.title }}</div>
+                        {% with object.artist.links.all as links %}
+                            {% if links %}
+                                {% with links|get_type_link:"link" as webpage_links %}
+                                    {% if webpage_links %}
+                                      <div>
+                                          <a class="residency-detail__green-style-color" href="{{ webpage_links|first|safe }}">{{ webpage_links|first }}</a>
+                                      </div>
+                                    {% endif %}
+                                 {% endwith %}
+                            {% endif %}
+                        {% endwith %}
+                      </div>
+                      <br>
+                      <div>
+                        <p>{{ object.description }}</p>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="residency-detail__margin-block">
+              <div class="residency-detail__disable-overflow">
+                  <div class="residency-detail__margin-block residency-detail__single-margin-top">
+                      <div>
+                        <div class="residency-detail__title">About the residency</div>
+                      </div>
+                  </div>
+                  <div class="residency-detail__margin-custom-residency">
+                    {% with object.project.public_data.all|first as project_public_data %}
+                        <div>
+                            <p>{{ project_public_data.challenges_description }}</p>
+                        </div>
+                        <div style="text-align:center">
+                            {% if project_public_data.image_is_panoramic %}
+                                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
+                            {% endif %}
+                        </div>
+                    {% endwith %}
+                  </div>
+                </div>
+            </div>
+
+            {% with object.producers.all as producers %}
+               {% if producers %}
+                  <div class="residency-detail__margin-block residency-detail__producer-margin">
+                    <div class="residency-detail__disable-overflow">
+                        <div class="residency-detail__margin-block">
+                            <div>
+                              <div class="residency-detail__title">About the producer</div>
+                            </div>
+                        </div>
+                        <div class="residency-detail__frame-producer-square">
+                            {% with object.images.all|get_type:'slider' as images %}
+
+                                {% if images %}
+                                  <div class="residency-detail__header-image" style="background-image: url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');"></div>
+                                {% endif %}
+
+                                <div class="residency-detail__tile-producer-style">{{ producers.0.organization }}</div>
+                                <div class="residency-detail__text-style-produces-top residency-detail__green-style-color " style="margin-top:1%">{{ producers.0.url }}</div>
+                                <div class="residency-detail__text-style-produces-top residency-detail__green-style-color " style="margin-top:2%">{{ producers.0.description }}</div>
+
+                            {% endwith %}
+                        </div>
+                      </div>
+                  </div>
+               {% else %}
+                  <div style="margin-top:3%"></div>
+               {% endif %}
+            {% endwith %}
+        </div>
+    </div>
 </div>
 
 {% if object.articles %}

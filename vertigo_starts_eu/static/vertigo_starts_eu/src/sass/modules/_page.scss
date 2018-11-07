@@ -511,6 +511,13 @@ $module: ".page";
       margin: 1em;
       padding-bottom: 0.1em;
       border-bottom: 0.2em solid #000000;
+      font-size:20px !important;
+
+      @media screen and (max-width: 600px) {
+
+          margin-left: 15px !important;
+          font-size:18px !important;
+      }
     }
 
     &__option-unselected {
@@ -518,9 +525,27 @@ $module: ".page";
       @include font-size(l);
       font-family: "Oswald", sans-serif;
       color: #767D86;
-      margin: 1em;
+      margin: 1em !important;
+      font-size:20px !important;
+
+      @media screen and (max-width: 600px) {
+
+          margin-left: 15px !important;
+          font-size:18px !important;
+          margin-right:0px !important;
+          margin-top:0px !important;
+      }
     }
 
+    &__margin-top {
+
+      margin-top:0px !important;
+
+      @media screen and (max-width: 600px) {
+
+          margin-top:-75px !important;
+      }
+    }
     &__padding-settings-form {
 
       padding-left: 30%;
@@ -675,4 +700,49 @@ $module: ".page";
 
       color: white !important;
     }
+
+    &__space-row {
+
+      margin-left:3%;
+    }
+
+    &__row-responsive {
+
+      display:inline-block !important;
+
+      @media screen and (max-width: 480px) {
+
+          transform: scale(0.73) !important;
+          display:inline-block !important;
+          margin-left:-21.5% !important;
+          margin-top:-40% !important;
+      }
+
+      @media screen and (max-width: 780px) {
+
+          transform: scale(0.73) !important;
+          display:inline-block !important;
+          margin-left:-15% !important;
+          margin-top:-40% !important;
+      }
+
+      @media screen and (max-width: 320px) {
+
+          transform: scale(0.73) !important;
+          display:inline-block !important;
+          margin-left:-21% !important;
+          margin-top:-40% !important;
+      }
+    }
+
+    &__space-responsive {
+
+      margin-top:0% !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:-60% !important;
+      }
+    }
+
 }

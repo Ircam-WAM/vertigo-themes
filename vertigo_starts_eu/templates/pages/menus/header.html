@@ -8,13 +8,13 @@
         {% if page.is_primary %}
             {% if forloop.first %}
                 <ul class="nav-header" role="navigation">
-                    <li class="nav-header__item menu-btn">
+                    <li class="nav-header__item menu-btn nav-header__item-responsive">
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
                     <li class="nav-header__item nav-header__item--image-big ">
 
-                      <div class="nav-header__non-responsive-image">
+                      <div class="nav-header__non-responsive-image" >
                         <a href="{% url "home" %}" title="{% trans 'Home' %}">
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
