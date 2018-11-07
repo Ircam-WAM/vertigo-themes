@@ -129,7 +129,9 @@ $module: ".nav-header";
       &__responsive-image {
 
         display: block !important;
-        margin-top:-35px !important;
+        margin-top:-31px !important;
+        width: 80% !important;
+        margin-left:10px !important;
       }
 
       &__non-responsive-image {
@@ -315,6 +317,7 @@ $module: ".nav-header";
       @media screen and (max-width: 780px) {
 
         margin-top:-10px !important;
+        margin-left:10px !important;
       }
     }
 
@@ -894,5 +897,10 @@ $module: ".nav-header";
       padding-right:2%;
       padding-bottom:8px;
       position:relative;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:0% !important;
+      }
     }
 }
