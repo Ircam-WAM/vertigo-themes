@@ -73,7 +73,7 @@
       <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        Address: {{ person.address }}<br/><br/>
+        {% if person.address %}Address: {{ person.address }}<br/><br/>{% endif %}
         Email: {{ person.email }}<br/><br/>
         Telephone: {{ person.telephone }}<br/><br/>
       </div>
@@ -91,7 +91,7 @@
       </div>
 
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        Bio: {{ person.bio|safe }}
+        Biography: {{ person.bio|safe }}
       </div>
 
 {% comment %}
