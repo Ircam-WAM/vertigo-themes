@@ -69,7 +69,7 @@ $module: ".nav-header";
 
       //width:174px;
       //height:172.2px;
-      margin-top: -1em;
+      margin-top: -1.2em;
     }
 
     &__switch-display {
@@ -316,8 +316,33 @@ $module: ".nav-header";
 
       @media screen and (max-width: 780px) {
 
-        margin-top:-10px !important;
+        margin-top:20px !important;
         margin-left:10px !important;
+        margin-bottom: -28px !important;
+      }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+        	margin-top: 10px !important;
+        	margin-left: 10px !important;
+        	margin-bottom: -18px !important;
+        }
+      }
+
+
+    }
+
+    &__hide-first-line {
+
+      background:white !important;
+      &:before {
+
+        background:white !important;
+      }
+
+      &:after {
+        background:white !important;
       }
     }
 
@@ -337,7 +362,7 @@ $module: ".nav-header";
             background: black;
             position: absolute;
             top: 0;
-            left: -1px;
+            //left: -1px;
 
             @include margin-right(.5);
 
@@ -516,7 +541,7 @@ $module: ".nav-header";
 
                 background: #F8F8F8;
                 border-top: 1px solid #E3E3E3;
-                border-left: 1px solid #E3E3E3;
+                border-left: 1px solid black;
                 border-right: 1px solid #E3E3E3;
                 border-bottom: 1px solid #F8F8F8;
             }
@@ -904,7 +929,7 @@ $module: ".nav-header";
 
         @media screen and (-webkit-min-device-pixel-ratio:0) {
 
-          margin-top:-5% !important;
+          margin-top:3% !important;
         }
       }
 
@@ -912,7 +937,8 @@ $module: ".nav-header";
 
         @media screen and (max-width: 780px) {
 
-          margin-top:0% !important;
+          margin-top:25px !important;
+          margin-bottom:-40px !important;
         }
       }
     }

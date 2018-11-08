@@ -275,6 +275,19 @@ $module: ".nav-header";
       font-size:15px;
     }
 
+    &__hide-first-line {
+
+      background:white !important;
+      &:before {
+
+        background:white !important;
+      }
+
+      &:after {
+        background:white !important;
+      }
+    }
+    
     &__item {
 
         display: inline-block;
