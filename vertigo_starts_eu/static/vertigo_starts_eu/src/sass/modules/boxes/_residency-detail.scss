@@ -530,4 +530,12 @@ $module: ".residency-detail";
     	cursor: pointer;
     	transition: all .25s ease-in-out;
     }
+
+    &__bottom-space {
+
+      @media screen and (max-width: 780px) {
+
+        padding-bottom:5% !important;
+      }
+    }
 }
