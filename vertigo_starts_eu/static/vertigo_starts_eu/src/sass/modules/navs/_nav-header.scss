@@ -69,7 +69,7 @@ $module: ".nav-header";
 
       //width:174px;
       //height:172.2px;
-      margin-top: -1em;
+      margin-top: -1.2em;
     }
 
     &__switch-display {
@@ -333,6 +333,19 @@ $module: ".nav-header";
 
     }
 
+    &__hide-first-line {
+
+      background:white !important;
+      &:before {
+
+        background:white !important;
+      }
+
+      &:after {
+        background:white !important;
+      }
+    }
+
     &__item {
 
         display: inline-block;
@@ -349,7 +362,7 @@ $module: ".nav-header";
             background: black;
             position: absolute;
             top: 0;
-            left: -1px;
+            //left: -1px;
 
             @include margin-right(.5);
 
@@ -528,7 +541,7 @@ $module: ".nav-header";
 
                 background: #F8F8F8;
                 border-top: 1px solid #E3E3E3;
-                border-left: 1px solid #E3E3E3;
+                border-left: 1px solid black;
                 border-right: 1px solid #E3E3E3;
                 border-bottom: 1px solid #F8F8F8;
             }
