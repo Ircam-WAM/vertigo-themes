@@ -316,9 +316,21 @@ $module: ".nav-header";
 
       @media screen and (max-width: 780px) {
 
-        margin-top:-10px !important;
+        margin-top:20px !important;
         margin-left:10px !important;
+        margin-bottom: -28px !important;
       }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+        	margin-top: 10px !important;
+        	margin-left: 10px !important;
+        	margin-bottom: -18px !important;
+        }
+      }
+
+
     }
 
     &__item {
@@ -904,7 +916,7 @@ $module: ".nav-header";
 
         @media screen and (-webkit-min-device-pixel-ratio:0) {
 
-          margin-top:-5% !important;
+          margin-top:5% !important;
         }
       }
 
@@ -912,7 +924,8 @@ $module: ".nav-header";
 
         @media screen and (max-width: 780px) {
 
-          margin-top:0% !important;
+          margin-top:25px !important;
+          margin-bottom:-40px !important;
         }
       }
     }
