@@ -344,6 +344,11 @@ $module: ".nav-header";
       &:after {
         background:white !important;
       }
+
+      @media screen and (max-width: 780px) {
+
+          background:transparent !important;
+      }
     }
 
     &__item {
