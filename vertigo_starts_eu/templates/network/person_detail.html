@@ -91,7 +91,7 @@
       </div>
 
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        Biography: {{ person.bio|safe }}
+        Biography: {{ person.bio|richtext_filters|safe }}
       </div>
 
 {% comment %}
