@@ -76,13 +76,13 @@
 {% block main %}
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
     <div class="container">
-        
+
         <div class="row">
             <div class="col-sm-16 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Tech Projects" %}</h1>
             </div>
         </div>
-        
+
         <div class="project__selector">
             {% for project_type in project_list %}
                 <span id="project__selector__id__{{ project_type.title }}" class="project__type__all project__type-{% if forloop.first %}selected{% else %}unselected{% endif %}" onclick='Project.projectSelect("{{ project_type.title }}")'>{{ project_type.title }}</span>
