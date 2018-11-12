@@ -111,6 +111,14 @@ $module: ".home-page";
       height:30px;
       width:120px;
       margin: 0 auto;
+
+      @media screen and (max-width: 780px) {
+
+        display:block !important;
+        margin-left:8.5% !important;
+        margin-top:2% !important;
+        margin-right:0px !important;
+      }
     }
 
     &__private-horizontal-separator {
@@ -342,5 +350,92 @@ $module: ".home-page";
       width:325px;
       height:1015px;
       margin-bottom: 20px;
+    }
+
+    &__responsive-common {
+
+      @media screen and (max-width: 780px) {
+
+        clear:both !important;
+        height:200px !important;
+        margin-left:-2.2% !important;
+        margin-bottom:1% !important;
+      }
+    }
+
+    &__responsive-position-common {
+
+      @media screen and (max-width: 780px) {
+
+        position:relative !important;
+      }
+    }
+
+    &__responsive-width-common {
+
+      @media screen and (max-width: 780px) {
+
+        width:325px !important;
+      }
+    }
+
+    &__responsive-top-margin-common {
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:0px !important;
+      }
+    }
+
+    &__responsive-main-right-common {
+
+      @media screen and (max-width: 780px) {
+
+        clear:both !important;
+        margin-left:-1.4% !important;
+      }
+    }
+
+    &__responsive-margin-right-common {
+
+      @media screen and (max-width: 780px) {
+
+        position:relative !important;
+        margin-bottom:5% !important;
+      }
+    }
+
+    &__responsive-full-width-common {
+
+      @media screen and (max-width: 780px) {
+
+        width:100% !important;
+      }
+    }
+
+    &__public-container-common {
+
+      @media screen and (max-width: 780px) {
+
+        clear:both !important;
+        width:100% !important;
+      }
+    }
+
+    &__public-container-height-common {
+
+      @media screen and (max-width: 780px) {
+
+        height:500px !important;
+      }
+    }
+
+    &__public-common-height-auto {
+
+      @media screen and (max-width: 780px) {
+
+        clear:both !important;
+        height:2200px !important;
+      }
     }
 }
