@@ -1,0 +1,173 @@
+{% load i18n pages_tags mezzanine_tags media_tags organization_tags %}
+
+<script>
+function clickedOptionDiv(link,event) {
+
+    event.preventDefault();
+
+    var leftDiv = document.getElementById("left-item");
+    var rightDiv = document.getElementById("right-item");
+
+    var dashes = document.getElementsByClassName((link.id === 'left-item') ? 'vertical-dash': "horizontal-dash");
+
+    for (var i = 0; i < dashes.length; i++)
+    {
+        dashes[i].classList.remove('home-page__dash-gray');
+        dashes[i].classList.add('home-page__dash-black');
+    }
+
+    dashes = document.getElementsByClassName((link.id === 'left-item') ? 'horizontal-dash': "vertical-dash");
+
+    for (var i = 0; i < dashes.length; i++)
+    {
+        dashes[i].classList.remove('home-page__dash-black');
+        dashes[i].classList.add('home-page__dash-gray');
+    }
+
+    if (link.id === 'left-item')
+    {
+        rightDiv.classList.remove('home-page__private-black-bottom-border');
+        rightDiv.classList.add('home-page__private-gray-bottom-border');
+
+        leftDiv.classList.remove('home-page__private-gray-bottom-border');
+        leftDiv.classList.add('home-page__private-black-bottom-border');
+
+        var rightContentItem = document.getElementById("right-div-content");
+        rightContentItem.classList.remove('home-page__show-content');
+        rightContentItem.classList.add('home-page__hide-content');
+
+        var leftContentItem = document.getElementById("left-div-content");
+        leftContentItem.classList.remove('home-page__hide-content');
+        leftContentItem.classList.add('home-page__show-content');
+    }
+
+    if (link.id === 'right-item')
+    {
+        leftDiv.classList.remove('home-page__private-black-bottom-border');
+        leftDiv.classList.add('home-page__private-gray-bottom-border');
+
+        rightDiv.classList.remove('home-page__private-gray-bottom-border');
+        rightDiv.classList.add('home-page__private-black-bottom-border');
+
+        var rightContentItem = document.getElementById("right-div-content");
+        rightContentItem.classList.remove('home-page__hide-content');
+        rightContentItem.classList.add('home-page__show-content');
+
+        var leftContentItem = document.getElementById("left-div-content");
+        leftContentItem.classList.remove('home-page__show-content');
+        leftContentItem.classList.add('home-page__hide-content');
+    }
+}
+</script>
+
+<div class="home-page__private-main-block">
+  <div class="home-page__private-main-menu">
+    <a id='left-item' class="home-page__private-option-style home-page__private-style-left-option home-page__private-black-bottom-border" onclick="clickedOptionDiv(this,event);" href="#">
+      <div class="vertical-dash home-page__private-big-dash home-page__margin-left-dash home-page__dash-black"></div>
+      <div class="vertical-dash home-page__private-minor-dash home-page__margin-dash home-page__dash-black"></div>
+      <div class="vertical-dash home-page__private-big-dash home-page__margin-dash home-page__dash-black"></div>
+      <div class="vertical-dash home-page__private-minor-dash home-page__margin-dash home-page__dash-black"></div>
+    </a>
+    <a id='right-item' class="home-page__private-horizontal-symbol home-page__private-gray-bottom-border home-page__margin-dash-bottom" onclick="clickedOptionDiv(this,event);" href="#">
+      <div class="horizontal-dash home-page__minor-dash-horizontal home-page__dash-gray"></div>
+      <div class="horizontal-dash home-page__big-dash-horizontal home-page__dash-gray"></div>
+      <div class="horizontal-dash home-page__minor-dash-horizontal home-page__dash-gray"></div>
+      <div class="horizontal-dash home-page__big-dash-horizontal home-page__dash-gray"></div>
+    </a>
+  </div>
+  <div class="home-page__private-horizontal-separator">
+  </div>
+
+  <div id="left-div-content" class="home-page__show-content home-page__private-content-main-left">
+
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right" style="background:red;">
+
+    </div>
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right "style="background:blue;">
+
+    </div>
+    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom" style="background:yellow;">
+
+    </div>
+    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right" style="background:brown;">
+
+    </div>
+    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right" style="background:purple;">
+
+    </div>
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer" style="background:orange;">
+
+    </div>
+
+  </div>
+
+  <div id="right-div-content" class="home-page__hide-content home-page__private-content-main-left-item">
+    
+    <div class="home-page__private-item-right-banner" style="background:red">
+
+    </div>
+
+    <div  class="home-page__private-item-right-main-columns">
+
+      <div class="home-page__private-item-right-column">
+
+        <div class="home-page__private-item-right-item-large" style="background:yellow;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-large" style="background:orange;">
+
+        </div>
+
+      </div>
+
+      <div class="home-page__private-item-right-column">
+
+        <div class="home-page__private-item-right-item-medium" style="background:red;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-large" style="background:blue;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-large" style="background:orange;">
+
+        </div>
+
+      </div>
+
+      <div class="home-page__private-item-right-column">
+
+        <div class="home-page__private-item-right-item-medium" style="background:yellow;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-medium" style="background:red;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-large" style="background:orange;">
+
+        </div>
+
+      </div>
+
+      <div class="home-page__private-item-right-column">
+
+        <div class="home-page__private-item-right-item-large" style="background:blue;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-medium" style="background:red;">
+
+        </div>
+
+        <div class="home-page__private-item-right-item-large" style="background:orange;">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
