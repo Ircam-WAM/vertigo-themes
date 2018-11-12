@@ -119,6 +119,14 @@ $module: ".home-page";
         margin-top:2% !important;
         margin-right:0px !important;
       }
+
+      @media screen and (max-width: 320px) {
+
+        display:block !important;
+        margin-left:7% !important;
+        margin-top:2% !important;
+        margin-right:0px !important;
+      }
     }
 
     &__private-horizontal-separator {
@@ -361,6 +369,15 @@ $module: ".home-page";
         margin-left:-2.2% !important;
         margin-bottom:1% !important;
       }
+
+      @media screen and (max-width: 320px) {
+
+        clear:both !important;
+        height:200px !important;
+        margin-left:-2.4% !important;
+        margin-bottom:1% !important;
+        width:290px !important;
+      }
     }
 
     &__responsive-position-common {
@@ -376,6 +393,11 @@ $module: ".home-page";
       @media screen and (max-width: 780px) {
 
         width:325px !important;
+      }
+
+      @media screen and (max-width: 320px) {
+
+        width:290px !important;
       }
     }
 
