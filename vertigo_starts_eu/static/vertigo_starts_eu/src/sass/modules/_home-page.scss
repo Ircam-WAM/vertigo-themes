@@ -460,4 +460,12 @@ $module: ".home-page";
         height:2200px !important;
       }
     }
+
+    &__left-margin-responsive-right-item {
+
+      @media screen and (max-width: 320px) {
+
+        margin-left:-3% !important;
+      }
+    }
 }
