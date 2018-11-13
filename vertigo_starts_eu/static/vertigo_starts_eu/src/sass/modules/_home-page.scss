@@ -483,6 +483,14 @@ $module: ".home-page";
       background:white;
       width:100%;
       margin-top:20px;
+
+      @media screen and (max-width: 780px) {
+
+        clear:both !important;
+        padding-top:120px !important;
+        background:transparent !important;
+        border-bottom:1px white solid !important;
+      }
     }
 
     &__public-subtext-main-banner {
