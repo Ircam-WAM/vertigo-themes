@@ -468,4 +468,65 @@ $module: ".home-page";
         margin-left:-3% !important;
       }
     }
+
+    &__public-line-divider {
+
+      height:1px;
+      background:white;
+      width:100%;
+      margin-bottom:20px;
+    }
+
+    &__public-line-divider-bottom {
+
+      height:1px;
+      background:white;
+      width:100%;
+      margin-top:20px;
+    }
+
+    &__public-subtext-main-banner {
+
+      font-size:20px;
+      font-family:'Oswald',sans-serif;
+      color:red;
+      text-align:center;
+      width:100%;
+
+      @media screen and (max-width: 780px) {
+
+        font-size:15px !important;
+      }
+    }
+
+    &__public-subtext-bold {
+
+       font-weight: bold;
+    }
+
+    &__public-main-container-text-banner {
+
+      width:100%;
+      height:140px;
+      background:transparent;
+      margin-top:20px;
+      margin-bottom:20px;
+    }
+
+    &__public-main-text-banner {
+
+      font-size:45px;
+      font-family:'Oswald',sans-serif;
+      color:white;
+      text-transform:uppecase;
+      text-align:center;
+      width:100%;
+      margin-bottom:30px;
+
+      @media screen and (max-width: 780px) {
+
+        font-size:23px !important;
+        margin-top:-60px !important;
+      }
+    }
 }
