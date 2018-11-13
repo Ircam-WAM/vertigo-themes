@@ -262,8 +262,12 @@ $module: ".home-page";
       margin: 0 auto;
       transform: translateX(3.5%);
 
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 1024px) {
         transform: translateX(0%);
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+        margin-top:2% !important;
       }
     }
 
@@ -546,11 +550,21 @@ $module: ".home-page";
 
     &__responsive-width-special {
 
-      @media screen and (max-width: 780px) {
+
+
+      @media screen and (max-width: 767px) {
 
         clear:both !important;
         height:200px !important;
         margin-left:1% !important;
+        margin-right:1% !important;
+        width:93vw !important;
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+        clear:both !important;
+        height:200px !important;
+        margin-left:2% !important;
         margin-right:1% !important;
         width:93vw !important;
       }
