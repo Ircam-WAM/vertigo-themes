@@ -261,6 +261,10 @@ $module: ".home-page";
       position:relative;
       margin: 0 auto;
       transform: translateX(3.5%);
+
+      @media screen and (max-width: 780px) {
+        transform: translateX(0%);
+      }
     }
 
     &__private-content-main-left-item {
@@ -336,6 +340,8 @@ $module: ".home-page";
       height:auto;
       margin:50px auto;
       transform:translateX(3.2%);
+
+
     }
 
     &__private-item-right-column {
@@ -536,5 +542,18 @@ $module: ".home-page";
         font-size:23px !important;
         margin-top:-60px !important;
       }
+    }
+
+    &__responsive-width-special {
+
+      @media screen and (max-width: 780px) {
+
+        clear:both !important;
+        height:200px !important;
+        margin-left:1% !important;
+        margin-right:1% !important;
+        width:93vw !important;
+      }
+
     }
 }

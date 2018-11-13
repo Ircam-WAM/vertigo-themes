@@ -1,8 +1,10 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags staticfiles %}
-
+{% comment %}
 <script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
+{% endcomment %}
 
 <div class="home-page__private-main-block">
+{% comment %}
   <div class="home-page__private-main-menu">
     <a id='left-item' class="home-page__private-option-style home-page__private-style-left-option home-page__private-black-bottom-border" onclick="clickedOptionDiv(this,event);" href="#">
       <div class="vertical-dash home-page__private-big-dash home-page__margin-left-dash home-page__dash-black"></div>
@@ -10,34 +12,37 @@
       <div class="vertical-dash home-page__private-big-dash home-page__margin-dash home-page__dash-black"></div>
       <div class="vertical-dash home-page__private-minor-dash home-page__margin-dash home-page__dash-black"></div>
     </a>
+
     <a id='right-item' class="home-page__private-horizontal-symbol home-page__private-gray-bottom-border home-page__margin-dash-bottom" onclick="clickedOptionDiv(this,event);" href="#">
       <div class="horizontal-dash home-page__minor-dash-horizontal home-page__dash-gray"></div>
       <div class="horizontal-dash home-page__big-dash-horizontal home-page__dash-gray"></div>
       <div class="horizontal-dash home-page__minor-dash-horizontal home-page__dash-gray"></div>
       <div class="horizontal-dash home-page__big-dash-horizontal home-page__dash-gray"></div>
     </a>
+
   </div>
+
   <div class="home-page__private-horizontal-separator">
   </div>
-
+{% endcomment %}
   <div id="left-div-content" class="home-page__show-content home-page__private-content-main-left">
 
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common" style="background:red;">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-special" style="background:red;">
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common" style="background:blue;">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special" style="background:blue;">
 
     </div>
-    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common" style="background:yellow;">
+    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__responsive-width-special" style="background:yellow;">
 
     </div>
-    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common" style="background:brown;">
+    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special" style="background:brown;">
 
     </div>
-    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common" style="background:purple;">
+    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__responsive-width-special" style="background:purple;">
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common" style="background:orange;">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__responsive-width-special" style="background:orange;">
 
     </div>
 
@@ -45,7 +50,7 @@
 
   <div id="right-div-content" class="home-page__hide-content home-page__private-content-main-left-item">
 
-    <div class="home-page__private-item-right-banner home-page__responsive-common home-page__responsive-full-width-common" style="background:red">
+    <div class="home-page__private-item-right-banner home-page__responsive-common home-page__responsive-full-width-common " style="background:red">
 
     </div>
 
