@@ -28,31 +28,36 @@ window.onload = selectCurrentTab;
       <div class="page__item_content">
           <div id="info-profile" class="page__info-block">
             <div class="page__center-bio section-title section-title--big" style="color:black">
+
               {{ request.user.first_name|upper }}&nbsp;{{ request.user.last_name|upper }}
             </div>
 
-            <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-              {% if person.address %}Address: {{ person.address }}<br/><br/>{% endif %}
-              Email: {{ person.email }}<br/><br/>
-              Telephone: {{ person.telephone }}<br/><br/>
-            </div>
+            {% if request.user.address %}
+              <div class="page__center-bio" style="color:white">
+                {{ request.user.address }}<br/><br/>
+                {{ request.user.email }}<br/><br/>
+                ({{ request.user.telephone }})
+              </div>
 
-            <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-              City: {{ person.city }}<br/><br/>
-              Country: {{ person.country }}<br/><br/>
-            </div>
+              {% if request.user.city and request.user.country %}
+              <div class="page__center-bio" style="color:white">
+                {{ request.user.city }}, {{ request.user.country }}
+              </div>
+              {% endif %}
 
-            <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-              URL: <a href="{{ person.short_url }}" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.short_url }}</a><br/><br/>
-            </div>
-            <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-              Site: <a href="{{ person.site }}" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.site }}</a><br/><br/>
-            </div>
-
-            <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-              Biography: {{ person.bio|richtext_filters|safe }}
-            </div>
-          </div>
+              {% if request.user.short_url %}
+              <div class="page__center-bio">
+                <a href="{{ request.short_url }}" style="color:white">{{ request.user.short_url }}</a>
+              </div>
+              {% endif %}
+            {% else %}
+              {% if request.user.site %}
+                <div class="page__center-bio">
+                  <a href="{{ request.user.site }}" style="color:white">{{ request.user.site }}</a>
+                </div>
+              {% endif %}
+            {% endif %}
+         </div>
       </div>
   </div>
 </div>
