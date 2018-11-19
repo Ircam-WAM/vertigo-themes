@@ -574,4 +574,38 @@ $module: ".home-page";
         width:93vw !important;
       }
     }
+
+
+    &__responsive-form-application {
+
+      @media screen and (max-width: 780px) {
+
+        height:auto;
+        margin-top:30px;
+      }
+    }
+
+    &__responsive-index-application-home {
+
+      @media screen and (max-width: 780px) {
+
+        z-index:1;
+      }
+    }
+
+    &__responsive-footer-application-home {
+
+      @media screen and (max-width: 780px) {
+
+        position:relative !important;
+      }
+    }
+
+    &__resize-responsive-button {
+
+      @media screen and (max-width: 780px) {
+
+        font-size:13px !important;
+      }
+    }
 }
