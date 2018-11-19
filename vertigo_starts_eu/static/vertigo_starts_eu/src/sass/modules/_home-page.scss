@@ -580,8 +580,14 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
 
-        height:auto;
-        margin-top:30px;
+        height:auto !important;
+        margin-top:30px !important;
+      }
+
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+
+        margin-top:90px !important;
+        height:auto !important;
       }
     }
 
@@ -589,7 +595,7 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
 
-        z-index:1;
+        z-index:1 !important;
       }
     }
 
