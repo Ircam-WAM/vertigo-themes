@@ -1,5 +1,5 @@
-{% extends "starts_eu/pages/page.html" %}
-{% load i18n future mezzanine_tags event_tags keyword_tags disqus_tags %}
+{% extends "pages/page.html" %}
+{% load i18n mezzanine_tags event_tags keyword_tags disqus_tags %}
 
 {% block meta_title %}{{ location.title }}{% if location.room %} - {{ location.room }}{% endif %}{% endblock %}
 

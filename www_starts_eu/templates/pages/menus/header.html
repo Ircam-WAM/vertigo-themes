@@ -6,21 +6,35 @@
     {% for page in page_branch %}
         {% if page.is_primary %}
             {% if forloop.first %}
-                <ul class="nav-header" role="navigation">
-                    <li class="nav-header__item menu-btn">
+                <ul class="nav-header" role="navigation" style="padding-right:10%">
+                    <li class="nav-header__item menu-btn  nav-header__item-responsive">
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big">
-                        <a href="{% url "home" %}" title="{% trans 'Home' %}">
-                          {% with host_organization.images|get_type:"logo_header" as images %}
-                            {% if images %}
-                             {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" width="242" height="70" />
-                             {% endwith %}
-                            {% endif %}
-                          {% endwith %}
-                        </a>
+                    <li class="nav-header__item nav-header__item--image-big" style="float:left">
+
+                        <div class="nav-header__non-responsive-image" >
+                          <a href="{% url "home" %}" title="{% trans 'Home' %}">
+                            {% with host_organization.images|get_type:"logo_header" as images %}
+                              {% if images %}
+                               {% with images|first as img %}
+                                <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" />
+                               {% endwith %}
+                              {% endif %}
+                            {% endwith %}
+                          </a>
+                        </div>
+
+                        <div class="nav-header__responsive-image nav-header__image-logo-responsive nav-header__responsive-image">
+                            {% with host_organization.images|get_type:"logo_header" as images %}
+                              {% if images %}
+                               {% with images|first as img %}
+                                {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="menu-btn-responsive nav-header__image-size-responsive-logo" />#}
+                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo" /></a>
+                               {% endwith %}
+                              {% endif %}
+                            {% endwith %}
+                        </div>
                     </li>
             {% endif %}
         {% endif %}
@@ -32,8 +46,8 @@
                             <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
                         </li>
                     {% else %}
-                        <li class="nav-header__item">
-                            <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}">{{ page.title }}</a>
+                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line{% endif %}">
+                            <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %}{% endif %} title="{{ page.title }}">{{ page.title }}</a>
                         </li>
                     {% endif %}
                 {% endwith %}
@@ -41,7 +55,7 @@
                 <li class="nav-header__item">
                     <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
                     {% if page.has_children_in_menu %}
-                        {% page_menu page "pages/menus/header_tree_primary.html" %}
+                        {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
                     {% endif %}
                 </li>
             {% endif %}
@@ -49,9 +63,6 @@
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                <li class="nav-header__item nav-header__item--right nav-header__item--separator">
-                    {% include "includes/languages.html" %}
-                </li>
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
                     <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>

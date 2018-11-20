@@ -1,0 +1,98 @@
+{% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
+
+<div class="home-page__public-main-container-text-banner">
+  <div class="home-page__public-main-text-banner">
+    ART X TECHNOLOGY X INNOVATION
+  </div>
+
+  <div class="home-page__public-subtext-main-banner home-page__public-subtext-bold">
+    VERTIGO is a project supported by the H2020 STARTS program of the European Commission.
+  </div>
+  <div class="home-page__public-subtext-main-banner">
+    Its purpose is to organise artistic collaborations with R&D projects that target innovation.
+  </div>
+</div>
+
+<div class="home-page__public-line-divider">
+</div>
+
+<div class="home-page__main-item home-page__public-common-height-auto">
+
+  <div class="home-page__first-big-block home-page__public-container-common">
+    <div class="home-page__inner-big-block">
+      <div class="home-page__full-frame" style="background:orange;">
+
+        HERE A SINGLE NEWS
+        <div class="article-box__card-subtag-event">
+          <p class="article-box__card-subtag-event-content">{{ object.topics.all|first }}</p>
+        </div>
+
+        {{ object.description|richtext_filters|safe|truncatechars_html:200 }}
+
+      </div>
+    </div>
+    <div class="home-page__inner-blog-block-right">
+      <div class="home-page__full-frame" style="background:red;">
+
+        HERE EVENT
+        {% if object.departments.first %}
+            {% with object.departments.first as department %}
+                {{ department.department.name }}
+            {% endwith %}
+        {% endif %}
+        {% if object.category %}
+            {{ object.category|truncatechars:15 }}
+        {% endif %}
+
+        {{ object.description|richtext_filters|safe|truncatechars_html:200 }}
+
+      </div>
+    </div>
+  </div>
+  <div class="home-page__second-big-block home-page__public-container-common">
+    <div class="home-page__inner-frame-second">
+      <div class="home-page__inner-block-second home-page__public-container-common">
+        <div class="home-page__full-frame home-page__public-container-common" style="background:yellow;">
+
+          HERE ARTIST IMAGE
+          <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
+          <div class="residency-detail__title">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+          {{ object.artist.bio|safe }}
+
+        </div>
+      </div>
+      <div class="home-page__inner-block-item home-page__public-container-common">
+        <div class="home-page__full-frame" style="background:orange;">
+
+          HERE BLOG POST
+
+        </div>
+      </div>
+    </div>
+    <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
+      <div class="home-page__full-frame" style="background:green;">
+
+        HERE PROJECT DESCRIPTION AND IMAGE
+        {% with object.images.all|get_type:'slider' as images %}
+            {% if images %}
+            <div class="residency-detail__header-image" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
+            {% else %}
+            <div class="residency-detail__header-image">
+            {% endif %}
+                <span>
+                    {{ object.project.title }} <br><br><br>
+                    <br><br><br>
+                    {{ object.artist.first_name }} {{ object.artist.last_name }}
+                </span>
+            </div>
+        {% endwith %}
+
+        {{ object.description }}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="home-page__public-line-divider-bottom">
+</div>

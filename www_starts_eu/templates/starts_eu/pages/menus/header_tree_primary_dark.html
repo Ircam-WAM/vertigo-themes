@@ -1,0 +1,61 @@
+{% load i18n pages_tags mezzanine_tags media_tags organization_tags staticfiles %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+{% spaceless %}
+
+{% if page_branch_in_menu %}
+<script>
+
+function highlight_item_option(event,object) {
+
+    if (event.type == 'mouseover') {
+
+      object.classList.remove("nav-header__single-item-subheader-menu-link");
+      object.classList.add("nav-header__single-item-subheader-menu-link-highlight");
+
+      object.parentNode.classList.remove("nav-header__single-item-subheader-menu");
+      object.parentNode.classList.add("nav-header__single-item-subheader-menu-highlight");
+
+    } else if (event.type =='mouseout') {
+
+      object.classList.remove("nav-header__single-item-subheader-menu-link-highlight");
+      object.classList.add("nav-header__single-item-subheader-menu-link");
+
+      object.parentNode.classList.remove("nav-header__single-item-subheader-menu-highlight");
+      object.parentNode.classList.add("nav-header__single-item-subheader-menu");
+    }
+}
+
+</script>
+   <div id="submenu-dropdown" class="nav-header__submenu nav-header__main-submenu-items">
+     <!--
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    {{ page.departmentpage.description|richtext_filters|safe|truncatechars:415 }}
+                </p>
+            </div>
+        </div>
+      -->
+        <div class="nav-header__item-subheader-menu">
+            {% for page in page_branch %}
+                {% if page.in_menu %}
+                    <ul class="nav-header__list_items-subheader-menu" ><!--class="unstyled-list col-sm-3 col-md-3">-->
+                      <li id="item-option-element-{{forloop.counter0}}"  class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %} nav-header__single-item-subheader-menu" style="margin-bottom:0px;" >
+                          <div class="nav-header__item-separator-user-menu"></div>
+                          <a id="item-option-element-link-{{forloop.counter0}}" class="nav-header__single-item-subheader-menu" onmouseout="highlight_item_option(event,this)" onmouseover="highlight_item_option(event,this)" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
+                      </li>
+                    </ul>
+                {% endif %}
+                {% comment %}
+                {% if page.has_children_in_menu %}
+                    {% page_menu page "pages/menus/header_tree_secondary.html" %}
+                {% endif %}
+                {% endcomment %}
+
+
+            {% endfor %}
+        </div>
+      </div>
+{% endif %}
+{% endspaceless %}

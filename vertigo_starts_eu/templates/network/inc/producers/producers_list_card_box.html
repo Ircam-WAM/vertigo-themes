@@ -1,0 +1,33 @@
+{% load organization_tags mezzanine_tags %}
+
+<div class="producers-box producers-box__person producers-box__margin-right" >
+
+    <h3 class="producers-box__title producers-box__list-items">{{ producer }}</h3>
+
+    {% with producer.images.all|get_type:'card' as card_images %}
+        {% if card_images %}
+
+            <div class="producers-box__single-header" style="float:left;display:block;margin-right:10px;width:25%">
+              <div style="background: linear-gradient(180deg, transparent, transparent 50%, rgba(0,0,0,.8));padding-bottom:10%;">
+                <figure>
+                    <img class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 427 500 top=0.5 %}" alt=""/>
+                </figure>
+              </div>
+                {% if card_images.first.credits|length > 0 %}
+                  <p class="producers-box__image-credit">Credits: {{ card_images.first.credits }}</p>
+                {% endif %}
+            </div>
+
+        {% endif %}
+    {% endwith %}
+
+    <div class="producers-box__content tal" style="float:none">
+
+        <p><a href="{{ producer.url }}">{{ producer.url }}</a></p>
+
+        {% if producer.producer_data.first.producer_description %}
+            <div class="producers-box__desc">{{ producer.producer_data.first.producer_description|richtext_filters|safe }}</div>
+        {% endif %}
+
+    </div>
+</div>

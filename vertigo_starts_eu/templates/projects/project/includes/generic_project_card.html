@@ -2,10 +2,10 @@
 
 {% block extra_head %}
 
-    {% compress css %}
-    <link rel="stylesheet" href="{% static "css/list_items.css" %}">
-    {% endcompress %}
+{% endblock %}
 
+
+{% block apply_button %}
 {% endblock %}
 
 <a class="article-box list_article_box" href="{% block url %}{% endblock %}" {% block target %}{% endblock %} title="{% block metatitle %}{% endblock %}">

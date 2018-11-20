@@ -1,15 +1,64 @@
-{% extends "vertigo_starts_eu/accounts/account_form_operations.html" %}
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
 {% load i18n mezzanine_tags %}
+
 {% block page_title %}
-	<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>
+	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
 {% endblock %}
 
+
 {% block page_content %}
-<div style="padding-top:100px;background: linear-gradient(rgba(0, 0, 0, 1) 2%, rgba(0, 15, 36, 1) 2%, rgba(80,227,194, 1) 40%);">
-{#{ super.}}#}
-{{ block.super }}
-<div style="margin-top:100px;text-align:center;margin-right:15px">
-	<input class="btn btn-primary btn-lg" type="submit" value="Logout" onclick="window.location='/accounts/logout';" style="background:#1D1D1B;color:white;width:50%;padding-top:2px;padding-bottom:2px;font-size:20px;font-family:'Oswald'">
-</div>
+
+<script>
+
+function selectCurrentTab() {
+
+  document.getElementById("select-profile").className = "page__option-selected";
+}
+
+window.onload = selectCurrentTab;
+
+</script>
+
+<div class="container page__margin-top">
+  <div class="page__item_info">
+
+
+  {{ block.super }}
+
+      <div class="page__item_content">
+          <div id="info-profile" class="page__info-block">
+            <div class="page__center-bio section-title section-title--big" style="color:black">
+
+              {{ request.user.first_name|upper }}&nbsp;{{ request.user.last_name|upper }}
+            </div>
+
+            {% if request.user.address %}
+              <div class="page__center-bio" style="color:white">
+                {{ request.user.address }}<br/><br/>
+                {{ request.user.email }}<br/><br/>
+                ({{ request.user.telephone }})
+              </div>
+
+              {% if request.user.city and request.user.country %}
+              <div class="page__center-bio" style="color:white">
+                {{ request.user.city }}, {{ request.user.country }}
+              </div>
+              {% endif %}
+
+              {% if request.user.short_url %}
+              <div class="page__center-bio">
+                <a href="{{ request.short_url }}" style="color:white">{{ request.user.short_url }}</a>
+              </div>
+              {% endif %}
+            {% else %}
+              {% if request.user.site %}
+                <div class="page__center-bio">
+                  <a href="{{ request.user.site }}" style="color:white">{{ request.user.site }}</a>
+                </div>
+              {% endif %}
+            {% endif %}
+         </div>
+      </div>
+  </div>
 </div>
 {% endblock %}

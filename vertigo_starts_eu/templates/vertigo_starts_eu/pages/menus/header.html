@@ -1,78 +1,84 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
+<script>
+
+    function show_user_menu(link, event) {
+
+      document.getElementById("item_user_menu").style.display = "block";
+      document.getElementById("item_user_menu").style.zIndex = 100;
+    }
+
+    function hide_user_menu(link, event) {
+
+      document.getElementById("item_user_menu").style.display = "none";
+      document.getElementById("item_user_menu").style.zIndex = 100;
+      restore_hyperlinks_menu();
+    }
+
+    function select_user_menu_option(linkItem, event) {
+
+      var selected_item = linkItem.id;
+      var restored_item = (selected_item == 'option-menu-1') ? 'option-menu-0' : 'option-menu-1';
+
+      document.getElementById(restored_item).style.background = "#000f24";
+      document.getElementById(restored_item).style.color = "#ffffff";
+
+      document.getElementById(selected_item).style.background = "#ffffff";
+      document.getElementById(selected_item).style.color = "#000f24";
+    }
+
+    function restore_hyperlinks_menu() {
+
+      document.getElementById("option-menu-link-0").style.background = "#000f24";
+      document.getElementById("option-menu-link-0").style.color = "#ffffff";
+
+      document.getElementById("option-menu-link-1").style.background = "#000f24";
+      document.getElementById("option-menu-link-1").style.color = "#ffffff";
+    }
+</script>
+
 {% spaceless %}
 {% if page_branch_in_menu %}
-    {% for page in page_branch %}
-        {% if page.is_primary %}
-            {% if forloop.first %}
-                <ul class="nav-header" role="navigation">
-                    <li class="nav-header__item menu-btn">
-                        <span class="first"></span>
-                        <span class="second"></span>
-                    </li>
-                    <li class="nav-header__item nav-header__item--image-big">
-                        <a href="{% url "home" %}" title="{% trans 'Home' %}">
-                            {% with host_organization.images|get_type:"logo_header" as images %}
-                                {% if images %}
-                                    {% with images|first as img %}
-                                        <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}"/>
-                                    {% endwith %}
-                                {% endif %}
-                            {% endwith %}
-                        </a>
-                    </li>
-            {% endif %}
-        {% endif %}
-        {% if page.in_menu %}
-            {% if page.content_model == "link" %}
-                {% with page.link.link_images.all|first as link_image %}
-                    {% if link_image %}
-                        <li class="nav-header__item nav-header__item--image">
-                            <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
-                        </li>
-                    {% else %}
-                        <li class="nav-header__item">
-                            <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}">{{ page.title }}</a>
-                        </li>
-                    {% endif %}
-                {% endwith %}
-            {% else %}
-                <li class="nav-header__item">
-                    <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
-                    {% if page.has_children_in_menu %}
-                        {% page_menu page "pages/menus/header_tree_primary.html" %}
-                    {% endif %}
-                </li>
-            {% endif %}
-        {% endif %}
-        {% if page.is_primary %}
-            {% if forloop.last %}
 
-                {% comment %}
-                {<li class="nav-header__item nav-header__item--right nav-header__item--separator">
-                    {% include "includes/languages.html" %}
-                </li>
-                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
-                    <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
-                </li>
-                {% endcomment %}
-                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
-                    {% if request.user.is_authenticated %}
-                        <a href="/accounts/update/">
-                            {{ request.user }} &nbsp;
-                            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-                        </a>
-                    {% else %}
-                        <a href="/accounts/login/">
-                            Sign In / Sign Up &nbsp;
-                            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-                        </a>
-                    {% endif %}
-                </li>
-            </ul>
-            {% endif %}
+<div class="nav-header__content-header nav-header__switch-display">
+
+    {% page_menu "pages/menus/action.html" %}
+
+    <div class="nav-header__item nav-header__item--right nav-header__item--no-separator nav-header__dropdown-menu">
+        {% if request.user.is_authenticated %}
+            <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseout="hide_user_menu(this,event)">
+              <a href="/accounts/update/" class="nav-header__top-menu-user">
+                  {{ request.user }}&nbsp;
+                  <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
+              </a>
+            </div>
+            <div id="item_user_menu" class="nav-header__item-user-menu">
+              <div class="row" style="margin:0px;">
+                <ul class="nav-header__items-menu-user-dropdown" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
+                  <li id="option-menu-0" class="nav-header__item-user">
+                    <div class="nav-header__item-separator"></div>
+                    <a id="option-menu-link-0" href="{% url 'organization-network-profile' %}" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
+                  </li>
+                  <li id="option-menu-1" class="nav-header__item-user">
+                    <div class="nav-header__item-separator"></div>
+                    <a id="option-menu-link-1" href="/accounts/logout/" class=" nav-header__link-user-menu" title="Logout" onmouseover="select_user_menu_option(this,event)">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        {% else %}
+            <a href="/accounts/login/" style="color:white">Sign In</a>
+            <i style="color:white">&nbsp;/&nbsp;</i>
+            <a href="/accounts/signup/" style="color:white">
+                Sign Up&nbsp;
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            </a>
         {% endif %}
-    {% endfor %}
+    </div>
+</div>
+
+{% page_menu "pages/menus/header.html" %}
+
 {% endif %}
 {% endspaceless %}

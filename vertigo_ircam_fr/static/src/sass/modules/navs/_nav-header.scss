@@ -22,6 +22,7 @@ $module: ".nav-header";
 
 #{$module} {
 
+    list-style: none;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -52,7 +53,6 @@ $module: ".nav-header";
     .translated {
          width: 196px;
     }
-
 
     &__item {
 
@@ -403,7 +403,7 @@ $module: ".nav-header";
 
         &:hover {
 
-            >a {
+            a {
                 border-bottom: 1px solid $color-main;
             }
 

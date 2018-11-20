@@ -1,0 +1,8 @@
+<div class="ict-project-style__block">
+    <div class="ict-project-style__field {% if left %}ict-project-style__field--left{% endif %} {% if field.label|lower == 'keywords' %}ict-project-style__field--keywords{% endif %}">
+        <p class="ict-project-style__title-field {% if field.errors %}ict-project-style__error{% endif %}">{{ field.label }}</p>
+        <i class="fa {% if private %}fa-lock{% else %}fa-globe{% endif %} ict-project-style__icon-field {% if field.errors %}ict-project-style__error{% endif %}" aria-hidden="true"></i>
+        <p class="ict-project-style__description-field {% if field.label|lower == 'letter of commitment by the project coordinator' %}link-item-form{% endif %} {% if field.errors %}ict-project-style__error{% endif %}">{{ field.help_text }}</p>
+        {{ field }}
+    </div>
+</div>

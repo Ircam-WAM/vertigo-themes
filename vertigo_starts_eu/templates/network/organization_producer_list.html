@@ -4,10 +4,6 @@
 
 {% block extra_head %}
 
-    {% compress css %}
-    <link rel="stylesheet" href="{% static "css/list_items.css" %}">
-    {% endcompress %}
-
     <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
     <script>
         $(function(){
@@ -72,8 +68,8 @@
 
 {% block page_title %}
 
-    <h1 class="dotted">
-        {% trans "Producer List" %}
+    <h1 class="vertigopage__section-title section-title--uppercase section-title--main vertigopage__margin-collapse event-line-box__underline-text-green">
+        {% trans "Producers" %}
     </h1>
 
 {% endblock %}
@@ -81,19 +77,21 @@
 
 {% block page_content %}
 
-    <div class="row">
+    <div class="row" style="margin-top:35px">
+
         {% for producer in object_list %}
-            <div class="list_header">
-                {{ producer.name }}
+
+            <div class="col-md-16">
+                {# Card included for each producer #}
+                {% include "network/inc/producers/producers_list_card_box.html" %}
             </div>
-            <div class="list_content">
-                <p><b>{% trans "Full details" %}: </b><a href="{% url 'organization-producer-detail' producer.slug %}">{{ producer.name }}</a></p>
-                <p><b>{% trans "Producer description" %}: </b>{{ producer.producer_data.all.0.producer_description }}<p>
-            </div>
+
         {% empty %}
+
             <div class="chapo">
                 <p><b>{% trans "No producers yet" %}.</b></p>
             </div>
+
         {% endfor %}
     </div>
 

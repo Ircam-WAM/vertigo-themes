@@ -1,0 +1,62 @@
+// -*- coding: utf-8 -*-
+
+// Copyright (c) 2016-2017 Ircam
+// Copyright (c) 2016-2017 Jérémy Fabre
+
+// This file is part of mezzanine-organization.
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+
+// You should have received a copy of the GNU Affero General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$module: ".project";
+
+#{$module} {
+
+    &__selector {
+        width: 100%;
+        margin: auto;
+        margin-bottom: 3em;
+        text-align: center;
+    }
+
+    &__content {
+    }
+
+    &__list-block {
+        display: block;
+    }
+
+    &__list-block-hidden {
+        display: none;
+    }
+
+    &__type__all {
+        margin: 1em;
+        font-size: larger;
+        font-weight: bold;
+        cursor: pointer;
+        font-family:"Oswald",sans-serif !important;
+    }
+
+    &__type-selected {
+      color: $color-main;
+      padding-bottom: 0.6em;
+      border-bottom: 0.2em solid $color-main;
+    }
+
+    &__type-unselected {
+      color: darken($color-main, 25%);
+    }
+
+
+}

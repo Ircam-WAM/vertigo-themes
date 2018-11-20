@@ -35,9 +35,10 @@ $module: ".nav-actions";
 
         @include margin(0 .5);
 
+
         &:nth-child(1), &:nth-child(2) {
 
-            color: $color-main;
+            color: white;//$color-main;
 
         }
 
@@ -49,6 +50,7 @@ $module: ".nav-actions";
             color: white;
 
         }
+
 
     }
 
@@ -111,6 +113,25 @@ $module: ".nav-actions";
 
         }
 
+    }
+
+    &__transform-word {
+
+      text-transform: lowercase;
+    }
+
+    &__separator_responsive_menu {
+      width:auto;
+      height:1px;
+      background:black;
+      margin-bottom:5%;
+    }
+
+    @media screen and (max-width: 780px) {
+
+      &__transform-word {
+        text-transform: uppercase;
+      }
     }
 
 }

@@ -1,0 +1,16 @@
+
+{% load i18n pages_tags %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+
+<div style="background:#011020;color:white;width:100%;text-align:center">
+
+  {% for page in page_branch %}
+      {% if page.content_model == "link" %}
+          <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}" style="color:black">
+              <a class="nav-actions__item-link" style="color:white" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+          </li>
+      {% endif %}
+  {% endfor %}
+
+</div>

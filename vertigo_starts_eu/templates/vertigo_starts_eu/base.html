@@ -33,15 +33,22 @@
     <link rel="stylesheet" href="{% static "vertigo_starts_eu/css/index.min.css" %}">
     {% endcompress %}
 
+    {% block morescript %}{% endblock %}
+    {% block morestyle %}{% endblock %}
     {% block extra_head %}{% endblock %}
+    {% block extrascript %}{% endblock %}
+    {% block extrastyle %}{% endblock %}
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{% endblock %}">
     {% spaceless %}
 
     {% block sidebar %}
-        <div class="pushy pushy-left">
+        <div id="first-menu" class="pushy pushy-left">
             {% include "includes/sidebar.html" %}
+        </div>
+        <div id="second-menu" class="pushy pushy-left">
+            {% include "includes/sidebar_upper_black.html" %}
         </div>
     {% endblock %}
 
@@ -53,20 +60,9 @@
     {% block header %}
 
         <div class="header push">
-
-            <!-- <div class="header__pre">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10 col-md-push-1 tac">
-                            {% page_menu "pages/menus/action.html" %}
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="container">
+            <div class="container-full" style="max-width:100%;padding-left:0px;padding-right:0px">
                 <div class="row header__nav">
-                    <div class="col-md-16 tal">
+                    <div class="col-md-16 tal nav-header__space-responsive">
                         <div id="navHeader">
                             {% page_menu "vertigo_starts_eu/pages/menus/header.html" %}
                         </div>
@@ -77,10 +73,11 @@
     {% endblock %}
 
     {% block container %}
-        <div id="container">
+        <div id="container" class="container-vertigo">
             <main class="main" role="main">
                 {% block content_header %}{% endblock %}
                 {% block main %}{% endblock %}
+                {% block content_section %}{% endblock %}
                 {% block content_footer %}{% endblock %}
             </main>
 
@@ -113,6 +110,10 @@
     {% endblock %}
 
     {% search_form %}
+
+    {% block jquery_footer %}
+        <script src="{% static "vendors/jquery/jquery.js" %}"></script>
+    {% endblock %}
 
     {% block footer_scripts %}
         {% include "includes/footer_scripts.html" %}

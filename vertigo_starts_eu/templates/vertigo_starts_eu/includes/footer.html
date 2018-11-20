@@ -1,9 +1,9 @@
 {% load i18n pages_tags mezzanine_tags staticfiles keyword_tags event_tags organization_tags %}
 
 <div class="footer__content">
-    <div class="container">
+    <div class="container" style="width:100%;margin-left:0px;margin-right:0px;max-width:none;text-align:center">
 
-        <div class="row">
+        <div class="row" style="margin-left:0px;margin-right:0px">
             {% comment %}
             <div class="col-xxs-16 col-sm-push-1 col-sm-4 tac">
                 <a href="{% url "home" %}" title="{% trans 'Home' %}">
@@ -75,8 +75,10 @@
         {% comment %}
             Additional menu
         {% endcomment %}
-        <div class="row">
-            <div class="col-xxs-16 col-sm-12 col-sm-push-1 tac">
+        {#<div class="row">#}
+        <div style="width:100%;text-align:center">
+            {#<div class="col-xxs-16 col-sm-12 col-sm-push-1 tac">#}
+            <div>
                 {% page_menu "pages/menus/footer_horizontal.html" %}
             </div>
         </div>
@@ -84,8 +86,10 @@
         {% comment %}
             Copyright
         {% endcomment %}
-        <div class="row">
-            <div class="col-xxs-16 col-sm-14 col-sm-push-1 tac fcb mt2">
+        {#<div class="row">#}
+        <div>
+            {#<div class="col-xxs-16 col-sm-14 col-sm-push-1 tac fcb mt2">#}
+            <div class="tac mt2" style="padding-bottom:5%">
                 Copyright &copy; {% current_year %} {{ host_organization.name }}. {% trans "All rights reserved" %}.
             </div>
         </div>

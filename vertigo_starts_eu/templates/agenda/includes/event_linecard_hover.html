@@ -1,4 +1,4 @@
-{% load i18n future mezzanine_tags event_tags keyword_tags disqus_tags organization_tags %}
+{% load i18n mezzanine_tags event_tags keyword_tags disqus_tags organization_tags %}
 
 <div class="row">
 
@@ -49,13 +49,19 @@
                 {% endif %}
 
                 {% keywords_for event as tags %}
-
                 {% comment %}
                 <div class="event-line-box__category">
                     {% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}
                 </div>
                 {% endcomment %}
-
+                {% if event.departments.all %}
+                <div class="event-line-box__tag-event">
+                  <p class="event-line-box__tag-event-content">{{ event.departments.all.0.department.name }}</p>
+                </div>
+                <div class="event-line-box__subtag-event">
+                  <p class="event-line-box__subtag-event-content">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>
+                </div>
+                {% endif %}
                 <div class="event-line-box__body">
 
                     <div class="event-line-box__title-list event-line-box__white-color">

@@ -1,0 +1,32 @@
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block page_title %}
+	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
+{% endblock %}
+
+{% block page_content %}
+<script>
+
+function selectCurrentTab() {
+
+    document.getElementById("select-settings").className = "page__option-selected";
+    document.getElementById("form-settings").style = "display:block";
+}
+
+window.onload = selectCurrentTab;
+
+</script>
+
+<div class="container page__margin-top">
+  <div class="page__item_info">
+
+              {{ block.super }}
+<!--
+              <div style="margin-top:5%;text-align:center;margin-right:15px">
+                <input class="btn btn-primary btn-lg page__button-logout" type="submit" value="Logout" onclick="window.location='/accounts/logout';">
+              </div>
+            -->
+</div>
+</div>
+{% endblock %}

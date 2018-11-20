@@ -3,10 +3,6 @@
 
 {% block extra_head %}
 
-    {% compress css %}
-    <link rel="stylesheet" href="{% static "css/list_items.css" %}">
-    {% endcompress %}
-
 {% endblock %}
 
 {% block metatitle %}
@@ -17,17 +13,35 @@
     {{ object.title }}
 {% endblock %}
 
+{% block tags %}
+    {{ object.call.title }}
+{% endblock%}
+
+{% block apply_button %}
+    {% if object.validation_status == 3 and not object.call.is_closed %}
+        <a href="{% url 'web:show_application_form' object.call.slug %}?show_draft&project={{ object.slug }}">
+            <div class="article-box__apply_button">
+                <span>APPLY!</span>
+            </div>
+        </a>
+    {% endif %}
+{% endblock %}
+
 {% block url %}
     {{ object.get_absolute_url }}
 {% endblock %}
 {% block image %}
     {% if object.public_data.all.0.image %}
         <figure class="list_image">
+            <img src="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" />
+            {% comment %}
+            {# FIXME: Lazyload not loading images in hidden blocks #}
             {% if object.public_data.all.0.image_is_panoramic %}
-                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 0 padding=true %}" class="lazyload" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" class="lazyload" />
             {% else %}
-                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 0 286 padding=true %}" class="lazyload" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" class="lazyload" />
             {% endif %}
+            {% endcomment %}
         </figure>
     {% endif %}
 {% endblock %}

@@ -60,7 +60,44 @@
 
 
 {% block page_title %}
+{% comment %}
+<script>
+function showHideChevronTags(object, event) {
 
+  event.preventDefault();
+
+  var id_item = object.id;
+
+  var chevronItem = document.getElementById("chevron-tags");
+  var itemsClass = chevronItem.classList;
+  var formDivItem = document.getElementById("tags-detail-project");
+
+  var openChevron = false;
+
+  for (var i = 0; i < itemsClass.length; i++) {
+
+    if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
+
+      openChevron = true;
+      break;
+    }
+  }
+
+  if (openChevron) {
+
+    chevronItem.classList.remove("fa-chevron-down");
+    chevronItem.classList.add("fa-chevron-up");
+    formDivItem.style.display = 'block';
+  } else {
+
+    chevronItem.classList.remove("fa-chevron-up");
+    chevronItem.classList.add("fa-chevron-down");
+    formDivItem.style.display = 'none';
+  }
+}
+
+</script>
+{% endcomment %}
 {% endblock %}
 
 
@@ -68,73 +105,123 @@
 
     <div class="row">
         <div class="col-sm-16 col-md-10 col-md-push-3 tac">
-            <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "ICT Project" %}</h1>
+            <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Tech Project" %}</h1>
         </div>
     </div>
 
-    <div class="detail_title">
-        <h1 class="dotted">{{ object.title }}</h1>
-    </div>
-
-    <div class="detail_section">
-        <div class="detail_img">
-            {% if object.public_data.all.0.image %}
-                <img id="detail_img" src="{{ MEDIA_URL }}{{ object.public_data.all.0.image }}" />
-                {% if object.public_data.all.0.image_credits %}
-                    <span>{% trans "Credits" %}: {{ object.public_data.all.0.image_credits }}</span>
+    {# Edit message and button if user owns it and it is a draft #}
+    {% if user.is_authenticated %}
+        {% if user == object.user %}
+            <div class="project-ict-detail__editable">
+                <div>Welcome to your project detail page.</div>
+                <div>The status of your project is: {{ object.get_validation_status_display }}.</div>
+                {% if object.validation_status == 1 %}
+                    <a href="{% url "organization-call-project-update" object.call.slug object.slug %}">
+                        <div class="project-ict-detail__edit_button">
+                            <span>Edit</span>
+                        </div>
+                    </a>
+                {% else %}
+                    <div>You can no longer edit your project.</div>
                 {% endif %}
-            {% endif %}
-        </div>
-        <div class="detail_info">
-            {% if object.public_data.all.0.brief_description %}
-                <h2>{{ object.public_data.all.0.brief_description }}</h2>
-            {% endif %}
-            {% if object.website %}
-                <p><a href="{{ object.website }}">{{ object.website }}</a></p>
-            {% endif %}
-            {% if object.date_from and object.date_to %}
-                <p>{% trans "From" %} {{ object.date_from }} {% trans "to" %} {{ object.date_to }}</p>
-            {% endif %}
-            {% if object.keywords_string %}
-                <p>{% trans "Keywords" %}: {{ object.keywords_string }}</p>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {# Title #}
+    <div class="project-ict-detail__title">
+
+        {{ object.title }}
+
+        {% if object.keywords.all %}
+            <div id="tags-detail-project" class="project-ict-detail__main_info-keywords"> {# style="display:none"> #}
+                {% for kw in object.keywords.all %}
+                    <span class="project-ict-detail__tag-style-simple">{{ kw|capfirst }}</span>
+                {% endfor %}
+            </div>
+          {% comment %}
+            <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator">
+              <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
+            </div>
+          {% endcomment %}
+        {% endif %}
+
     </div>
 
-    <div class="detail_separator"></div>
+    {# Timeline #}
+    {% with object.validation_status as status %}
+        {% if status == 3 or status == 4 or status == 5 %}
+            {# 3 = Validated (open call) #}
+            {# 4 = Implemented (in residency) #}
+            {# 5 = Closed (residency outcome) #}
+            <div id="timeline-block" class="project-ict-detail__timeline project-ict-detail__responsive-tree">
+                <div id="timeline-divisor-left" class="project-ict-detail__timeline-divisor{% if status == 3 %}-incomplete{% endif %}"></div>
+                <div id="timeline-divisor-right" class="project-ict-detail__timeline-divisor{% if status != 5 %}-incomplete{% endif %}"></div>
+                <div class="project-ict-detail__timeline-step-left">
+                    <div id="timeline-open-call" class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-bullhorn fa-stack-1x project-ict-detail__timeline-complete"></i>
+                    </div>
+                    <div class="project-ict-detail__responsive-tree-text">Open Call</div>
+                </div>
+                <div class="project-ict-detail__timeline-step-center">
+                    <div id="timeline-in-residency" class="fa-stack fa-lg {% if status == 3 %}project-ict-detail__timeline-incomplete{% endif %}">
+                        <i class="fa fa-circle{% if status == 3 %}-thin{% endif %} fa-stack-2x"></i>
+                        <i class="fa fa-ellipsis-h fa-stack-1x {% if status != 3 %}project-ict-detail__timeline-complete{% endif %}"></i>
+                    </div>
+                    <div class="project-ict-detail__responsive-tree-text">In Residency</div>
+                </div>
+                <div class="project-ict-detail__timeline-step-right">
+                    <div id="timeline-residency-outcome" class="fa-stack fa-lg {% if status != 5 %}project-ict-detail__timeline-incomplete{% endif %}">
+                        <i class="fa fa-circle{% if status != 5 %}-thin{% endif %} fa-stack-2x"></i>
+                        <i class="fa fa-check fa-stack-1x {% if status == 5 %}project-ict-detail__timeline-complete{% endif %}"></i>
+                    </div>
+                    <div class="project-ict-detail__responsive-tree-text">Residency Outcome</div>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
 
-    <div class="detail_section">
-        <div class="detail_subsection_left">
-            {% if object.public_data.all.0.challenges_description %}
-                <h3>{% trans "Description of the challenges faced by the ICT-Project" %}</h3>
-                <p>{{ object.public_data.all.0.challenges_description }}<p>
-            {% endif %}
-            {% if object.public_data.all.0.challenges_description and object.public_data.all.0.technology_description %}
-                <div class="detail_separator"></div>
-            {% endif %}
-            {% if object.public_data.all.0.technology_description %}
-                <h3>{% trans "Brief description of technology" %}</h3>
-                <p>{{ object.public_data.all.0.technology_description }}</p>
-            {% endif %}
-        </div>
-        <div class="detail_subsection_right">
-            {% if object.public_data.all.0.objectives_description %}
-                <h3>{% trans "What the project is looking to gain from the collaboration and what kind of artist would be suitable" %}</h3>
-                <p>{{ object.public_data.all.0.objectives_description }}</p>
-            {% endif %}
-            {% if object.public_data.all.0.objectives_description and object.public_data.all.0.resources_description %}
-                <div class="detail_separator"></div>
-            {% endif %}
-            {% if object.public_data.all.0.resources_description %}
-                <h3>{% trans "Resources available to the artist" %}</h3>
-                <p>{{ object.public_data.all.0.resources_description }}</p>
-            {% endif %}
-        </div>
+    {# Main info #}
+    <div class="project-ict-detail__main_info">
+        {% if object.public_data.all.0.brief_description %}
+            <div class="project-ict-detail__main_info-description">{{ object.public_data.all.0.brief_description }}</div>
+        {% endif %}
+        {% if object.website %}
+            <div class="project-ict-detail__main_info-website"><a href="{{ object.website }}">{{ object.website }}</a></div>
+        {% endif %}
+        {% if object.date_from and object.date_to %}
+            <div class="project-ict-detail__main_info-date">{% trans "From" %} {{ object.date_from }} {% trans "to" %} {{ object.date_to }}</div>
+        {% endif %}
+        {% comment %}
+        {% if object.keywords_string %}
+            <div class="project-ict-detail__main_info-keywords">{% trans "Keywords" %}: {{ object.keywords_string }}</div>
+        {% endif %}
+        {% endcomment %}
+        {% comment %}
+        {% if object.keywords.all %}
+            <div class="project-ict-detail__main_info-keywords">
+                {% for kw in object.keywords.all %}
+                    <span class="project-ict-detail__main_info-keywords-tags">{{ kw }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        </ul>
+        {% endcomment %}
     </div>
 
-    <div class="detail_separator"></div>
+    {# Apply button #}
+    {% if object.validation_status == 3 %}
+        <a href="{% url 'web:show_application_form' object.call.slug %}?show_draft&project={{ object.slug }}">
+            <div class="project-ict-detail__apply_button">
+                <span>APPLY!</span>
+            </div>
+        </a>
+    {% endif %}
 
-    <div class="detail_section">
+    {# Slider #}
+    <div class="project-ict-detail__slider">
         <div class="page__slider detail_slider">
             <ul class="slider-page" data-slider-page>
                 {% for image in object.user_images.all %}
@@ -146,8 +233,8 @@
                                 {% if image.description %}
                                     {{ image.description }}
                                 {% endif %}
-                                {% if image.credits %}
-                                    {{ image.credits }}
+                                {% if image.credits|length > 0 %}
+                                    Credits: {{ image.credits }}
                                 {% endif %}
                             </div>
                         </div>
@@ -157,10 +244,32 @@
         </div>
     </div>
 
-    <div class="detail_separator"></div>
+    {# Extra info #}
+    <div class="project-ict-detail__responsive-width-section">
+      <div class="project-ict-detail__green-top-line"></div>
+      <div class="project-ict-detail__extra_info project-ict-detail__extra_color_item">
 
-    <div class="detail_section">
-        <a class="wys-button-xsmall detail_button" href="https://www.ulysses-network.eu/web/competitions/vertigo2018/">Apply</a>
+          {% if object.public_data.all.0.challenges_description %}
+              <h3>{% trans "Description of the challenges faced by the Tech Project" %}</h3>
+              <p>{{ object.public_data.all.0.challenges_description }}<p>
+          {% endif %}
+
+          {% if object.public_data.all.0.technology_description %}
+              <h3>{% trans "Brief description of technology" %}</h3>
+              <p>{{ object.public_data.all.0.technology_description }}</p>
+          {% endif %}
+
+          {% if object.public_data.all.0.objectives_description %}
+              <h3>{% trans "What the project is looking to gain from the collaboration and what kind of artist would be suitable" %}</h3>
+              <p>{{ object.public_data.all.0.objectives_description }}</p>
+          {% endif %}
+
+          {% if object.public_data.all.0.resources_description %}
+              <h3>{% trans "Resources available to the artist" %}</h3>
+              <p>{{ object.public_data.all.0.resources_description }}</p>
+          {% endif %}
+
+      </div>
     </div>
 
 {% endblock %}

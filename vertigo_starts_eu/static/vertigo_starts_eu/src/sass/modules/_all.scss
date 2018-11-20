@@ -46,6 +46,7 @@
 @import 'boxes/event-line-box-hover';
 @import 'boxes/jury-box';
 @import 'boxes/producers-box';
+@import 'boxes/slider-box';
 
 // Sliders
 @import 'sliders/slider-page';
@@ -79,7 +80,10 @@
 @import 'hero';
 @import 'overlay';
 @import 'live-streaming';
-
+@import 'call';
+@import 'project';
+@import 'project-ict-detail';
+@import 'home-page';
 
 // Typography modules
 @import 'dashed';

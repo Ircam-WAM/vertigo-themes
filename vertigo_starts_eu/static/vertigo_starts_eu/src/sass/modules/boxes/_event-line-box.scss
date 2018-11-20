@@ -39,7 +39,7 @@ $module: ".event-line-box";
         margin-bottom: 0 !important;
     }
 
-    &:after {
+    &:after{
 
         content: "";
         display: block;
@@ -60,6 +60,7 @@ $module: ".event-line-box";
         }
 
     }
+
 /*
     &:hover {
 
@@ -86,6 +87,64 @@ $module: ".event-line-box";
         }
     }
 */
+
+    &__tag-event {
+
+      background:clear;
+      color:white;
+      font-family:"Oswald",sans-serif;
+      @include font-size(s);
+      width:110px;
+      height:30px;
+      top:50%;
+      border-right: 1px solid rgba($color-main, 0.35);
+      border-bottom: 1px solid rgba($color-main, 0.35);
+      padding-left:5px;
+      text-align:left;
+      position:relative;
+
+      &:hover {
+          background: none;
+          border-right: 1px solid rgba($color-main, 1);
+          border-bottom: 1px solid rgba($color-main, 1);
+
+      }
+    }
+
+    &__tag-event-content {
+
+      position: absolute;
+      bottom: 0;
+      margin-bottom:0px;
+      font-family:"Oswald",sans-serif;
+      font-size:14px;
+      color:white;
+    }
+
+    &__subtag-event {
+
+      background: rgba($color-main, 1);
+      color:white;
+      font-family:"Oswald",sans-serif;
+      @include font-size(s);
+      width:110px;
+      height:30px;
+      top:50%;
+      text-align:center;
+      position:relative;
+      margin-left:5%;
+    }
+
+    &__subtag-event-content {
+
+      bottom: 0;
+      margin-bottom:0px;
+      font-family:"Oswald",sans-serif;
+      font-size:14px;
+      text-align:center;
+      color:white;
+    }
+
     &__content {
 
         position: absolute;

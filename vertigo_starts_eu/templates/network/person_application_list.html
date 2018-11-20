@@ -1,0 +1,72 @@
+{% extends "vertigo_starts_eu/pages/page.html" %}
+{% load mezzanine_tags keyword_tags i18n organization_tags pages_tags %}
+
+{% block meta_title %}{{ person.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for person as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block page_class %}
+    person
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    <li class="breadcrumb__item active">{{ person }}</li>
+{% endblock %}
+
+{% block page_title %}
+    {% editable person.title %}
+        <h1 class="section-title section-title--big section-title--uppercase section-title--main">{{ person.title }}</h1>
+    {% endeditable %}
+
+    {% with person.images.all|get_type:'card' as card_images %}
+        {% if card_images %}
+            <div class="page__image-container">
+              <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
+              {% if card_images.first.credits|length > 0 %}
+                <div style="text-align:left">
+                  <p sytle="color:white;font-size:12px;">Credits: {{ card_images.first.credits }}</p>
+                </div>
+              {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+{% endblock %}
+
+{% block page_content %}
+    {% editable person.bio %}
+        {{ person.bio|richtext_filters|safe }}
+    {% endeditable %}
+
+    {% if not person.email and person.activities.all and person.activities.all.0.teams.all %}<p><strong>{% trans 'Email' %} :</strong> {{ person_email }}</p>{% elif person.email %}<p><strong>{% trans 'Email' %} :</strong> {{ person.email|unspam }}</p>{% endif %}
+
+    {% if projects %}
+        <h2 class="dotted">{% trans 'Tech Projects' %}</h2>
+        <ul class="unstyled-list">
+            {% for project in projects %}
+                <li class="mb1">
+                    {{ project.title }}
+                    {{ project.call }}
+                    {{ project.validation_status }}
+                    {{ project.date_to }}
+                    {% if project.validation_status != 'accepted' %}
+                        {% if project.funding == 'private' %}
+                            <a href="{% url "organization-project-private-update" project.call.slug project.slug %}">Edit</a>
+                        {% elif project.funding == 'public' %}
+                            <a href="{% url "organization-project-public-update" project.call.slug project.slug %}">Edit</a>
+                        {% endif %}
+                    {% endif %}
+                <br />
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+{% endblock %}

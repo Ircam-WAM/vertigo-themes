@@ -58,7 +58,7 @@
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
     <div class="container">
         <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+            <div class="col-sm-16 col-md-10 col-md-push-3 tac residency-detail__bottom-space">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Current Residencies" %}</h1>
             </div>
         </div>
@@ -78,7 +78,7 @@
                 {% endfor %}
             </div>
         </div>
-        
+
         <script type="text/javascript">
             var selectedFilters = []
             function addFilter(residencyButton, keyword) {
@@ -133,13 +133,13 @@
             }
         </script>
 
-        <div class="row">
+        <div class="row page__space-row">
             <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
                 <div class="page__content">
                     <div class="container">
-                        <div class="row">
+                        <div class="row page__space-responsive">
                             {% for object in object_list %}
-                                <div class="col-xs-8" id="{{ object.slug }}">
+                                <div class="col-xs-8 page__row-responsive" id="{{ object.slug }}">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
                                         {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card.html" as template %}
                                             {% include template %}
@@ -157,4 +157,3 @@
 </div>
 
 {% endblock %}
-

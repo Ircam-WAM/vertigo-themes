@@ -20,14 +20,13 @@ NavHeader.prototype.init = function() {
 
         if($submenu.length > 0) {
 
-            var offsetLeft = $(this).position().left,
-                originOffsetLeft = $('#navHeader .nav-header__item:first-child').position().left + 100,
-                originWidth = that.$element.width();
+            //var offsetLeft = $(this).position().left,
+            //    originOffsetLeft = $('#navHeader .nav-header__item:first-child').position().left + 100,
+            //    originWidth = that.$element.width();
 
             $(this).toggleClass('hover');
 
-            $submenu.css('left', -offsetLeft + originOffsetLeft);
-            $submenu.css('width', originWidth - 200);
+            $submenu.css('left', 0); //-offsetLeft + originOffsetLeft);
             $submenu.toggle();
 
         }

@@ -42,11 +42,22 @@ $module: ".producers-box";
 	    content: "";
 	    display: block;
 	    background: linear-gradient(180deg, transparent, transparent 50%, rgba(0,0,0,.8));
-	    position: absolute;
+	    position: relative;
 	    top: 0;
 	    bottom: 0;
 	    left: 0;
 	    right: 0;
+    }
+
+    &__single-header {
+
+      content: "";
+      display: block;
+      position: relative;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
 
     &__margin-right {
@@ -120,5 +131,12 @@ $module: ".producers-box";
     &__top-margin {
 
         margin-top: 20px;
+    }
+
+    &__image-credit {
+
+      font-size: 13px;
+      color: white;
+      background: clear;
     }
 }
