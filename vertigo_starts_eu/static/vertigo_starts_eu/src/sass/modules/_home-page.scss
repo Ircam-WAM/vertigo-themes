@@ -619,8 +619,16 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
 
-        width:85% !important;
+        //width:85% !important;
         margin-left: 2.5% !important;
+      }
+    }
+
+    &__responsive-fiels-width-application-form {
+
+      @media screen and (max-width: 780px) {
+
+        width:95.5% !important;
       }
     }
 }
