@@ -24,10 +24,10 @@
 
         HERE A SINGLE NEWS
         <div class="article-box__card-subtag-event">
-          <p class="article-box__card-subtag-event-content">{{ object.topics.all|first }}</p>
+          <p class="article-box__card-subtag-event-content">{{ article.topics.all|first }}</p>
         </div>
 
-        {{ object.description|richtext_filters|safe|truncatechars_html:200 }}
+        {{ article.description|richtext_filters|safe|truncatechars_html:200 }}
 
       </div>
     </div>
@@ -35,16 +35,16 @@
       <div class="home-page__full-frame" style="background:red;">
 
         HERE EVENT
-        {% if object.departments.first %}
-            {% with object.departments.first as department %}
+        {% if event.departments.first %}
+            {% with event.departments.first as department %}
                 {{ department.department.name }}
             {% endwith %}
         {% endif %}
-        {% if object.category %}
-            {{ object.category|truncatechars:15 }}
+        {% if event.category %}
+            {{ event.category|truncatechars:15 }}
         {% endif %}
 
-        {{ object.description|richtext_filters|safe|truncatechars_html:200 }}
+        {{ event.description|richtext_filters|safe|truncatechars_html:200 }}
 
       </div>
     </div>
@@ -55,9 +55,9 @@
         <div class="home-page__full-frame home-page__public-container-common" style="background:yellow;">
 
           HERE ARTIST IMAGE
-          <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
-          <div class="residency-detail__title">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
-          {{ object.artist.bio|safe }}
+          <img  src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 300 300 padding=true %}">
+          <div class="residency-detail__title">{{ person.first_name }} {{ person.last_name }}</div>
+          {{ person.bio|safe }}
 
         </div>
       </div>
@@ -80,14 +80,14 @@
             <div class="residency-detail__header-image">
             {% endif %}
                 <span>
-                    {{ object.project.title }} <br><br><br>
+                    {{ project.title }} <br><br><br>
                     <br><br><br>
-                    {{ object.artist.first_name }} {{ object.artist.last_name }}
+                    {{ project.artist.first_name }} {{ project.artist.last_name }}
                 </span>
             </div>
         {% endwith %}
 
-        {{ object.description }}
+        {{ project.description }}
 
       </div>
     </div>
