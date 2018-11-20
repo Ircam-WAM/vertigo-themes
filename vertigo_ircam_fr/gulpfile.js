@@ -1,6 +1,8 @@
 var gulp = require('gulp'),
     rimraf = require('rimraf'),
-    compass = require('gulp-compass'),
+    sass = require('gulp-sass'),
+    sassMagicImporter = require ('node-sass-magic-importer'),
+    postcss = require ('gulp-postcss'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     ignore = require('gulp-ignore'),
@@ -13,8 +15,9 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     copy = require('gulp-copy'),
     plumber = require('gulp-plumber'),
-    autoprefixer = require('gulp-autoprefixer'),
+    autoprefixer = require('autoprefixer'),
     browserify = require('gulp-browserify'),
+    util = require('util'),
     sourcemaps = require('gulp-sourcemaps');
 
 var srcFolder = 'static/src/',
@@ -23,11 +26,6 @@ var srcFolder = 'static/src/',
 gulp.task('copy-assets-img', function() {
     gulp.src([srcFolder + 'assets/img/**/*'])
         .pipe(gulp.dest(destFolder + 'img'));
-});
-
-gulp.task('copy-vendors-js', function() {
-    gulp.src([srcFolder + 'js/vendors/**/*'])
-        .pipe(gulp.dest(destFolder + 'js'));
 });
 
 gulp.task("favicons", function () {
@@ -74,21 +72,22 @@ gulp.task('main-js', function() {
 
 gulp.task('main-css', function() {
     return gulp.src(srcFolder + 'sass/*.scss')
-        .pipe(plumber({
-            errorHandler: function (error) {
-                this.emit('end');
-            }})
-        )
-        .pipe(compass({
-            css: './.tmp/main',
-            sass: srcFolder + 'sass'
-        }))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(sourcemaps.init())
-        .pipe(autoprefixer())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(destFolder + 'css'))
-        .pipe(browserSync.stream());
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: ['node_modules', srcFolder + 'sass'],
+      precision: 10,
+      importer: sassMagicImporter({
+        disableImportOnce: true
+      })
+    })).on('error', util.log.bind(util, 'Sass Error'))
+    .pipe(postcss([
+      autoprefixer()
+    ]))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(destFolder + 'css'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('cssmin', function() {
@@ -128,7 +127,7 @@ gulp.task('clean', function(cb) {
 gulp.task('serve', ['clean'], function () {
 
     browserSync.init({
-        proxy: "http://localhost:9021/"
+        proxy: "http://localhost:9020/"
     });
 
     gulp.watch(srcFolder + 'assets/img/**/*', ['copy-assets-img']).on('change', browserSync.reload);
@@ -137,7 +136,7 @@ gulp.task('serve', ['clean'], function () {
 
 });
 
-gulp.task('default', ['main-js', 'main-css', 'copy-assets-img', 'copy-vendors-js', 'serve']);
-gulp.task('build', ['main-js', 'main-css', 'copy-assets-img', 'copy-vendors-js'], function() {
+gulp.task('default', ['main-js', 'main-css', 'copy-assets-img', 'serve']);
+gulp.task('build', ['main-js', 'main-css', 'copy-assets-img'], function() {
     runSequence(['cssmin', 'jsmin', 'imagemin', 'favicons', 'clean']);
 });
