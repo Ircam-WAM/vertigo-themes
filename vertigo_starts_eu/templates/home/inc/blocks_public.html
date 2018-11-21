@@ -95,7 +95,7 @@
     </div>
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
       <div class="home-page__full-frame home-page__public-container-common-relative {% if project.artist.images %}home-page__image-gradient{% endif %}">
-
+        <a href="{{ project.url }}">
         {% comment %}
         {% with project.images.all as images %}
             {% if images %}
@@ -120,7 +120,7 @@
         {% endif %}
 
         <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article">{{ project.description|safe|truncatechars_html:50 }}</div>
-
+      </a>
       </div>
     </div>
   </div>
