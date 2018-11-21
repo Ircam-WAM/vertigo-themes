@@ -81,23 +81,20 @@
       </div>
     </div>
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
-      <div class="home-page__full-frame" style="background:green;">
+      <div class="home-page__full-frame home-page__public-container-common-relative">
 
         {% with project.images.all|get_type:'slider' as images %}
             {% if images %}
-            <div class="residency-detail__header-image" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
+            <div class="residency-detail__header-image home-page__public-image_full-width" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
             {% else %}
             <div class="residency-detail__header-image">
             {% endif %}
-                <span>
-                    {{ project.title }} <br><br><br>
-                    <br><br><br>
-                    {{ project.artist.first_name }} {{ project.artist.last_name }}
-                </span>
             </div>
         {% endwith %}
 
-        {{ project.description }}
+        <div class="residency-detail__title home-page__public-overtext-artist-name">{{ project.title }}</div>
+        <div class="residency-detail__title home-page__public-overtext-project-bottom">{{ project.artist.first_name }} {{ project.artist.last_name }}</div>
+        <div class="residency-detail__title home-page__public-overtext-project-bottom">{{ project.description|safe|truncatechars_html:50 }}</div>
 
       </div>
     </div>

@@ -469,6 +469,7 @@ $module: ".home-page";
       font-size:40px;
       height:auto;
       top:50%;
+      color:white:
     }
 
     &__public-overtext-artist-second-row {
@@ -481,6 +482,7 @@ $module: ".home-page";
       top:60%;
       padding-left:10%;
       padding-right:10%;
+      color:white;
     }
 
     &__public-container-common-absolute {
@@ -708,5 +710,16 @@ $module: ".home-page";
       display:block;
       margin:auto;
       margin-top:10%;
+    }
+
+    &__public-overtext-project-bottom {
+
+      width:100%;
+      position:relative;
+      text-align:center;
+      font-size:15px;
+      height:auto;
+      top:50%;
+      color:white;
     }
 }
