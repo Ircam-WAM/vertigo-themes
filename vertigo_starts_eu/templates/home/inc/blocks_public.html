@@ -25,11 +25,13 @@
 
         HERE A SINGLE NEWS
         {{ object.title }}
-        <div class="article-box__card-subtag-event">
-          <p class="article-box__card-subtag-event-content">{{ article.topics.all|first }}</p>
+        <div class="">
+          {{ article.title }}
         </div>
 
-        {{ article.description|richtext_filters|safe|truncatechars_html:200 }}
+        {{ article.description|richtext_filters|safe|truncatechars_html:300 }}
+
+        <img  src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
 
       </div>
     </div>
@@ -56,7 +58,7 @@
       <div class="home-page__inner-block-second home-page__public-container-common">
         <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative">
 
-          <img  src="{{ MEDIA_URL }}{% thumbnail person.artist.images.all|first 300 300 padding=true %}" >
+          <img  src="{{ MEDIA_URL }}{% thumbnail person.artist.images.all|first 300 300 padding=true %}" style="width:100%;height:100%;overflow:hidden;position:absolute;" >
           <div class="residency-detail__title home-page__public-overtext-artist-name">{{ person.first_name }} {{ person.last_name }}</div>
           <div class="residency-detail__title home-page__public-overtext-artist-second-row">{{ person.bio|safe|truncatechars_html:100 }}</div>
 
