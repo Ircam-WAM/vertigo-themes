@@ -67,7 +67,9 @@
         <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative">
 
           {% if person.images %}
-          <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}" >
+          <figure>
+          <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}" >ç
+          </figure>
           {% else %}
           <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
           {% endif%}
