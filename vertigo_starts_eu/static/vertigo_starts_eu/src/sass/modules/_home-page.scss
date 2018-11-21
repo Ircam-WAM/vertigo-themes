@@ -676,4 +676,36 @@ $module: ".home-page";
         }
       }
     }
+
+    &__public-white-backgtound {
+
+      background:white;
+    }
+
+    &__public-article-title-main {
+
+      margin-left:5%;
+      margin-right:5%;
+      font-size:20px;
+      font-weight:bold;
+      margin-bottom:3%;
+      color:black;
+      padding-top:10%;
+    }
+
+    &__public-article-body-main {
+
+      margin-left:5%;
+      margin-right:5%;
+      font-size:15px;
+      margin-bottom:3%;
+      color:black;
+    }
+
+    &__public-article-image {
+
+      display:block;
+      margin:auto;
+      margin-top:10%;
+    }
 }
