@@ -71,7 +71,7 @@
           {% else %}
           <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
           {% endif%}
-          
+
           <div class="residency-detail__title home-page__public-overtext-artist-name">{{ person.first_name }} {{ person.last_name }}</div>
           <div class="residency-detail__title home-page__public-overtext-artist-second-row">{{ person.bio|safe|truncatechars_html:100 }}</div>
 
@@ -80,7 +80,17 @@
       <div class="home-page__inner-block-item home-page__public-container-common">
         <div class="home-page__full-frame home-page__public-white-backgtound" style="color:black">
 
-          HERE BLOG POST
+          <!--HERE BLOG POST-->
+
+          <div class="home-page__public-article-title-main">
+            {{ article.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
+          </div>
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
 
         </div>
       </div>
