@@ -58,7 +58,7 @@
 
           <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 400 400 padding=true %}" class="home-page__public-image_full-width">
           <div class="residency-detail__title home-page__public-overtext-artist-name">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
-          <div class="residency-detail__title home-page__public-overtext-artist-second-row>{{ object.artist.bio|safe|truncatechars_html:50 }}</div>
+          <div class="residency-detail__title home-page__public-overtext-artist-second-row">{{ object.artist.bio|safe|truncatechars_html:50 }}</div>
 
         </div>
       </div>

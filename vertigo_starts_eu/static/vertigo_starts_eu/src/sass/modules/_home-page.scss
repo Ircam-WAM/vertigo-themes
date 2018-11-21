@@ -452,6 +452,46 @@ $module: ".home-page";
       }
     }
 
+    &__public-image_full-width {
+
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      position:absolute;
+    }
+
+    &__public-overtext-artist-name {
+
+      width:100%;
+      position:relative;
+      text-align:center;
+      font-size:40px;
+      height:auto;
+      top:50%;
+    }
+
+    &__public-overtext-artist-second-row {
+
+      width:100%;
+      position:relative;
+      text-align:center;
+      font-size:15px;
+      height:auto;
+      top:60%;
+      padding-left:10%;
+      padding-right:10%;
+    }
+
+    &__public-container-common-absolute {
+
+      position: absolute !important;
+    }
+
+    &__public-container-common-relative {
+
+      position: relative !important;
+    }
+
     &__public-container-common {
 
       @media screen and (max-width: 780px) {
