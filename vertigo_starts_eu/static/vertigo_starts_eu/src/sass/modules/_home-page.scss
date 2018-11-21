@@ -710,6 +710,12 @@ $module: ".home-page";
       display:block;
       margin:auto;
       margin-top:10%;
+
+      @media screen and (max-width: 780px) {
+
+        padding-right: 5%;
+        padding-left: 5%;
+      }
     }
 
     &__public-overtext-project-bottom {
