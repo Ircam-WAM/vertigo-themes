@@ -14,6 +14,7 @@
 </div>
 
 <div class="home-page__public-line-divider">
+
 </div>
 
 <div class="home-page__main-item home-page__public-common-height-auto">
@@ -23,6 +24,7 @@
       <div class="home-page__full-frame" style="background:orange;">
 
         HERE A SINGLE NEWS
+        {{ object.title }}
         <div class="article-box__card-subtag-event">
           <p class="article-box__card-subtag-event-content">{{ object.topics.all|first }}</p>
         </div>
@@ -52,12 +54,11 @@
   <div class="home-page__second-big-block home-page__public-container-common">
     <div class="home-page__inner-frame-second">
       <div class="home-page__inner-block-second home-page__public-container-common">
-        <div class="home-page__full-frame home-page__public-container-common" style="background:yellow;">
+        <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative">
 
-          HERE ARTIST IMAGE
-          <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
-          <div class="residency-detail__title">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
-          {{ object.artist.bio|safe }}
+          <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 400 400 padding=true %}" class="home-page__public-image_full-width">
+          <div class="residency-detail__title home-page__public-overtext-artist-name">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+          <div class="residency-detail__title home-page__public-overtext-artist-second-row>{{ object.artist.bio|safe|truncatechars_html:50 }}</div>
 
         </div>
       </div>
