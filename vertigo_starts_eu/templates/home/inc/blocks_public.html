@@ -93,12 +93,14 @@
         {% endcomment %}
 
         <!--<img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.artist.person.images.all|first 800 800 padding=true %}" -->
-        <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}" >
+        <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.artist.images.all|first 800 800 padding=true %}" >
 
         <div class="residency-detail__title home-page__public-overtext-artist-name">{{ project.title }}</div>
+
         {% if project.artist.first_name or project.artist.last_name %}
         <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row">{{ project.artist.first_name }} {{ project.artist.last_name }}</div>
         {% endif %}
+
         <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row">{{ project.description|safe|truncatechars_html:50 }}</div>
 
       </div>
