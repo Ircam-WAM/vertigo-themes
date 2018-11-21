@@ -58,7 +58,7 @@
       <div class="home-page__inner-block-second home-page__public-container-common">
         <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative">
 
-          <img  style="width:100%;height:100%;overflow:hidden;position:absolute;" src="{{ MEDIA_URL }}{% thumbnail person.artist.images.all|first 300 300 padding=true %}" >
+          <img  style="width:100%;height:100%;overflow:hidden;position:absolute;" src="{{ MEDIA_URL }}{% thumbnail project.artist.images.all|first 300 300 padding=true %}" >
           <div class="residency-detail__title home-page__public-overtext-artist-name">{{ person.first_name }} {{ person.last_name }}</div>
           <div class="residency-detail__title home-page__public-overtext-artist-second-row">{{ person.bio|safe|truncatechars_html:100 }}</div>
 
