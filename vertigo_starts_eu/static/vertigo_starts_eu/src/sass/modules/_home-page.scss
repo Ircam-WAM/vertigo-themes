@@ -766,11 +766,11 @@ $module: ".home-page";
 
           @media screen and (max-width: 780px) {
 
-            width:75% !important;
+            height:75% !important;
 
             @-moz-document url-prefix() {
 
-              width:72% !important;
+              height: 72% !important;
             }
           }
       }
