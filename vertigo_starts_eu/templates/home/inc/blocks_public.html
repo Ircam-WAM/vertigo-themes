@@ -28,7 +28,7 @@
         </div>
 
         <div class="home-page__public-article-body-main">
-          {{ article.description|richtext_filters|safe|truncatechars_html:300 }}
+          {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
         </div>
 
         <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
