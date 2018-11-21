@@ -721,5 +721,19 @@ $module: ".home-page";
       height:auto;
       top:50%;
       color:white;
+      margin-bottom:1%;
+      text-align: center;
+    }
+
+    &__public-overtext-artist-name-bottom {
+
+      width:100%;
+      position:relative;
+      text-align:center;
+      font-size:40px;
+      height:auto;
+      top:0%;
+      color:white:
+      margin-bottom:3%;
     }
 }
