@@ -64,12 +64,10 @@
   <div class="home-page__second-big-block home-page__public-container-common">
     <div class="home-page__inner-frame-second">
       <div class="home-page__inner-block-second home-page__public-container-common">
-        <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative">
+        <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative home-page__image-gradient">
 
           {% if person.images %}
-          <figure>
-          <img class="lazyload home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}" >ç
-          </figure>
+          <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}" >ç
           {% else %}
           <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
           {% endif%}
