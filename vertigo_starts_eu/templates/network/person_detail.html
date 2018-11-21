@@ -71,7 +71,7 @@
       {% endwith %}
 
       <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
-
+{% comment %}
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% if person.address %}Address: {{ person.address }}<br/><br/>{% endif %}
         Email: {{ person.email }}<br/><br/>
@@ -89,7 +89,7 @@
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         Site: <a href="{{ person.site }}" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.site }}</a><br/><br/>
       </div>
-
+{% endcomment %}
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         Biography: {{ person.bio|richtext_filters|safe }}
       </div>
