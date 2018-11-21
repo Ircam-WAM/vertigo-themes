@@ -55,7 +55,7 @@
                 <br/>
           {% endif %}
 
-          {{ event.description|richtext_filters|safe|truncatechars_html:300 }}
+          {{ event.description|richtext_filters|safe|truncatechars_html:500 }}
         </div>
 
       </div>
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="home-page__inner-block-item home-page__public-container-common">
-        <div class="home-page__full-frame" style="background:orange;">
+        <div class="home-page__full-frame home-page__public-white-backgtound" style="color:black">
 
           HERE BLOG POST
 
@@ -83,8 +83,7 @@
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
       <div class="home-page__full-frame" style="background:green;">
 
-        HERE PROJECT DESCRIPTION AND IMAGE
-        {% with object.images.all|get_type:'slider' as images %}
+        {% with project.images.all|get_type:'slider' as images %}
             {% if images %}
             <div class="residency-detail__header-image" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
             {% else %}
