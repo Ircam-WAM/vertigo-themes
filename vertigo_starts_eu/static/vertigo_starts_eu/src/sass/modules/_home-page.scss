@@ -748,36 +748,21 @@ $module: ".home-page";
 
     &__image-gradient {
 
-      img {
-          display: block;
-          width: 100%;
-          max-width: 100%;
-          height: 100%;
-/*
-          @include transition(all 0.5s ease-in-out);
-
-          -webkit-filter: grayscale(1);
-          filter: grayscale(1);
-          mix-blend-mode: screen;
-*/
-
-      }
 
       &:after {
 
-
+          content: "";
           display: block;
           width: 100%;
           height: 100%;
+          position: absolute;
+
           /* Rectangle 3: */
           background-image: -webkit-linear-gradient(right, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
           background-image: -o-linear-gradient(right, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
           background-image: linear-gradient(to bottom, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
 
-          z-index: 1;
-
-
+          z-index: 0;
       }
-
     }
 }
