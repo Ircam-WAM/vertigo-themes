@@ -763,6 +763,16 @@ $module: ".home-page";
           background-image: linear-gradient(to bottom, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
 
           z-index: 0;
+
+          @media screen and (max-width: 780px) {
+
+            width:75% !important;
+
+            @-moz-document url-prefix() {
+
+              width:72% !important;
+            }
+          }
       }
     }
 
