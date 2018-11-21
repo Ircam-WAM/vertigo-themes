@@ -680,7 +680,7 @@ $module: ".home-page";
       }
     }
 
-    &__public-white-backgtound {
+    &__public-white-background {
 
       background:white;
     }
@@ -764,5 +764,10 @@ $module: ".home-page";
 
           z-index: 0;
       }
+    }
+
+    &__public-index-text-article {
+
+      z-index: 2;
     }
 }

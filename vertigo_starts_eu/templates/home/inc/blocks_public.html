@@ -21,7 +21,7 @@
 
   <div class="home-page__first-big-block home-page__public-container-common">
     <div class="home-page__inner-big-block">
-      <div class="home-page__full-frame home-page__public-white-backgtound">
+      <div class="home-page__full-frame home-page__public-white-background">
 
         <div class="home-page__public-article-title-main">
           {{ article.title }}
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="home-page__inner-blog-block-right">
-      <div class="home-page__full-frame home-page__public-white-backgtound">
+      <div class="home-page__full-frame home-page__public-white-background">
 
         <div class="home-page__public-article-title-main">
           {{ event.title }}
@@ -72,13 +72,13 @@
           <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
           {% endif%}
 
-          <div class="residency-detail__title home-page__public-overtext-artist-name" style="z-index:2">{{ person.first_name }} {{ person.last_name }}</div>
-          <div class="residency-detail__title home-page__public-overtext-artist-second-row" style="z-index:2">{{ person.bio|safe|truncatechars_html:100 }}</div>
+          <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ person.first_name }} {{ person.last_name }}</div>
+          <div class="residency-detail__title home-page__public-overtext-artist-second-row home-page__public-index-text-article">{{ person.bio|safe|truncatechars_html:100 }}</div>
 
         </div>
       </div>
       <div class="home-page__inner-block-item home-page__public-container-common">
-        <div class="home-page__full-frame home-page__public-white-backgtound" style="color:black">
+        <div class="home-page__full-frame home-page__public-white-background">
 
           <!--HERE BLOG POST-->
 
@@ -94,7 +94,7 @@
       </div>
     </div>
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
-      <div class="home-page__full-frame home-page__public-container-common-relative">
+      <div class="home-page__full-frame home-page__public-container-common-relative home-page__image-gradient">
 
         {% comment %}
         {% with project.images.all as images %}
@@ -113,13 +113,13 @@
         <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
         {% endif %}
 
-        <div class="residency-detail__title home-page__public-overtext-artist-name">{{ project.title }}</div>
+        <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ project.title }}</div>
 
         {% if project.artist.first_name or project.artist.last_name %}
-        <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row">{{ project.artist.first_name }} {{ project.artist.last_name }}</div>
+        <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article">{{ project.artist.first_name }} {{ project.artist.last_name }}</div>
         {% endif %}
 
-        <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row">{{ project.description|safe|truncatechars_html:50 }}</div>
+        <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article">{{ project.description|safe|truncatechars_html:50 }}</div>
 
       </div>
     </div>
