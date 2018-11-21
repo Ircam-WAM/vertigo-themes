@@ -90,8 +90,6 @@
             {{ article.description|richtext_filters|safe|truncatechars_html:50 }}
           </div>
 
-          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
-
         </div>
       </div>
     </div>
