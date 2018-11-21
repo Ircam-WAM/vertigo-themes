@@ -21,44 +21,47 @@
 
   <div class="home-page__first-big-block home-page__public-container-common">
     <div class="home-page__inner-big-block">
-      <div class="home-page__full-frame home-page__public-white-background">
+      <a href="{{ article.link }}">
+        <div class="home-page__full-frame home-page__public-white-background">
 
-        <div class="home-page__public-article-title-main">
-          {{ article.title }}
+          <div class="home-page__public-article-title-main">
+            {{ article.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
+          </div>
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+
         </div>
-
-        <div class="home-page__public-article-body-main">
-          {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
-        </div>
-
-        <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
-
-      </div>
+      </a>
     </div>
     <div class="home-page__inner-blog-block-right">
-      <div class="home-page__full-frame home-page__public-white-background">
+      <a href="{{ event.link }}">
+        <div class="home-page__full-frame home-page__public-white-background">
 
-        <div class="home-page__public-article-title-main">
-          {{ event.title }}
+          <div class="home-page__public-article-title-main">
+            {{ event.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {% if event.departments.first %}
+              {% with event.departments.first as department %}
+                  {{ department.department.name }}
+              {% endwith %}
+              <br/>
+            {% endif %}
+
+            {% if event.category %}
+                {{ object.category|truncatechars:15 }}
+                  <br/>
+            {% endif %}
+
+            {{ event.description|richtext_filters|safe|truncatechars_html:500 }}
+          </div>
         </div>
-
-        <div class="home-page__public-article-body-main">
-          {% if event.departments.first %}
-            {% with event.departments.first as department %}
-                {{ department.department.name }}
-            {% endwith %}
-            <br/>
-          {% endif %}
-
-          {% if event.category %}
-              {{ object.category|truncatechars:15 }}
-                <br/>
-          {% endif %}
-
-          {{ event.description|richtext_filters|safe|truncatechars_html:500 }}
-        </div>
-
-      </div>
+      </a>
     </div>
   </div>
   <div class="home-page__second-big-block home-page__public-container-common">
@@ -78,19 +81,20 @@
         </a>
       </div>
       <div class="home-page__inner-block-item home-page__public-container-common">
-        <div class="home-page__full-frame home-page__public-white-background">
+        <a href="{{ article.link }}">
+          <div class="home-page__full-frame home-page__public-white-background">
 
-          <!--HERE BLOG POST-->
+            <!--HERE BLOG POST-->
 
-          <div class="home-page__public-article-title-main">
-            {{ article.title }}
+            <div class="home-page__public-article-title-main">
+              {{ article.title }}
+            </div>
+
+            <div class="home-page__public-article-body-main">
+              {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+            </div>
           </div>
-
-          <div class="home-page__public-article-body-main">
-            {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
-          </div>
-
-        </div>
+        </a>
       </div>
     </div>
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
