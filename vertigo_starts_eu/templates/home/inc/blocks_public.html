@@ -86,10 +86,8 @@
         {% with project.images.all as images %}
             {% if images %}
             <div class="residency-detail__header-image home-page__public-image_full-width" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
-            {% else %}
-            <div class="residency-detail__header-image">
-            {% endif %}
             </div>
+            {% endif %}
         {% endwith %}
 
         <div class="residency-detail__title home-page__public-overtext-artist-name-bottom">{{ project.title }}</div>
