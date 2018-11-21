@@ -723,7 +723,6 @@ $module: ".home-page";
       color:white;
       margin-bottom:1%;
       text-align: center;
-      
     }
 
     &__public-overtext-artist-name-bottom {
@@ -731,10 +730,19 @@ $module: ".home-page";
       width:100%;
       position:relative;
       text-align:center;
-      font-size:40px;
+      font-size:20px;
       height:auto;
-      top:0%;
-      color:white;
-      margin-bottom:3%;
+      top:50%;
+      color:white:
+    }
+
+    &__public-margin-bottom-first-row {
+
+      margin-top:3%;
+    }
+
+    &__public-margin-bottom-second-row {
+
+      margin-top:1%;
     }
 }
