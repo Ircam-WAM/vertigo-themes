@@ -36,19 +36,26 @@
       </div>
     </div>
     <div class="home-page__inner-blog-block-right">
-      <div class="home-page__full-frame" style="background:red;">
+      <div class="home-page__full-frame home-page__public-white-backgtound">
 
-        HERE EVENT
-        {% if event.departments.first %}
+        <div class="home-page__public-article-title-main">
+          {{ event.title }}
+        </div>
+
+        <div class="home-page__public-article-body-main">
+          {% if event.departments.first %}
             {% with event.departments.first as department %}
                 {{ department.department.name }}
             {% endwith %}
-        {% endif %}
-        {% if event.category %}
-            {{ object.category|truncatechars:15 }}
-        {% endif %}
-
-        {{ event.description|richtext_filters|safe|truncatechars_html:200 }}
+          {% endif %}
+          <br/>
+          {% if event.category %}
+              {{ object.category|truncatechars:15 }}
+          {% endif %}
+          <br/>
+          
+          {{ event.description|richtext_filters|safe|truncatechars_html:300 }}
+        </div>
 
       </div>
     </div>
