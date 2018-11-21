@@ -47,13 +47,14 @@
             {% with event.departments.first as department %}
                 {{ department.department.name }}
             {% endwith %}
+            <br/>
           {% endif %}
-          <br/>
+
           {% if event.category %}
               {{ object.category|truncatechars:15 }}
+                <br/>
           {% endif %}
-          <br/>
-          
+
           {{ event.description|richtext_filters|safe|truncatechars_html:300 }}
         </div>
 
