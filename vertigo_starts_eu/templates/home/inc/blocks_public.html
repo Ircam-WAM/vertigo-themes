@@ -26,10 +26,10 @@
         HERE A SINGLE NEWS
         {{ object.title }}
         <div class="article-box__card-subtag-event">
-          <p class="article-box__card-subtag-event-content">{{ object.topics.all|first }}</p>
+          <p class="article-box__card-subtag-event-content">{{ article.topics.all|first }}</p>
         </div>
 
-        {{ object.description|richtext_filters|safe|truncatechars_html:200 }}
+        {{ article.description|richtext_filters|safe|truncatechars_html:200 }}
 
       </div>
     </div>
@@ -37,16 +37,16 @@
       <div class="home-page__full-frame" style="background:red;">
 
         HERE EVENT
-        {% if object.departments.first %}
-            {% with object.departments.first as department %}
+        {% if event.departments.first %}
+            {% with event.departments.first as department %}
                 {{ department.department.name }}
             {% endwith %}
         {% endif %}
-        {% if object.category %}
+        {% if event.category %}
             {{ object.category|truncatechars:15 }}
         {% endif %}
 
-        {{ object.description|richtext_filters|safe|truncatechars_html:200 }}
+        {{ event.description|richtext_filters|safe|truncatechars_html:200 }}
 
       </div>
     </div>
@@ -56,9 +56,9 @@
       <div class="home-page__inner-block-second home-page__public-container-common">
         <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative">
 
-          <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 400 400 padding=true %}"  />
-          <div class="residency-detail__title home-page__public-overtext-artist-name">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
-          <div class="residency-detail__title home-page__public-overtext-artist-second-row">{{ object.artist.bio|safe|truncatechars_html:50 }}</div>
+          <img  src="{{ MEDIA_URL }}{% thumbnail person.artist.images.all|first 400 400 padding=true %}" class="home-page__public-image_full-width">
+          <div class="residency-detail__title home-page__public-overtext-artist-name">{{ person.first_name }} {{ person.last_name }}</div>
+          <div class="residency-detail__title home-page__public-overtext-artist-second-row">{{ person.bio|safe|truncatechars_html:50 }}</div>
 
         </div>
       </div>
@@ -81,14 +81,14 @@
             <div class="residency-detail__header-image">
             {% endif %}
                 <span>
-                    {{ object.project.title }} <br><br><br>
+                    {{ project.title }} <br><br><br>
                     <br><br><br>
-                    {{ object.artist.first_name }} {{ object.artist.last_name }}
+                    {{ project.artist.first_name }} {{ project.artist.last_name }}
                 </span>
             </div>
         {% endwith %}
 
-        {{ object.description }}
+        {{ project.description }}
 
       </div>
     </div>
