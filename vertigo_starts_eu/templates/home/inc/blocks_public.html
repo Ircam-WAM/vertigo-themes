@@ -21,13 +21,13 @@
 
   <div class="home-page__first-big-block home-page__public-container-common">
     <div class="home-page__inner-big-block">
-      <div class="home-page__full-frame" style="background:orange;">
+      <div class="home-page__full-frame" style="background:white;">
 
-        <div style="margin-left:5%;margin-right:5%;font-size:20px;font-weight:bold;margin-bottom:3%">
+        <div style="margin-left:5%;margin-right:5%;font-size:20px;font-weight:bold;margin-bottom:3%;color:black">
           {{ article.title }}
         </div>
 
-        <div style="margin-left:5%;margin-right:5%;font-size:15px;margin-bottom:3%">
+        <div style="margin-left:5%;margin-right:5%;font-size:15px;margin-bottom:3%;color:black">
           {{ article.description|richtext_filters|safe|truncatechars_html:300 }}
         </div>
 
