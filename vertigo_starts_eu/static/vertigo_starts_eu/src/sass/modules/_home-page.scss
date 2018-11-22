@@ -942,6 +942,8 @@ $module: ".home-page";
       height:100px;
       display:block;
       float:left;
+      position:relative;
+      top:-70%;
     }
 
     &__private-event-location {
@@ -978,5 +980,19 @@ $module: ".home-page";
       font-weight:bold;
       font-family:'Oswald',sans-serif;
       padding-bottom:1%;
+    }
+
+    &__private-event-upper-box {
+
+      border-right: 1px solid #50e3c2;
+      border-right-style:solid;
+      border-bottom-color: 1px solid #50e3c2;
+      border-bottom-style:solid;
+      width:50%;
+      height:50%;
+      background:transparent;
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      color: white;
     }
 }
