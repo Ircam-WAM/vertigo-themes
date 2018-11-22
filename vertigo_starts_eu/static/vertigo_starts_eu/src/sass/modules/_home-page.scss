@@ -986,7 +986,7 @@ $module: ".home-page";
 
       border-right: 1px solid #50e3c2;
       border-right-style:solid;
-      border-bottom-color: 1px solid #50e3c2;
+      border-bottom: 1px solid #50e3c2;
       border-bottom-style:solid;
       width:50%;
       height:50%;
@@ -994,5 +994,19 @@ $module: ".home-page";
       font-family: 'Oswald', sans-serif;
       font-size: 15px;
       color: white;
+      padding-top: 10%;
+      padding-left: 7%
+    }
+
+    &__private-event-bottom-box {
+
+      background:#50e3c2;
+      width:50%;
+      height:30%;
+      margin-left:25%;
+      color: white;
+      font-size: 15px;
+      text-align: center;
+      padding-top: 2%;
     }
 }

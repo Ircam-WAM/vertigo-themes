@@ -117,20 +117,19 @@
 
         <div class="home-page__private-right-side-event">
           <div class="home-page__private-event-location">
-            IRCAM - Paris, FR{#{{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}#}
+            {{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}
           </div>
 
           <div class="home-page__private-event-title">
-            Manifest 2018{#{{ event.title }}#}
+            {{ event.title }}
           </div>
 
           <div class="home-page__private-event-description">
-            {#{{ event.description }}#}
-            Learn and unlearn...
+            {{ event.description|safe|truncatechars_html:50 }}
           </div>
 
           <div class="home-page__private-event-date">
-            Until 20.2.2020{#{{ event.end|time:"d.m.y" }}#}
+            Until {{ event.end|time:"d.m.y" }}
           </div>
         </div>
 
@@ -138,8 +137,8 @@
           <div class="home-page__private-event-upper-box">
             Public Event
           </div>
-          <div style="">
-
+          <div class="home-page__private-event-bottom-box">
+            For Artist
           </div>
         </div>
 
