@@ -927,12 +927,12 @@ $module: ".home-page";
 
       text-align:left;
       width:650px;
-      height:auto;
+      height:90%;
       margin:0 auto;
       display:block;
       float:right;
       position:relative;
-      top:-70%;
+      top:-90%;
     }
 
     &__private-left-side-event {
@@ -962,6 +962,7 @@ $module: ".home-page";
       margin-bottom:6%;
       font-weight:bold;
       font-family:'Oswald',sans-serif;
+      line-height: 1em;
     }
 
     &__private-event-description {
