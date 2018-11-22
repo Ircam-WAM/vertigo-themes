@@ -951,6 +951,16 @@ $module: ".home-page";
 
     }
 
+    &__private-responsive-tag-item {
+
+      display:block;
+
+      @media screen and (max-width: 780px) {
+
+        display:none;
+      }
+    }
+
     &__private-left-side-event {
 
       text-align:left;
