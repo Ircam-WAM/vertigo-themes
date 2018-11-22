@@ -925,8 +925,8 @@ $module: ".home-page";
 
     &__private-event-container-item {
 
-      position:relative;
-      top:-70%;
+      position:relative !important;
+      top:-70% !important;
     }
 
     &__private-right-side-event {
