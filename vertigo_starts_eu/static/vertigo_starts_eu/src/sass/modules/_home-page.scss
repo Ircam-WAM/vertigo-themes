@@ -934,6 +934,22 @@ $module: ".home-page";
       position:relative;
       top:-300px;
       margin-right:5%;
+
+      @media screen and (max-width: 780px) {
+
+        width: 100% !important;
+        height: 100% !important;
+        top: -400px !important;
+        text-align: center !important;
+        padding-right: 2% !important;
+        padding-left: 1% !important;
+
+        @-moz-document url-prefix() {
+
+
+        }
+      }
+
     }
 
     &__private-left-side-event {
