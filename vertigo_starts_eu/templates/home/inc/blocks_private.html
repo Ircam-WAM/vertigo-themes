@@ -58,7 +58,9 @@
             {{ person.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 300 300 padding=true %}" >
+          {% with person.images.all|get_type:'card' as images %}
+          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
+          {% endwith %}
         </div>
       </a>
 
