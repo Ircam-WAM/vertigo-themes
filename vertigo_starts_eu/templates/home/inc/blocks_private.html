@@ -36,11 +36,11 @@
             {{ article.title }}
           </div>
 
-          <div class="home-page__public-article-body-main">
+          <div class="home-page__public-article-body-main home-page__private-left-text">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
@@ -54,11 +54,11 @@
             {{ article.title }}
           </div>
 
-          <div class="home-page__public-article-body-main">
+          <div class="home-page__public-article-body-main home-page__private-left-text">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
@@ -75,7 +75,7 @@
             {{ event.title }}
           </div>
 
-          <div class="home-page__public-article-body-main">
+          <div class="home-page__public-article-body-main home-page__private-left-text">
             {{ event.description|richtext_filters|safe|truncatechars_html:600 }}
           </div>
 
@@ -117,7 +117,7 @@
             {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
+          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
 
         </div>
       </a>
