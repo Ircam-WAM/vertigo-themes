@@ -854,7 +854,7 @@ $module: ".home-page";
 
           z-index: 0;
           top: -100%;
-          
+
           @media screen and (max-width: 780px) {
 
             height:75% !important;
@@ -865,10 +865,5 @@ $module: ".home-page";
             }
           }
       }
-    }
-
-    &__private-image-gradiente-replace {
-
-      top:-100%;
     }
 }
