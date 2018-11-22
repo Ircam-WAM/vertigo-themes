@@ -28,7 +28,19 @@
 
   <div id="left-div-content" class="home-page__show-content home-page__private-content-main-left">
 
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-special" style="background:red;">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-special">
+
+      <a href="{{ article.get_absolute_url }}">
+        <div class="home-page__public-white-background">
+          <div class="home-page__public-article-title-main">
+            {{ article.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+          </div>
+        </div>
+      </a>
 
     </div>
     <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special" style="background:blue;">
