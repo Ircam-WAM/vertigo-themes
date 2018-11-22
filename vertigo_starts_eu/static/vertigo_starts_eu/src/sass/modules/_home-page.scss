@@ -866,4 +866,24 @@ $module: ".home-page";
           }
       }
     }
+
+    &__private-responsive-width-special {
+
+      @media screen and (max-width: 767px) {
+
+        clear:both !important;
+        height:600px !important;
+        margin-left:1% !important;
+        margin-right:1% !important;
+        width:93vw !important;
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+        clear:both !important;
+        height:600px !important;
+        margin-left:2% !important;
+        margin-right:1% !important;
+        width:93vw !important;
+      }
+    }
 }
