@@ -104,10 +104,10 @@
     <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__private-responsive-width-special">
 
       <a href="{{ event.get_absolute_url }}">
-        <div class="home-page__full-frame home-page__public-container-common-relative {% if event.images %}home-page__private-image-gradient{% endif %}">
+        <div class="home-page__full-frame home-page__public-container-common-relative {% if event.images %}home-page__private-left-image-gradient{% endif %}">
             {% if event.images %}
               {% with event.images.all|get_type:'card' as images %}
-              <img class="home-page__private-image_full-width home-page__image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 800 800 padding=true %}" >
+              <img class="home-page__private-left-image_full-width home-page__image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 800 800 padding=true %}" >
               {% endwith %}
             {% else %}
               <div class="home-page__private-image_full-width" style="border: 1px solid white"></div>
