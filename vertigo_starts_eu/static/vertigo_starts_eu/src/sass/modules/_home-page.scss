@@ -822,6 +822,11 @@ $module: ".home-page";
 
       margin-top:3%;
       font-size:15px;
+
+      @media screen and (max-width: 767px) {
+
+        margin-top:10% !important;
+      }
     }
 
     &__private-margin-second-line-image {
@@ -831,7 +836,7 @@ $module: ".home-page";
 
       @media screen and (max-width: 767px) {
 
-        margin-top:9% !important;
+        margin-top:15% !important;
       }
     }
 
