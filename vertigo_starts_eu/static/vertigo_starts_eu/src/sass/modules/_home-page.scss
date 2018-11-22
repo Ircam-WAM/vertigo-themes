@@ -802,4 +802,29 @@ $module: ".home-page";
 
       text-align:left;
     }
+
+    &__private-image_full-width {
+
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      position:relative;
+      object-fit: cover;
+    }
+
+    &__private-text-image-index {
+
+      z-index:5;
+      position:absolute;
+    }
+
+    &__private-margin-first-line-image {
+
+      margin-top:5%;
+    }
+
+    &__private-margin-second-line-image {
+
+      margin-top:8%;
+    }
 }
