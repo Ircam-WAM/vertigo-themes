@@ -857,11 +857,11 @@ $module: ".home-page";
 
           @media screen and (max-width: 780px) {
 
-            height:75% !important;
+            height:100% !important;
 
             @-moz-document url-prefix() {
 
-              height: 72% !important;
+              height: 100% !important;
             }
           }
       }
