@@ -104,16 +104,16 @@
     <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__private-responsive-width-special">
 
       <a href="{{ event.get_absolute_url }}">
-        <div class="home-page__private-full-frame home-page__public-white-background">
+        <div class="home-page__full-frame home-page__public-container-common-relative {% if event.image %}home-page__private-image-gradient{% endif %}">
+            {% if event.image %}
+              <img class="home-page__private-image_full-width home-page__image-gradient" src="{{ MEDIA_URL }}{% thumbnail event.image 800 800 padding=true %}" >
+            {% else %}
+              <div class="home-page__private-image_full-width" style="border: 1px solid white"></div>
+            {% endif %}
 
-          <div class="home-page__public-article-title-main">
-            {{ event.title }}
-          </div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text">{{ event.title }}</div>
 
-          <div class="home-page__public-article-body-main home-page__private-left-text">
-            {{ event.description|richtext_filters|safe|truncatechars_html:600 }}
-          </div>
-
+            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image">{{ event.description|safe|truncatechars_html:50 }}</div>
         </div>
       </a>
 
