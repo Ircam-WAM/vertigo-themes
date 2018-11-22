@@ -820,11 +820,19 @@ $module: ".home-page";
 
     &__private-margin-first-line-image {
 
-      margin-top:5%;
+      margin-top:3%;
+      font-size:15px;
     }
 
     &__private-margin-second-line-image {
 
-      margin-top:8%;
+      margin-top:6%;
+      font-size:15px;
+    }
+
+    &__private-size-title-image-text {
+
+      margin-top:-5%;
+      font-size:25px;
     }
 }

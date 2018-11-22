@@ -63,7 +63,7 @@
       </a>
 
     </div>
-    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__responsive-width-special" style="background:yellow;">
+    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__responsive-width-special">
 
       <a href="{{ project.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-container-common-relative {% if project.artist.images %}home-page__image-gradient{% endif %}">
@@ -73,7 +73,7 @@
               <div class="home-page__private-image_full-width" style="border: 1px solid white"></div>
             {% endif %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index">{{ project.title }}</div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text">{{ project.title }}</div>
 
             {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
               <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
