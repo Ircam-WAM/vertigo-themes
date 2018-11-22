@@ -21,7 +21,7 @@
 
   <div class="home-page__first-big-block home-page__public-container-common">
     <div class="home-page__inner-big-block">
-      <a href="{{ article.link }}">
+      <a href="{{ article.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-white-background">
 
           <div class="home-page__public-article-title-main">
@@ -38,7 +38,7 @@
       </a>
     </div>
     <div class="home-page__inner-blog-block-right">
-      <a href="{{ event.link }}">
+      <a href="{{ event.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-white-background">
 
           <div class="home-page__public-article-title-main">
@@ -67,7 +67,7 @@
   <div class="home-page__second-big-block home-page__public-container-common">
     <div class="home-page__inner-frame-second">
       <div class="home-page__inner-block-second home-page__public-container-common">
-        <a href="{{ person.link }}">
+        <a href="{{ person.get_absolute_url }}">
           <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative {% if person.images %}home-page__image-gradient{% endif %}">
               {% if person.images %}
               <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}">
@@ -81,7 +81,8 @@
         </a>
       </div>
       <div class="home-page__inner-block-item home-page__public-container-common">
-        <a href="{{ organization.link }}">
+        <a href="{{ organization.get_absolute_url }}">
+
           <div class="home-page__full-frame home-page__public-white-background">
 
             <!--HERE BLOG POST-->
@@ -98,7 +99,7 @@
       </div>
     </div>
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
-      <a href="{{ project.link }}">
+      <a href="{{ project.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-container-common-relative {% if project.artist.images %}home-page__image-gradient{% endif %}">
 
             {% comment %}
@@ -112,16 +113,16 @@
 
             <!--<img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.artist.person.images.all|first 800 800 padding=true %}" -->
 
-            {% if project.artist.images %}
-            <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.artist.images.all|first 800 800 padding=true %}" >
+            {% if project.public_data.all.0.image %}
+              <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.public_data.all.0.image 800 800 padding=true %}" >
             {% else %}
-            <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
             {% endif %}
 
             <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ project.title }}</div>
 
-            {% if project.artist.first_name or project.artist.last_name %}
-            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article">{{ project.artist.first_name }} {{ project.artist.last_name }}</div>
+            {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
             {% endif %}
 
             <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article">{{ project.description|safe|truncatechars_html:50 }}</div>
