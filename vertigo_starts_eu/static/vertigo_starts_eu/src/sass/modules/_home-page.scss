@@ -786,4 +786,10 @@ $module: ".home-page";
 
       z-index: 2;
     }
+
+    &__private-full-frame {
+
+      width:100%;
+      height:100%;
+    }
 }
