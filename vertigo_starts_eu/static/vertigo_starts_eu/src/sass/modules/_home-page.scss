@@ -877,7 +877,7 @@ $module: ".home-page";
       @media screen and (max-width: 767px) {
 
         clear:both !important;
-        height:600px !important;
+        height:650px !important;
         margin-left:1% !important;
         margin-right:1% !important;
         width:93vw !important;
@@ -885,7 +885,7 @@ $module: ".home-page";
 
       @media screen and (min-width: 768px) and (max-width: 768px) {
         clear:both !important;
-        height:600px !important;
+        height:650px !important;
         margin-left:2% !important;
         margin-right:1% !important;
         width:93vw !important;
@@ -942,6 +942,8 @@ $module: ".home-page";
         top: -400px !important;
         text-align: center !important;
         margin: 0 auto !important;
+        padding-right: 5% !important;
+        padding-left: 5% !important;
 
         @-moz-document url-prefix() {
 
