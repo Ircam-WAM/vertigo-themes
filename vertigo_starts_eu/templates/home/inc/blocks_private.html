@@ -37,8 +37,10 @@
           </div>
 
           <div class="home-page__public-article-body-main">
-            {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+            {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
@@ -47,13 +49,16 @@
 
       <a href="{{ article.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
+
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
 
           <div class="home-page__public-article-body-main">
-            {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+            {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
@@ -61,13 +66,43 @@
     <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__responsive-width-special" style="background:yellow;">
 
     </div>
-    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special" style="background:brown;">
+    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special">
+
+      <a href="{{ event.get_absolute_url }}">
+        <div class="home-page__private-full-frame home-page__public-white-background">
+
+          <div class="home-page__public-article-title-main">
+            {{ event.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {{ event.description|richtext_filters|safe|truncatechars_html:600 }}
+          </div>
+
+        </div>
+      </a>
 
     </div>
     <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__responsive-width-special" style="background:purple;">
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__responsive-width-special" style="background:orange;">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__responsive-width-special">
+
+      <a href="{{ organization.get_absolute_url }}">
+        <div class="home-page__private-full-frame home-page__public-white-background">
+
+          <div class="home-page__public-article-title-main">
+            {{ organization.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
+          </div>
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
+          
+        </div>
+      </a>
 
     </div>
 
