@@ -113,25 +113,7 @@
               <div class="home-page__private-image_full-width" style="border: 1px solid white"></div>
             {% endif %}
 
-            <div style="text-align:left;">
-              <div style="font-size:20px;color:#50e3c2;font-family:'Oswald', sans-serif;font-weight:bold;font-family:Oswald,sans-serif">
-                IRCAM - Paris, FR{#{{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}#}
-              </div>
 
-              <div style="font-size:40px;color:#50e3c2;margin-top:3%;margin-bottom:5%;font-weight:bold;font-family:Oswald,sans-serif">
-                Manifest 2018{#{{ event.title }}#}
-              </div>
-
-              <div style="font-size:25px;color:white;margin-top:3%;margin-bottom:5%;font-weight:bold;font-family:Oswald,sans-serif">
-                {#{{ event.description }}#}
-                Learn and unlearn...
-              </div>
-
-              <div style="font-size:25px;color:white;margin-top:3%;margin-bottom:5%;font-weight:bold;font-family:Oswald,sans-serif">
-                Until 20.2.2020{#{{ event.end|time:"l.j.F" }}#}
-              </div>
-
-            </div>
 
             {% comment %}
             <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text">{{ event.title }}</div>
@@ -140,6 +122,30 @@
 
             {% endcomment %}
         </div>
+
+        <div style="position:relative;top:-100%">
+
+          <div style="text-align:left;">
+            <div style="font-size:20px;color:#50e3c2;font-family:'Oswald', sans-serif;font-weight:bold;font-family:Oswald,sans-serif">
+              IRCAM - Paris, FR{#{{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}#}
+            </div>
+
+            <div style="font-size:40px;color:#50e3c2;margin-top:3%;margin-bottom:5%;font-weight:bold;font-family:Oswald,sans-serif">
+              Manifest 2018{#{{ event.title }}#}
+            </div>
+
+            <div style="font-size:25px;color:white;margin-top:3%;margin-bottom:5%;font-weight:bold;font-family:Oswald,sans-serif">
+              {#{{ event.description }}#}
+              Learn and unlearn...
+            </div>
+
+            <div style="font-size:25px;color:white;margin-top:3%;margin-bottom:5%;font-weight:bold;font-family:Oswald,sans-serif">
+              Until 20.2.2020{#{{ event.end|time:"l.j.F" }}#}
+            </div>
+          </div>
+
+        </div>
+
       </a>
 
     </div>
