@@ -1,0 +1,136 @@
+{% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
+
+<div class="home-page__public-main-container-text-banner">
+  <div class="home-page__public-main-text-banner">
+    ART X TECHNOLOGY X INNOVATION
+  </div>
+
+  <div class="home-page__public-subtext-main-banner home-page__public-subtext-bold">
+    VERTIGO is a project supported by the H2020 STARTS program of the European Commission.
+  </div>
+  <div class="home-page__public-subtext-main-banner">
+    Its purpose is to organise artistic collaborations with R&D projects that target innovation.
+  </div>
+</div>
+
+<div class="home-page__public-line-divider">
+
+</div>
+
+<div class="home-page__main-item home-page__public-common-height-auto">
+
+  <div class="home-page__first-big-block home-page__public-container-common">
+    <div class="home-page__inner-big-block">
+      <a href="{{ article.get_absolute_url }}">
+        <div class="home-page__full-frame home-page__public-white-background">
+
+          <div class="home-page__public-article-title-main">
+            {{ article.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
+          </div>
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+
+        </div>
+      </a>
+    </div>
+    <div class="home-page__inner-blog-block-right">
+      <a href="{{ event.get_absolute_url }}">
+        <div class="home-page__full-frame home-page__public-white-background">
+
+          <div class="home-page__public-article-title-main">
+            {{ event.title }}
+          </div>
+
+          <div class="home-page__public-article-body-main">
+            {% if event.departments.first %}
+              {% with event.departments.first as department %}
+                  {{ department.department.name }}
+              {% endwith %}
+              <br/>
+            {% endif %}
+
+            {% if event.category %}
+                {{ object.category|truncatechars:15 }}
+                  <br/>
+            {% endif %}
+
+            {{ event.description|richtext_filters|safe|truncatechars_html:500 }}
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="home-page__second-big-block home-page__public-container-common">
+    <div class="home-page__inner-frame-second">
+      <div class="home-page__inner-block-second home-page__public-container-common">
+        <a href="{{ person.get_absolute_url }}">
+          <div class="home-page__full-frame home-page__public-container-common home-page__public-container-common-relative {% if person.images %}home-page__image-gradient{% endif %}">
+              {% if person.images %}
+              <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}">
+              {% else %}
+              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+              {% endif%}
+
+              <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ person.first_name }} {{ person.last_name }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-second-row home-page__public-index-text-article">{{ person.bio|safe|truncatechars_html:100 }}</div>
+          </div>
+        </a>
+      </div>
+      <div class="home-page__inner-block-item home-page__public-container-common">
+        <a href="{{ article.get_absolute_url }}">
+
+          <div class="home-page__full-frame home-page__public-white-background">
+
+            <!--HERE BLOG POST-->
+
+            <div class="home-page__public-article-title-main">
+              {{ article.title }}
+            </div>
+
+            <div class="home-page__public-article-body-main">
+              {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
+      <a href="{{ project.get_absolute_url }}">
+        <div class="home-page__full-frame home-page__public-container-common-relative {% if project.artist.images %}home-page__image-gradient{% endif %}">
+
+            {% comment %}
+            {% with project.images.all as images %}
+                {% if images %}
+                <div class="residency-detail__header-image home-page__public-image_full-width" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
+                </div>
+                {% endif %}
+            {% endwith %}
+            {% endcomment %}
+
+            <!--<img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.artist.person.images.all|first 800 800 padding=true %}" -->
+
+            {% if project.public_data.all.0.image %}
+              <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.public_data.all.0.image 800 800 padding=true %}" >
+            {% else %}
+              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+            {% endif %}
+
+            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ project.title }}</div>
+
+            {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
+            {% endif %}
+
+            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article">{{ project.description|safe|truncatechars_html:50 }}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="home-page__public-line-divider-bottom">
+</div>

@@ -137,12 +137,15 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:16% !important;
+        padding-bottom:8% !important;
       }
 
       &__responsive-image {
 
         display: block !important;
+      	margin-top: -5px !important;
+      	width: 40% !important;
+      	margin-left: 105px !important;
       }
 
       &__non-responsive-image {
@@ -286,8 +289,13 @@ $module: ".nav-header";
       &:after {
         background:white !important;
       }
+
+      @media screen and (max-width: 780px) {
+
+          background:transparent !important;
+      }
     }
-    
+
     &__item {
 
         display: inline-block;
@@ -853,4 +861,26 @@ $module: ".nav-header";
       }
     }
 
+    &__item-responsive {
+
+      top:0 !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:20px !important;
+        margin-left:10px !important;
+        margin-bottom: -28px !important;
+      }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+          margin-top: 10px !important;
+          margin-left: 10px !important;
+          margin-bottom: -18px !important;
+        }
+      }
+
+
+    }
 }

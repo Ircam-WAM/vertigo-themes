@@ -28,27 +28,28 @@ window.onload = selectCurrentTab;
       <div class="page__item_content">
           <div id="info-profile" class="page__info-block">
             <div class="page__center-bio section-title section-title--big" style="color:black">
+
               {{ request.user.first_name|upper }}&nbsp;{{ request.user.last_name|upper }}
             </div>
 
             {% if request.user.address %}
-            <div class="page__center-bio" style="color:white">
-              {{ request.user.address }}<br/><br/>
-              {{ request.user.email }}<br/><br/>
-              ({{ request.user.telephone }})
-            </div>
-            {% endif %}
+              <div class="page__center-bio" style="color:white">
+                {{ request.user.address }}<br/><br/>
+                {{ request.user.email }}<br/><br/>
+                ({{ request.user.telephone }})
+              </div>
 
-            {% if request.user.city and request.user.country %}
-            <div class="page__center-bio" style="color:white">
-              {{ request.user.city }}, {{ request.user.country }}
-            </div>
-            {% endif %}
+              {% if request.user.city and request.user.country %}
+              <div class="page__center-bio" style="color:white">
+                {{ request.user.city }}, {{ request.user.country }}
+              </div>
+              {% endif %}
 
-            {% if request.user.short_url %}
-            <div class="page__center-bio">
-              <a href="{{ request.short_url }}" style="color:white">{{ request.user.short_url }}</a>
-            </div>
+              {% if request.user.short_url %}
+              <div class="page__center-bio">
+                <a href="{{ request.short_url }}" style="color:white">{{ request.user.short_url }}</a>
+              </div>
+              {% endif %}
             {% else %}
               {% if request.user.site %}
                 <div class="page__center-bio">
@@ -56,7 +57,7 @@ window.onload = selectCurrentTab;
                 </div>
               {% endif %}
             {% endif %}
-          </div>
+         </div>
       </div>
   </div>
 </div>
