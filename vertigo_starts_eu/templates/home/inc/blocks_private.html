@@ -123,28 +123,28 @@
             {% endcomment %}
         </div>
 
-        <div style="position:relative;top:-70%">
+        <div clas="home-page__private-event-container">
 
-          <div style="text-align:left;width:650px;height:auto;margin:0 auto;display:block;float:right">
-            <div style="font-size:20px;color:#50e3c2;font-family:'Oswald', sans-serif;font-weight:bold;font-family:Oswald,sans-serif">
+          <div class="home-page_private-right-side-event">
+            <div class="home-page__private-event-location">
               IRCAM - Paris, FR{#{{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}#}
             </div>
 
-            <div style="font-size:40px;color:#50e3c2;margin-top:3%;margin-bottom:6%;font-weight:bold;font-family:Oswald,sans-serif">
+            <div class="home-page__private-event-title">
               Manifest 2018{#{{ event.title }}#}
             </div>
 
-            <div style="font-size:25px;color:white;margin-bottom:1%;font-weight:bold;font-family:Oswald,sans-serif">
+            <div class="home-page__private-event-description">
               {#{{ event.description }}#}
               Learn and unlearn...
             </div>
 
-            <div style="font-size:25px;color:white;font-weight:bold;font-family:Oswald,sans-serif;padding-bottom:1%;">
+            <div class="home-page__private-event-date">
               Until 20.2.2020{#{{ event.end|time:"d.m.y" }}#}
             </div>
           </div>
 
-          <div style="text-align:left;width:200px;height:100px;display:block;float:left;background:red">
+          <div class="home-page__private-left-side-event">
 
           </div>
         </div>
