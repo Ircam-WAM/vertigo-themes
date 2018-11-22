@@ -115,30 +115,27 @@
 
         </div>
 
-        <div clas="home-page__private-event-container-item">
-
-          <div class="home-page__private-right-side-event">
-            <div class="home-page__private-event-location">
-              IRCAM - Paris, FR{#{{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}#}
-            </div>
-
-            <div class="home-page__private-event-title">
-              Manifest 2018{#{{ event.title }}#}
-            </div>
-
-            <div class="home-page__private-event-description">
-              {#{{ event.description }}#}
-              Learn and unlearn...
-            </div>
-
-            <div class="home-page__private-event-date">
-              Until 20.2.2020{#{{ event.end|time:"d.m.y" }}#}
-            </div>
+        <div class="home-page__private-right-side-event">
+          <div class="home-page__private-event-location">
+            IRCAM - Paris, FR{#{{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}#}
           </div>
 
-          <div class="home-page__private-left-side-event">
-
+          <div class="home-page__private-event-title">
+            Manifest 2018{#{{ event.title }}#}
           </div>
+
+          <div class="home-page__private-event-description">
+            {#{{ event.description }}#}
+            Learn and unlearn...
+          </div>
+
+          <div class="home-page__private-event-date">
+            Until 20.2.2020{#{{ event.end|time:"d.m.y" }}#}
+          </div>
+        </div>
+
+        <div class="home-page__private-left-side-event">
+
         </div>
 
       </a>

@@ -923,12 +923,6 @@ $module: ".home-page";
       }
     }
 
-    &__private-event-container-item {
-
-      position:relative !important;
-      top:-70% !important;
-    }
-
     &__private-right-side-event {
 
       text-align:left;
@@ -937,6 +931,8 @@ $module: ".home-page";
       margin:0 auto;
       display:block;
       float:right;
+      position:relative;
+      top:-40%;
     }
 
     &__private-left-side-event {
