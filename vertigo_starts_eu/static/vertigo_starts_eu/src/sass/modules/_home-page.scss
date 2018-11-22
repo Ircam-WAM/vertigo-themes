@@ -836,6 +836,36 @@ $module: ".home-page";
       font-size:25px;
     }
 
+    &__private-image-gradient {
+
+
+      &:after {
+
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+
+          /* Rectangle 3: */
+          background-image: -webkit-linear-gradient(right, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
+          background-image: -o-linear-gradient(right, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
+          background-image: linear-gradient(to bottom, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
+
+          z-index: 0;
+
+          @media screen and (max-width: 780px) {
+
+            height:75% !important;
+
+            @-moz-document url-prefix() {
+
+              height: 72% !important;
+            }
+          }
+      }
+    }
+
     &__private-image-gradiente-replace {
 
       top:-100%;
