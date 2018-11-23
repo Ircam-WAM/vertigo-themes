@@ -33,7 +33,7 @@
       <a href="{{ article.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
 
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
 
           <div class="home-page__public-article-title-main">
             {{ article.title }}
@@ -53,7 +53,7 @@
         <div class="home-page__private-full-frame home-page__public-white-background">
 
           {% with person.images.all as images %}
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
           {% endwith %}
 
           <div class="home-page__public-article-title-main">
@@ -93,6 +93,9 @@
 
       <a href="{{ projectresidency.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
+
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail projectresidency.images.all|first 300 300 padding=true %}" >
+
           <div class="home-page__public-article-title-main">
             {{ projectresidency.title }}
           </div>
@@ -101,7 +104,6 @@
             {{ projectresidency.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail projectresidency.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
@@ -155,7 +157,7 @@
       <a href="{{ organization.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
 
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
 
           <div class="home-page__public-article-title-main">
             {{ organization.title }}
