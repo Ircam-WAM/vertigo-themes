@@ -82,18 +82,18 @@
       </div>
       <div class="home-page__inner-block-item home-page__public-container-common">
         <a href="{{ organization.get_absolute_url }}">
-
-          <div class="home-page__full-frame home-page__public-white-background">
-
-            <!--HERE BLOG POST-->
+          <div class="home-page__private-full-frame home-page__public-white-background">
 
             <div class="home-page__public-article-title-main">
               {{ organization.title }}
             </div>
 
             <div class="home-page__public-article-body-main">
-              {{ organization.description|richtext_filters|safe|truncatechars_html:600 }}
+              {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
             </div>
+
+            <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
+
           </div>
         </a>
       </div>
