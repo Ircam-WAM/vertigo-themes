@@ -72,7 +72,7 @@
               {% if person.images %}
               <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}">
               {% else %}
-              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+              <div class="home-page__public-image_full-width" style="border: 1px solid white;background:black"></div>
               {% endif%}
 
               <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ person.first_name }} {{ person.last_name }}</div>
@@ -116,7 +116,7 @@
             {% if project.public_data.all.0.image %}
               <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.public_data.all.0.image 800 800 padding=true %}" >
             {% else %}
-              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+              <div class="home-page__public-image_full-width" style="border: 1px solid white;background:black"></div>
             {% endif %}
 
             <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ project.title }}</div>
