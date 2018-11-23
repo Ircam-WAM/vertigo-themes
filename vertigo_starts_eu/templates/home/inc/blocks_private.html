@@ -137,11 +137,11 @@
               <div class="event-line-box__title-list event-line-box__white-color">
                   {{ event.title }}
               </div>
-              <div class="event-line-box__date-list event-line-box__small-margin">
+              <div class="event-line-box__date-list event-line-box__small-margin" style="{% if not event.images %}color:black{% endif %}">
                   {% include 'agenda/includes/event_date_line.html' with object=event %}
               </div>
               {% if event.location %}
-                  <div class="event-line-box__location-list">
+                  <div class="event-line-box__location-list" style="{% if not event.images %}color:black{% endif %}">
                       {{ event.location.title }}
                       {% comment %}
                       {% if event.location.room %}
@@ -151,7 +151,7 @@
                   </div>
               {% endif %}
           </div>
-          
+
         </div>
 
       </a>
