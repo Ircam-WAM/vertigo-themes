@@ -909,9 +909,9 @@ $module: ".home-page";
           position: relative;
 
           /* Rectangle 3: */
-          background-image: -webkit-linear-gradient(bottom, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
-          background-image: -o-linear-gradient(bottom, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
-          background-image: linear-gradient(to right, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
+          background-image: -webkit-linear-gradient(top, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
+          background-image: -o-linear-gradient(top, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
+          background-image: linear-gradient(to left, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
 
           z-index: 0;
           top: -102%;
@@ -938,7 +938,7 @@ $module: ".home-page";
       float:right;
       position:relative;
       top:-300px;
-      margin-right:5%;
+      margin-right:35%;
 
       @media screen and (max-width: 780px) {
 
