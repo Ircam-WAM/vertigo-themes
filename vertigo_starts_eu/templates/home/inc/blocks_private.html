@@ -78,13 +78,13 @@
               <div class="home-page__private-image_full-width" style="border: 1px solid white;background:white"></div>
             {% endif %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text" style="{% if not person.images %}color:black{% endif %}">{{ project.title }}</div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.title }}</div>
 
             {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
-              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image" style="{% if not person.images %}color:black{% endif %}">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
             {% endif %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="{% if not person.images %}color:black{% endif %}">{{ project.description|safe|truncatechars_html:50 }}</div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.description|safe|truncatechars_html:50 }}</div>
         </div>
       </a>
 
@@ -123,7 +123,7 @@
         </div>
 
         <div class="home-page__private-right-side-event">
-          <div class="home-page__private-event-location" style="{% if not person.images %}color:black{% endif %}">
+          <div class="home-page__private-event-location" style="{% if not event.images %}color:black{% endif %}">
             {{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}
           </div>
 
