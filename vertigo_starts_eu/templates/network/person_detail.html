@@ -36,7 +36,7 @@
       window.onload = selectCurrentTab;
 
       </script>
-      {% if request.user.is_authenticated %}
+      {% if request.user.is_authenticated and person.user == request.user %}
         {# Private section #}
       <div class="page__item_selector">
       		<a href="{% url 'profile_update' %}"><span id="select-profile" class="page__option-selected">Profile</span></a>
@@ -53,8 +53,8 @@
           <div class="page__center-bio section-title section-title--big" style="color:black">{{ person.title|upper }}</h1>
 {% endcomment %}
       </div>
-
     {% endif %}
+
       {# Public section #}
       <div style="margin-top:20px"></div>
       {% with person.images.all|get_type:'card' as card_images %}
@@ -73,27 +73,27 @@
       <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
 
       {% if request.user.is_authenticated %}
-      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        {% if person.address %}Address: {{ request.user.address }}<br/><br/>{% endif %}
-        Email: {{ request.user.email }}<br/><br/>
-        Telephone: {{ request.user.telephone }}<br/><br/>
-      </div>
-
-      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        City: {{ request.user.city }}<br/><br/>
-        Country: {{ request.user.country }}<br/><br/>
-      </div>
-
-      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        URL: <a href="{{ request.user.short_url }}" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ request.user.short_url }}</a><br/><br/>
-      </div>
-      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        Site: <a href="{{ request.user.site }}" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ request.user.site }}</a><br/><br/>
-      </div>
+        <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
+            {% if person.email %}Email: <a href="mailto:{{ person.email }}">{{ person.email }}</a><br/><br/>{% endif %}
+            {% if person.telephone %}Telephone: {{ person.telephone }}<br/><br/>{% endif %}
+            {% if person.address %}Address: {{ person.address }}<br/><br/>{% endif %}
+            {% if person.city %}City: {{ person.city }}<br/><br/>{% endif %}
+            {% if person.country %}Country: {{ person.country }}<br/><br/>{% endif %}
+        </div>
       {% endif %}
 
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        Biography: {{ person.bio|richtext_filters|safe }}
+        {% if person.bio %}
+          Biography: {{ person.bio|richtext_filters|safe }}
+        {% endif %}
+      </div>
+
+      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
+        {% with person.links.all.0 as link %}
+            {% if link %}
+                Site: <a href="{{ link }}" blank="true" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ link }}</a><br/><br/>
+            {% endif %}
+        {% endwith %}
       </div>
 
 {% comment %}
