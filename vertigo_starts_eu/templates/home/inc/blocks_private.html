@@ -123,30 +123,35 @@
         </div>
 
         <div class="home-page__private-right-side-event">
-          <div class="home-page__private-event-location" style="{% if not event.images %}color:black{% endif %}">
-            {{ event.departments.all.0.department.name }} - {{ event.country.location.name }}, {{ event.location.city }}
-          </div>
 
-          <div class="home-page__private-event-title">
-            {{ event.title }}
+          {% if event.departments.all %}
+          <div class="event-line-box__tag-event">
+            <p class="event-line-box__tag-event-content" style="{% if not event.images %}color:black{% endif %}">{{ event.departments.all.0.department.name }}</p>
           </div>
+          <div class="event-line-box__subtag-event">
+            <p class="event-line-box__subtag-event-content" style="{% if not event.images %}color:black{% endif %}">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>
+          </div>
+          {% endif %}
+          <div class="event-line-box__body">
 
-          <div class="home-page__private-event-description">
-            {{ event.description|safe|truncatechars_html:50 }}
+              <div class="event-line-box__title-list event-line-box__white-color">
+                  {{ event.title }}
+              </div>
+              <div class="event-line-box__date-list event-line-box__small-margin">
+                  {% include 'agenda/includes/event_date_line.html' with object=event %}
+              </div>
+              {% if event.location %}
+                  <div class="event-line-box__location-list">
+                      {{ event.location.title }}
+                      {% comment %}
+                      {% if event.location.room %}
+                           / {{ event.location.room }}
+                      {% endif %}
+                      {% endcomment %}
+                  </div>
+              {% endif %}
           </div>
-
-          <div class="home-page__private-event-date">
-            Until {{ event.end|time:"d.m.y" }}
-          </div>
-        </div>
-
-        <div class="home-page__private-left-side-event home-page__private-responsive-tag-item">
-          <div class="home-page__private-event-upper-box">
-            Public Event
-          </div>
-          <div class="home-page__private-event-bottom-box">
-            For Artist
-          </div>
+          
         </div>
 
       </a>
