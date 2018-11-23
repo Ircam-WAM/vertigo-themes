@@ -1044,4 +1044,9 @@ $module: ".home-page";
       padding-top: 2%;
       font-family: 'Oswald', sans-serif;
     }
+
+    &__hide-button {
+
+      display:none !important;
+    }
 }

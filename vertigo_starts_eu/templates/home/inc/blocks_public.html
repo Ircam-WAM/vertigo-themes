@@ -81,18 +81,18 @@
         </a>
       </div>
       <div class="home-page__inner-block-item home-page__public-container-common">
-        <a href="{{ article.get_absolute_url }}">
+        <a href="{{ organization.get_absolute_url }}">
 
           <div class="home-page__full-frame home-page__public-white-background">
 
             <!--HERE BLOG POST-->
 
             <div class="home-page__public-article-title-main">
-              {{ article.title }}
+              {{ organization.title }}
             </div>
 
             <div class="home-page__public-article-body-main">
-              {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+              {{ organization.description|richtext_filters|safe|truncatechars_html:600 }}
             </div>
           </div>
         </a>

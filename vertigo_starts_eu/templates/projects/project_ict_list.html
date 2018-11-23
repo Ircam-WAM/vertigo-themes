@@ -1,6 +1,9 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
 
+{% comment %}
+<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
+{% endcomment %}
 
 {% block extra_head %}
 
@@ -74,11 +77,52 @@
 
 
 {% block main %}
+
+<script>
+
+function changeViewItems(object, event) {
+
+  event.preventDefault();
+
+  var id_item = object.id;
+
+  var clickedItem = document.getElementById(id_item);
+  var altItem = document.getElementById((id_item == "dots-item") ? "map-marker" : "dots-item");
+
+  altItem.classList.remove("article-box__icon-marker-item-highlight");
+  altItem.classList.add("article-box__icon-marker-item-clean");
+
+  clickedItem.classList.add("article-box__icon-marker-item-highlight");
+  clickedItem.classList.remove("article-box__icon-marker-item-clean");
+}
+
+</script>
+
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
     <div class="container">
         <div class="row">
             <div class="col-sm-16 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Available Projects" %}</h1>
+
+                    {% comment %}
+                    <!--
+                      <div class="map" id="network-map">
+                      </div>
+                    -->
+
+
+                    <div class="article-box__view-changer-container">
+                      <div id="dots-item" class="article-box__item-marker-common" onclick="changeViewItems(this, event);">
+                        <a href="#" class="article-box__icon-marker-item-highlight">
+                          <i class="fa fa-th article-box__align-center-dots"></i>
+                        </a>
+                      </div>
+                      <div id="map-marker" class="article-box__item-marker-common" onclick="changeViewItems(this, event);">
+                        <a  href="#" class="article-box__icon-marker-item-clean">
+                          <i class="fa fa-map-marker article-box__align-center-marker"></i>
+                      </div>
+                    </div>
+                    {% endcomment %}
             </div>
         </div>
 
@@ -87,7 +131,7 @@
             <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
                 <div class="page__content">
                     <div class="container">
-                        <div class="row">
+                        <div i="project-list" class="row" style="display:block">
                             {% for object in object_list %}
                                 <div class="col-xs-8">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
@@ -98,6 +142,11 @@
                                 </div>
                             {% endfor %}
                         </div>
+                        {% comment %}
+                        <div id="map" style="display:none">
+
+                        </div>
+                        {% endcomment %}
                     </div>
                 </div>
             </div>

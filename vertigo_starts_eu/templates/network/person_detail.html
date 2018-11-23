@@ -84,7 +84,7 @@
 
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% if person.bio %}
-          Biography: {{ person.bio|richtext_filters|safe }}
+          <div class="page__fancy-font">Biography: {{ person.bio|richtext_filters|safe }}</div>
         {% endif %}
       </div>
 
