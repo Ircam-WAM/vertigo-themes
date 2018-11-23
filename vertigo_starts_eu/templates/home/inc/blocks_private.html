@@ -101,7 +101,7 @@
           </div>
 
           <div class="home-page__public-article-body-main home-page__private-left-text">
-            {{ projectresidency.description|richtext_filters|safe|truncatechars_html:500 }}
+            {{ projectresidency.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
 
         </div>
@@ -169,7 +169,7 @@
           </div>
 
           <div class="home-page__public-article-body-main">
-            {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
+            {{ organization.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
 
         </div>
