@@ -56,6 +56,24 @@ $module: ".project-ict-detail";
       }
     }
 
+    &__tag-style-simple-private {
+
+      display: inline-block;
+      border: .2em solid $color-main;
+      border-radius: .2em;
+      color: $color-main;
+      font-size: 1.0em;
+      margin: .5em;
+      padding: .2em .5em;
+
+      @media screen and (max-width: 780px) {
+
+        font-size: 9px;
+
+        padding: 0.5em;
+      }
+    }
+
     &__main_info {
         margin: auto;
         margin-bottom: 1em;
