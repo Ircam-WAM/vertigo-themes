@@ -1,4 +1,4 @@
-{% extends "admin/base.html" %}
+{% extends "admin/base_root.html" %}
 {% load mezzanine_tags i18n staticfiles %}
 
 {% block title %}{{ title }} | Mezzanine{% endblock %}
@@ -45,6 +45,21 @@ jQuery(function($) {
 </script>
 {% endblock %}
 
+{% block stylesheets %}
+{{ block.super }}
+<style>
+#beforeContent {
+    margin: 60px 10px 0 235px !important;
+}
+#content {
+    margin: 0 10px 60px 235px !important;
+}
+DIV.NoSecondRow {
+    margin: -1px 15px;
+}
+</style>
+{% endblock %}
+
 {% block rtl_styles %}
 {{ block.super }}
 <link rel="stylesheet" type="text/css" href="{% static "mezzanine/css/admin/rtl.css" %}" />
@@ -54,6 +69,9 @@ jQuery(function($) {
 {% if user.is_staff and not is_popup and not request.GET.pop %}
 {% admin_dropdown_menu %}
 {% endif %}
+<div id="beforeContent" class="colM">
+    {{ block.super }}
+</div>
 {% endblock %}
 
 {% block footer %}
