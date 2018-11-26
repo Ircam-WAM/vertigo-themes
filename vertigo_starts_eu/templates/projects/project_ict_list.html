@@ -127,13 +127,6 @@ function changeViewItems(object, event) {
             <div class="col-sm-16 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Available Projects" %}</h1>
 
-                    {% comment %}
-                    <!--
-                      <div class="map" id="network-map">
-                      </div>
-                    -->
-                    {% endcomment %}
-
                     <div class="article-box__view-changer-container">
                       <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
                         <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
@@ -167,7 +160,8 @@ function changeViewItems(object, event) {
                         </div>
 
                         <div id="map-element-content" style="display:none">
-
+                          <div class="map" id="network-map">
+                          </div>
                         </div>
 
                     </div>
