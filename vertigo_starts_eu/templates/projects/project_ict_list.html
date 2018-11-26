@@ -5,7 +5,18 @@
 <script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
 {% endcomment %}
 
+
+
 {% block extra_head %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
 
     <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
     <script>
@@ -15,8 +26,18 @@
                 $content = $header.next();
                 $content.slideToggle(500);
             });
+
+
+
+
+
+
+
         });
+
+
     </script>
+
 
 {% endblock %}
 
@@ -116,6 +137,19 @@ function changeViewItems(object, event) {
 
     mapElement.style.display = "block";
     listElemet.style.display = "none";
+
+    $(function() {
+
+      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+          '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+          'Imagery  <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox.streets'
+      }).addTo(mymap);
+});
   }
 }
 
@@ -159,15 +193,10 @@ function changeViewItems(object, event) {
                             {% endfor %}
                         </div>
 
-                        <div id="map-element-content" style="position:relative;display:none">
+                        <div id="map-element-content" style="display:hidden">
 
-                          <div class="map" id="network-map">
-                          </div>
-                          <div class="map-legend">
-                              {% for type in organization_types %}
-                                  <div class="map-legend__item map-legend__item--{{ type.1 }}">{{ type.0 }}</div>
-                              {% endfor %}
-                          </div>
+                           <div id="mapid"></div>
+
                         </div>
                     </div>
                 </div>
