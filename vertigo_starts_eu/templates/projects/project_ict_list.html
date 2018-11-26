@@ -159,10 +159,15 @@ function changeViewItems(object, event) {
                             {% endfor %}
                         </div>
 
-                        <div id="map-element-content" style="display:none">
+                        <div id="map-element-content" style="position:relative;display:none">
+
                           <div class="map" id="network-map">
                           </div>
-                        </div>
+                          <div class="map-legend">
+                              {% for type in organization_types %}
+                                  <div class="map-legend__item map-legend__item--{{ type.1 }}">{{ type.0 }}</div>
+                              {% endfor %}
+                          </div>
 
                     </div>
                 </div>
