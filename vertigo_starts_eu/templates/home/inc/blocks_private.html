@@ -80,16 +80,18 @@
 
             <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.title }}</div>
 
-              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.description|safe|truncatechars_html:50 }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.public_data.all.0.brief_description|safe|truncatechars_html:50 }}</div>
 
               {% if project.organization %}
                   <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.organization }}</div>
               {% endif %}
 
               <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="padding-top:7%">
-                {% for kw in project.keywords.all %}
-                    <span class="project-ict-detail__tag-style-simple">{{ kw|capfirst }}</span>
-                {% endfor %}
+                {% if project.keywords %}
+                  {% for kw in project.keywords.all|slice:":4" %}
+                      <span class="project-ict-detail__tag-style-simple-private">{{ kw|capfirst }}</span>
+                  {% endfor %}
+                {% endif %}
 
               </div>
 
