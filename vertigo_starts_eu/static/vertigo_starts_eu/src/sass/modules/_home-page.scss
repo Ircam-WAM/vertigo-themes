@@ -786,15 +786,15 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
 
-        padding-top:30%!important;
+        padding-top:40%!important;
 
         @-moz-document url-prefix() {
 
           padding-top:40% !important;
         }
       }
-
     }
+
     &__image-gradient-public {
 
 
