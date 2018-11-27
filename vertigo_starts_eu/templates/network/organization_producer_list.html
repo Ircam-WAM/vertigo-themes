@@ -137,7 +137,7 @@ function changeViewItems(object, event) {
     listElemet.style.display = "none";
 
       $(function() {
-          var mymap_prod = L.map('mapid').setView([-37.82, 175.24], 13);
+          var mymap_prod = L.map('mapid').setView([47.91, 6.85], 5);
           L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 		          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -152,7 +152,7 @@ function changeViewItems(object, event) {
              alert(result);
           });
 */
-          /*
+
           $.ajax({
             type:"GET",
             url: 'https://sandbox.vertigo.starts.eu/public-network-data/',
@@ -162,19 +162,69 @@ function changeViewItems(object, event) {
                 console.log(data);
             }
           });
-          */
+
+          var json = {"organizations": [
+                                          {
+                                            "name": "Ars Electronica",
+                                            "description": "Art, technology, society.",
+                                            "url": "https://ars.electronica.art",
+                                            "image": "/media/uploads/vertigo%20starts/Artistic%20network/ars_electronica.jpg",
+                                            "city": "Austria",
+                                            "css_class": "blue",
+                                            "lat": "48.3097431",
+                                            "lon": "14.2843268"
+                                          },
+                                          {
+                                            "name": "Artshare",
+                                            "description": "Artshare Investigacao Tecnologia E Arte, Lda",
+                                            "url": "http://artshare.pt/",
+                                            "image": "/media/uploads/vertigo%20starts/logos/artshare_logo.png",
+                                            "city": "Portugal",
+                                            "css_class": "green",
+                                            "lat": "40.7620859",
+                                            "lon": "-8.5657314"
+                                          },
+                                          {
+                                            "name": "Ars Electronica",
+                                            "description": "Art, technology, society.",
+                                            "url": "https://ars.electronica.art",
+                                            "image": "/media/uploads/vertigo%20starts/Artistic%20network/ars_electronica.jpg",
+                                            "city": "Austria",
+                                            "css_class": "blue",
+                                            "lat": "48.3097431",
+                                            "lon": "14.2848268"
+                                          },
+                                          {
+                                            "name": "Artshare",
+                                            "description": "Artshare Investigacao Tecnologia E Arte, Lda",
+                                            "url": "http://artshare.pt/",
+                                            "image": "/media/uploads/vertigo%20starts/logos/artshare_logo.png",
+                                            "city": "Portugal",
+                                            "css_class": "green",
+                                            "lat": "40.7620859",
+                                            "lon": "-8.5657514"
+                                          }]
+                                        };
+
+          var orgs = json["organizations"];
+
+          var points = [];
+          for (var i = 0; i < orgs.lenght; i++) {
+            var lat = orgs["lat"];
+            var lat = orgs["lon"];
+            var lat = orgs["lon"];
+            points.append()
+          }
 
           var markers = L.markerClusterGroup();
-		      var addressPoints = [
-              [-37.8210922667, 175.2209316333, "2"],
-              [-37.8210819833, 175.2213903167, "3"],
-              [-37.8210881833, 175.2215004833, "3A"],
-              [-37.8211946833, 175.2213655333, "1"]];
 
-		      for (var i = 0; i < addressPoints.length; i++) {
-			        var a = addressPoints[i];
-			        var title = a[2];
-			        var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+		      for (var i = 0; i < orgs.length; i++) {
+
+              var item = orgs[i];
+			        var lat = item["lat"];
+              var lon = item["lon"];
+			        var title = item["title"];
+			        var marker = L.marker(new L.LatLng(lat, lon), { title: "organizations" });
 			        marker.bindPopup(title);
 			        markers.addLayer(marker);
 		      }
