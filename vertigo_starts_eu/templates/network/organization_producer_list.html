@@ -136,102 +136,51 @@ function changeViewItems(object, event) {
     mapElement.style.display = "block";
     listElemet.style.display = "none";
 
-      $(function() {
-          var mymap_prod = L.map('mapid').setView([47.91, 6.85], 5);
-          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-		          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			            'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-              maxZoom: 18,
-		          id: 'mapbox.streets',
-              accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-	        }).addTo(mymap_prod);
-/*
-          $.getJSON("https://sandbox.vertigo.starts.eu/public-network-data/", function(result){
+    $.ajax({
+      type:"GET",
+      url: 'https://sandbox.vertigo.starts.eu/public-network-data/',
+      dataType: 'json',
+      success: function (data) {
 
-             alert(result);
-          });
-*/
+          console.log(data);
+          parseJSON(data);
+      }
+    });
+  }
 
-          $.ajax({
-            type:"GET",
-            url: 'https://sandbox.vertigo.starts.eu/public-network-data/',
-            dataType: 'json',
-            success: function (data) {
+  function parseJSON(data) {
 
-                console.log(data);
-            }
-          });
+    $(function() {
 
-          var json = {"organizations": [
-                                          {
-                                            "name": "Ars Electronica",
-                                            "description": "Art, technology, society.",
-                                            "url": "https://ars.electronica.art",
-                                            "image": "/media/uploads/vertigo%20starts/Artistic%20network/ars_electronica.jpg",
-                                            "city": "Austria",
-                                            "css_class": "blue",
-                                            "lat": "48.3097431",
-                                            "lon": "14.2843268"
-                                          },
-                                          {
-                                            "name": "Artshare",
-                                            "description": "Artshare Investigacao Tecnologia E Arte, Lda",
-                                            "url": "http://artshare.pt/",
-                                            "image": "/media/uploads/vertigo%20starts/logos/artshare_logo.png",
-                                            "city": "Portugal",
-                                            "css_class": "green",
-                                            "lat": "40.7620859",
-                                            "lon": "-8.5657314"
-                                          },
-                                          {
-                                            "name": "Ars Electronica",
-                                            "description": "Art, technology, society.",
-                                            "url": "https://ars.electronica.art",
-                                            "image": "/media/uploads/vertigo%20starts/Artistic%20network/ars_electronica.jpg",
-                                            "city": "Austria",
-                                            "css_class": "blue",
-                                            "lat": "48.3097431",
-                                            "lon": "14.2848268"
-                                          },
-                                          {
-                                            "name": "Artshare",
-                                            "description": "Artshare Investigacao Tecnologia E Arte, Lda",
-                                            "url": "http://artshare.pt/",
-                                            "image": "/media/uploads/vertigo%20starts/logos/artshare_logo.png",
-                                            "city": "Portugal",
-                                            "css_class": "green",
-                                            "lat": "40.7620859",
-                                            "lon": "-8.5657514"
-                                          }]
-                                        };
+        var mymap_prod = L.map('mapid').setView([47.91, 6.85], 5);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+        }).addTo(mymap_prod);
 
-          var orgs = json["organizations"];
+        var json = data;
 
-          var points = [];
-          for (var i = 0; i < orgs.lenght; i++) {
-            var lat = orgs["lat"];
-            var lat = orgs["lon"];
-            var lat = orgs["lon"];
-            points.append()
-          }
+        var orgs = json["organizations"];
 
-          var markers = L.markerClusterGroup();
+        var markers = L.markerClusterGroup();
 
-		      for (var i = 0; i < orgs.length; i++) {
+        for (var i = 0; i < orgs.length; i++) {
 
-              var item = orgs[i];
-			        var lat = item["lat"];
-              var lon = item["lon"];
-			        var title = item["title"];
-			        var marker = L.marker(new L.LatLng(lat, lon), { title: "organizations" });
-			        marker.bindPopup(title);
-			        markers.addLayer(marker);
-		      }
+            var item = orgs[i];
+            var lat = item["lat"];
+            var lon = item["lon"];
+            var title = item["title"];
+            var marker = L.marker(new L.LatLng(lat, lon), { title: "organizations" });
+            marker.bindPopup(title);
+            markers.addLayer(marker);
+        }
 
-		      mymap_prod.addLayer(markers);
-      });
-
+        mymap_prod.addLayer(markers);
+    });
   }
 }
 
