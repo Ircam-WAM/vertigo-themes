@@ -41,6 +41,12 @@
       <a href="{{ event.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-white-background">
 
+          {% if event.images %}
+            {% with event.images.all|get_type:'card' as images %}
+            <img class="home-page__private-image_full-width home-page__private-left-image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
+            {% endwith %}
+          {% endif %}
+
           <div class="home-page__public-article-title-main">
             {{ event.title }}
           </div>
