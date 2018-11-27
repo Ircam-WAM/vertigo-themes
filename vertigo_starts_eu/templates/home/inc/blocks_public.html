@@ -51,7 +51,7 @@
             {{ event.title }}
           </div>
 
-          <div class="event-line-box__date-list event-line-box__small-margin" style="{% if not event.images %}color:black{% endif %}">
+          <div class="home-page__public-article-title-main event-line-box__date-list event-line-box__small-margin home-page__margin-removal" style="{% if not event.images %}color:black{% endif %}">
               {% include 'agenda/includes/event_date_line.html' with object=event %}
           </div>
 

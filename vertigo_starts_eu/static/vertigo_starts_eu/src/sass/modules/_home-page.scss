@@ -1006,6 +1006,12 @@ $module: ".home-page";
 
     &__private-responsive-tag-item {
 
+      padding-top:0px !important;
+      margin-top:0px !important;
+    }
+
+    &__private-responsive-tag-item {
+
       display:block;
 
       @media screen and (max-width: 780px) {
