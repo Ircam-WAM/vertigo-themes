@@ -43,7 +43,7 @@
 
           {% if event.images %}
             {% with event.images.all|get_type:'card' as images %}
-            <img class="home-page__private-image_full-width home-page__private-left-image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
+            <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
             {% endwith %}
           {% endif %}
 
@@ -64,7 +64,7 @@
                   <br/>
             {% endif %}
 
-            {{ event.description|richtext_filters|safe|truncatechars_html:500 }}
+            {{ event.description|richtext_filters|safe|truncatechars_html:50 }}
           </div>
         </div>
       </a>
