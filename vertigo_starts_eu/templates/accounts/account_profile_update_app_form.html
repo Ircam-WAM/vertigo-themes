@@ -64,7 +64,7 @@ window.onload = selectCurrentTab;
                      {% if draft_application.validation_status == 'accepted' %}
                         Submitted
                      {% else %}
-                        Closed
+                        Draft
                      {% endif %}
                    </div>
                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ draft_application.competition.closing_date }}</div>
@@ -93,7 +93,7 @@ window.onload = selectCurrentTab;
                  <div class="page__column-app-form">
                     <div class="page__column-app-form">
                       <a href="{% url 'web:show_application_form' submitted_application.competition.url %}?show_draft" class="page__button-row-profile-edit">View</a>
-                 </div>  
+                 </div>
                  </div>
               </div>
           {% endfor %}
