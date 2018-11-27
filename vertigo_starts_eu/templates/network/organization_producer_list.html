@@ -1,8 +1,14 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
 
+{% comment %}
+<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
+{% endcomment %}
+
+
 
 {% block extra_head %}
+
 
     <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
     <script>
@@ -14,6 +20,23 @@
             });
         });
     </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+      crossorigin=""></script>
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+      crossorigin=""></link>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+      crossorigin=""></link>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+      crossorigin=""></script>
+
 
 {% endblock %}
 
@@ -34,9 +57,7 @@
 {% endblock %}
 
 
-{% block page_class %}
-    object
-{% endblock %}
+
 
 
 {% block body_class %}
@@ -59,7 +80,7 @@
             </div>
         {% endif %}
         <div class="tag tag--category">
-            {% trans 'Project' %}
+            {% trans 'Producer' %}
         </div>
     {% endcomment %}
 
@@ -68,31 +89,133 @@
 
 {% block page_title %}
 
-    <h1 class="vertigopage__section-title section-title--uppercase section-title--main vertigopage__margin-collapse event-line-box__underline-text-green">
+    <h1 class="dotted">
         {% trans "Producers" %}
     </h1>
 
 {% endblock %}
 
 
-{% block page_content %}
+{% block main %}
 
-    <div class="row" style="margin-top:35px">
+<script>
 
-        {% for producer in object_list %}
+function changeViewItems(object, event) {
 
-            <div class="col-md-16">
-                {# Card included for each producer #}
-                {% include "network/inc/producers/producers_list_card_box.html" %}
+  event.preventDefault();
+
+  var id_item = object.id;
+
+  var clickedItem = document.getElementById(id_item);
+  var altItem = document.getElementById((id_item == "dots-item") ? "map-marker" : "dots-item");
+
+  var clickedItemIcon = document.getElementById(id_item + "-icon");
+  var altItemIcon = document.getElementById(((id_item == "dots-item") ? "map-marker" : "dots-item") + "-icon");
+
+  altItem.classList.remove("article-box__icon-marker-item-highlight");
+  altItem.classList.add("article-box__icon-marker-item-clean");
+
+  altItemIcon.classList.remove("article-box__icon-marker-item-highlight-icon");
+  altItemIcon.classList.add("article-box__icon-marker-item-clean-icon");
+
+  clickedItem.classList.add("article-box__icon-marker-item-highlight");
+  clickedItem.classList.remove("article-box__icon-marker-item-clean");
+
+  clickedItemIcon.classList.add("article-box__icon-marker-item-highlight-icon");
+  clickedItemIcon.classList.remove("article-box__icon-marker-item-clean-icon");
+
+  var mapElement = document.getElementById("map-element-content");
+  var listElemet = document.getElementById("producer-list");
+
+  if (id_item == "dots-item") {
+
+    mapElement.style.display = "none";
+    listElemet.style.display = "block";
+
+  } else {
+
+    mapElement.style.display = "block";
+    listElemet.style.display = "none";
+
+      $(function() {
+          var mymap_prod = L.map('mapid').setView([-37.82, 175.24], 13);
+          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			            'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+		          id: 'mapbox.streets',
+              accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+	        }).addTo(mymap_prod);
+
+          var markers = L.markerClusterGroup();
+		      var addressPoints = [
+              [-37.8210922667, 175.2209316333, "2"],
+              [-37.8210819833, 175.2213903167, "3"],
+              [-37.8210881833, 175.2215004833, "3A"],
+              [-37.8211946833, 175.2213655333, "1"]]
+		      for (var i = 0; i < addressPoints.length; i++) {
+			        var a = addressPoints[i];
+			        var title = a[2];
+			        var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+			        marker.bindPopup(title);
+			        markers.addLayer(marker);
+		      }
+
+		      mymap_prod.addLayer(markers);
+      });
+
+  }
+}
+
+</script>
+
+<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+                <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Producers" %}</h1>
+
+                    <div class="article-box__view-changer-container">
+                      <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
+                        <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
+                          <i class="fa fa-th article-box__align-center-dots"></i>
+                        </a>
+                      </div>
+                      <div id="map-marker" class="article-box__item-marker-common article-box__icon-marker-item-clean" onclick="changeViewItems(this, event);">
+                        <a id="map-marker-icon" class="article-box__icon-marker-item-clean-icon" href="#">
+                          <i class="fa fa-map-marker article-box__align-center-marker"></i>
+                      </div>
+                    </div>
+
             </div>
+        </div>
 
-        {% empty %}
+        <div class="row">
 
-            <div class="chapo">
-                <p><b>{% trans "No producers yet" %}.</b></p>
+            <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
+                <div class="page__content">
+                    <div class="container">
+                        <div id="producer-list" class="row" style="display:block">
+                            {% for producer in object_list %}
+                                <div class="col-md-16">
+                                   {# Card included for each producer #}
+                                        {% include "network/inc/producers/producers_list_card_box.html" %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    <div id="map-element-content" style="position:relative;display:none">
+
+                         <div id="mapid" ></div>
+
+                    </div>
+                    </div>
+                </div>
             </div>
-
-        {% endfor %}
+        </div>
     </div>
+    {% pagination_for object_list %}
+</div>
 
 {% endblock %}
