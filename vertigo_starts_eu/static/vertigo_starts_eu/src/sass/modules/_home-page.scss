@@ -784,9 +784,11 @@ $module: ".home-page";
 
     &__padding-tags-public {
 
+      padding-top:7% !important;
+
       @media screen and (max-width: 780px) {
 
-        padding-top:30%!important;
+        padding-top:30% !important;
 
         @-moz-document url-prefix() {
 
