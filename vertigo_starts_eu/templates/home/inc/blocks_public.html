@@ -51,6 +51,10 @@
             {{ event.title }}
           </div>
 
+          <div class="event-line-box__date-list event-line-box__small-margin" style="{% if not event.images %}color:black{% endif %}">
+              {% include 'agenda/includes/event_date_line.html' with object=event %}
+          </div>
+
           <div class="home-page__public-article-body-main">
             {% if event.departments.first %}
               {% with event.departments.first as department %}
@@ -64,7 +68,7 @@
                   <br/>
             {% endif %}
 
-            {{ event.description|richtext_filters|safe|truncatechars_html:200 }}
+            {{ event.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
         </div>
       </a>
