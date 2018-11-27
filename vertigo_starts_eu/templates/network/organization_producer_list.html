@@ -9,7 +9,6 @@
 
 {% block extra_head %}
 
-
     <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
     <script>
         $(function(){
@@ -147,13 +146,31 @@ function changeViewItems(object, event) {
 		          id: 'mapbox.streets',
               accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
 	        }).addTo(mymap_prod);
+/*
+          $.getJSON("https://sandbox.vertigo.starts.eu/public-network-data/", function(result){
+
+             alert(result);
+          });
+*/
+          /*
+          $.ajax({
+            type:"GET",
+            url: 'https://sandbox.vertigo.starts.eu/public-network-data/',
+            dataType: 'json',
+            success: function (data) {
+
+                console.log(data);
+            }
+          });
+          */
 
           var markers = L.markerClusterGroup();
 		      var addressPoints = [
               [-37.8210922667, 175.2209316333, "2"],
               [-37.8210819833, 175.2213903167, "3"],
               [-37.8210881833, 175.2215004833, "3A"],
-              [-37.8211946833, 175.2213655333, "1"]]
+              [-37.8211946833, 175.2213655333, "1"]];
+
 		      for (var i = 0; i < addressPoints.length; i++) {
 			        var a = addressPoints[i];
 			        var title = a[2];
