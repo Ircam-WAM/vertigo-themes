@@ -782,6 +782,19 @@ $module: ".home-page";
       }
     }
 
+    &__padding-tags-public {
+
+      @media screen and (max-width: 780px) {
+
+        padding-top:30%!important;
+
+        @-moz-document url-prefix() {
+
+          padding-top:40% !important;
+        }
+      }
+
+    }
     &__image-gradient-public {
 
 
@@ -802,11 +815,11 @@ $module: ".home-page";
 
           @media screen and (max-width: 780px) {
 
-            height:75% !important;
+            height:80% !important;
 
             @-moz-document url-prefix() {
 
-              height: 72% !important;
+              height: 80% !important;
             }
           }
       }
