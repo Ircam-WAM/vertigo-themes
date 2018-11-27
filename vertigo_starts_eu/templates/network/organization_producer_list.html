@@ -164,7 +164,7 @@ function changeViewItems(object, event) {
 
         var json = data;
 
-        var orgs = json["organizations"];
+        var orgs = json["producers"];
 
         var markers = L.markerClusterGroup();
 
@@ -174,7 +174,7 @@ function changeViewItems(object, event) {
             var lat = item["lat"];
             var lon = item["lon"];
             var title = item["title"];
-            var marker = L.marker(new L.LatLng(lat, lon), { title: "organizations" });
+            var marker = L.marker(new L.LatLng(lat, lon), { title: title });
             marker.bindPopup(title);
             markers.addLayer(marker);
         }
