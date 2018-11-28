@@ -136,22 +136,29 @@ function changeViewItems(object, event) {
     mapElement.style.display = "block";
     listElemet.style.display = "none";
 
+    var mymap_prod;
+
     $.ajax({
       type:"GET",
       url: '/public-network-data/',
       dataType: 'json',
       success: function (data) {
 
+          createMap();
           parseJSON(data);
+      },
+      error: function(XMLHttpRequest, status, errorThrown) {
+          createMap();
       }
     });
   }
 
-  function parseJSON(data) {
+  function createMap() {
 
     $(function() {
 
-        var mymap_prod = L.map('mapid').setView([47.91, 6.85], 2);
+        mymap_prod = L.map('mapid').setView([47.91, 6.85], 2);
+
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                 '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -160,6 +167,12 @@ function changeViewItems(object, event) {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
         }).addTo(mymap_prod);
+      });
+  }
+
+  function parseJSON(data) {
+
+    $(function() {
 
         var json = data;
 
@@ -191,7 +204,7 @@ function changeViewItems(object, event) {
             var title = item["title"];
 
             var marker = L.marker(new L.LatLng(lat, lon), { title: title });
-            
+
             marker.bindPopup(title);
             markers.addLayer(marker);
         }
