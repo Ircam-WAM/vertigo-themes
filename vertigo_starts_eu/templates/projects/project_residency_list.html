@@ -201,15 +201,22 @@ function changeViewItems(object, event) {
       dataType: 'json',
       success: function (data) {
 
-          createMap();
-          
+          if (!mymap_prod) {
+            
+            createMap();
+          }
+
           if (data && mymap_prod) {
 
             parseJSON(data, mymap_prod);
           }
       },
       error: function(XMLHttpRequest, status, errorThrown) {
-          createMap();
+
+          if (!mymap_prod) {
+
+            createMap();
+          }
       }
     });
   }
