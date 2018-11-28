@@ -145,7 +145,7 @@ function changeViewItems(object, event) {
       success: function (data) {
 
           createMap();
-          parseJSON(data);
+          parseJSON(data, mymap_prod);
       },
       error: function(XMLHttpRequest, status, errorThrown) {
           createMap();
@@ -170,7 +170,7 @@ function changeViewItems(object, event) {
       });
   }
 
-  function parseJSON(data) {
+  function parseJSON(data, map) {
 
     $(function() {
 
@@ -209,7 +209,7 @@ function changeViewItems(object, event) {
             markers.addLayer(marker);
         }
 
-        mymap_prod.addLayer(markers);
+        map.addLayer(markers);
     });
   }
 }
