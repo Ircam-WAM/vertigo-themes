@@ -99,6 +99,8 @@
 
 <script>
 
+var mymap_prod;
+
 function changeViewItems(object, event) {
 
   event.preventDefault();
@@ -136,8 +138,6 @@ function changeViewItems(object, event) {
     mapElement.style.display = "block";
     listElemet.style.display = "none";
 
-    var mymap_prod;
-
     $.ajax({
       type:"GET",
       url: '/public-network-data/',
@@ -157,7 +157,7 @@ function changeViewItems(object, event) {
       error: function(request, status, errorThrown) {
 
           if (!mymap_prod) {
-            
+
             createMap();
           }
       }
