@@ -145,9 +145,13 @@ function changeViewItems(object, event) {
       success: function (data) {
 
           createMap();
-          parseJSON(data, mymap_prod);
+
+          if (data && mymap_prod) {
+
+            parseJSON(data, mymap_prod);
+          }
       },
-      error: function(XMLHttpRequest, status, errorThrown) {
+      error: function(request, status, errorThrown) {
           createMap();
       }
     });
@@ -170,14 +174,12 @@ function changeViewItems(object, event) {
       });
   }
 
-  function parseJSON(data, map) {
+  function parseJSON(jsonObject, map) {
 
     $(function() {
 
-        var json = data;
-
-        var producers = json["producers"];
-        var organizations = json["organizations"];
+        var producers = jsonObject["producers"];
+        var organizations = jsonObject["organizations"];
 
         var markers = L.markerClusterGroup();
 
