@@ -211,7 +211,7 @@ function changeViewItems(object, event) {
             parseJSON(data, currentMap);
           }
       },
-      error: function(XMLHttpRequest, status, errorThrown) {
+      error: function(request, status, errorThrown) {
 
           if (!currentMap) {
 
