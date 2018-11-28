@@ -228,10 +228,13 @@ function changeViewItems(object, event) {
         for (var i = 0; i < producers.length; i++) {
 
             var item = producers[i];
+
             var lat = item["lat"];
             var lon = item["lon"];
             var title = item["title"];
+
             var marker = L.marker(new L.LatLng(lat, lon), { title: title });
+
             marker.bindPopup(title);
             markers.addLayer(marker);
         }
@@ -239,10 +242,13 @@ function changeViewItems(object, event) {
         for (var i = 0; i < organizations.length; i++) {
 
             var item = organizations[i];
+
             var lat = item["lat"];
             var lon = item["lon"];
             var title = item["title"];
+
             var marker = L.marker(new L.LatLng(lat, lon), { title: title });
+
             marker.bindPopup(title);
             markers.addLayer(marker);
         }
