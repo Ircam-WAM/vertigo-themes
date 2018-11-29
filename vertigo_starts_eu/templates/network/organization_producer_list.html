@@ -142,6 +142,7 @@ function changeViewItems(object, event) {
       type: 'GET',
       url: '/public-network-data/',
       dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
       success: function (data) {
 
           if (!currentMap) {
@@ -190,7 +191,9 @@ function changeViewItems(object, event) {
 
         var unionObjects = producers.concat(organizations);
 
-        var markers = L.markerClusterGroup();
+        var markers = L.markerClusterGroup({showCoverageOnHover: true,
+                                            zoomToBoundsOnClick: true,
+                                            removeOutsideVisibleBounds: true});
 
         for (var i = 0; i < unionObjects.length; i++) {
 
