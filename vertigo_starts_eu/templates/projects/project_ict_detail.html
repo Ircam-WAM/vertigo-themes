@@ -212,7 +212,7 @@ function showHideChevronTags(object, event) {
     </div>
 
     {# Apply button #}
-    {% if object.validation_status == 3 %}
+    {% if object.validation_status == 3 and not object.call.is_closed %}
         <a href="{% url 'web:show_application_form' object.call.slug %}?show_draft&project={{ object.slug }}">
             <div class="project-ict-detail__apply_button">
                 <span>APPLY!</span>
