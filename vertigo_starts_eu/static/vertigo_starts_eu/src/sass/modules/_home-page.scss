@@ -67,7 +67,12 @@ $module: ".home-page";
     }
 
     &__top-padding-none {
-      padding-top: 0px !important;
+
+      @-moz-document url-prefix() {
+
+        padding-top: 0px !important;
+      }
+
     }
 
     &__inner-blog-block-right {
