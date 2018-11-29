@@ -202,10 +202,11 @@ function changeViewItems(object, event) {
             var lat = item["lat"];
             var lon = item["lon"];
             var title = item["title"];
+            var description = item["description"];
 
             var marker = L.marker(new L.LatLng(lat, lon), { title: title });
 
-            marker.bindPopup(title);
+            marker.bindPopup("<b>"+title+"</b><br>"+description);
             markers.addLayer(marker);
         }
 
