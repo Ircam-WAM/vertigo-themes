@@ -30,7 +30,7 @@
             {{ article.title }}
           </div>
 
-          <div class="home-page__public-article-body-main">
+          <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
@@ -100,7 +100,7 @@
               {{ organization.title }}
             </div>
 
-            <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
+            <div class="home-page__public-article-body-main">
               {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
             </div>
 
