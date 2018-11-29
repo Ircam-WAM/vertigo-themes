@@ -100,8 +100,8 @@
               {{ organization.title }}
             </div>
 
-            <div class="home-page__public-article-body-main">
-              {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
+            <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
+              {{ organization.description|richtext_filters|safe|truncatechars_html:200 }}
             </div>
 
           </div>
