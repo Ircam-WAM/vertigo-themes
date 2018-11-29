@@ -1,83 +1,42 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
 
-
-{% block meta_title %}
-    {% trans "Current Residencies" %}
-{% endblock %}
-
-
-{% block meta_keywords %}
-    {% metablock %}
-    {% keywords_for object as keywords %}
-    {% for keyword in keywords %}
-        {% if not forloop.first %}, {% endif %}
-        {{ keyword }}
-    {% endfor %}
-    {% endmetablock %}
-{% endblock %}
+{% comment %}
+<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
+{% endcomment %}
 
 
-{% block body_class %}
-    pattern pattern-bg {{ department.pages.all.0.weaving_css_class }}
-{% endblock %}
+
+{% block extra_head %}
 
 
-{% block breadcrumb_menu %}
-    {{ block.super }}
-    <li class="breadcrumb__item active">{{ object.title }}</li>
-{% endblock %}
+    <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
+    <script>
+        $(function(){
+            $(".list_header").click(function () {
+                $header = $(this);
+                $content = $header.next();
+                $content.slideToggle(500);
+            });
+        });
+    </script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
 
-{% block page_tags %}
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+      crossorigin=""></script>
 
-    {% comment %}
-        {% if department %}
-            <div class="tag dashed dashed--yellow">
-              {{ department.pages.all.0.title }}
-            </div>
-        {% endif %}
-        <div class="tag tag--category">
-            {% trans 'Project' %}
-        </div>
-    {% endcomment %}
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+      crossorigin=""></link>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+      crossorigin=""></link>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+      crossorigin=""></script>
 
-{% endblock %}
-
-
-{% block page_title %}
-
-    <h1 class="dotted">
-        {% trans "Current Residencies" %}
-    </h1>
-
-{% endblock %}
-
-
-{% block main %}
-<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac residency-detail__bottom-space">
-                <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Current Residencies" %}</h1>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 page__sidebar"></div>
-            <div class="mb2 col-sm-16 col-md-12 page__content">
-                <p>{{ call.description }}</p>
-            </div>
-        </div>
-
-        <div class ="row">
-            <div class="col-md-2 page__sidebar"></div>
-            <div class="mb2 col-sm-16 col-md-12">
-                {% for keyword in keywords %}
-                    <span class="button button-residency" onclick="addFilter(this, '{{ keyword.id }}')">{{ keyword }}</span>
-                {% endfor %}
-            </div>
-        </div>
 
         <script type="text/javascript">
             var selectedFilters = []
@@ -133,11 +92,217 @@
             }
         </script>
 
-        <div class="row page__space-row">
+
+
+{% endblock %}
+
+
+{% block meta_title %}
+    {% trans "Current Residencies" %}
+{% endblock %}
+
+
+{% block meta_keywords %}
+    {% metablock %}
+    {% keywords_for object as keywords %}
+    {% for keyword in keywords %}
+        {% if not forloop.first %}, {% endif %}
+        {{ keyword }}
+    {% endfor %}
+    {% endmetablock %}
+{% endblock %}
+
+
+
+
+
+{% block body_class %}
+    pattern pattern-bg {{ department.pages.all.0.weaving_css_class }}
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    <li class="breadcrumb__item active">{{ object.title }}</li>
+{% endblock %}
+
+
+{% block page_tags %}
+
+    {% comment %}
+        {% if department %}
+            <div class="tag dashed dashed--yellow">
+              {{ department.pages.all.0.title }}
+            </div>
+        {% endif %}
+        <div class="tag tag--category">
+            {% trans 'Residency' %}
+        </div>
+    {% endcomment %}
+
+{% endblock %}
+
+
+{% block page_title %}
+
+    <h1 class="dotted">
+        {% trans "Current Residencies" %}
+    </h1>
+
+{% endblock %}
+
+
+{% block main %}
+
+<script>
+
+var currentMap;
+
+function changeViewItems(object, event) {
+
+  event.preventDefault();
+
+  var id_item = object.id;
+
+  var clickedItem = document.getElementById(id_item);
+  var altItem = document.getElementById((id_item == "dots-item") ? "map-marker" : "dots-item");
+
+  var clickedItemIcon = document.getElementById(id_item + "-icon");
+  var altItemIcon = document.getElementById(((id_item == "dots-item") ? "map-marker" : "dots-item") + "-icon");
+
+  altItem.classList.remove("article-box__icon-marker-item-highlight");
+  altItem.classList.add("article-box__icon-marker-item-clean");
+
+  altItemIcon.classList.remove("article-box__icon-marker-item-highlight-icon");
+  altItemIcon.classList.add("article-box__icon-marker-item-clean-icon");
+
+  clickedItem.classList.add("article-box__icon-marker-item-highlight");
+  clickedItem.classList.remove("article-box__icon-marker-item-clean");
+
+  clickedItemIcon.classList.add("article-box__icon-marker-item-highlight-icon");
+  clickedItemIcon.classList.remove("article-box__icon-marker-item-clean-icon");
+
+  var mapElement = document.getElementById("map-element-content");
+  var listElemet = document.getElementById("residency-list");
+
+  if (id_item == "dots-item") {
+
+    mapElement.style.display = "none";
+    listElemet.style.display = "block";
+
+  } else {
+
+    mapElement.style.display = "block";
+    listElemet.style.display = "none";
+
+    $.ajax({
+      type: 'GET',
+      url: '/public-network-data/',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      success: function (data) {
+
+          if (!currentMap) {
+
+            createMap();
+          }
+
+          if (data && currentMap) {
+
+            parseJSON(data, currentMap);
+          }
+      },
+      error: function(request, status, errorThrown) {
+
+          if (!currentMap) {
+
+            createMap();
+          }
+      }
+    });
+  }
+
+  function createMap() {
+
+    $(function() {
+
+        currentMap = L.map('mapid').setView([47.91, 6.85], 2);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+        }).addTo(currentMap);
+      });
+  }
+
+  function parseJSON(jsonObject, map) {
+
+    $(function() {
+
+        var producers = jsonObject["producers"];
+        var organizations = jsonObject["organizations"];
+
+        var unionObjects = producers.concat(organizations);
+
+        var markers = L.markerClusterGroup({showCoverageOnHover: true,
+                                            zoomToBoundsOnClick: true,
+                                            removeOutsideVisibleBounds: true});
+
+        for (var i = 0; i < unionObjects.length; i++) {
+
+            var item = unionObjects[i];
+
+            var lat = item["lat"];
+            var lon = item["lon"];
+            var name = item["name"];
+            var description = item["description"];
+            var url = item["url"];
+
+            var marker = L.marker(new L.LatLng(lat, lon), { title: name });
+
+            marker.bindPopup("<b>"+name+"</b><br>"+description+"</b><br><a href=\""+url+"\">"+url+"</a>");
+            markers.addLayer(marker);
+        }
+
+        map.addLayer(markers);
+    });
+  }
+}
+
+</script>
+
+<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+                <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Available Residencies" %}</h1>
+
+                    <div class="article-box__view-changer-container">
+                      <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
+                        <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
+                          <i class="fa fa-th article-box__align-center-dots"></i>
+                        </a>
+                      </div>
+                      <div id="map-marker" class="article-box__item-marker-common article-box__icon-marker-item-clean" onclick="changeViewItems(this, event);">
+                        <a id="map-marker-icon" class="article-box__icon-marker-item-clean-icon" href="#">
+                          <i class="fa fa-map-marker article-box__align-center-marker"></i>
+                        </a>
+                      </div>
+            </div>
+
+        </div>
+    </div>
+
+        <div class="row">
+
             <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
                 <div class="page__content">
                     <div class="container">
-                        <div class="row page__space-responsive">
+                        <div id="residency-list" class="row page__space-responsive">
                             {% for object in object_list %}
                                 <div class="col-xs-8 page__row-responsive" id="{{ object.slug }}">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
@@ -147,6 +312,12 @@
                                     {% endwith %}
                                 </div>
                             {% endfor %}
+                        </div>
+
+                        <div id="map-element-content" style="position:relative;display:none">
+
+                           <div id="mapid" ></div>
+
                         </div>
                     </div>
                 </div>

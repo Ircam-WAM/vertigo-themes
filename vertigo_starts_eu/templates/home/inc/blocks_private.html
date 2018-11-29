@@ -28,10 +28,13 @@
 
   <div id="left-div-content" class="home-page__show-content home-page__private-content-main-left">
 
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-special">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__private-responsive-width-special">
 
       <a href="{{ article.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
+
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
@@ -40,15 +43,18 @@
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__private-responsive-width-special">
 
       <a href="{{ person.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
+
+          {% with person.images.all as images %}
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
+          {% endwith %}
 
           <div class="home-page__public-article-title-main">
             {{ person.title }}
@@ -58,67 +64,130 @@
             {{ person.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 300 300 padding=true %}" >
         </div>
       </a>
 
     </div>
-    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__responsive-width-special">
+    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__private-responsive-width-special">
 
       <a href="{{ project.get_absolute_url }}">
-        <div class="home-page__full-frame home-page__public-container-common-relative {% if project.artist.images %}home-page__image-gradient{% endif %}">
+        <div class="home-page__full-frame home-page__public-container-common-relative {% if project.public_data.all.0.image %}home-page__private-image-gradient{% endif %}">
             {% if project.public_data.all.0.image %}
-              <img class="home-page__private-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.public_data.all.0.image 800 800 padding=true %}" >
+              <img class="home-page__private-image_full-width home-page__image-gradient" src="{{ MEDIA_URL }}{% thumbnail project.public_data.all.0.image 800 800 padding=true %}" >
             {% else %}
-              <div class="home-page__private-image_full-width" style="border: 1px solid white"></div>
+              <div class="home-page__private-image_full-width" style="border: 1px solid white;background:white"></div>
             {% endif %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text">{{ project.title }}</div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article home-page__private-text-image-index home-page__private-size-title-image-text" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.title }}</div>
 
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.public_data.all.0.brief_description|safe|truncatechars_html:50 }}</div>
+
+              {% if project.organization %}
+                  <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.organization }}</div>
+              {% endif %}
+
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image" style="padding-top:7%">
+                {% if project.keywords %}
+                  {% for kw in project.keywords.all|slice:":4" %}
+                      <span class="project-ict-detail__tag-style-simple-private">{{ kw|capfirst }}</span>
+                  {% endfor %}
+                {% endif %}
+
+              </div>
+
+
+              {% comment %}
             {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
-              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-first-line-image" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
             {% endif %}
+            {% endcomment %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image">{{ project.description|safe|truncatechars_html:50 }}</div>
         </div>
       </a>
 
     </div>
-    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-special">
+    <div class="home-page__private-profile-large home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__private-responsive-width-special">
 
-      <a href="{{ event.get_absolute_url }}">
+      <a href="{{ projectresidency.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
 
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail projectresidency.images.all|first 300 300 padding=true %}" >
+
           <div class="home-page__public-article-title-main">
-            {{ event.title }}
+            {{ projectresidency.title }}
           </div>
 
           <div class="home-page__public-article-body-main home-page__private-left-text">
-            {{ event.description|richtext_filters|safe|truncatechars_html:600 }}
+            {{ projectresidency.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
 
         </div>
       </a>
 
     </div>
-    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__responsive-width-special">
+    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__private-responsive-width-special">
 
+      <a href="{{ event.get_absolute_url }}">
+        <div class="home-page__full-frame home-page__public-container-common-relative {% if event.images %}home-page__private-left-image-gradient{% endif %}">
+            {% if event.images %}
+              {% with event.images.all|get_type:'card' as images %}
+              <img class="home-page__private-image_full-width home-page__private-left-image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 1015 350 padding=true %}" >
+              {% endwith %}
+            {% else %}
+              <div class="home-page__private-image_full-width" style="border: 1px solid white;"></div>
+            {% endif %}
+
+        </div>
+
+        <div class="home-page__private-right-side-event">
+
+          {% if event.departments.all %}
+          <div class="event-line-box__tag-event">
+            <p class="event-line-box__tag-event-content" style="{% if not event.images %}color:black{% endif %}">{{ event.departments.all.0.department.name }}</p>
+          </div>
+          <div class="event-line-box__subtag-event">
+            <p class="event-line-box__subtag-event-content" style="{% if not event.images %}color:black{% endif %}">{% if event.category %}{{ event.category }}{% else %}{{ event.parent.category }}{% endif %}</p>
+          </div>
+          {% endif %}
+          <div class="event-line-box__body">
+
+              <div class="event-line-box__title-list event-line-box__white-color" style="{% if not event.images %}color:black{% endif %}">
+                  {{ event.title }}
+              </div>
+              <div class="event-line-box__date-list event-line-box__small-margin" style="{% if not event.images %}color:black{% endif %}">
+                  {% include 'agenda/includes/event_date_line.html' with object=event %}
+              </div>
+              {% if event.location %}
+                  <div class="event-line-box__location-list" style="{% if not event.images %}color:black{% endif %}">
+                      {{ event.location.title }}
+                      {% comment %}
+                      {% if event.location.room %}
+                           / {{ event.location.room }}
+                      {% endif %}
+                      {% endcomment %}
+                  </div>
+              {% endif %}
+          </div>
+
+        </div>
+
+      </a>
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__responsive-width-special">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__private-responsive-width-special">
 
       <a href="{{ organization.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">
+
+          <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
 
           <div class="home-page__public-article-title-main">
             {{ organization.title }}
           </div>
 
           <div class="home-page__public-article-body-main">
-            {{ organization.description|richtext_filters|safe|truncatechars_html:500 }}
+            {{ organization.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
-
-          <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
 
         </div>
       </a>

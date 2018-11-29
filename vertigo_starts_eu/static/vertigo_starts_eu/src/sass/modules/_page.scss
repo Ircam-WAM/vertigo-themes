@@ -745,4 +745,13 @@ $module: ".page";
       }
     }
 
+    &__fancy-font {
+
+      font-family: sans-serif;
+    }
+
+    &__fancy-font > p {
+
+      font-family: sans-serif;
+    }
 }

@@ -19,30 +19,40 @@
 
 <div class="home-page__main-item home-page__public-common-height-auto">
 
-  <div class="home-page__first-big-block home-page__public-container-common">
+  <div class="home-page__first-big-block home-page__public-container-common home-page__height-auto">
     <div class="home-page__inner-big-block">
       <a href="{{ article.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-white-background">
+
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
 
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
 
-          <div class="home-page__public-article-body-main">
+          <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
-
-          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
 
         </div>
       </a>
     </div>
-    <div class="home-page__inner-blog-block-right">
+    <div class="home-page__inner-blog-block-right home-page__top-padding-none">
       <a href="{{ event.get_absolute_url }}">
-        <div class="home-page__full-frame home-page__public-white-background">
+        <div class="home-page__full-frame home-page__public-white-background home-page__height-auto home-page__mini-padding-bottom">
+
+          {% if event.images %}
+            {% with event.images.all|get_type:'card' as images %}
+            <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 padding=true %}" >
+            {% endwith %}
+          {% endif %}
 
           <div class="home-page__public-article-title-main">
             {{ event.title }}
+          </div>
+
+          <div class="home-page__public-article-title-main event-line-box__date-list event-line-box__small-margin home-page__margin-removal" style="{% if not event.images %}color:black{% endif %}">
+              {% include 'agenda/includes/event_date_line.html' with object=event %}
           </div>
 
           <div class="home-page__public-article-body-main">
@@ -58,7 +68,7 @@
                   <br/>
             {% endif %}
 
-            {{ event.description|richtext_filters|safe|truncatechars_html:500 }}
+            {{ event.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
         </div>
       </a>
@@ -72,35 +82,35 @@
               {% if person.images %}
               <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail person.images.all|first 800 800 padding=true %}">
               {% else %}
-              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+              <div class="home-page__public-image_full-width" style="border: 1px solid white;background:white"></div>
               {% endif%}
 
-              <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ person.first_name }} {{ person.last_name }}</div>
-              <div class="residency-detail__title home-page__public-overtext-artist-second-row home-page__public-index-text-article">{{ person.bio|safe|truncatechars_html:100 }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article" style="{% if not person.images %}color:black{% endif %}">{{ person.first_name }} {{ person.last_name }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-second-row home-page__public-index-text-article" style="{% if not person.images %}color:black{% endif %}">{{ person.bio|safe|truncatechars_html:100 }}</div>
           </div>
         </a>
       </div>
-      <div class="home-page__inner-block-item home-page__public-container-common">
-        <a href="{{ article.get_absolute_url }}">
+      <div class="home-page__inner-block-item home-page__public-container-common home-page__height-auto home-page__mini-padding-bottom">
+        <a href="{{ organization.get_absolute_url }}">
+          <div class="home-page__private-full-frame home-page__public-white-background">
 
-          <div class="home-page__full-frame home-page__public-white-background">
-
-            <!--HERE BLOG POST-->
+            <img class="home-page__public-article-image home-page__private-img-article-width" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
 
             <div class="home-page__public-article-title-main">
-              {{ article.title }}
+              {{ organization.title }}
             </div>
 
-            <div class="home-page__public-article-body-main">
-              {{ article.description|richtext_filters|safe|truncatechars_html:600 }}
+            <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
+              {{ organization.description|richtext_filters|safe|truncatechars_html:200 }}
             </div>
+
           </div>
         </a>
       </div>
     </div>
     <div class="home-page__inner-block-item-right home-page__public-container-common home-page__public-container-height-common">
       <a href="{{ project.get_absolute_url }}">
-        <div class="home-page__full-frame home-page__public-container-common-relative {% if project.artist.images %}home-page__image-gradient{% endif %}">
+        <div class="home-page__full-frame home-page__public-container-common-relative home-page__image-gradient-public">
 
             {% comment %}
             {% with project.images.all as images %}
@@ -116,16 +126,24 @@
             {% if project.public_data.all.0.image %}
               <img class="home-page__public-image_full-width" src="{{ MEDIA_URL }}{% thumbnail project.public_data.all.0.image 800 800 padding=true %}" >
             {% else %}
-              <div class="home-page__public-image_full-width" style="border: 1px solid white"></div>
+              <div class="home-page__public-image_full-width" style="border: 1px solid white;background:white"></div>
             {% endif %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article">{{ project.title }}</div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.title }}</div>
 
             {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
-              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
+              <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
             {% endif %}
 
-            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article">{{ project.description|safe|truncatechars_html:50 }}</div>
+            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.public_data.all.0.brief_description|safe|truncatechars_html:50 }}</div>
+
+            <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-second-row home-page__public-index-text-article home-page__private-text-image-index home-page__private-margin-second-line-image home-page__padding-tags-public">
+            {% if project.keywords %}
+              {% for kw in project.keywords.all|slice:":5" %}
+                  <span class="project-ict-detail__tag-style-simple-private">{{ kw|capfirst }}</span>
+              {% endfor %}
+            {% endif %}
+            </div>
         </div>
       </a>
     </div>
