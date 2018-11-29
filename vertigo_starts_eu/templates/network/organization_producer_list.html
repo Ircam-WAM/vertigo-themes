@@ -201,12 +201,13 @@ function changeViewItems(object, event) {
 
             var lat = item["lat"];
             var lon = item["lon"];
-            var title = item["title"];
+            var name = item["name"];
             var description = item["description"];
+            var url = item["url"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { title: title });
+            var marker = L.marker(new L.LatLng(lat, lon), { title: name });
 
-            marker.bindPopup("<b>"+title+"</b><br>"+description);
+            marker.bindPopup("<b>"+name+"</b><br>"+description+"</b><br><a href=\""+url+"\">"+url+"</a>");
             markers.addLayer(marker);
         }
 
