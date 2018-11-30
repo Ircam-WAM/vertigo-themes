@@ -210,7 +210,36 @@ function changeViewItems(object, event) {
 
             var marker = L.marker(new L.LatLng(lat, lon), { title: name });
 
-            marker.bindPopup("<div style=\"display:block;margin:auto\"><img src=\""+ image +"\"></img></div><center><b>"+name+"</b><br><div=\"text-transform:capitalize;\"><br>"+description+"</b></div><br><b>"+city+"</b><br><br><a href=\""+url+"\">"+url+"</a></center>");
+            var htmlString = "";
+
+            if (image != "null") {
+
+              htmlString = "<div style=\"display:block;margin:auto\">";
+              htmlString += "<img src=\""+ image +"\"></img>";
+              htmlString += "</div>";
+            }
+
+            htmlString += "<center>";
+            htmlString += "<b>"+ name + "</b><br>";
+
+            if (description != "") {
+
+              htmlString += "<div=\"text-transform:capitalize;\"><br>" + description + "</b></div><br>";
+            }
+
+            if (city != "") {
+
+              htmlString += "<b>" + city + "</b><br><br>";
+            }
+
+            if (city != "") {
+
+              htmlString += "<a href=\"" + url + "\">" + url + "</a>";
+            }
+
+            htmlString += "</center>";
+
+            marker.bindPopup(htmlString);
             markers.addLayer(marker);
         }
 
