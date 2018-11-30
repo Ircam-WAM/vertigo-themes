@@ -268,7 +268,7 @@ function changeViewItems(object, event) {
 
             var htmlString = "";
 
-            if (image != "null") {
+            if (image != null) {
 
               htmlString = "<div style=\"display:block;margin:auto\">";
               htmlString += "<img src=\""+ image +"\"></img>";
@@ -288,7 +288,7 @@ function changeViewItems(object, event) {
               htmlString += "<b>" + city + "</b><br><br>";
             }
 
-            if (city != "") {
+            if (url != "") {
 
               htmlString += "<a href=\"" + url + "\">" + url + "</a>";
             }
