@@ -280,7 +280,7 @@ function changeViewItems(object, event) {
 
             if (description != "") {
 
-              htmlString += "<div=\"text-transform:capitalize;\">" + description + "</div><br><br>";
+              htmlString += "<div style=\"text-transform:capitalize;\">" + description + "</div><br><br>";
             }
 
             if (city != "") {
@@ -294,6 +294,9 @@ function changeViewItems(object, event) {
             }
 
             htmlString += "</center>";
+
+            marker.bindPopup(htmlString);
+            markers.addLayer(marker);
 
             marker.bindPopup(htmlString);
             markers.addLayer(marker);
