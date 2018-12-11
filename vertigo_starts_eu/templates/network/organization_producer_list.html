@@ -179,7 +179,7 @@ function changeViewItems(object, event) {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
         }).addTo(currentMap);
-        
+
       });
   }
 
@@ -251,6 +251,72 @@ function changeViewItems(object, event) {
   }
 }
 
+function showHideChevronTags(object, event) {
+
+  event.preventDefault();
+
+  var id_item = object.id;
+
+  var chevronItem = document.getElementById("chevron-tags");
+  var itemsClass = chevronItem.classList;
+  var tagsDivContent = document.getElementById("tags-content");
+
+  var openChevron = false;
+
+  for (var i = 0; i < itemsClass.length; i++) {
+
+    if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
+
+      openChevron = true;
+      break;
+    }
+  }
+
+  if (openChevron) {
+
+    chevronItem.classList.remove("fa-chevron-down");
+    chevronItem.classList.add("fa-chevron-up");
+    tagsDivContent.style.display = 'block';
+  } else {
+
+    chevronItem.classList.remove("fa-chevron-up");
+    chevronItem.classList.add("fa-chevron-down");
+    tagsDivContent.style.display = 'none';
+  }
+}
+
+function selectDesectedTag(object, event) {
+
+  event.preventDefault();
+
+  var clickedItem = object;
+
+  var itemsClass = clickedItem.classList;
+
+  var selectedTag = true;
+
+  for (var i = 0; i < itemsClass.length; i++) {
+
+    if (itemsClass[i].toLowerCase() == 'project-ict-detail__unselect-tag-search') {
+
+      selectedTag = false;
+      break;
+    }
+  }
+
+  if (selectedTag) {
+
+    clickedItem.classList.remove("project-ict-detail__select-tag-search");
+    clickedItem.classList.add("project-ict-detail__unselect-tag-search");
+
+  } else {
+
+    clickedItem.classList.remove("project-ict-detail__unselect-tag-search");
+    clickedItem.classList.add("project-ict-detail__select-tag-search");
+
+  }
+}
+
 </script>
 
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
@@ -258,6 +324,33 @@ function changeViewItems(object, event) {
         <div class="row">
             <div class="col-sm-16 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Producers" %}</h1>
+
+                    <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron">
+                      <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+
+                    <div id="tags-content" class="project-ict-detail__align-tags-search" style="display:none">
+
+                      {% for kw in object.keywords.all %}
+                          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
+                      {% endfor %}
+
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">One</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Two</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Three</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Four</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Five</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Six</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Seven</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eight</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Nine</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Thirteen</div>
+                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Fourteen</div>
+
+                    </div>
 
                     <div class="article-box__view-changer-container">
                       <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
