@@ -724,7 +724,23 @@ $module: ".nav-header";
                 border-bottom: 1px solid $color-main;
             }
 
-            
+            /*>a {
+                color: black;
+            }
+
+            &:after {
+                @include transform(scaleX(1));
+                position: absolute;
+                height: 8px;
+                margin-top: -4px;
+                width: 100%;
+                display: block;
+                top: 50%;
+                left: 0;
+                content: "";
+                background: $color-main;
+                z-index: -1;
+            }*/
         }
 
         &--first {
