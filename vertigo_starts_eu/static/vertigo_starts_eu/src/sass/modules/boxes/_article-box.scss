@@ -46,6 +46,14 @@ $module: ".article-box";
         height: auto;
     }
 
+    &::selection {
+      background: #50e3c2; /* WebKit/Blink Browsers */
+    }
+
+    &::-moz-selection {
+      background: #50e3c2; /* Gecko Browsers */
+    }
+
     &:hover {
 
         border: 1px solid rgba($color-main, 1);
