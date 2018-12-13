@@ -1162,3 +1162,30 @@ body.mceContentBody {
     color: white !important;
   }
 }
+
+body.mce-content-body  {
+
+  >p::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >p>span::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >div>p::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >div>p>span::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+}
