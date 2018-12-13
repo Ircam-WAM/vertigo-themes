@@ -1155,4 +1155,10 @@ body.mceContentBody {
     background:#50e3c2 !important;
     color: white !important;
   }
+
+  >p>span::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
 }
