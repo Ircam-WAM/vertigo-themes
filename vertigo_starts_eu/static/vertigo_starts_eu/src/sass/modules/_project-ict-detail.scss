@@ -315,9 +315,52 @@ $module: ".project-ict-detail";
         margin-right:-4% !important;
       }
     }
+
+    &__place-chevron {
+
+      text-align:center;
+      margin-bottom:2%;
+    }
+
+    &__chevron-tag-style-search {
+
+    	display: inline-block;
+    	border: .2em solid #50e3c2;
+    	border-radius: .2em;
+    	//color: #50e3c2;
+      //background: transparent;
+    	font-size: 1.0em;
+    	margin: .5em;
+    	padding: .2em .5em;
+      font-family:'Oswald',sans-serif;
+      cursor: pointer;
+
+      &:hover {
+        background: #50e3c2;
+        color: white;
+      }
+    }
+
+    &__align-tags-search {
+
+      text-align:center;
+      margin-bottom:5%;
+    }
+
+    &__select-tag-search {
+
+      background: #50e3c2;
+      color: white;
+    }
+
+    &__unselect-tag-search {
+
+      background: transparent;
+      color: #50e3c2;
+    }
 }
 
 #mapid {
   height: 600px;
   z-index:1;
- }
+}

@@ -638,16 +638,21 @@ $module: ".home-page";
 
     &__responsive-form-application {
 
-      @media screen and (max-width: 780px) {
-
-        height:auto !important;
-        margin-top:30px !important;
-      }
-
       @media screen and (-webkit-min-device-pixel-ratio:0) {
 
-        margin-top:90px !important;
+        margin-top:-150px !important;
         height:auto !important;
+        width: 100vw !important;
+      }
+
+      @media screen and (max-width: 780px) {
+
+        @-moz-document url-prefix() {
+
+          height:auto !important;
+          margin-top:-180px !important;
+          margin-left: 0% !important;
+        }
       }
     }
 
@@ -688,7 +693,7 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
 
-        width:95.5% !important;
+        width:103vw !important;
 
         @-moz-document url-prefix() {
 
@@ -1128,4 +1133,59 @@ $module: ".home-page";
     &__item-margin-project {
       //margin-top:2.2% !important;
     }
+}
+
+img.help-icon {
+
+   @media screen and (max-width: 780px) {
+
+     max-width:10% !important;
+
+     @-moz-document url-prefix() {
+
+       max-width:10% !important;
+     }
+   }
+ }
+
+body.mceContentBody {
+
+  >p::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >p>span::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+}
+
+body.mce-content-body  {
+
+  >p::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >p>span::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >div>p::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
+
+  >div>p>span::selection {
+
+    background:#50e3c2 !important;
+    color: white !important;
+  }
 }

@@ -180,6 +180,7 @@ function changeViewItems(object, event) {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
         }).addTo(currentMap);
+
       });
   }
 
@@ -205,10 +206,44 @@ function changeViewItems(object, event) {
             var name = item["name"];
             var description = item["description"];
             var url = item["url"];
+            var city = item["city"];
+            var image = item["image"];
 
             var marker = L.marker(new L.LatLng(lat, lon), { title: name });
 
-            marker.bindPopup("<b>"+name+"</b><br>"+description+"</b><br><a href=\""+url+"\">"+url+"</a>");
+            var htmlString = "";
+
+            if (image != null) {
+
+              htmlString += "<div style=\"display:block;margin:auto\">";
+              htmlString += "<img src=\"" + image + "\"></img>";
+              htmlString += "</div>";
+            }
+
+            htmlString += "<center>";
+            htmlString += "<b>" + name + "</b><br>";
+
+            if (description != "") {
+
+              htmlString += "<div style=\"text-transform:capitalize;\">" + description + "</div><br>";
+            } else {
+
+              htmlString += "<br>";
+            }
+
+            if (city != "") {
+
+              htmlString += "<b>" + city + "</b><br><br>";
+            }
+
+            if (url != "") {
+
+              htmlString += "<a href=\"" + url + "\">" + url + "</a>";
+            }
+
+            htmlString += "</center>";
+
+            marker.bindPopup(htmlString);
             markers.addLayer(marker);
         }
 
@@ -217,27 +252,123 @@ function changeViewItems(object, event) {
   }
 }
 
+function showHideChevronTags(object, event) {
+
+  event.preventDefault();
+
+  var id_item = object.id;
+
+  var chevronItem = document.getElementById("chevron-tags");
+  var itemsClass = chevronItem.classList;
+  var tagsDivContent = document.getElementById("tags-content");
+
+  var openChevron = false;
+
+  for (var i = 0; i < itemsClass.length; i++) {
+
+    if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
+
+      openChevron = true;
+      break;
+    }
+  }
+
+  if (openChevron) {
+
+    chevronItem.classList.remove("fa-chevron-down");
+    chevronItem.classList.add("fa-chevron-up");
+    tagsDivContent.style.display = 'block';
+  } else {
+
+    chevronItem.classList.remove("fa-chevron-up");
+    chevronItem.classList.add("fa-chevron-down");
+    tagsDivContent.style.display = 'none';
+  }
+}
+
+function selectDesectedTag(object, event) {
+
+  event.preventDefault();
+
+  var clickedItem = object;
+
+  var itemsClass = clickedItem.classList;
+
+  var selectedTag = true;
+
+  for (var i = 0; i < itemsClass.length; i++) {
+
+    if (itemsClass[i].toLowerCase() == 'project-ict-detail__unselect-tag-search') {
+
+      selectedTag = false;
+      break;
+    }
+  }
+
+  if (selectedTag) {
+
+    clickedItem.classList.remove("project-ict-detail__select-tag-search");
+    clickedItem.classList.add("project-ict-detail__unselect-tag-search");
+
+  } else {
+
+    clickedItem.classList.remove("project-ict-detail__unselect-tag-search");
+    clickedItem.classList.add("project-ict-detail__select-tag-search");
+
+  }
+}
+
 </script>
 
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
+
     <div class="container">
+
         <div class="row">
             <div class="col-sm-16 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Available Projects" %}</h1>
+            </div>
+        </div>
+        <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron">
+          <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
+        </div>
 
-                    <div class="article-box__view-changer-container">
-                      <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
-                        <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
-                          <i class="fa fa-th article-box__align-center-dots"></i>
-                        </a>
-                      </div>
-                      <div id="map-marker" class="article-box__item-marker-common article-box__icon-marker-item-clean" onclick="changeViewItems(this, event);">
-                        <a id="map-marker-icon" class="article-box__icon-marker-item-clean-icon" href="#">
-                          <i class="fa fa-map-marker article-box__align-center-marker"></i>
-                        </a>
-                      </div>
-                    </div>
+        <div id="tags-content" class="project-ict-detail__align-tags-search" style="display:none">
 
+          {% for kw in object.keywords.all %}
+              <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
+          {% endfor %}
+
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">One</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Two</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Three</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Four</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Five</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Six</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Seven</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eight</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Nine</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Thirteen</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Fourteen</div>
+          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Fifteen</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+                <div class="article-box__view-changer-container">
+                  <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
+                    <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
+                      <i class="fa fa-th article-box__align-center-dots"></i>
+                    </a>
+                  </div>
+                  <div id="map-marker" class="article-box__item-marker-common article-box__icon-marker-item-clean" onclick="changeViewItems(this, event);">
+                    <a id="map-marker-icon" class="article-box__icon-marker-item-clean-icon" href="#">
+                      <i class="fa fa-map-marker article-box__align-center-marker"></i>
+                    </a>
+                  </div>
+                </div>
             </div>
         </div>
 
@@ -259,6 +390,7 @@ function changeViewItems(object, event) {
                         </div>
 
                         <div id="map-element-content" style="position:relative;display:none">
+
 
                            <div id="mapid" ></div>
 

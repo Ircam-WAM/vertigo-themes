@@ -22,6 +22,7 @@ $module: ".article-box";
 
 #{$module} {
 
+
     position: relative;
     display: block;
     @include margin-bottom(1);
@@ -45,6 +46,8 @@ $module: ".article-box";
         max-width: none;
         height: auto;
     }
+
+
 
     &:hover {
 
@@ -539,4 +542,14 @@ $module: ".article-box";
       top:20%;
       position:relative;
     }
+}
+
+::selection {
+  background: #50e3c2 !important;
+  color: white !important;
+}
+
+::-moz-selection {
+  background: #50e3c2 !important;
+  color: white !important;
 }
