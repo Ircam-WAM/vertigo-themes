@@ -55,3 +55,58 @@ function clickedOptionDiv(link,event) {
         leftContentItem.classList.add('home-page__hide-content');
     }
 }
+
+function formStyleSelection() {
+
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>em>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>strong>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>span>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>span>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>em>span>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>strong>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>em>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>span>em>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>span>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>em>strong>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>strong>span>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mceContentBody>p>span>strong>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>em>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>strong>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>span>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>span>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>em>span>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>strong>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>em>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>span>em>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>span>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>em>strong>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>strong>span>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>p>span>strong>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>em>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>strong>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>span>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>span>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>em>span>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>strong>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>em>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>span>em>strong::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>span>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>em>strong>span::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>strong>span>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+  $("iframe").contents().find("body").append("<style type='text/css'> .mce-content-body>div>p>span>strong>em::selection { background:#50e3c2 !important; color: white !important }</style>");
+
+}
