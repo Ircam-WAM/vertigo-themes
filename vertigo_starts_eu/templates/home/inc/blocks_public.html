@@ -47,9 +47,11 @@
             {% endwith %}
           {% endif %}
 
+          {% if event.title %}
           <div class="home-page__public-article-title-main">
             {{ event.title }}
           </div>
+          {% endif %}
 
           <div class="home-page__public-article-title-main event-line-box__date-list event-line-box__small-margin home-page__margin-removal" style="{% if not event.images %}color:black{% endif %}">
               {% include 'agenda/includes/event_date_line.html' with object=event %}
@@ -129,7 +131,9 @@
               <div class="home-page__public-image_full-width" style="border: 1px solid white;background:white"></div>
             {% endif %}
 
+            {% if project.title %}
             <div class="residency-detail__title home-page__public-overtext-artist-name home-page__public-index-text-article" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.title }}</div>
+            {% endif %}
 
             {% if project.contacts.all.0.first_name or project.project.contacts.all.0.last_name %}
               <div class="residency-detail__title home-page__public-overtext-artist-name-bottom home-page__public-margin-bottom-first-row home-page__public-index-text-article" style="{% if not project.public_data.all.0.image %}color:black{% endif %}">{{ project.contacts.all.0.first_name }} {{ project.contacts.all.0.last_name }}</div>
