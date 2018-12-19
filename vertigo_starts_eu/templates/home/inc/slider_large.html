@@ -52,9 +52,11 @@
                                                              <br />{{ slider.content_object.location }}
                                                         {% endif %}
                                                     </div>
+                                                    {% if slider.content_object.description %}
                                                     <div class="slider-box__desc">
                                                         {{ slider.content_object.description|richtext_filters|safe|truncatechars_html:200 }}
                                                     </div>
+                                                    {% endif %}
                                                 </div>
                                             </a>
                                         </div>
@@ -84,9 +86,22 @@
                                         <div class="slider-box__subtitle">
                                             {{ image.description|linebreaksbr }}
                                         </div>
+                                        {% if image.credits %}
                                         <div class="slider-box__desc">
                                             {{ image.credits }}
                                         </div>
+                                        {% endif %}
+                                        {% if slider.content_object.start %}
+                                            {% with slider.content_object as event %}
+                                                {% if slider.content_object.sub_title %}
+                                                    <br />
+                                                {% endif %}
+                                                {% include 'agenda/includes/event_date_slider.html' %}
+                                            {% endwith %}
+                                        {% endif %}
+                                        {% if slider.content_object.location %}
+                                             <br />{{ slider.content_object.location }}
+                                        {% endif %}
                                     </div>
                                 </a>
                             </div>
