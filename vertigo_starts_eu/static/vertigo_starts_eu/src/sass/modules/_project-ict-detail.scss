@@ -358,6 +358,17 @@ $module: ".project-ict-detail";
       background: transparent;
       color: #50e3c2;
     }
+
+    &__big-text {
+/*
+      font-size:40px !important;
+
+      @media screen and (max-width: 780px) {
+
+        font-size: 1.875em !important;
+      }
+      */
+    }
 }
 
 #mapid {
