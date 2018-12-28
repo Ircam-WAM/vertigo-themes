@@ -1133,6 +1133,14 @@ $module: ".home-page";
     &__item-margin-project {
       //margin-top:2.2% !important;
     }
+
+    &__extra-bottom-space-form {
+
+      @media screen and (min-height: 1439px) {
+
+        margin-bottom:5% !important;
+      }
+    }
 }
 
 img.help-icon {
