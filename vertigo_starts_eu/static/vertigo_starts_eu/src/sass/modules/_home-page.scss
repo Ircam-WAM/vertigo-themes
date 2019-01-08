@@ -1197,3 +1197,9 @@ body.mce-content-body  {
     color: white !important;
   }
 }
+
+html body#tinymce.mce-content-body p::selection {
+  
+  background:#50e3c2 !important;
+  color: white !important;
+}
