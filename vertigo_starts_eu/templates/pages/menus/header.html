@@ -58,7 +58,7 @@
                     {% endif %}
                 {% endwith %}
             {% else %}
-                <li class="nav-header__item" style="padding-bottom:0.5%">
+                <li class="nav-header__item nav-header__bottom-menu-space">
                     <a class="nav-header__item-link nav-header__extra-space-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
                     {% if page.has_children_in_menu %}
                         {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
