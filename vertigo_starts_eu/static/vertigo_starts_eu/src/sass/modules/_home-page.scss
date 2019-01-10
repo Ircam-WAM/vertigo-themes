@@ -128,7 +128,7 @@ $module: ".home-page";
       display:table;
       padding-bottom: 2%;
 
-      @media screen and (min-width: 1440px) {
+      @media screen and (min-width: 1025px) {
 
         padding-right: 3.5% !important;
 
@@ -1154,7 +1154,7 @@ $module: ".home-page";
 
     &__footer-fix {
 
-      @media screen and (min-width: 1440px) {
+      @media screen and (min-width: 1025px) {
 
         margin-right:-3.5% !important;
 
