@@ -127,6 +127,16 @@ $module: ".home-page";
       height:auto;
       display:table;
       padding-bottom: 2%;
+
+      @media screen and (min-width: 1025px) {
+
+        padding-right: 3.5% !important;
+
+        @-moz-document url-prefix() {
+
+          padding-right: 3.5% !important;
+        }
+      }
     }
 
     &__private-main-menu {
@@ -1133,6 +1143,27 @@ $module: ".home-page";
     &__item-margin-project {
       //margin-top:2.2% !important;
     }
+
+    &__extra-bottom-space-form {
+
+      @media screen and (min-height: 1439px) {
+
+        margin-bottom:5% !important;
+      }
+    }
+
+    &__footer-fix {
+
+      @media screen and (min-width: 1025px) {
+
+        margin-right:-3.5% !important;
+
+        @-moz-document url-prefix() {
+
+          margin-right:-3.5% !important;
+        }
+      }
+    }
 }
 
 img.help-icon {
@@ -1188,4 +1219,10 @@ body.mce-content-body  {
     background:#50e3c2 !important;
     color: white !important;
   }
+}
+
+html body#tinymce.mce-content-body p::selection {
+
+  background:#50e3c2 !important;
+  color: white !important;
 }

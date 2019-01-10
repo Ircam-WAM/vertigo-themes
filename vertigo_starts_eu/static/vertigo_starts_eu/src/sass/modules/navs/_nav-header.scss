@@ -337,8 +337,6 @@ $module: ".nav-header";
         	margin-bottom: -18px !important;
         }
       }
-
-
     }
 
     &__hide-first-line {
@@ -959,5 +957,10 @@ $module: ".nav-header";
           margin-bottom:-40px !important;
         }
       }
+    }
+
+    &__bottom-menu-space {
+
+      padding-bottom: 0.5% !important;
     }
 }
