@@ -128,7 +128,17 @@ $module: ".home-page";
       display:table;
       padding-bottom: 2%;
 
-      @media screen and (min-width: 1025px) {
+      @media screen and (min-width: 1024px) {
+
+        padding-right: 4.9% !important;
+
+        @-moz-document url-prefix() {
+
+          padding-right: 4.9% !important;
+        }
+      }
+
+      @media screen and (min-width: 1440px) {
 
         padding-right: 3.5% !important;
 
@@ -1154,7 +1164,19 @@ $module: ".home-page";
 
     &__footer-fix {
 
-      @media screen and (min-width: 1025px) {
+      @media screen and (min-width: 1024px) {
+
+        margin-right:-45.5% !important;
+        padding-bottom:1% !important;
+
+        @-moz-document url-prefix() {
+
+          margin-right:-45.5% !important;
+          padding-bottom:1% !important;
+        }
+      }
+
+      @media screen and (min-width: 1440px) {
 
         margin-right:-3.5% !important;
 
