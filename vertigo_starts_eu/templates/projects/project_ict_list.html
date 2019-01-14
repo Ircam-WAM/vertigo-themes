@@ -138,7 +138,7 @@ function changeViewItems(object, event) {
 
     mapElement.style.display = "block";
     listElemet.style.display = "none";
-    /*
+
     $.ajax({
       type: 'GET',
       url: '/public-network-data/',
@@ -164,7 +164,6 @@ function changeViewItems(object, event) {
           }
       }
     });
-    */
 
     // data test
 
@@ -179,6 +178,8 @@ function changeViewItems(object, event) {
 
       parseJSON(json_str, currentMap);
     }
+
+    // end data test
   }
 
   function createMap() {
@@ -241,21 +242,21 @@ function changeViewItems(object, event) {
                 htmlString += "<div>";
               }
 
-              htmlString += "<div style=\"padding-top:50%;position:relative\">"
+              htmlString += "<div style=\"padding-top:30%;position:relative\">"
               htmlString += "<center>";
-              htmlString += "<b>" + name + "</b><br>";
-
-              if (description != "") {
-
-                htmlString += "<div style=\"text-transform:capitalize;\">" + description + "</div><br>";
-              } else {
-
-                htmlString += "<br>";
-              }
+              htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
 
               if (city != "" && city != null) {
 
-                htmlString += "<b>" + city + "</b><br><br>";
+                htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
+              }
+
+              if (description != "") {
+
+                htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
+              } else {
+
+                htmlString += "<br>";
               }
 
               if (url != "") {
@@ -275,11 +276,12 @@ function changeViewItems(object, event) {
         }
 
         map.addLayer(markers);
-    });
-  }
 
-  function markerOnClick(e) {
-    alert("hi. you clicked the marker at " + e.latlng);
+        map.on('click', function(e) {
+
+            detailMarker.style.display = 'none';
+        });
+    });
   }
 }
 
