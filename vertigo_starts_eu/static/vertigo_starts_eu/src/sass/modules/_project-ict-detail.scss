@@ -369,6 +369,18 @@ $module: ".project-ict-detail";
       }
       */
     }
+
+    &__detail-marker {
+
+       width: 500px;
+       height: 500px;
+       border: 1px solid #50e3c2;
+       z-index: 1000;
+       background: clear;
+       position: absolute;
+       margin-top: 3%;
+       margin-left: 5%
+     }
 }
 
 #mapid {

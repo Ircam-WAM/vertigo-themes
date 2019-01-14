@@ -138,7 +138,7 @@ function changeViewItems(object, event) {
 
     mapElement.style.display = "block";
     listElemet.style.display = "none";
-
+    /*
     $.ajax({
       type: 'GET',
       url: '/public-network-data/',
@@ -164,6 +164,21 @@ function changeViewItems(object, event) {
           }
       }
     });
+    */
+
+    // data test
+
+    var json_str = {"organizations": [{"name": "Ars Electronica", "image": "http://localhost:9022/media/user/images/2018/09/11/Car2Human_Cover_zSyagYz.jpg", "description": "Art, technology, society.", "mappable_location": "Ars-Electronica-Stra\u00dfe 1, 4040 Linz, Autriche", "type": "Network Partner", "url": "https://ars.electronica.art", "lat": "48.3097431", "lon": "14.2843268"}], "producers":[{"name": "AQUITAINE CULTURE", "description": "", "mappable_location": "2 Rue Marc Sangnier, 33130 Bègles, France", "type": "", "url": "http://www.aquitaineculture.org/", "lat": "44.8130854", "lon": "-0.5539512"}], "persons":[]}
+
+    if (!currentMap) {
+
+      createMap();
+    }
+
+    if (currentMap) {
+
+      parseJSON(json_str, currentMap);
+    }
   }
 
   function createMap() {
@@ -189,6 +204,7 @@ function changeViewItems(object, event) {
     $(function() {
 
         var producers = jsonObject["producers"];
+
         var organizations = jsonObject["organizations"];
 
         var unionObjects = producers.concat(organizations);
@@ -196,6 +212,10 @@ function changeViewItems(object, event) {
         var markers = L.markerClusterGroup({showCoverageOnHover: true,
                                             zoomToBoundsOnClick: true,
                                             removeOutsideVisibleBounds: true});
+
+        var detailMarker = document.getElementById("detail-marker");
+
+        detailMarker.style.display = 'none';
 
         for (var i = 0; i < unionObjects.length; i++) {
 
@@ -209,46 +229,57 @@ function changeViewItems(object, event) {
             var city = item["city"];
             var image = item["image"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { title: name });
+            var marker = L.marker(new L.LatLng(lat, lon), { title: name }).on('click', function(e) {
 
-            var htmlString = "";
+              var htmlString = "";
 
-            if (image != null) {
+              if (image != null) {
 
-              htmlString += "<div style=\"display:block;margin:auto\">";
-              htmlString += "<img src=\"" + image + "\"></img>";
-              htmlString += "</div>";
-            }
+                htmlString += "<div style=background-image:url(" + image + ");height:100%;width:100%;>";
+              } else {
 
-            htmlString += "<center>";
-            htmlString += "<b>" + name + "</b><br>";
+                htmlString += "<div>";
+              }
 
-            if (description != "") {
+              htmlString += "<div style=\"padding-top:50%;position:relative\">"
+              htmlString += "<center>";
+              htmlString += "<b>" + name + "</b><br>";
 
-              htmlString += "<div style=\"text-transform:capitalize;\">" + description + "</div><br>";
-            } else {
+              if (description != "") {
 
-              htmlString += "<br>";
-            }
+                htmlString += "<div style=\"text-transform:capitalize;\">" + description + "</div><br>";
+              } else {
 
-            if (city != "") {
+                htmlString += "<br>";
+              }
 
-              htmlString += "<b>" + city + "</b><br><br>";
-            }
+              if (city != "" && city != null) {
 
-            if (url != "") {
+                htmlString += "<b>" + city + "</b><br><br>";
+              }
 
-              htmlString += "<a href=\"" + url + "\">" + url + "</a>";
-            }
+              if (url != "") {
 
-            htmlString += "</center>";
+                htmlString += "<a href=\"" + url + "\">" + url + "</a>";
+              }
 
-            marker.bindPopup(htmlString);
+              htmlString += "</center>";
+              htmlString += "</div></div>";
+
+              detailMarker.innerHTML = htmlString;
+              detailMarker.style.display = 'block';
+            });
+
+            //marker.bindPopup(htmlString);
             markers.addLayer(marker);
         }
 
         map.addLayer(markers);
     });
+  }
+
+  function markerOnClick(e) {
+    alert("hi. you clicked the marker at " + e.latlng);
   }
 }
 
@@ -388,14 +419,20 @@ function selectDesectedTag(object, event) {
                             {% endfor %}
                         </div>
 
-                        <div id="map-element-content" style="position:relative;display:none">
-                           <div id="mapid" ></div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="map-element-content" style="position:relative;display:none">
+       <div id="mapid">
+         <div id="detail-marker" class="project-ict-detail__detail-marker" style="display:none">
+         </div>
+       </div>
+    </div>
+
     {% pagination_for object_list %}
 </div>
 
