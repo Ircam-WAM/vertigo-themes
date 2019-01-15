@@ -381,6 +381,16 @@ $module: ".project-ict-detail";
        margin-top: 3%;
        margin-left: 5%
      }
+
+     &__right-list-projects {
+
+       width: 400px;
+       height: 600px;
+       z-index: 9;
+       position: relative;
+       float: right;
+       overflow-y: auto;
+     }
 }
 
 #mapid {
