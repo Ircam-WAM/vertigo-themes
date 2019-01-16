@@ -542,6 +542,52 @@ $module: ".article-box";
       top:20%;
       position:relative;
     }
+
+    &__list-image {
+
+    	position: relative;
+    	display: block;
+    	margin-bottom: 1.5rem;
+    	transition: all .5s ease-in-out;
+    	height: 300px;
+    	width: 300px;
+
+      &:hover {
+
+        background:clear;
+      }
+    }
+
+    &__main-frame-list {
+
+      width:300px;
+      height:300px;
+      margin:3em;
+    }
+
+    &__single-card-list-title {
+
+      padding-top:30%;
+      margin-left:5%;
+      margin-right:5%;
+      color:white;
+      font-size:20px;
+      font-family:'Oswald',sans-serif;
+      text-align:center;
+    }
+
+    &__single-card-list-description {
+
+      margin-top:10%;
+      margin-left:5%;
+      margin-right:5%;
+      color:white;
+      font-size:15px;
+      font-size:14px;
+      line-height:1.2em;
+      text-align:center;
+      font-family:'Oswald';
+    }
 }
 
 ::selection {

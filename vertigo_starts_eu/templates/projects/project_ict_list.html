@@ -441,7 +441,7 @@ window.onload = function () {
       <div id="items-tile-project" class="project-ict-detail__right-list-projects" style="background:{% if request.user.is_authenticated %}#eaeaeb{% else %}#00000{% endif %} ;display:block">
         {% for object in object_list %}
           {% with app_label=object|app_label_short classname=object|classname|lower  %}
-              {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_ict_card.html" as template %}
+              {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_ict_card_list.html" as template %}
                   {% include template %}
               {% endwith %}
           {% endwith %}
