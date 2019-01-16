@@ -33,10 +33,11 @@
 
 {% block image %}
     {% if object.public_data.all.0.image %}
-    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 300 300 %}');width:300px;height:300px">
+    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 300 300 %}');width:300px;height:300px;border:2px solid #50e3c2">
     {% else %}
-    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));width:300px;height:300px">
+    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));width:300px;height:300px;border:2px solid #50e3c2">
     {% endif %}
+
       <div class="article-box__single-card-list-title">
           {{ object.title }}
       </div>
