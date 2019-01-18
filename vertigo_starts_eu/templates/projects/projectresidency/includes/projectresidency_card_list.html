@@ -1,0 +1,74 @@
+{% extends "projects/project/includes/generic_project_card_list.html" %}
+{% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block metatitle %}
+    {{ object.title }}
+{% endblock %}
+
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
+{% block tags %}
+    {{ object.call.title }}
+{% endblock%}
+
+{% block apply_button %}
+    {% if object.validation_status == 3 and not object.call.is_closed %}
+        <a href="{% url 'web:show_application_form' object.call.slug %}?show_draft&project={{ object.slug }}">
+            <div class="article-box__apply_button">
+                <span>APPLY!</span>
+            </div>
+        </a>
+    {% endif %}
+{% endblock %}
+
+{% block url %}
+    {{ object.get_absolute_url }}
+{% endblock %}
+
+{% block image %}
+
+{% with object.images.all|get_type:'card' as images %}
+    {% if images %}
+    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('{{ MEDIA_URL }}{% thumbnail images.0.file 300 300 %}');width:300px;height:300px;border:2px solid #50e3c2">
+    {% else %}
+    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));width:300px;height:300px;border:2px solid #50e3c2">
+    {% endif %}
+{% endwith %}
+      <div class="article-box__single-card-list-title">
+          {{ object.title }}
+      </div>
+
+      <div class="article-box__single-card-list-description ">
+          {{ object.description|safe|truncatechars_html:200 }}
+      </div>
+    </div>
+    <!--
+        <figure class="list_image">
+            <img src="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" />
+            {% comment %}
+            {# FIXME: Lazyload not loading images in hidden blocks #}
+            {% if object.public_data.all.0.image_is_panoramic %}
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" class="lazyload" />
+            {% else %}
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{{ MEDIA_URL }}{% thumbnail object.public_data.all.0.image 427 286 %}" class="lazyload" />
+            {% endif %}
+            {% endcomment %}
+        </figure>
+        -->
+{% endblock %}
+
+<!--
+{% block content %}
+    {{ object.public_data.all.0.brief_description|richtext_filters|safe|truncatechars_html:200 }}
+{% endblock %}
+
+{% block subtitle %}
+    {{ object.sub_title }}
+{% endblock %}
+-->
