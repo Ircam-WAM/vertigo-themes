@@ -588,6 +588,32 @@ $module: ".article-box";
       text-align:center;
       font-family:'Oswald';
     }
+
+    &__single-card-list-description-list {
+
+      margin-top:5%;
+      margin-left:5%;
+      margin-right:5%;
+      color:white;
+      font-size:15px;
+      font-size:14px;
+      line-height:1.2em;
+      text-align:center;
+      font-family:'Oswald';
+    }
+
+    &__single-card-list-subtitle {
+
+      margin-top:2%;
+      margin-left:5%;
+      margin-right:5%;
+      color:white;
+      font-size:15px;
+      font-size:14px;
+      line-height:1.2em;
+      text-align:center;
+      font-family:'Oswald';
+    }
 }
 
 ::selection {

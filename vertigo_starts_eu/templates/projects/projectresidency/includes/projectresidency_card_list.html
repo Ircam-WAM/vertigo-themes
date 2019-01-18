@@ -42,9 +42,20 @@
 {% endwith %}
       <div class="article-box__single-card-list-title">
           {{ object.title }}
+          {{ object.country }}
       </div>
 
-      <div class="article-box__single-card-list-description ">
+      <div class="article-box__single-card-list-subtitle">
+        {% if object.categories %}
+          {{ object.categories.all.0 }} - {{ object.city }}, {{ object.country }}
+        {% else %}
+          {% if object.city and object.country %}
+            {{ object.city }}, {{ object.country }}
+          {% endif%}
+        {% endif%}
+      </div>
+
+      <div class="article-box__single-card-list-description-list">
           {{ object.description|safe|truncatechars_html:200 }}
       </div>
     </div>
