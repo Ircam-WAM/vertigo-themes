@@ -33,7 +33,7 @@
           {{ object }}
       </div>
 
-      <div class="article-box__single-card-list-description ">
+      <div class="article-box__single-card-list-description">
         {% if object.producer_data.first.producer_description %}
           {{ object.producer_data.first.producer_description|richtext_filters|safe|truncatechars_html:100 }}
         {% endif %}
