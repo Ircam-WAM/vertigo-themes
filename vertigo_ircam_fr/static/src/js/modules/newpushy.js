@@ -188,7 +188,9 @@ jQuery(document).ready((function($) {
 			togglePushy();
 		});
 
-		menuBtnResponsive.on('click', function(){
+		menuBtnResponsive.on('click', function(e){
+
+      e.preventDefault();
 
 			$('#first-menu').hide();
 			$('#second-menu').show();

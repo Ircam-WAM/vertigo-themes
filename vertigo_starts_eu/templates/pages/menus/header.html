@@ -32,7 +32,7 @@
                              {% with images|first as img %}
                               {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" />#}
 
-                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" /></a>
+                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" /></a>
                              {% endwith %}
                             {% endif %}
                           {% endwith %}
