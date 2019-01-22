@@ -145,7 +145,7 @@ $module: ".nav-header";
         display: block !important;
       	margin-top: -5px !important;
       	width: 40% !important;
-      	margin-left: 105px !important;
+      	//margin-left: 105px !important;
       }
 
       &__non-responsive-image {
@@ -384,6 +384,20 @@ $module: ".nav-header";
             vertical-align: top;
             @include margin(0 1 0 2.5);
             @include padding-right(.50);
+
+            margin-right: 0% !important;
+
+            @media screen and (min-width: 780px) {
+
+              margin-right: -20% !important;
+            }
+
+            @-moz-document url-prefix() {
+              @media screen and (min-width: 780px) {
+
+                margin-right: -20% !important;
+              }
+            }
 
             @include mq($until: lg) {
                 height: $header-height - 10px;
@@ -857,7 +871,8 @@ $module: ".nav-header";
       @media only screen and (max-width: 780px) {
 
         width:50% !important;
-        margin-right: 25% !important;
+        margin-right: 5% !important;
+        margin-top: 12% !important;
       }
     }
 
