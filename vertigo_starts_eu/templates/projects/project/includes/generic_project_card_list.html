@@ -1,0 +1,27 @@
+{% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags media_tags %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+
+{% block apply_button %}
+{% endblock %}
+
+
+<a class="article-box__list-image list_article_box article-box__main-frame-list" style="width:300px;height:300px;margin:3em" href="{% block url %}{% endblock %}" {% block target %}{% endblock %} title="{% block metatitle %}{% endblock %}">
+    <!--<div class="article-box__header" style="width:300px;height:300px">-->
+
+        {% block image %}
+        {% endblock %}
+<!--
+        {% block title %}
+        {% endblock %}
+
+        {% block subtitle %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+-->
+</a>
