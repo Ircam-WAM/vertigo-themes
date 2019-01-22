@@ -104,7 +104,18 @@ $module: ".nav-header";
       margin-bottom:20% !important;
     }
 
-    @media screen and (max-width: 780px) {
+    @media screen and (min-width: 780px) {
+
+      &__responsive-image {
+
+        display: block !important;
+        margin-top:-60px !important;
+        width: 60% !important;
+        margin-left:-40px !important;
+      }
+    }
+
+    @media screen and (max-width: 779px) {
 
       &__image-logo {
 
