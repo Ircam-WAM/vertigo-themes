@@ -997,4 +997,19 @@ $module: ".nav-header";
 
       padding-bottom: 0.5% !important;
     }
+
+    &__user-icon-size-responsive {
+
+      @media screen and (max-width: 780px) {
+
+        	font-size: 30px !important;
+      }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+        	font-size: 30px !important;
+        }
+      }
+    }
 }
