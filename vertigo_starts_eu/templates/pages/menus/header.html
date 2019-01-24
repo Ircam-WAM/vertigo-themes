@@ -14,7 +14,7 @@ window.onload = function () {
   elements = singleItem.getElementsByClassName("nav-header__image-logo-responsive");
   elements[0].style.display = "none";
 
-  resizeIconObject();
+  this.resizeIconObject();
 }
 
 window.addEventListener('resize', function(event){
@@ -25,8 +25,8 @@ function resizeIconObject() {
 
   var width = document.documentElement.clientWidth;
 
-  var magnifyItem = document.getElementById("magnify-icon-slide");
-  var userItem = document.getElementById("user-icon-slide");
+  var magnifyItem = document.getElementsByClassName("search-link-item")[0];
+  var userItem = document.getElementsByClassName("user-link-item")[0];
 
   magnifyItem.style.display = "none";
   userItem.style.display = "none";
@@ -118,17 +118,17 @@ function resizeIconObject() {
 
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
 
-                    <div id="magnify-icon-slide" >
-                      <a href="#" class="nav-header__item-link fsxl" data-open-button="search" data-search-button>
+
+                      <a href="#" class="nav-header__item-link fsxl search-link-item " data-open-button="search" data-search-button>
                           <i class="fa fa-search" aria-hidden="true"></i>
                       </a>
-                    </div>
 
-                    <div id="user-icon-slide" style="display:none">
-                      <a href="#" class="nav-header__item-link menu-btn-responsive">
+
+
+                      <a href="#" class="nav-header__item-link menu-btn-responsive user-link-item ">
                           <i class="fa fa-user" aria-hidden="true"></i>
                       </a>
-                    </div>
+
 
                 </li>
 
