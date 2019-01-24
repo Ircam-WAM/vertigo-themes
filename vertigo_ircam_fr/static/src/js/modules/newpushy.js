@@ -183,7 +183,16 @@ jQuery(document).ready((function($) {
 			var item = $('#image-responsive');
 
 			item.removeClass("menu-btn-responsive");
-			item.wrap("<div style='margin-left:30%'><a href='" + location.host + "'></a></div>");
+			item.wrap("<a href='" + location.host + "'></a>");
+
+      var singleItem = document.getElementById("first-menu");
+
+      if (singleItem.length > 0) {
+
+        var elements = singleItem.getElementsByClassName("menu-btn-responsive");
+        elements.style.marginTop = "15%";
+        elements.style.marginRight = "-10%";
+      }
 
 			togglePushy();
 		});
@@ -195,9 +204,6 @@ jQuery(document).ready((function($) {
 			$('#first-menu').hide();
 			$('#second-menu').show();
 
-      	var item = $('#menu-btn-responsive');
-
-      item.wrap("<div style='margin-top:15%;margin-right:-10%'></div>");
 			togglePushy();
 		});
 
