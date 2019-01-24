@@ -471,6 +471,18 @@ $module: ".nav-header";
                 line-height: $header-height-mobile;
                 height: $header-height-mobile - 10px;
             }
+
+            @media screen and (min-width: 780px) {
+
+              line-height: 90px !important;
+            }
+
+            @-moz-document url-prefix() {
+              @media screen and (min-width: 780px) {
+
+                line-height: 90px !important;
+              }
+            }
         }
 
         &--right {
@@ -870,8 +882,8 @@ $module: ".nav-header";
 
       @media only screen and (max-width: 780px) {
 
-        width:50% !important;
-        margin-right: 5% !important;
+        width:90% !important;
+        margin-right: -20% !important;
         margin-top: 12% !important;
       }
     }
