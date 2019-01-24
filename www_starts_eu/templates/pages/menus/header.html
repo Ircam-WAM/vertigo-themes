@@ -20,13 +20,15 @@ window.onload = function () {
   resizeIconObject();
 }
 
-
 function resizeIconObject() {
 
   var width = document.documentElement.clientWidth;
 
   var magnifyItem = document.getElementById("magnify-icon-slide");
   var userItem = document.getElementById("user-icon-slide");
+
+  magnifyItem.style.display = "none";
+  userItem.style.display = "none";
 
   if (width <= 780) {
 
@@ -108,9 +110,17 @@ $(window).on("resize", function(event){
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
-                    <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
-                </li>
+                <div id="magnify-icon-slide" >
+                  <a href="#" class="nav-header__item-link fsxl" data-open-button="search" data-search-button>
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div id="user-icon-slide" >
+                  <a href="#" class="nav-header__item-link menu-btn-responsive">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                  </a>
+                </div>
 
             </ul>
             {% endif %}
