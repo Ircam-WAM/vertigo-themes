@@ -9,12 +9,12 @@
 window.onload = function () {
   var singleItem = document.getElementById("first-menu");
 
-  var elements = singleItem.getElementsByClassName("nav-header__image-size-responsive-logo");
+  var elements = singleItem.getElementsByClassName("item-image-menu");
   elements[0].style.display = "none";
 
   singleItem = document.getElementById("second-menu");
 
-  elements = singleItem.getElementsByClassName("nav-header__image-logo-responsive");
+  elements = singleItem.getElementsByClassName("item-image-menu");
   elements[0].style.display = "none";
 
   resizeIconObject();
@@ -82,7 +82,7 @@ function resizeIconObject() {
                               {% if images %}
                                {% with images|first as img %}
                                 {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="menu-btn-responsive nav-header__image-size-responsive-logo" />#}
-                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo" /></a>
+                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo item-image-menu" /></a>
                                {% endwith %}
                               {% endif %}
                             {% endwith %}
