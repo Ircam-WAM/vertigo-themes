@@ -190,8 +190,8 @@ jQuery(document).ready((function($) {
       if (singleItem.length > 0) {
 
         var elements = singleItem.getElementsByClassName("menu-btn-responsive");
-        elements.style.marginTop = "15%";
-        elements.style.marginRight = "-10%";
+        elements[0].style.marginTop = "15%";
+        elements[0].style.marginRight = "-10%";
       }
 
 			togglePushy();
