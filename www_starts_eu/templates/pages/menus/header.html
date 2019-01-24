@@ -34,6 +34,11 @@ function resizeIconObject() {
   magnifyItem.classList.add("nav-header__show-now");
   userItem.classList.add("nav-header__hide-now");
 
+  var firstMenu = document.getElementById("first-menu");
+
+  var elementsSearch = firstMenu.getElementsByClassName("fa-search");
+
+
   if (width <= 780) {
 
     magnifyItem.classList.remove("nav-header__show-now");
@@ -42,6 +47,8 @@ function resizeIconObject() {
     userItem.classList.add("nav-header__show-now");
     userItem.classList.remove("nav-header__hide-now");
 
+    elementsSearch[0].style.display = "none";
+
   } else {
 
     userItem.classList.remove("nav-header__show-now");
@@ -49,6 +56,8 @@ function resizeIconObject() {
 
     magnifyItem.classList.add("nav-header__show-now");
     magnifyItem.classList.remove("nav-header__hide-now");
+
+    elementsSearch[0].style.display = "block";
   }
 }
 
@@ -120,7 +129,7 @@ function resizeIconObject() {
             </li>
 
             <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__hide-now user-link-item" >
-              <a href="#" class="menu-btn-responsive"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="#" class="menu-btn-responsive nav-header__user-icon-size-responsive"><i class="fa fa-user" aria-hidden="true"></i></a>
             </li>
 
             </ul>
