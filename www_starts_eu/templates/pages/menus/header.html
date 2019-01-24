@@ -16,7 +16,34 @@ window.onload = function () {
 
   elements = singleItem.getElementsByClassName("nav-header__image-logo-responsive");
   elements[0].style.display = "none";
+
+  resizeIconObject();
 }
+
+
+function resizeIconObject() {
+
+  var width = document.documentElement.clientWidth;
+
+  var magnifyItem = document.getElementById("magnify-icon-slide");
+  var userItem = document.getElementById("user-icon-slide");
+
+  if (width <= 780) {
+
+    magnifyItem.style.display = "none";
+    userItem.style.display = "display";
+
+  } else {
+
+    magnifyItem.style.display = "display";
+    userItem.style.display = "none";
+  }
+}
+
+$(window).on("resize", function(event){
+
+  resizeIconObject();
+});​
 
 </script>
 
@@ -48,7 +75,7 @@ window.onload = function () {
                               {% if images %}
                                {% with images|first as img %}
                                 {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="menu-btn-responsive nav-header__image-size-responsive-logo" />#}
-                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo menu-btn-responsive" /></a>
+                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo" /></a>
                                {% endwith %}
                               {% endif %}
                             {% endwith %}
