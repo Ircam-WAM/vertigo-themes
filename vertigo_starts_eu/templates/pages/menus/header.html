@@ -6,7 +6,7 @@
 window.onload = function () {
   var singleItem = document.getElementById("first-menu");
 
-  var elements = singleItem.getElementsByClassName("nav-header__image-size-responsive-logo");
+  var elements = singleItem.getElementsByClassName("item-image-menu");
   elements[0].style.display = "none";
 
   singleItem = document.getElementById("second-menu");
@@ -17,6 +17,9 @@ window.onload = function () {
   resizeIconObject();
 }
 
+window.addEventListener('resize', function(event){
+  resizeIconObject();
+});
 
 function resizeIconObject() {
 
@@ -78,7 +81,7 @@ function resizeIconObject() {
                              {% with images|first as img %}
                               {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo " />#}
 
-                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" /></a>
+                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo item-image-menu" /></a>
                              {% endwith %}
                             {% endif %}
                           {% endwith %}
