@@ -188,8 +188,7 @@ jQuery(document).ready((function($) {
       var singleItem = document.getElementById("first-menu");
 
       var elements = singleItem.getElementsByClassName("menu-btn-responsive");
-      elements[0].style.marginTop = "15% !important";
-      elements[0].style.marginRight = "-10% !important";
+      elements[0].style.display = "none";
 
 			togglePushy();
 		});
@@ -257,9 +256,9 @@ jQuery(document).ready((function($) {
       var singleItem = document.getElementById("first-menu");
 
       var elements = singleItem.getElementsByClassName("menu-btn-responsive");
-      elements[0].style.marginTop = "15% !important";
-      elements[0].style.marginRight = "-10% !important";
-      
+      elements[0].style.display = "none";
+
+
 			if (opened) {
 				closePushyFallback();
 				opened = false;
