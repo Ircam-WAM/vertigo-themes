@@ -31,24 +31,24 @@ function resizeIconObject() {
   var magnifyItem = document.getElementsByClassName("search-link-item")[0];
   var userItem = document.getElementsByClassName("user-link-item")[0];
 
-  magnifyItem.classList.addClass("nav-header__show-now");
-  userItem.classList.addClass("nav-header__hide-now");
+  magnifyItem.classList.add("nav-header__show-now");
+  userItem.classList.add("nav-header__hide-now");
 
   if (width <= 780) {
 
-    magnifyItem.classList.removeClass("nav-header__show-now");
-    magnifyItem.classList.addClass("nav-header__hide-now");
+    magnifyItem.classList.remove("nav-header__show-now");
+    magnifyItem.classList.add("nav-header__hide-now");
 
-    userItem.classList.addClass("nav-header__show-now");
-    userItem.classList.removeClass("nav-header__hide-now");
+    userItem.classList.add("nav-header__show-now");
+    userItem.classList.remove("nav-header__hide-now");
 
   } else {
 
-    userItem.classList.removeClass("nav-header__show-now");
-    userItem.classList.addClass("nav-header__hide-now");
+    userItem.classList.remove("nav-header__show-now");
+    userItem.classList.add("nav-header__hide-now");
 
-    magnifyItem.classList.addClass("nav-header__show-now");
-    magnifyItem.classList.removeClass("nav-header__hide-now");
+    magnifyItem.classList.add("nav-header__show-now");
+    magnifyItem.classList.remove("nav-header__hide-now");
   }
 }
 
@@ -114,15 +114,15 @@ function resizeIconObject() {
         {% endif %}
         {% if page.is_primary %}
             {% if forloop.last %}
-<li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
-            <a href="#" class="nav-header__item-link fsxl search-link-item " data-open-button="search" data-search-button>
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
 
-            <a href="#" class="nav-header__item-link menu-btn-responsive user-link-item ">
-                <i class="fa fa-user" aria-hidden="true"></i>
-            </a>
-</li>
+            <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator search-link-item">
+                <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+
+            <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator menu-btn-responsive user-link-item">
+              <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-user" aria-hidden="true"></i></a>
+            </li>
+
             </ul>
             {% endif %}
         {% endif %}
