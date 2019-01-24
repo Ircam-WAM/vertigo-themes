@@ -33,6 +33,16 @@ $module: ".nav-header";
         @include margin(0);
     }
 
+    &__hide-now {
+
+      display: none !important;
+    }
+
+    &__show-now {
+
+      display: none !important;
+    }
+    
     .logo-translated {
         margin-left: -75px;
         height: 194px;
@@ -909,15 +919,5 @@ $module: ".nav-header";
       }
 
 
-    }
-
-    &__hide-now {
-
-      display: none !important;
-    }
-
-    &__show-now {
-
-      display: none !important;
     }
 }
