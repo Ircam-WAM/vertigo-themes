@@ -28,21 +28,27 @@ function resizeIconObject() {
 
   var width = document.documentElement.clientWidth;
 
-  var magnifyItem = document.getElementById("magnify-icon-slide");
-  var userItem = document.getElementById("user-icon-slide");
+  var magnifyItem = document.getElementsByClassName("search-link-item")[0];
+  var userItem = document.getElementsByClassName("user-link-item")[0];
 
-  magnifyItem.style.display = "none";
-  userItem.style.display = "none";
+  magnifyItem.classList.addClass("nav-header__show-now");
+  userItem.classList.addClass("nav-header__hide-now");
 
   if (width <= 780) {
 
-    magnifyItem.style.display = "none";
-    userItem.style.display = "display";
+    magnifyItem.classList.removeClass("nav-header__show-now");
+    magnifyItem.classList.addClass("nav-header__hide-now");
+
+    userItem.classList.addClass("nav-header__show-now");
+    userItem.classList.removeClass("nav-header__hide-now");
 
   } else {
 
-    magnifyItem.style.display = "display";
-    userItem.style.display = "none";
+    userItem.classList.removeClass("nav-header__show-now");
+    userItem.classList.addClass("nav-header__hide-now");
+
+    magnifyItem.classList.addClass("nav-header__show-now");
+    magnifyItem.classList.removeClass("nav-header__hide-now");
   }
 }
 
@@ -109,17 +115,13 @@ function resizeIconObject() {
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                <div id="magnify-icon-slide">
-                  <a href="#" class="nav-header__item-link fsxl" data-open-button="search" data-search-button>
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                  </a>
-                </div>
+            <a href="#" class="nav-header__item-link fsxl search-link-item " data-open-button="search" data-search-button>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
 
-                <div id="user-icon-slide" style="display:none">
-                  <a href="#" class="nav-header__item-link menu-btn-responsive">
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                  </a>
-                </div>
+            <a href="#" class="nav-header__item-link menu-btn-responsive user-link-item ">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </a>
 
             </ul>
             {% endif %}

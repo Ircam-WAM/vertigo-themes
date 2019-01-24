@@ -910,4 +910,14 @@ $module: ".nav-header";
 
 
     }
+
+    &__hide-now {
+
+      display: none !important;
+    }
+
+    &__show-now {
+
+      display: none !important;
+    }
 }

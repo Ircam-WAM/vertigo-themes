@@ -14,7 +14,7 @@ window.onload = function () {
   elements = singleItem.getElementsByClassName("nav-header__image-logo-responsive");
   elements[0].style.display = "none";
 
-  this.resizeIconObject();
+  resizeIconObject();
 }
 
 window.addEventListener('resize', function(event){
@@ -124,17 +124,13 @@ function resizeIconObject() {
 
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
 
-
                       <a href="#" class="nav-header__item-link fsxl search-link-item " data-open-button="search" data-search-button>
                           <i class="fa fa-search" aria-hidden="true"></i>
                       </a>
 
-
-
                       <a href="#" class="nav-header__item-link menu-btn-responsive user-link-item ">
                           <i class="fa fa-user" aria-hidden="true"></i>
                       </a>
-
 
                 </li>
 
