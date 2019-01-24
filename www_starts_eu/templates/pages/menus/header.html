@@ -20,6 +20,10 @@ window.onload = function () {
   resizeIconObject();
 }
 
+window.addEventListener('resize', function(event){
+  resizeIconObject();
+});
+
 function resizeIconObject() {
 
   var width = document.documentElement.clientWidth;
@@ -105,7 +109,7 @@ function resizeIconObject() {
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                <div id="magnify-icon-slide" >
+                <div id="magnify-icon-slide">
                   <a href="#" class="nav-header__item-link fsxl" data-open-button="search" data-search-button>
                       <i class="fa fa-search" aria-hidden="true"></i>
                   </a>

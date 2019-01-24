@@ -17,6 +17,10 @@ window.onload = function () {
   resizeIconObject();
 }
 
+window.addEventListener('resize', function(event){
+  resizeIconObject();
+});;
+
 function resizeIconObject() {
 
   var width = document.documentElement.clientWidth;
