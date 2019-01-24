@@ -185,11 +185,6 @@ jQuery(document).ready((function($) {
 			item.removeClass("menu-btn-responsive");
 			item.wrap("<a href='" + location.host + "'></a>");
 
-      var singleItem = document.getElementById("first-menu");
-
-      var elements = singleItem.getElementsByClassName("menu-btn-responsive");
-      elements[0].style.display = "none";
-
 			togglePushy();
 		});
 
@@ -252,12 +247,6 @@ jQuery(document).ready((function($) {
 
 			element.removeClass("menu-btn-responsive");
 			element.wrap("<a href='" + location.host + "'></a>");
-
-      var singleItem = document.getElementById("first-menu");
-
-      var elements = singleItem.getElementsByClassName("menu-btn-responsive");
-      elements[0].style.display = "none";
-
 
 			if (opened) {
 				closePushyFallback();

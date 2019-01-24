@@ -1,7 +1,25 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
+
 {% spaceless %}
+
+<script>
+  
+window.onload = function () {
+  var singleItem = document.getElementById("first-menu");
+
+  var elements = singleItem.getElementsByClassName("menu-btn-responsive");
+  elements[0].style.display = "none";
+
+  singleItem = document.getElementById("second-menu");
+
+  elements = singleItem.getElementsByClassName("menu-btn-responsive");
+  elements[0].style.display = "none";
+}
+
+</script>
+
 {% if page_branch_in_menu %}
     {% for page in page_branch %}
         {% if page.is_primary %}
