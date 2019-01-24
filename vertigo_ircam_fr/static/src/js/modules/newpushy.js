@@ -183,7 +183,7 @@ jQuery(document).ready((function($) {
 			var item = $('#image-responsive');
 
 			item.removeClass("menu-btn-responsive");
-			item.wrap("<a href='" + location.host + "'></a>");
+			item.wrap("<div style='margin-left:30%'><a href='" + location.host + "'></a></div>");
 
 			togglePushy();
 		});
@@ -195,6 +195,9 @@ jQuery(document).ready((function($) {
 			$('#first-menu').hide();
 			$('#second-menu').show();
 
+      	var item = $('#menu-btn-responsive');
+
+      item.wrap("<div style='margin-top:15%;margin-right:-10%'></div>");
 			togglePushy();
 		});
 
