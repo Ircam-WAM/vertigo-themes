@@ -472,13 +472,13 @@ $module: ".nav-header";
                 height: $header-height-mobile - 10px;
             }
 
-            @media screen and (min-width: 780px) {
+            @media screen and (max-width: 780px) {
 
               line-height: 90px !important;
             }
 
             @-moz-document url-prefix() {
-              @media screen and (min-width: 780px) {
+              @media screen and (max-width: 780px) {
 
                 line-height: 90px !important;
               }

@@ -665,6 +665,18 @@ $module: ".nav-header";
             }
         }
 
+        @media screen and (max-width: 780px) {
+
+          font-size: 25px !important;
+        }
+
+        @-moz-document url-prefix() {
+          @media screen and (max-width: 780px) {
+
+            font-size: 25px !important;
+          }
+        }
+
     }
 
     &__submenu {
