@@ -254,6 +254,12 @@ jQuery(document).ready((function($) {
 			element.removeClass("menu-btn-responsive");
 			element.wrap("<a href='" + location.host + "'></a>");
 
+      var singleItem = document.getElementById("first-menu");
+
+      var elements = singleItem.getElementsByClassName("menu-btn-responsive");
+      elements[0].style.marginTop = "15% !important";
+      elements[0].style.marginRight = "-10% !important";
+      
 			if (opened) {
 				closePushyFallback();
 				opened = false;
