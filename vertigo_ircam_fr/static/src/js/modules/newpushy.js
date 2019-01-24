@@ -187,12 +187,9 @@ jQuery(document).ready((function($) {
 
       var singleItem = document.getElementById("first-menu");
 
-      if (singleItem.length > 0) {
-
-        var elements = singleItem.getElementsByClassName("menu-btn-responsive");
-        elements[0].style.marginTop = "15% !important";
-        elements[0].style.marginRight = "-10% !important";
-      }
+      var elements = singleItem.getElementsByClassName("menu-btn-responsive");
+      elements[0].style.marginTop = "15% !important";
+      elements[0].style.marginRight = "-10% !important";
 
 			togglePushy();
 		});
