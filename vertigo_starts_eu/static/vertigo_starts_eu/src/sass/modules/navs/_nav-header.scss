@@ -35,21 +35,19 @@ $module: ".nav-header";
 
     &__user-icon-responsive {
 
-      @-moz-document url-prefix() {
-        @media screen and (max-width: 780px) {
-
-          font-size: 30px !important;
-          margin-top: 30% !important;
-        }
-      }
-
       @media screen and (max-width: 780px) {
 
           font-size: 30px !important;
           margin-top: 60% !important;
       }
 
+      @supports (-moz-appearance:none) {
+        @media screen and (max-width: 780px) {
 
+          font-size: 30px !important;
+          margin-top: 30% !important;
+        }
+      }
     }
 
     &__hide-now {
