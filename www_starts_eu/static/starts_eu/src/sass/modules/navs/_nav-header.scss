@@ -59,6 +59,23 @@ $module: ".nav-header";
       }
     }
 
+    &__space-menu-responsive {
+
+        @media screen and (max-width: 780px) {
+          padding-top:10% !important;
+        }
+    }
+
+    &__hide-left-responsive-menu-now {
+
+      display: block !important;
+
+      @media screen and (max-width: 780px) {
+
+          display: none !important;
+      }
+    }
+
     &__hide-now {
 
       display: none !important;
