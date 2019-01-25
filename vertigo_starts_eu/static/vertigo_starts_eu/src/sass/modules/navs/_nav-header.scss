@@ -35,12 +35,6 @@ $module: ".nav-header";
 
     &__user-icon-responsive {
 
-      @media screen and (max-width: 780px) {
-
-          font-size: 30px !important;
-          margin-top: 60% !important;
-      }
-
       @-moz-document url-prefix() {
         @media screen and (max-width: 780px) {
 
@@ -48,6 +42,14 @@ $module: ".nav-header";
           margin-top: 30% !important;
         }
       }
+
+      @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+          margin-top: 60% !important;
+      }
+
+
     }
 
     &__hide-now {
