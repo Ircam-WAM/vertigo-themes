@@ -45,6 +45,7 @@ $module: ".nav-header";
         @media screen and (max-width: 780px) {
 
           font-size: 30px !important;
+          margin-top:-2% !important;
         }
       }
     }
@@ -163,7 +164,7 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:0% !important;
+        padding-bottom:2% !important;
       }
 
       &__responsive-image {
