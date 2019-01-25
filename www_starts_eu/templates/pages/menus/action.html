@@ -18,7 +18,7 @@
             {% if forloop.first and not page.parent.in_menu and not page.is_primary %}
             {% endif %}
             <li class="nav-actions__item {% if page.is_current_or_ascendant %}active{% endif %}">
-                <a class="nav-actions__item-link" href="{{ page.get_absolute_url }}" style="text-transform: lowercase;">{{ page.title }}</a>
+                <a class="nav-actions__item-link" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
             </li>
         {% endif %}
         {% comment %}
