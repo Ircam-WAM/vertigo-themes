@@ -15,12 +15,6 @@
         </a>
       </li>
 
-      {% page_menu "pages/menus/action.html" %}
-
-      <li>
-        <div class="nav-actions__separator_responsive_menu"></div>
-      </li>
-
       {% if request.user.is_authenticated %}
         <li class="nav-actions__item">
           <a href="/accounts/update/" class="nav-actions__item-link nav-actions__transform-word" title="Profile">Profile</a>
@@ -38,5 +32,11 @@
           <a href="/accounts/signup/" class="nav-actions__item-link nav-actions__transform-word" title="Sign Up">Sign Up</a>
         </li>
       {% endif %}
+
+      <li>
+        <div class="nav-actions__separator_responsive_menu"></div>
+      </li>
+
+      {% page_menu "pages/menus/action.html" %}
   </ul>
 </div>
