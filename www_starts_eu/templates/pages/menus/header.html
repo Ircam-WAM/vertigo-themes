@@ -108,7 +108,7 @@ function resizeIconObject() {
                             <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
                         </li>
                     {% else %}
-                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line nav-header__space-menu-responsive{% endif %} ">
+                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line {% endif %} ">
                             <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %}{% endif %} title="{{ page.title }}">{{ page.title }}</a>
                         </li>
                     {% endif %}
