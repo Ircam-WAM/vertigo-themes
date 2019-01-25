@@ -33,6 +33,15 @@ $module: ".nav-header";
         @include margin(0);
     }
 
+    &__item-responsive-space-image {
+
+      @media screen and (max-width: 780px) {
+
+          margin-top: -35% !important;
+      }
+
+    }
+
     &__user-icon-responsive {
 
       @media screen and (max-width: 780px) and (-webkit-min-device-pixel-ratio:0) {
