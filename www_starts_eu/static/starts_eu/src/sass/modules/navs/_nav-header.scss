@@ -38,14 +38,14 @@ $module: ".nav-header";
       @media screen and (max-width: 780px) and (-webkit-min-device-pixel-ratio:0) {
 
           font-size: 30px !important;
-          margin-top:2% !important;
+          margin-top: 2% !important;
       }
 
       @supports (-moz-appearance:none) {
         @media screen and (max-width: 780px) {
 
           font-size: 30px !important;
-          margin-top:-2% !important;
+          margin-top: 0.2% !important;
         }
       }
     }
