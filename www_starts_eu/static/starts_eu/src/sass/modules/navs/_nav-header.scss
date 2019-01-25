@@ -35,13 +35,13 @@ $module: ".nav-header";
 
     &__user-icon-responsive {
 
-      @media screen and (max-width: 780px) {
+      @media screen and (max-width: 780px) and (-webkit-min-device-pixel-ratio:0) {
 
           font-size: 30px !important;
           margin-top:2% !important;
       }
 
-      @-moz-document url-prefix() {
+      @supports (-moz-appearance:none) {
         @media screen and (max-width: 780px) {
 
           font-size: 30px !important;
