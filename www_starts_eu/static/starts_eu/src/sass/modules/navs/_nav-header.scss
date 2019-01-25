@@ -33,6 +33,22 @@ $module: ".nav-header";
         @include margin(0);
     }
 
+    &__user-icon-responsive {
+
+      @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+          margin-top:2% !important;
+      }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+        }
+      }
+    }
+
     &__hide-now {
 
       display: none !important;
@@ -147,7 +163,7 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:8% !important;
+        padding-bottom:0% !important;
       }
 
       &__responsive-image {

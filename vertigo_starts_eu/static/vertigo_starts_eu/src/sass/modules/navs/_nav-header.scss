@@ -33,6 +33,23 @@ $module: ".nav-header";
         @include margin(0);
     }
 
+    &__user-icon-responsive {
+
+      @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+          margin-top: 60% !important;
+      }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+          margin-top: 30% !important;
+        }
+      }
+    }
+
     &__hide-now {
 
       display: none !important;
@@ -145,7 +162,7 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:8% !important;
+        padding-bottom:5% !important;
       }
 
       &__responsive-image {
@@ -987,7 +1004,7 @@ $module: ".nav-header";
 
         @media screen and (max-width: 780px) {
 
-          margin-top:25px !important;
+          margin-top:5.5% !important;
           margin-bottom:-40px !important;
         }
       }
@@ -996,20 +1013,5 @@ $module: ".nav-header";
     &__bottom-menu-space {
 
       padding-bottom: 0.5% !important;
-    }
-
-    &__user-icon-size-responsive {
-
-      @media screen and (max-width: 780px) {
-
-        	font-size: 30px !important;
-      }
-
-      @-moz-document url-prefix() {
-        @media screen and (max-width: 780px) {
-
-        	font-size: 30px !important;
-        }
-      }
     }
 }
