@@ -1,6 +1,55 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
+<script>
+
+window.onload = function () {
+  var singleItem = document.getElementById("first-menu");
+
+  var elements = singleItem.getElementsByClassName("item-image-menu");
+  elements[0].style.display = "none";
+
+  singleItem = document.getElementById("second-menu");
+
+  elements = singleItem.getElementsByClassName("nav-header__image-logo-responsive");
+  elements[0].style.display = "none";
+
+  resizeIconObject();
+}
+
+window.addEventListener('resize', function(event){
+  resizeIconObject();
+});
+
+function resizeIconObject() {
+
+  var width = document.documentElement.clientWidth;
+
+  var magnifyItem = document.getElementsByClassName("search-link-item")[1];
+  var userItem = document.getElementsByClassName("user-link-item")[1];
+
+  magnifyItem.classList.add("nav-header__show-now");
+  userItem.classList.add("nav-header__hide-now");
+
+  if (width <= 780) {
+
+    magnifyItem.classList.remove("nav-header__show-now");
+    magnifyItem.classList.add("nav-header__hide-now");
+
+    userItem.classList.add("nav-header__show-now");
+    userItem.classList.remove("nav-header__hide-now");
+
+  } else {
+
+    userItem.classList.remove("nav-header__show-now");
+    userItem.classList.add("nav-header__hide-now");
+
+    magnifyItem.classList.add("nav-header__show-now");
+    magnifyItem.classList.remove("nav-header__hide-now");
+  }
+}
+
+</script>
 
 {% spaceless %}
 {% if page_branch_in_menu %}
@@ -30,9 +79,9 @@
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
                              {% with images|first as img %}
-                              {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" />#}
+                              {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo " />#}
 
-                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo menu-btn-responsive" /></a>
+                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo item-image-menu" /></a>
                              {% endwith %}
                             {% endif %}
                           {% endwith %}
@@ -59,7 +108,7 @@
                 {% endwith %}
             {% else %}
                 <li class="nav-header__item nav-header__bottom-menu-space">
-                    <a class="nav-header__item-link nav-header__extra-space-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
+                    <a class="nav-header__item-link  {% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
                     {% if page.has_children_in_menu %}
                         {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
                     {% endif %}
@@ -74,9 +123,15 @@
                 </li>
 
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
-                    <a href="#" class="nav-header__item-link fsxl" data-open-button="search" data-search-button>
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </a>
+
+                      <a href="#" class="nav-header__item-link fsxl nav-header__hide-now search-link-item " data-open-button="search" data-search-button >
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                      </a>
+
+                      <a href="#" class="nav-header__item-link nav-header__show-now menu-btn-responsive user-link-item ">
+                          <i class="fa fa-user nav-header__user-icon-responsive" aria-hidden="true"></i>
+                      </a>
+
                 </li>
 
             </ul>

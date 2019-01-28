@@ -33,6 +33,33 @@ $module: ".nav-header";
         @include margin(0);
     }
 
+    &__user-icon-responsive {
+
+      @media screen and (max-width: 780px) and (-webkit-min-device-pixel-ratio:0) {
+
+          font-size: 30px !important;
+          margin-top: 60% !important;
+      }
+
+      @supports (-moz-appearance:none) {
+        @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+          margin-top: 30% !important;
+        }
+      }
+    }
+
+    &__hide-now {
+
+      display: none !important;
+    }
+
+    &__show-now {
+
+      display: block !important;
+    }
+
     .logo-translated {
         margin-left: -75px;
         height: 194px;
@@ -121,11 +148,11 @@ $module: ".nav-header";
 
         //width:80px !important;
         //height:80px !important;
-        width:50% !important;
+        width:80% !important;
         height:50% !important;
-        margin-top:20% !important;
+        margin-top:10% !important;
         margin-left:auto !important;
-        margin-right: 30% !important;
+        margin-right: 40% !important;
       }
 
       &__switch-display {
@@ -135,7 +162,7 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:8% !important;
+        padding-bottom:4% !important;
       }
 
       &__responsive-image {
@@ -665,6 +692,18 @@ $module: ".nav-header";
             }
         }
 
+        @media screen and (max-width: 780px) {
+
+          font-size: 25px !important;
+        }
+
+        @-moz-document url-prefix() {
+          @media screen and (max-width: 780px) {
+
+            font-size: 25px !important;
+          }
+        }
+
     }
 
     &__submenu {
@@ -965,7 +1004,7 @@ $module: ".nav-header";
 
         @media screen and (max-width: 780px) {
 
-          margin-top:25px !important;
+          margin-top:5.5% !important;
           margin-bottom:-40px !important;
         }
       }

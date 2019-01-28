@@ -1,7 +1,68 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
+
 {% spaceless %}
+
+<script>
+
+window.onload = function () {
+  var singleItem = document.getElementById("first-menu");
+
+  var elements = singleItem.getElementsByClassName("item-image-menu");
+  elements[0].style.display = "none";
+
+  singleItem = document.getElementById("second-menu");
+
+  elements = singleItem.getElementsByClassName("nav-header__image-logo-responsive");
+  elements[0].style.display = "none";
+
+  resizeIconObject();
+}
+
+window.addEventListener('resize', function(event){
+  resizeIconObject();
+});
+
+function resizeIconObject() {
+
+  var width = document.documentElement.clientWidth;
+
+  var magnifyItem = document.getElementsByClassName("search-link-item")[1];
+  var userItem = document.getElementsByClassName("user-link-item")[1];
+
+  magnifyItem.classList.add("nav-header__show-now");
+  userItem.classList.add("nav-header__hide-now");
+
+  var firstMenu = document.getElementById("first-menu");
+
+  var elementsSearch = firstMenu.getElementsByClassName("fa-search");
+
+
+  if (width <= 780) {
+
+    magnifyItem.classList.remove("nav-header__show-now");
+    magnifyItem.classList.add("nav-header__hide-now");
+
+    userItem.classList.add("nav-header__show-now");
+    userItem.classList.remove("nav-header__hide-now");
+
+    elementsSearch[0].style.display = "none";
+
+  } else {
+
+    userItem.classList.remove("nav-header__show-now");
+    userItem.classList.add("nav-header__hide-now");
+
+    magnifyItem.classList.add("nav-header__show-now");
+    magnifyItem.classList.remove("nav-header__hide-now");
+
+    elementsSearch[0].style.display = "block";
+  }
+}
+
+</script>
+
 {% if page_branch_in_menu %}
     {% for page in page_branch %}
         {% if page.is_primary %}
@@ -11,7 +72,7 @@
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big" style="float:left">
+                    <li class="nav-header__item nav-header__item--image-big " style="float:left">
 
                         <div class="nav-header__non-responsive-image" >
                           <a href="{% url "home" %}" title="{% trans 'Home' %}">
@@ -30,11 +91,12 @@
                               {% if images %}
                                {% with images|first as img %}
                                 {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="menu-btn-responsive nav-header__image-size-responsive-logo" />#}
-                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo menu-btn-responsive" /></a>
+                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo item-image-menu" /></a>
                                {% endwith %}
                               {% endif %}
                             {% endwith %}
                         </div>
+
                     </li>
             {% endif %}
         {% endif %}
@@ -46,7 +108,7 @@
                             <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
                         </li>
                     {% else %}
-                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line{% endif %}">
+                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line {% endif %} ">
                             <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %}{% endif %} title="{{ page.title }}">{{ page.title }}</a>
                         </li>
                     {% endif %}
@@ -63,9 +125,13 @@
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator">
-                    <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
-                </li>
+            <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__show-now search-link-item">
+                <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+
+            <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__hide-now user-link-item nav-header__user-icon-responsive" >
+              <a href="#" class="menu-btn-responsive nav-header__user-icon-size-responsive"><i class="fa fa-user" aria-hidden="true"></i></a>
+            </li>
 
             </ul>
             {% endif %}

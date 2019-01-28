@@ -33,6 +33,59 @@ $module: ".nav-header";
         @include margin(0);
     }
 
+    &__item-responsive-space-image {
+
+      @media screen and (max-width: 780px) {
+
+          //margin-top: -40% !important;
+      }
+
+    }
+
+    &__user-icon-responsive {
+
+      @media screen and (max-width: 780px) and (-webkit-min-device-pixel-ratio:0) {
+
+          font-size: 30px !important;
+          margin-top: 2% !important;
+      }
+
+      @supports (-moz-appearance:none) {
+        @media screen and (max-width: 780px) {
+
+          font-size: 30px !important;
+          margin-top: 0.2% !important;
+        }
+      }
+    }
+
+    &__space-menu-responsive {
+
+        @media screen and (max-width: 780px) {
+          padding-top:10% !important;
+        }
+    }
+
+    &__hide-left-responsive-menu-now {
+
+      display: block !important;
+
+      @media screen and (max-width: 780px) {
+
+          display: none !important;
+      }
+    }
+
+    &__hide-now {
+
+      display: none !important;
+    }
+
+    &__show-now {
+
+      display: block !important;
+    }
+
     .logo-translated {
         margin-left: -75px;
         height: 194px;
@@ -137,7 +190,12 @@ $module: ".nav-header";
 
       &__space-responsive {
 
-        padding-bottom:8% !important;
+        padding-bottom:2% !important;
+
+        @media screen and (max-width: 780px) and (-webkit-min-device-pixel-ratio:0) {
+
+          padding-bottom:4% !important;
+        }
       }
 
       &__responsive-image {
@@ -470,6 +528,18 @@ $module: ".nav-header";
             @include mq($until: xs) {
                 line-height: $header-height-mobile;
                 height: $header-height-mobile - 10px;
+            }
+
+            @media screen and (max-width: 780px) {
+
+              line-height: 90px !important;
+            }
+
+            @-moz-document url-prefix() {
+              @media screen and (max-width: 780px) {
+
+                line-height: 90px !important;
+              }
             }
         }
 
@@ -870,8 +940,8 @@ $module: ".nav-header";
 
       @media only screen and (max-width: 780px) {
 
-        width:50% !important;
-        margin-right: 5% !important;
+        width:90% !important;
+        margin-right: -20% !important;
         margin-top: 12% !important;
       }
     }
@@ -897,5 +967,20 @@ $module: ".nav-header";
       }
 
 
+    }
+
+    &__user-icon-size-responsive {
+
+      @media screen and (max-width: 780px) {
+
+        	font-size: 30px !important;
+      }
+
+      @-moz-document url-prefix() {
+        @media screen and (max-width: 780px) {
+
+        	font-size: 30px !important;
+        }
+      }
     }
 }
