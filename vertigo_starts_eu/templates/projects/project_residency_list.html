@@ -262,7 +262,7 @@ function changeViewItems(object, event) {
 
     $(function() {
 
-        var producers = jsonObject["producers"];
+        var organizations = jsonObject["organizations"];
 
         var markers = L.markerClusterGroup({showCoverageOnHover: true,
                                             zoomToBoundsOnClick: true,
@@ -272,9 +272,9 @@ function changeViewItems(object, event) {
 
         detailMarker.style.display = 'none';
 
-        for (var i = 0; i < producers.length; i++) {
+        for (var i = 0; i < organizations.length; i++) {
 
-            var item = producers[i];
+            var item = organizations[i];
 
             var lat = item["lat"];
             var lon = item["lon"];
@@ -287,7 +287,7 @@ function changeViewItems(object, event) {
 
                 var id = e.target.id_value;
 
-                var item = producers[id];
+                var item = organizations[id];
 
                 var name = item["name"];
                 var description = item["description"];
