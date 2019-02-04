@@ -221,10 +221,6 @@ function changeViewItems(object, event) {
       }
     });
 
-    // data test
-
-    var json_str = {"organizations": [{"name": "Ars Electronica", "image": "http://localhost:9022/media/user/images/2018/09/11/Car2Human_Cover_zSyagYz.jpg", "description": "Art, technology, society.", "mappable_location": "Ars-Electronica-Stra\u00dfe 1, 4040 Linz, Autriche", "type": "Network Partner", "url": "https://ars.electronica.art", "lat": "48.3097431", "lon": "14.2843268"}], "producers":[{"name": "AQUITAINE CULTURE", "description": "", "mappable_location": "2 Rue Marc Sangnier, 33130 Bègles, France", "type": "", "url": "http://www.aquitaineculture.org/", "lat": "44.8130854", "lon": "-0.5539512"}], "persons":[]}
-
     if (!currentMap) {
 
       createMap();
@@ -499,17 +495,6 @@ function selectDesectedTag(object, event) {
     </div>
 
     <div id="map-element-content" style="position:relative;display:none;margin-right:-3.5%">
-
-      <div id="items-tile-project" class="project-ict-detail__right-list-projects" style="background:{% if request.user.is_authenticated %}#eaeaeb{% else %}#00000{% endif %} ;display:block">
-        {% for object in object_list %}
-          {% with app_label=object|app_label_short classname=object|classname|lower  %}
-              {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card_list.html" as template %}
-                  {% include template %}
-              {% endwith %}
-          {% endwith %}
-        {% endfor %}
-      </div>
-
        <div id="mapid">
 
          <div id="detail-marker" class="project-ict-detail__detail-marker" style="display:none">
