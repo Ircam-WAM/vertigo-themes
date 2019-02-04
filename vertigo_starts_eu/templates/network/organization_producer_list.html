@@ -251,18 +251,9 @@ function changeViewItems(object, event) {
                 detailMarker.style.display = 'block';
             });
 
-            //marker.addTo(map);
-            //marker.marker_id = i;
-            //marker.bindPopup(htmlString);
             markers.addLayer(marker);
 
         }
-
-        markers.on('clusterclick', function (a) {
-        	var latLngBounds = a.layer.getBounds();
-
-          console.log(a);
-        });
 
         map.addLayer(markers);
 
@@ -272,8 +263,6 @@ function changeViewItems(object, event) {
         });
     });
   }
-
-
 }
 
 function showHideChevronTags(object, event) {
