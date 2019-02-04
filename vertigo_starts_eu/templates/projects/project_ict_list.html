@@ -220,7 +220,10 @@ function changeViewItems(object, event) {
 
         $('.leaflet-marker-icon').on('click', function(e) {
 
-          var item = persons[i];
+          var el = $(e.srcElement || e.target),
+              id = el.attr('id');
+              
+          var item = persons[id];
 
           var htmlString = "";
 
