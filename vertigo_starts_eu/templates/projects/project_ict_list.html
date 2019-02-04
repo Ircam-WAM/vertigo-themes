@@ -207,12 +207,11 @@ function changeViewItems(object, event) {
             var lon = item["lon"];
             var name = item["name"];
 
-            var marker[i] = L.marker(new L.LatLng(lat, lon), { title: name }).addTo(map);
-
-            markers[i]._icon.id = i;
+            var marker = L.marker(new L.LatLng(lat, lon), { title: name }).addTo(map);
+            marker.marker_id = i;
 
             //marker.bindPopup(htmlString);
-            //markers.addLayer(marker);
+            markers.addLayer(marker);
             //marker.addTo(map);
         }
 
@@ -224,6 +223,11 @@ function changeViewItems(object, event) {
               id = el.attr('id');
 
           var item = persons[id];
+
+          var name = item["name"];
+          var description = item["description"];
+          var url = item["url"];
+          var city = item["city"];
 
           var htmlString = "";
 
