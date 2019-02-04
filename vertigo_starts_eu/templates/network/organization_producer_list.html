@@ -205,7 +205,7 @@ function changeViewItems(object, event) {
             var lon = item["lon"];
             var name = item["name"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { customID: i, title: name });
+            var marker = L.marker(new L.LatLng(lat, lon), { customID: i });
             //marker.on('click', markerOnClick);
             //marker.marker_id = i;
             //marker.bindPopup(htmlString);
