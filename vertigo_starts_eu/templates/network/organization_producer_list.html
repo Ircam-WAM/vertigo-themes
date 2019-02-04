@@ -205,15 +205,16 @@ function changeViewItems(object, event) {
             var lon = item["lon"];
             var name = item["name"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { customID: i });
+            var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
+            marker.addTo(map);
             //marker.on('click', markerOnClick);
             //marker.marker_id = i;
             //marker.bindPopup(htmlString);
-            markers.addLayer(marker);
+            //markers.addLayer(marker);
 
         }
 
-        map.addLayer(markers);
+        //map.addLayer(markers);
 
         $('.leaflet-marker-icon').on('click', function(e) {
           console.log(e);
