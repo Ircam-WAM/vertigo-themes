@@ -246,10 +246,11 @@ function changeViewItems(object, event) {
             });
 
             //marker.bindPopup(htmlString);
-            markers.addLayer(marker).bindPopup(htmlString);
+            //markers.addLayer(marker);
+            marker.addTo(map);
         }
 
-        map.addLayer(markers);
+        //map.addLayer(markers);
 
         map.on('click', function(e) {
 
