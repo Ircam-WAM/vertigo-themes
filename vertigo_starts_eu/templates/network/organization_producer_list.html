@@ -205,49 +205,54 @@ function changeViewItems(object, event) {
             var lon = item["lon"];
             var name = item["name"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { title: name }).on('click', function(e) {
+            var marker[i] = L.marker(new L.LatLng(lat, lon), { title: name }).addTo(map);
 
-              var description = item["description"];
-              var url = item["url"];
-              var city = item["city"];
-              var image = item["image"];
-              var htmlString = "";
-
-              htmlString += "<div style=\"background:lightgray;height:100%\">";
-              htmlString += "<div style=\"padding-top:30%;position:relative\">"
-              htmlString += "<center>";
-              htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
-
-              if (city != "" && city != null) {
-
-                htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
-              }
-
-              if (description != "") {
-
-                htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
-              } else {
-
-                htmlString += "<br>";
-              }
-
-              if (url != "") {
-
-                htmlString += "<a href=\"" + url + "\">" + url + "</a>";
-              }
-
-              htmlString += "</center>";
-              htmlString += "</div></div>";
-
-              detailMarker.innerHTML = htmlString;
-              detailMarker.style.display = 'block';
-            });
+            markers[person.id]._icon.id = i;
 
             //marker.bindPopup(htmlString);
-            markers.addLayer(marker);
+            //markers.addLayer(marker);
         }
 
-        map.addLayer(markers);
+        //map.addLayer(markers);
+
+        $('.leaflet-marker-icon').on('click', function(e) {
+
+          var el = $(e.srcElement || e.target),
+              id = el.attr('id');
+
+          var item = persons[id];
+
+          var htmlString = "";
+
+          htmlString += "<div style=\"background:lightgray;height:100%\">";
+          htmlString += "<div style=\"padding-top:30%;position:relative\">"
+          htmlString += "<center>";
+          htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
+
+          if (city != "" && city != null) {
+
+            htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
+          }
+
+          if (description != "") {
+
+            htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
+          } else {
+
+            htmlString += "<br>";
+          }
+
+          if (url != "") {
+
+            htmlString += "<a href=\"" + url + "\">" + url + "</a>";
+          }
+
+          htmlString += "</center>";
+          htmlString += "</div></div>";
+
+          detailMarker.innerHTML = htmlString;
+          detailMarker.style.display = 'block';
+        });
 
         map.on('click', function(e) {
 
