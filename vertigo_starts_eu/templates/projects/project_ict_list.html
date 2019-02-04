@@ -189,11 +189,7 @@ function changeViewItems(object, event) {
 
     $(function() {
 
-        var producers = jsonObject["producers"];
-
-        var organizations = jsonObject["organizations"];
-
-        var unionObjects = producers.concat(organizations);
+        var persons = jsonObject["persons"];
 
         var markers = L.markerClusterGroup({showCoverageOnHover: true,
                                             zoomToBoundsOnClick: true,
@@ -203,9 +199,9 @@ function changeViewItems(object, event) {
 
         detailMarker.style.display = 'none';
 
-        for (var i = 0; i < unionObjects.length; i++) {
+        for (var i = 0; i < persons.length; i++) {
 
-            var item = unionObjects[i];
+            var item = persons[i];
 
             var lat = item["lat"];
             var lon = item["lon"];
