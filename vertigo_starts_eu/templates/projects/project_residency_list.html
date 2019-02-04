@@ -266,7 +266,7 @@ function changeViewItems(object, event) {
 
         var organizations = jsonObject["organizations"];
 
-        var unionObjects = producers.concat(organizations);
+        //var unionObjects = producers.concat(organizations);
 
         var markers = L.markerClusterGroup({showCoverageOnHover: true,
                                             zoomToBoundsOnClick: true,
@@ -283,12 +283,13 @@ function changeViewItems(object, event) {
             var lat = item["lat"];
             var lon = item["lon"];
             var name = item["name"];
-            var description = item["description"];
-            var url = item["url"];
-            var city = item["city"];
-            var image = item["image"];
 
             var marker = L.marker(new L.LatLng(lat, lon), { title: name }).on('click', function(e) {
+
+              var description = item["description"];
+              var url = item["url"];
+              var city = item["city"];
+              var image = item["image"];
 
               var htmlString = "";
 
