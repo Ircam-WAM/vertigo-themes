@@ -208,7 +208,48 @@ function changeViewItems(object, event) {
             var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
             marker.id_value = i;
             marker.title = name;
-            marker.on('click', "onMarkerClick");
+            marker.on('click', function (e) {
+
+                var id = e.target.id_value;
+
+                var item = persons[id];
+
+                var name = item["name"];
+                var description = item["description"];
+                var url = item["url"];
+                var city = item["city"];
+
+                var htmlString = "";
+
+                htmlString += "<div style=\"background:lightgray;height:100%\">";
+                htmlString += "<div style=\"padding-top:30%;position:relative\">"
+                htmlString += "<center>";
+                htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
+
+                if (city != "" && city != null) {
+
+                  htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
+                }
+
+                if (description != "") {
+
+                  htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
+                } else {
+
+                  htmlString += "<br>";
+                }
+
+                if (url != "") {
+
+                  htmlString += "<a href=\"" + url + "\">" + url + "</a>";
+                }
+
+                htmlString += "</center>";
+                htmlString += "</div></div>";
+
+                detailMarker.innerHTML = htmlString;
+                detailMarker.style.display = 'block';
+            });
 
             //marker.addTo(map);
             //marker.marker_id = i;
@@ -232,48 +273,7 @@ function changeViewItems(object, event) {
     });
   }
 
-  function onMarkerClick(e) {
 
-      var id = e.target.id_value;
-
-      var item = persons[id];
-
-      var name = item["name"];
-      var description = item["description"];
-      var url = item["url"];
-      var city = item["city"];
-
-      var htmlString = "";
-
-      htmlString += "<div style=\"background:lightgray;height:100%\">";
-      htmlString += "<div style=\"padding-top:30%;position:relative\">"
-      htmlString += "<center>";
-      htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
-
-      if (city != "" && city != null) {
-
-        htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
-      }
-
-      if (description != "") {
-
-        htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
-      } else {
-
-        htmlString += "<br>";
-      }
-
-      if (url != "") {
-
-        htmlString += "<a href=\"" + url + "\">" + url + "</a>";
-      }
-
-      htmlString += "</center>";
-      htmlString += "</div></div>";
-
-      detailMarker.innerHTML = htmlString;
-      detailMarker.style.display = 'block';
-  }
 }
 
 function showHideChevronTags(object, event) {
