@@ -207,8 +207,7 @@ function changeViewItems(object, event) {
             var lon = item["lon"];
             var name = item["name"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { title: name }).addTo(map);
-            marker.marker_id = i;
+            var marker = L.marker(new L.LatLng(lat, lon), { title: name });
 
             //marker.bindPopup(htmlString);
             markers.addLayer(marker);
