@@ -205,20 +205,22 @@ function changeViewItems(object, event) {
             var lon = item["lon"];
             var name = item["name"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
-            marker.addTo(map);
-            //marker.on('click', markerOnClick);
+            var marker = L.marker(new L.LatLng(lat, lon), {  title: name, id: i });
+            //marker.addTo(map);
+            marker.on('click', function(e){
+              alert(e.target.title + " " + e.target.title);
+            });
             //marker.marker_id = i;
             //marker.bindPopup(htmlString);
-            //markers.addLayer(marker);
+            markers.addLayer(marker);
 
         }
 
-        //map.addLayer(markers);
-
+        map.addLayer(markers);
+  /*
         $('.leaflet-marker-icon').on('click', function(e) {
           console.log(e);
-          /*
+
           var el = $(e.srcElement || e.target), id = el.attr('id');
 
           var item = persons[id];
@@ -258,9 +260,9 @@ function changeViewItems(object, event) {
 
           detailMarker.innerHTML = htmlString;
           detailMarker.style.display = 'block';
-          */
-        });
 
+        });
+*/
         map.on('click', function(e) {
 
             detailMarker.style.display = 'none';
