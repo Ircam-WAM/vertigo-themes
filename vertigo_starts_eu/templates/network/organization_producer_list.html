@@ -190,7 +190,7 @@ function changeViewItems(object, event) {
         var organizations = jsonObject["organizations"];
 
         var markers = L.markerClusterGroup({showCoverageOnHover: true,
-                                            zoomToBoundsOnClick: true,
+                                            zoomToBoundsOnClick: false,
                                             removeOutsideVisibleBounds: true});
 
         var detailMarker = document.getElementById("detail-marker");
