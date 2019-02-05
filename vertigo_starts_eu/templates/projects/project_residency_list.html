@@ -220,22 +220,6 @@ function changeViewItems(object, event) {
           }
       }
     });
-
-    // data test
-
-    var json_str = {"organizations": [{"name": "Ars Electronica", "image": "http://localhost:9022/media/user/images/2018/09/11/Car2Human_Cover_zSyagYz.jpg", "description": "Art, technology, society.", "mappable_location": "Ars-Electronica-Stra\u00dfe 1, 4040 Linz, Autriche", "type": "Network Partner", "url": "https://ars.electronica.art", "lat": "48.3097431", "lon": "14.2843268"}], "producers":[{"name": "AQUITAINE CULTURE", "description": "", "mappable_location": "2 Rue Marc Sangnier, 33130 Bègles, France", "type": "", "url": "http://www.aquitaineculture.org/", "lat": "44.8130854", "lon": "-0.5539512"}], "persons":[]}
-
-    if (!currentMap) {
-
-      createMap();
-    }
-
-    if (currentMap) {
-
-      parseJSON(json_str, currentMap);
-    }
-
-    // end data test
   }
 
   function createMap() {
@@ -280,10 +264,6 @@ function changeViewItems(object, event) {
 
         var producers = jsonObject["producers"];
 
-        var organizations = jsonObject["organizations"];
-
-        var unionObjects = producers.concat(organizations);
-
         var markers = L.markerClusterGroup({showCoverageOnHover: true,
                                             zoomToBoundsOnClick: true,
                                             removeOutsideVisibleBounds: true});
@@ -292,60 +272,65 @@ function changeViewItems(object, event) {
 
         detailMarker.style.display = 'none';
 
-        for (var i = 0; i < unionObjects.length; i++) {
+        for (var i = 0; i < producers.length; i++) {
 
-            var item = unionObjects[i];
+            var item = producers[i];
 
             var lat = item["lat"];
             var lon = item["lon"];
             var name = item["name"];
-            var description = item["description"];
-            var url = item["url"];
-            var city = item["city"];
-            var image = item["image"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), { title: name }).on('click', function(e) {
+            var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
+            marker.id_value = i;
+            marker.title = name;
+            marker.on('click', function (e) {
 
-              var htmlString = "";
+                var id = e.target.id_value;
 
-              if (image != null) {
+                var item = producers[id];
 
-                htmlString += "<div style=background-image:url(" + image + ");height:100%;width:100%;>";
-              } else {
+                var name = item["name"];
+                var description = item["description"];
+                var url = item["url"];
+                var city = item["city"];
 
-                htmlString += "<div>";
-              }
+                var htmlString = "";
 
-              htmlString += "<div style=\"padding-top:30%;position:relative\">"
-              htmlString += "<center>";
-              htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
+                if ('image' in producers) {
+                  htmlString += "<div style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["image"] + "');height:100%\">";
+                } else {
+                  htmlString += "<div style=\"background:lightgray;height:100%\">";
+                }
 
-              if (city != "" && city != null) {
+                htmlString += "<div style=\"padding-top:30%;position:relative\">"
+                htmlString += "<center>";
+                htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
 
-                htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
-              }
+                if (city != "" && city != null) {
 
-              if (description != "") {
+                  htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
+                }
 
-                htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
-              } else {
+                if (description != "") {
 
-                htmlString += "<br>";
-              }
+                  htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
+                } else {
 
-              if (url != "") {
+                  htmlString += "<br>";
+                }
 
-                htmlString += "<a href=\"" + url + "\">" + url + "</a>";
-              }
+                if (url != "") {
 
-              htmlString += "</center>";
-              htmlString += "</div></div>";
+                  htmlString += "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>";
+                }
 
-              detailMarker.innerHTML = htmlString;
-              detailMarker.style.display = 'block';
+                htmlString += "</center>";
+                htmlString += "</div></div>";
+
+                detailMarker.innerHTML = htmlString;
+                detailMarker.style.display = 'block';
             });
 
-            //marker.bindPopup(htmlString);
             markers.addLayer(marker);
         }
 
@@ -499,17 +484,6 @@ function selectDesectedTag(object, event) {
     </div>
 
     <div id="map-element-content" style="position:relative;display:none;margin-right:-3.5%">
-
-      <div id="items-tile-project" class="project-ict-detail__right-list-projects" style="background:{% if request.user.is_authenticated %}#eaeaeb{% else %}#00000{% endif %} ;display:block">
-        {% for object in object_list %}
-          {% with app_label=object|app_label_short classname=object|classname|lower  %}
-              {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card_list.html" as template %}
-                  {% include template %}
-              {% endwith %}
-          {% endwith %}
-        {% endfor %}
-      </div>
-
        <div id="mapid">
 
          <div id="detail-marker" class="project-ict-detail__detail-marker" style="display:none">
