@@ -489,15 +489,16 @@ $module: ".article-box";
     &__view-changer-container {
 
       width:160px;
-      height:80px;
+      height:60px;
       margin:0 auto;
       position:relative;
       margin-bottom:5%;
+      margin-left:44%;
     }
 
     &__item-marker-common {
 
-      width:50%;
+      width:35%;
       height:100%;
       position:relative;
       font-size:40px;
@@ -533,7 +534,7 @@ $module: ".article-box";
 
     &__align-center-dots {
 
-      top:30%;
+      top:25%;
       position:relative;
     }
 
