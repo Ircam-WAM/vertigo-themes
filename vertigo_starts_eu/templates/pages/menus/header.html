@@ -68,7 +68,7 @@ function resizeIconObject() {
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
                              {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo"  style="width:auto;height:78px;padding-top:6%"/>
+                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo"  style="width:auto;height:78px;padding-top:6%;margin-top:-21%"/>
                              {% endwith %}
                             {% endif %}
                           {% endwith %}
