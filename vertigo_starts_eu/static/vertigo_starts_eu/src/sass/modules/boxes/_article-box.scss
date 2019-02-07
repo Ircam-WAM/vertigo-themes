@@ -626,3 +626,8 @@ $module: ".article-box";
   background: #50e3c2 !important;
   color: white !important;
 }
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
