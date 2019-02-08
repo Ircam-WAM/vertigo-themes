@@ -1166,12 +1166,14 @@ $module: ".home-page";
 
       @media screen and (min-width: 1024px) {
 
-        margin-right:-45.5% !important;
+        //margin-right:-45.5% !important;
+        margin-right:-3.5% !important;
         padding-bottom:1% !important;
 
         @-moz-document url-prefix() {
 
-          margin-right:-45.5% !important;
+          //margin-right:-45.5% !important;
+          margin-right:-3.5% !important;
           padding-bottom:1% !important;
         }
       }
