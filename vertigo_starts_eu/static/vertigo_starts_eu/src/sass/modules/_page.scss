@@ -710,28 +710,36 @@ $module: ".page";
 
       display:inline-block !important;
 
-      @media screen and (max-width: 480px) {
-
-          transform: scale(0.73) !important;
-          display:inline-block !important;
-          margin-left:-21.5% !important;
-          margin-top:-40% !important;
-      }
-
       @media screen and (max-width: 780px) {
 
           transform: scale(0.73) !important;
           display:inline-block !important;
-          margin-left:-15% !important;
-          margin-top:-40% !important;
+          margin-left:-6% !important;
+          margin-top:40% !important;
+      }
+
+      @media screen and (max-width: 414px) {
+
+          transform: scale(0.73) !important;
+          display:inline-block !important;
+          margin-left:-2% !important;
+          margin-top:40% !important;
+      }
+
+      @media screen and (max-width: 375px) {
+
+          transform: scale(0.73) !important;
+          display:inline-block !important;
+          margin-left:-6% !important;
+          margin-top:40% !important;
       }
 
       @media screen and (max-width: 320px) {
 
-          transform: scale(0.73) !important;
+          transform: scale(0.75) !important;
           display:inline-block !important;
-          margin-left:-21% !important;
-          margin-top:-40% !important;
+          margin-left:-15% !important;
+          margin-top:40% !important;
       }
     }
 
