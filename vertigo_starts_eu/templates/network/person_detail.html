@@ -69,8 +69,8 @@
           </div>
           -->
 
-          <div class="page__image-container" style="height:300px;background:gray;margin-top:-6.5%;padding-top:20px">
-            <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+          <div class="page__image-container" style="height:300px;margin-top:-6.5%;padding-top:20px;background:gray;">
+            <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
           </div>
 
         {% endif %}
