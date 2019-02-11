@@ -56,9 +56,9 @@
     {% endif %}
 
       {# Public section #}
-      <div style="margin-top:20px"></div>
       {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
+        <!--
           <div class="page__image-container">
             <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
             {% if card_images.first.credits|length > 0 %}
@@ -67,6 +67,12 @@
               </div>
             {% endif %}
           </div>
+          -->
+
+          <div class="page__image-container" style="height:300px;background:gray;margin-top:-6.5%;padding-top:20px">
+            <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+          </div>
+
         {% endif %}
       {% endwith %}
 
