@@ -615,6 +615,13 @@ $module: ".article-box";
       text-align:center;
       font-family:'Oswald';
     }
+
+    &__space-center-responsive {
+      
+      @media screen and (max-width: 780px) {
+        margin-left:90px !important;
+      }
+    }
 }
 
 ::selection {

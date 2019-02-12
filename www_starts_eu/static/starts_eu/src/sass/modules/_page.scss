@@ -416,8 +416,8 @@ $module: ".page";
 
         &--accent {
 
-            background-color: $color-accent;
-            color: $color-background;
+            background-color: #1d1d1b; //$color-accent;
+            color: white; //$color-background;
             text-align: center;
             font-family: $serif;
 

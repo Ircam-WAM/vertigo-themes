@@ -26,7 +26,11 @@
 
             <div class="row">
 
+              {% if request.user.is_authenticated %}
                 <div class="col-sm-16 col-md-12 col-md-push-2 tac">
+              {% else %}
+                <div>
+              {% endif %}
                     {% block page_title %}
                         {{ page.title }}
                     {% endblock %}
