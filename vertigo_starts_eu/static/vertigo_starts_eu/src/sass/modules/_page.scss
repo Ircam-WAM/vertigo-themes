@@ -762,4 +762,22 @@ $module: ".page";
 
       font-family: sans-serif;
     }
+
+    &__circle-check-green {
+
+      width: 50px;
+      height: 50px;
+      background: #47dfba;
+      border: 8px solid black;
+      border-radius: 50%;
+    }
+
+    &__circle-cross-red {
+
+      width: 50px;
+      height: 50px;
+      background: #f11a33;
+      border: 8px solid black;
+      border-radius: 50%;
+    }
 }

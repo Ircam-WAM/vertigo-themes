@@ -23,14 +23,80 @@
 
 {% block page_title %}
 
-
-
       <script type="text/javascript">
 
       function selectCurrentTab() {
 
 
         //document.getElementById("select-messages").className = "page__option-selected";
+      }
+
+      function changePublicView(event, object) {
+
+        event.preventDefault();
+
+        var profile = document.getElementById("public-profile-item");
+        var blog = document.getElementById("public-residency-blog-item");
+        var following = document.getElementById("public-following-item");
+        var follower = document.getElementById("public-follower-item");
+
+        document.getElementById("content_public-profile-item").style.display = "none";
+        document.getElementById("content_public-residency-blog-item").style.display = "none";
+        document.getElementById("content_public-following-item").style.display = "none";
+        document.getElementById("content_public-follower-item").style.display = "none";
+
+        profile.classList.remove("page__option-selected");
+        blog.classList.remove("page__option-selected");
+        following.classList.remove("page__option-selected");
+        follower.classList.remove("page__option-selected");
+
+        profile.classList.add("page__option-unselected");
+        blog.classList.add("page__option-unselected");
+        following.classList.add("page__option-unselected");
+        follower.classList.add("page__option-unselected");
+
+        object.classList.add("page__option-selected");
+
+        var contentDisplay = document.getElementById("content_" + object.id);
+        contentDisplay.style.display = "block";
+      }
+
+      function changeFollowStatus(event,object) {
+
+        event.preventDefault();
+
+        var styleList = document.getElementById("element-social").classList;
+
+        var followItem = document.getElementById("element-social-follow");
+        var unfollowItem = document.getElementById("element-social-unfollow");
+
+        var followItemContent = document.getElementById("start-follow-item");
+        var unfollowItemContent = document.getElementById("stop-follow-item");
+
+        var currentStyle = styleList[0];
+
+        if (currentStyle == "page__circle-cross-red") {
+
+          object.classList.add("page__circle-check-green");
+          object.classList.remove("page__circle-cross-red");
+
+          followItem.style.display = "block";
+          unfollowItem.style.display = "none";
+
+          followItemContent.style.display = "block";
+          unfollowItemContent.style.display = "none";
+
+        } else {
+
+          object.classList.add("page__circle-cross-red");
+          object.classList.remove("page__circle-check-green");
+
+          followItem.style.display = "none";
+          unfollowItem.style.display = "block";
+
+          followItemContent.style.display = "none";
+          unfollowItemContent.style.display = "block";
+        }
       }
 
       window.onload = selectCurrentTab;
@@ -69,7 +135,13 @@
             </div>
           {% else %}
             <div class="page__image-container" style="height:auto;margin-top:-6.5%;padding-top:20px;background:gray;">
-              <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+              <div style="position:relative">
+                <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+                <div id="element-social" class="page__circle-cross-red" style="position:absolute;top:3%;left:52%;cursor:pointer" onclick="changeFollowStatus(event,this);">
+                  <i id="element-social-follow" class="fa fa-check" style="display:none;text-align:center;color:black;font-size:30px;margin-left:5%;top:5%;position:relative" aria-hidden="true"></i>
+                  <i id="element-social-unfollow" class="fa fa-close" style="display:block;text-align:center;color:black;font-size:30px;margin-left:5%;top:5%;position:relative" aria-hidden="true"></i>
+                </div>
+              </div>
               <div style="color:white;font-size:50px;font-family:'Oswald',sans-serif;text-align:center;margin-top:1%">{{ person.title }}</div>
               <div style="color:white;font-size:20;font-family:'Oswald',sans-serif;text-align:center;margin-top:1%">Researcher, Autor - Oxford, UK</div>
               {% comment %}
@@ -87,11 +159,21 @@
 
       {% if not request.user.is_authenticated %}
       <div style="margin:auto;width:100%;height:auto;display:block;text-align:center;margin-top:-3%">
-        <a href="{% url 'profile_update' %}"><span id="public-profile-item" class="page__option-selected">Profile</span></a>
-        <a href="{% url 'profile_update' %}"><span id="public-residency-blog-item" class="page__option-unselected">Residency Blog</span></a>
-        <a href="{% url 'profile_update' %}"><span id="publig-following-item" class="page__option-unselected">Following</span></a>
-        <a href="{% url 'profile_update' %}"><span id="publig-follower-item" class="page__option-unselected">Follower</span></a>
+        <a href="#"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">Profile</span></a>
+        <a href="#"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
+        <a href="#"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
+        <a href="#"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Follower</span></a>
       </div>
+
+      <div id="start-follow-item" style="display:none;width:100;height:auto;background:#46dfba;color:white;font-size:15px;text-align:center;font-family:'Oswald',sans-serif;padding-top:1%;padding-bottom:1%;margin-top:0.2%">
+        <b>You just started following {{ person.title }}.</b><br />
+        You will receive updates monthly by mail.
+      </div>
+      <div id="stop-follow-item" style="display:block;width:100;height:auto;background:#f11b34;color:white;font-size:15px;text-align:center;font-family:'Oswald',sans-serif;padding-top:1%;padding-bottom:1%;margin-top:0.2%">
+        <b>You just stopped following {{ person.title }}.</b><br />
+        You will no longerreceive updates by mail.
+      </div>
+
       {% endif %}
 
       {% if request.user.is_authenticated %}
@@ -114,9 +196,12 @@
         {% endif %}
       </div>
       {% else %}
-        {% if person.bio %}
-          <div class="page__fancy-font" style="color:black;margin-top:5%;margin-left:20%;margin-right:20%;">{{ person.bio|richtext_filters|safe }}</div>
-        {% endif %}
+
+          <div id="content_public-profile-item"class="page__fancy-font" style="display:block;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">{% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}</div>
+          <div id="content_public-residency-blog-item"class="page__fancy-font" style="display:none;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">Residency Blog content</div>
+          <div id="content_public-following-item"class="page__fancy-font" style="display:none;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">Following content</div>
+          <div id="content_public-follower-item"class="page__fancy-font" style="display:none;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">Follower content</div>
+
       {% endif %}
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
