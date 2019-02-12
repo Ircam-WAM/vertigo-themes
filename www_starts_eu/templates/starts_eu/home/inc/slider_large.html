@@ -1,5 +1,5 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags %}
-<div class="slider-home header__banner-responsive">
+<div class="slider-home header__banner-responsive" style="margin-bottom:0px">
     <ul data-slider-home>
         {% for slider in home.dynamiccontenthomeslider_set.all %}
                 {% with slider.content_object.images.all|get_type:'slider' as images %}
