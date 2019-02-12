@@ -59,22 +59,35 @@
       {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
           {% if request.user.is_authenticated %}
-          <div class="page__image-container">
-            <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
-            {% if card_images.first.credits|length > 0 %}
-              <div style="text-align:left;{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-                <p sytle="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %};font-size:12px;">Credits: {{ card_images.first.credits }}</p>
-              </div>
-            {% endif %}
-          </div>
+            <div class="page__image-container">
+              <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
+              {% if card_images.first.credits|length > 0 %}
+                <div style="text-align:left;{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
+                  <p sytle="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %};font-size:12px;">Credits: {{ card_images.first.credits }}</p>
+                </div>
+              {% endif %}
+            </div>
           {% else %}
-          <div class="page__image-container" style="height:300px;margin-top:-6.5%;padding-top:20px;background:gray;">
-            <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
-          </div>
+            <div class="page__image-container" style="height:300px;margin-top:-6.5%;padding-top:20px;background:gray;">
+              <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+              {% with person.links.all.0 as link %}
+                  {% if person.links.all.0 %}
+                      Site: <a href="{{ link }}" blank="true" style="color:white">{{ link }}</a><br/><br/>
+                  {% endif %}
+              {% endwith %}
+            </div>
           {% endif %}
         {% endif %}
       {% endwith %}
 
+      {% if not request.user.is_authenticated %}
+      <div style="margin:auto;width:100%;height:auto;display:block;text-align:center;margin-top:-3%">
+      <a href="{% url 'profile_update' %}"><span id="public-profile-item" class="page__option-unselected">Profile</span></a>
+      <a href="{% url 'profile_update' %}"><span id="public-residency-blog-item" class="page__option-unselected">Residency Blog</span></a>
+      <a href="{% url 'profile_update' %}"><span id="publig-following-item" class="page__option-unselected">Following</span></a>
+      <a href="{% url 'profile_update' %}"><span id="publig-follower-item" class="page__option-unselected">Follower</span></a>
+      </div>
+      {% endif %}
       <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
 
       {% if request.user.is_authenticated %}
@@ -133,7 +146,7 @@
 
 function changeBackground() {
 
-  document.getElementById("main-content").style.background = "none";
+  document.getElementById("main-content").style.background = "white";
 }
 
 window.onload = changeBackground;
