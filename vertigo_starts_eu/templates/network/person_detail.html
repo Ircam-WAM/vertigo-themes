@@ -56,6 +56,7 @@
         follower.classList.add("page__option-unselected");
 
         object.classList.add("page__option-selected");
+        object.classList.remove("page__option-unselected");
 
         var contentDisplay = document.getElementById("content_" + object.id);
         contentDisplay.style.display = "block";
@@ -73,29 +74,33 @@
         var followItemContent = document.getElementById("start-follow-item");
         var unfollowItemContent = document.getElementById("stop-follow-item");
 
-        var currentStyle = styleList[0];
+        for (var i = 0; i < styleList.length;i++) {
 
-        if (currentStyle == "page__circle-cross-red") {
+          var currentStyle = styleList[i];
 
-          object.classList.add("page__circle-check-green");
-          object.classList.remove("page__circle-cross-red");
+          if (currentStyle == "page__circle-cross-red") {
 
-          followItem.style.display = "block";
-          unfollowItem.style.display = "none";
+            object.classList.add("page__circle-check-green");
+            object.classList.remove("page__circle-cross-red");
 
-          followItemContent.style.display = "block";
-          unfollowItemContent.style.display = "none";
+            followItem.style.display = "block";
+            unfollowItem.style.display = "none";
 
-        } else {
+            followItemContent.style.display = "block";
+            unfollowItemContent.style.display = "none";
+          }
 
-          object.classList.add("page__circle-cross-red");
-          object.classList.remove("page__circle-check-green");
+          if (currentStyle == "page__circle-check-green") {
 
-          followItem.style.display = "none";
-          unfollowItem.style.display = "block";
+            object.classList.add("page__circle-cross-red");
+            object.classList.remove("page__circle-check-green");
 
-          followItemContent.style.display = "none";
-          unfollowItemContent.style.display = "block";
+            followItem.style.display = "none";
+            unfollowItem.style.display = "block";
+
+            followItemContent.style.display = "none";
+            unfollowItemContent.style.display = "block";
+          }
         }
       }
 
@@ -136,40 +141,48 @@
           {% else %}
             <div class="page__image-container" style="height:auto;margin-top:-6.5%;padding-top:20px;background:gray;">
               <div style="position:relative">
-                <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
-                <div id="element-social" class="page__circle-cross-red" style="position:absolute;top:3%;left:52%;cursor:pointer" onclick="changeFollowStatus(event,this);">
-                  <i id="element-social-follow" class="fa fa-check" style="display:none;text-align:center;color:black;font-size:30px;margin-left:5%;top:5%;position:relative" aria-hidden="true"></i>
-                  <i id="element-social-unfollow" class="fa fa-close" style="display:block;text-align:center;color:black;font-size:30px;margin-left:5%;top:5%;position:relative" aria-hidden="true"></i>
+                {% if card_images.first %}
+                <img class="lazyload page__image-main_banner_profile" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+                {% else %}
+                <div class="page__image-main_banner_profile page__circle-gray">
+                  <i class="fa fa-user page__style-user-icon" style="display:block;font-size:170px;text-align:center;" aria-hidden="true"></i>
+                </div>
+                {% endif %}
+                <div id="element-social" class="page__circle-cross-red page__icon-follow-action" onclick="changeFollowStatus(event,this);">
+                  <i id="element-social-follow" class="fa fa-check page__style-check-icon" style="display:none;" aria-hidden="true"></i>
+                  <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon" style="display:block;" aria-hidden="true"></i>
                 </div>
               </div>
-              <div style="color:white;font-size:50px;font-family:'Oswald',sans-serif;text-align:center;margin-top:1%">{{ person.title }}</div>
-              <div style="color:white;font-size:20;font-family:'Oswald',sans-serif;text-align:center;margin-top:1%">Researcher, Autor - Oxford, UK</div>
-              {% comment %}
-              {% with person.links.all.0 as link %}
-                  {% if person.links.all.0 %}
-                      <a href="{{ link }}" blank="true" style="color:white;font-style:italic;margin-left:2%;">{{ link }}</a><br/><br/>
-                  {% endif %}
-              {% endwith %}
-              {% endcomment %}
-                <a href="{{ link }}" blank="true" style="color:white;font-style:italic;margin-left:2%;">http://wekit.eu</a><br/><br/>
+              <div class="page__main-title-profile-public">{{ person.title }}</div>
+              <div style="margin-top:1%;position:relative">
+                <div class="page__main-subtitle-profile-public" class="page__subtitle-public-item">Researcher, Autor - Oxford, UK</div>
+                {% comment %}
+                {% with person.links.all.0 as link %}
+                    {% if person.links.all.0 %}
+                        <a href="{{ link }}" blank="true" class="page__link-public-profile">{{ link }}</a><br/><br/>
+                    {% endif %}
+                {% endwith %}
+                {% endcomment %}
+                  <a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a><br/><br/>
+                </div>
             </div>
           {% endif %}
         {% endif %}
       {% endwith %}
 
       {% if not request.user.is_authenticated %}
-      <div style="margin:auto;width:100%;height:auto;display:block;text-align:center;margin-top:-3%">
+      <div class="page__submenu-public-profile">
         <a href="#"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">Profile</span></a>
         <a href="#"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
         <a href="#"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
         <a href="#"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Follower</span></a>
       </div>
 
-      <div id="start-follow-item" style="display:none;width:100;height:auto;background:#46dfba;color:white;font-size:15px;text-align:center;font-family:'Oswald',sans-serif;padding-top:1%;padding-bottom:1%;margin-top:0.2%">
+      <div id="start-follow-item" style="display:none" class="page__follow-public-text">
         <b>You just started following {{ person.title }}.</b><br />
         You will receive updates monthly by mail.
       </div>
-      <div id="stop-follow-item" style="display:block;width:100;height:auto;background:#f11b34;color:white;font-size:15px;text-align:center;font-family:'Oswald',sans-serif;padding-top:1%;padding-bottom:1%;margin-top:0.2%">
+      <div id="stop-follow-item" style="display:block" class="page__unfollow-public-text">
         <b>You just stopped following {{ person.title }}.</b><br />
         You will no longerreceive updates by mail.
       </div>
@@ -197,10 +210,10 @@
       </div>
       {% else %}
 
-          <div id="content_public-profile-item"class="page__fancy-font" style="display:block;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">{% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}</div>
-          <div id="content_public-residency-blog-item"class="page__fancy-font" style="display:none;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">Residency Blog content</div>
-          <div id="content_public-following-item"class="page__fancy-font" style="display:none;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">Following content</div>
-          <div id="content_public-follower-item"class="page__fancy-font" style="display:none;color:black;margin-top:5%;margin-left:20%;margin-right:20%;">Follower content</div>
+          <div id="content_public-profile-item"class="page__fancy-font page__items-public-menu" style="display:block;">{% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}</div>
+          <div id="content_public-residency-blog-item"class="page__fancy-font page__items-public-menu" style="display:none;">Residency Blog content</div>
+          <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">Following content</div>
+          <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">Follower content</div>
 
       {% endif %}
 
