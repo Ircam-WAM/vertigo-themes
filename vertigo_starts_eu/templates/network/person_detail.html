@@ -68,13 +68,18 @@
               {% endif %}
             </div>
           {% else %}
-            <div class="page__image-container" style="height:300px;margin-top:-6.5%;padding-top:20px;background:gray;">
+            <div class="page__image-container" style="height:auto;margin-top:-6.5%;padding-top:20px;background:gray;">
               <img style="width:auto;height:auto;border-radius:50%;margin:auto;margin-top:3%;filter:none;mix-blend-mode: initial" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
+              <div style="color:white;font-size:50px;font-family:'Oswald',sans-serif;text-align:center;margin-top:1%">{{ person.title }}</div>
+              <div style="color:white;font-size:20;font-family:'Oswald',sans-serif;text-align:center;margin-top:1%">Researcher, Autor - Oxford, UK</div>
+              {% comment %}
               {% with person.links.all.0 as link %}
                   {% if person.links.all.0 %}
-                      Site: <a href="{{ link }}" blank="true" style="color:white">{{ link }}</a><br/><br/>
+                      <a href="{{ link }}" blank="true" style="color:white;font-style:italic;margin-left:2%;">{{ link }}</a><br/><br/>
                   {% endif %}
               {% endwith %}
+              {% endcomment %}
+                <a href="{{ link }}" blank="true" style="color:white;font-style:italic;margin-left:2%;">http://wekit.eu</a><br/><br/>
             </div>
           {% endif %}
         {% endif %}
@@ -82,15 +87,17 @@
 
       {% if not request.user.is_authenticated %}
       <div style="margin:auto;width:100%;height:auto;display:block;text-align:center;margin-top:-3%">
-      <a href="{% url 'profile_update' %}"><span id="public-profile-item" class="page__option-unselected">Profile</span></a>
-      <a href="{% url 'profile_update' %}"><span id="public-residency-blog-item" class="page__option-unselected">Residency Blog</span></a>
-      <a href="{% url 'profile_update' %}"><span id="publig-following-item" class="page__option-unselected">Following</span></a>
-      <a href="{% url 'profile_update' %}"><span id="publig-follower-item" class="page__option-unselected">Follower</span></a>
+        <a href="{% url 'profile_update' %}"><span id="public-profile-item" class="page__option-selected">Profile</span></a>
+        <a href="{% url 'profile_update' %}"><span id="public-residency-blog-item" class="page__option-unselected">Residency Blog</span></a>
+        <a href="{% url 'profile_update' %}"><span id="publig-following-item" class="page__option-unselected">Following</span></a>
+        <a href="{% url 'profile_update' %}"><span id="publig-follower-item" class="page__option-unselected">Follower</span></a>
       </div>
       {% endif %}
-      <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
 
       {% if request.user.is_authenticated %}
+
+        <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
+
         <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
             {% if person.email %}Email: <a href="mailto:{{ person.email }}">{{ person.email }}</a><br/><br/>{% endif %}
             {% if person.telephone %}Telephone: {{ person.telephone }}<br/><br/>{% endif %}
@@ -100,11 +107,17 @@
         </div>
       {% endif %}
 
+      {% if request.user.is_authenticated %}
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% if person.bio %}
           <div class="page__fancy-font">Biography: {{ person.bio|richtext_filters|safe }}</div>
         {% endif %}
       </div>
+      {% else %}
+        {% if person.bio %}
+          <div class="page__fancy-font" style="color:black;margin-top:5%;margin-left:20%;margin-right:20%;">{{ person.bio|richtext_filters|safe }}</div>
+        {% endif %}
+      {% endif %}
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% with person.links.all.0 as link %}
