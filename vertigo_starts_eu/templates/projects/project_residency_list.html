@@ -211,6 +211,11 @@ function changeViewItems(object, event) {
 
             parseJSON(data, currentMap);
           }
+
+          if (data) {
+
+            parseJSONTags(data);
+          }
       },
       error: function(request, status, errorThrown) {
 
@@ -256,6 +261,36 @@ function changeViewItems(object, event) {
         }).addTo(currentMap);
 
       });
+  }
+
+  function parseJSONTags(data) {
+
+      var residencies = jsonObject["residencies"];
+
+      var tags = [];
+      for (var i = 0; i < residencies.length; i++) {
+
+        var dict = residencies[i];
+        var tagsSingle = dict["keywords"];
+
+        if (tagsSingle.length > 0) {
+
+          tags.push.apply(tags, tagsSingle);
+        }
+      }
+
+      if (tags.length > 0) {
+
+        var contentTags = document.getElementById("tags-content");
+
+        for (var i = 0; i < tags.length; i++) {
+
+            var tagText = tags[i];
+            var singleTag = "<div id=\"tag-search\" class=\"project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+
+            contentTags.innerHTML += singleTag;
+        }
+      }
   }
 
   function parseJSON(jsonObject, map) {
@@ -423,7 +458,7 @@ function selectDesectedTag(object, event) {
                     </div>
 
                     <div id="tags-content" class="project-ict-detail__align-tags-search" style="display:none">
-
+                      {% comment %}
                       {% for kw in object.keywords.all %}
                           <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
                       {% endfor %}
@@ -440,7 +475,7 @@ function selectDesectedTag(object, event) {
                       <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
                       <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
                       <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
-
+                      {% endcomment %}
                     </div>
 
                     <div class="article-box__view-changer-container article-box__space-center-responsive" style="margin-bottom:25px">
