@@ -197,8 +197,6 @@
             createMap();
           }
 
-          parseJSONTags(jsonContentData);
-
           if (currentMap) {
 
             parseJSON(jsonContentData, currentMap);
@@ -452,7 +450,7 @@
 
             jsonContentData = data;
 
-            reloadContentTags("dots-item");
+            parseJSONTags(jsonContentData);
           }
       },
       error: function(request, status, errorThrown) {
