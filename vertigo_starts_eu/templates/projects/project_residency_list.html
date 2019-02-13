@@ -451,6 +451,13 @@
             jsonContentData = data;
 
             parseJSONTags(jsonContentData);
+
+            var chevronItem = document.getElementById("chevron-tags");
+            var tagsDivContent = document.getElementById("tags-content");
+
+            chevronItem.classList.remove("fa-chevron-down");
+            chevronItem.classList.add("fa-chevron-up");
+            tagsDivContent.style.display = 'block';
           }
       },
       error: function(request, status, errorThrown) {
