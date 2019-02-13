@@ -208,7 +208,7 @@
 
             createMap();
         }
-      }
+     }
   }
 
   function changeViewItems(object, event) {
@@ -370,99 +370,98 @@
         });
     });
   }
-}
 
-function showHideChevronTags(object, event) {
+  function showHideChevronTags(object, event) {
 
-  event.preventDefault();
+    event.preventDefault();
 
-  var id_item = object.id;
+    var id_item = object.id;
 
-  var chevronItem = document.getElementById("chevron-tags");
-  var itemsClass = chevronItem.classList;
-  var tagsDivContent = document.getElementById("tags-content");
+    var chevronItem = document.getElementById("chevron-tags");
+    var itemsClass = chevronItem.classList;
+    var tagsDivContent = document.getElementById("tags-content");
 
-  var openChevron = false;
+    var openChevron = false;
 
-  for (var i = 0; i < itemsClass.length; i++) {
+    for (var i = 0; i < itemsClass.length; i++) {
 
-    if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
+      if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
 
-      openChevron = true;
-      break;
+        openChevron = true;
+        break;
+      }
+    }
+
+    if (openChevron) {
+
+      chevronItem.classList.remove("fa-chevron-down");
+      chevronItem.classList.add("fa-chevron-up");
+      tagsDivContent.style.display = 'block';
+    } else {
+
+      chevronItem.classList.remove("fa-chevron-up");
+      chevronItem.classList.add("fa-chevron-down");
+      tagsDivContent.style.display = 'none';
     }
   }
 
-  if (openChevron) {
+  function selectDesectedTag(object, event) {
 
-    chevronItem.classList.remove("fa-chevron-down");
-    chevronItem.classList.add("fa-chevron-up");
-    tagsDivContent.style.display = 'block';
-  } else {
+    event.preventDefault();
 
-    chevronItem.classList.remove("fa-chevron-up");
-    chevronItem.classList.add("fa-chevron-down");
-    tagsDivContent.style.display = 'none';
-  }
-}
+    var clickedItem = object;
 
-function selectDesectedTag(object, event) {
+    var itemsClass = clickedItem.classList;
 
-  event.preventDefault();
+    var selectedTag = true;
 
-  var clickedItem = object;
+    for (var i = 0; i < itemsClass.length; i++) {
 
-  var itemsClass = clickedItem.classList;
+      if (itemsClass[i].toLowerCase() == 'project-ict-detail__unselect-tag-search') {
 
-  var selectedTag = true;
+        selectedTag = false;
+        break;
+      }
+    }
 
-  for (var i = 0; i < itemsClass.length; i++) {
+    if (selectedTag) {
 
-    if (itemsClass[i].toLowerCase() == 'project-ict-detail__unselect-tag-search') {
+      clickedItem.classList.remove("project-ict-detail__select-tag-search");
+      clickedItem.classList.add("project-ict-detail__unselect-tag-search");
 
-      selectedTag = false;
-      break;
+    } else {
+
+      clickedItem.classList.remove("project-ict-detail__unselect-tag-search");
+      clickedItem.classList.add("project-ict-detail__select-tag-search");
+
     }
   }
 
-  if (selectedTag) {
+  var jsonContentData = {};
 
-    clickedItem.classList.remove("project-ict-detail__select-tag-search");
-    clickedItem.classList.add("project-ict-detail__unselect-tag-search");
+  function loadContent() {
 
-  } else {
+    $.ajax({
+      type: 'GET',
+      url: '/public-network-data/',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      success: function (data) {
 
-    clickedItem.classList.remove("project-ict-detail__unselect-tag-search");
-    clickedItem.classList.add("project-ict-detail__select-tag-search");
+          if (data) {
 
+            jsonContentData = data;
+
+            reloadContentTags("dots-item");
+          }
+      },
+      error: function(request, status, errorThrown) {
+
+      }
+    });
   }
-}
 
-var jsonContentData = {};
-
-function loadContent() {
-
-  $.ajax({
-    type: 'GET',
-    url: '/public-network-data/',
-    dataType: 'json',
-    contentType: 'application/json; charset=utf-8',
-    success: function (data) {
-
-        if (data) {
-
-          jsonContentData = data;
-
-          reloadContentTags("dots-item");
-        }
-    },
-    error: function(request, status, errorThrown) {
-
-    }
-  });
-}
-
-window.onload = loadContent;
+  window.onload = loadContent;
 
 </script>
 
