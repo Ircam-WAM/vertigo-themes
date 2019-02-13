@@ -201,11 +201,11 @@ function changeViewItems(object, event) {
         createMap();
       }
 
-      parseJSONTags(data);
+      parseJSONTags(jsonContentData);
 
       if (currentMap) {
 
-        parseJSON(data, currentMap);
+        parseJSON(jsonContentData, currentMap);
       }
 
     } else {
@@ -456,6 +456,7 @@ function loadContent() {
     }
   });
 }
+
 window.onload = loadContent;
 
 </script>
