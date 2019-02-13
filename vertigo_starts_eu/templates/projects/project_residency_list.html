@@ -207,14 +207,14 @@ function changeViewItems(object, event) {
             createMap();
           }
 
-          if (data && currentMap) {
-
-            parseJSON(data, currentMap);
-          }
-
           if (data) {
 
             parseJSONTags(data);
+
+            if (currentMap) {
+
+              parseJSON(data, currentMap);
+            }
           }
       },
       error: function(request, status, errorThrown) {
