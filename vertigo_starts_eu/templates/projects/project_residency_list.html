@@ -156,62 +156,68 @@
 
 <script>
 
-var currentMap;
+  var currentMap;
 
-function changeViewItems(object, event) {
+  function reloadContentTags(id_item) {
 
-  event.preventDefault();
+      var clickedItem = document.getElementById(id_item);
+      var altItem = document.getElementById((id_item == "dots-item") ? "map-marker" : "dots-item");
 
-  var id_item = object.id;
+      var clickedItemIcon = document.getElementById(id_item + "-icon");
+      var altItemIcon = document.getElementById(((id_item == "dots-item") ? "map-marker" : "dots-item") + "-icon");
 
-  var clickedItem = document.getElementById(id_item);
-  var altItem = document.getElementById((id_item == "dots-item") ? "map-marker" : "dots-item");
+      altItem.classList.remove("article-box__icon-marker-item-highlight");
+      altItem.classList.add("article-box__icon-marker-item-clean");
 
-  var clickedItemIcon = document.getElementById(id_item + "-icon");
-  var altItemIcon = document.getElementById(((id_item == "dots-item") ? "map-marker" : "dots-item") + "-icon");
+      altItemIcon.classList.remove("article-box__icon-marker-item-highlight-icon");
+      altItemIcon.classList.add("article-box__icon-marker-item-clean-icon");
 
-  altItem.classList.remove("article-box__icon-marker-item-highlight");
-  altItem.classList.add("article-box__icon-marker-item-clean");
+      clickedItem.classList.add("article-box__icon-marker-item-highlight");
+      clickedItem.classList.remove("article-box__icon-marker-item-clean");
 
-  altItemIcon.classList.remove("article-box__icon-marker-item-highlight-icon");
-  altItemIcon.classList.add("article-box__icon-marker-item-clean-icon");
+      clickedItemIcon.classList.add("article-box__icon-marker-item-highlight-icon");
+      clickedItemIcon.classList.remove("article-box__icon-marker-item-clean-icon");
 
-  clickedItem.classList.add("article-box__icon-marker-item-highlight");
-  clickedItem.classList.remove("article-box__icon-marker-item-clean");
+      var mapElement = document.getElementById("map-element-content");
+      var listElemet = document.getElementById("residency-list");
 
-  clickedItemIcon.classList.add("article-box__icon-marker-item-highlight-icon");
-  clickedItemIcon.classList.remove("article-box__icon-marker-item-clean-icon");
+      if (id_item == "dots-item") {
 
-  var mapElement = document.getElementById("map-element-content");
-  var listElemet = document.getElementById("residency-list");
+        mapElement.style.display = "none";
+        listElemet.style.display = "block";
 
-  if (id_item == "dots-item") {
+      } else {
 
-    mapElement.style.display = "none";
-    listElemet.style.display = "block";
+        mapElement.style.display = "block";
+        listElemet.style.display = "none";
 
-  } else {
+        if (jsonContentData) {
 
-    mapElement.style.display = "block";
-    listElemet.style.display = "none";
+          if (!currentMap) {
+            createMap();
+          }
 
-    if (jsonContentData) {
+          parseJSONTags(jsonContentData);
 
-      if (!currentMap) {
-        createMap();
+          if (currentMap) {
+
+            parseJSON(jsonContentData, currentMap);
+          }
+
+        } else {
+
+            createMap();
+        }
       }
+  }
 
-      parseJSONTags(jsonContentData);
+  function changeViewItems(object, event) {
 
-      if (currentMap) {
+    event.preventDefault();
 
-        parseJSON(jsonContentData, currentMap);
-      }
+    var id_item = object.id;
 
-    } else {
-
-        createMap();
-    }
+    reloadContentTags(id_item);
   }
 
   function createMap() {
@@ -447,8 +453,7 @@ function loadContent() {
 
           jsonContentData = data;
 
-          var object = document.getElementById("dots-item");
-          changeViewItems(object, null);
+          reloadContentTags("dots-item");
         }
     },
     error: function(request, status, errorThrown) {
