@@ -927,4 +927,105 @@ $module: ".page";
       float:left !important;
       top:3% !important;
     }
+
+    &__circle-small-share-button {
+
+      width: 50px !important;
+      height: auto !important;
+      background: white !important;
+      border: 5px solid black !important;
+      border-radius: 50% !important;
+      position:relative !important;
+    }
+
+    &__container-buttons-share {
+
+      width:auto !important;
+      height:auto !important;
+      position:relative !important;
+      float:right !important;
+      display:inline-flex !important;
+      padding-right:3% !important;
+      margin-top:-0.5% !important;
+    }
+
+    &__twitter-share-container {
+
+      position:relative !important;
+      display:block !important;
+      margin-right:3% !important;
+      cursor:pointer !important;
+    }
+
+    &__twitter-icon-style {
+
+      color:black !important;
+      font-size:25px !important;
+      margin-left:18% !important;
+      margin-top:15% !important;
+    }
+
+    &__facebook-share-container {
+
+      position:relative !important;
+      display:block !important;
+      margin-right:3% !important;
+      cursor:pointer !important;
+    }
+
+    &__facebook-icon-style {
+
+      color:black !important;
+      font-size:25px !important;
+      margin-left:25% !important;
+      margin-top:13% !important;
+    }
+
+    &__instagram-share-container {
+
+      position:relative !important;
+      display:block !important;
+      margin-right:3% !important;
+      cursor:pointer !important;
+    }
+
+    &__instagram-icon-style {
+
+      color:black !important;
+      font-size:25px !important;
+      margin-left:18% !important;
+      margin-top:15% !important;
+    }
+
+    &__youtube-share-container {
+
+      position:relative !important;
+      display:block !important;
+      margin-right:3% !important;
+      cursor:pointer !important;
+    }
+
+    &__youtube-icon-style {
+
+      color:black !important;
+      font-size:25px !important;
+      margin-left:12% !important;
+      margin-top:15% !important;
+    }
+
+    &__linkedin-share-container {
+
+      position:relative !important;
+      display:block !important;
+      margin-right:3% !important;
+      cursor:pointer !important;
+    }
+
+    &__linkedin-icon-style {
+
+      color:black !important;
+      font-size:25px !important;
+      margin-left:18% !important;
+      margin-top:10% !important;
+    }
 }

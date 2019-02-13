@@ -88,6 +88,7 @@
 
             followItemContent.style.display = "block";
             unfollowItemContent.style.display = "none";
+            break;
           }
 
           if (currentStyle == "page__circle-check-green") {
@@ -100,7 +101,35 @@
 
             followItemContent.style.display = "none";
             unfollowItemContent.style.display = "block";
+            break;
           }
+        }
+      }
+
+      function shareActionButton(event, object) {
+
+        event.preventDefault();
+
+        var idObject = object.id;
+
+        if (idObject == "share-twitter") {
+
+        }
+
+        if (idObject == "share-linkedin") {
+
+        }
+
+        if (idObject == "share-facebook") {
+
+        }
+
+        if (idObject == "share-instagram") {
+
+        }
+
+        if (idObject == "share-youtube") {
+
         }
       }
 
@@ -154,8 +183,8 @@
                 </div>
               </div>
               <div class="page__main-title-profile-public">{{ person.title }}</div>
-              <div style="margin-top:1%;position:relative">
-                <div class="page__main-subtitle-profile-public" class="page__subtitle-public-item">Researcher, Autor - Oxford, UK</div>
+              <div style="margin-top:1%;position:relative;padding-bottom:1%">
+                <div class="page__main-subtitle-profile-public page__subtitle-public-item">Researcher, Autor - Oxford, UK</div>
                 {% comment %}
                 {% with person.links.all.0 as link %}
                     {% if person.links.all.0 %}
@@ -163,7 +192,24 @@
                     {% endif %}
                 {% endwith %}
                 {% endcomment %}
-                  <a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a><br/><br/>
+                  <a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>
+                  <div class="page__container-buttons-share">
+                    <div id="share-twitter" class="page__circle-small-share-button page__twitter-share-container" onclick="shareActionButton(event, this);">
+                      <i class="fa fa-twitter page__twitter-icon-style" aria-hidden="true"></i>
+                    </div>
+                    <div id="share-linkedin" class="page__circle-small-share-button page__linkedin-share-container" onclick="shareActionButton(event, this);">
+                      <i class="fa fa-linkedin page__linkedin-icon-style" aria-hidden="true"></i>
+                    </div>
+                    <div id="share-facebook" class="page__circle-small-share-button page__facebook-share-container" onclick="shareActionButton(event, this);">
+                      <i class="fa fa-facebook page__facebook-icon-style" aria-hidden="true"></i>
+                    </div>
+                    <div id="share-instagram" class="page__circle-small-share-button page__instagram-share-container" onclick="shareActionButton(event, this);">
+                      <i class="fa fa-instagram page__instagram-icon-style" aria-hidden="true"></i>
+                    </div>
+                    <div id="share-youtube" class="page__circle-small-share-button page__youtube-share-container" onclick="shareActionButton(event, this);">
+                      <i class="fa fa-youtube-play page__youtube-icon-style" aria-hidden="true"></i>
+                    </div>
+                  </div>
                 </div>
             </div>
           {% endif %}
@@ -258,6 +304,8 @@
 function changeBackground() {
 
   document.getElementById("main-content").style.background = "white";
+
+  document.getElementById("body").style.background = "white";
 }
 
 window.onload = changeBackground;
