@@ -446,6 +446,9 @@ function loadContent() {
         if (data) {
 
           jsonContentData = data;
+
+          var object = document.getElementById("dots-item");
+          changeViewItems(object, event);
         }
     },
     error: function(request, status, errorThrown) {
