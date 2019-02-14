@@ -40,7 +40,7 @@
 <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
   crossorigin=""></script>
 
-<script language="JavaScript">
+<script>
 
 var currentMap;
 
@@ -197,6 +197,10 @@ function createMapView() {
 }
 
 window.onload = createMapView();
+
+$(function(){
+   createMapView();
+})
 
 </script>
 {% endblock %}
