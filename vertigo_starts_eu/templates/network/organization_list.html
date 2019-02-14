@@ -98,7 +98,7 @@ function parseJSON(jsonObject, map) {
 
             var htmlString = "";
 
-            if ('image' in producers) {
+            if ('image' in item) {
               htmlString += "<div style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["image"] + "');height:100%\">";
             } else {
               htmlString += "<div style=\"background:lightgray;height:100%\">";
