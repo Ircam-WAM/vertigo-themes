@@ -14,7 +14,10 @@ function selectCurrentTab() {
   document.getElementById("select-messages").className = "page__option-selected";
 }
 
-window.onload = selectCurrentTab;
+//window.onload = selectCurrentTab;
+$(function(){
+   selectCurrentTab();
+})
 
 </script>
 

@@ -344,12 +344,15 @@ function selectDesectedTag(object, event) {
             <div class="col-sm-16 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline" style="margin-bottom:0px;">{% trans "Producers" %}</h1>
 
+                    {% comment %}
                     <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron">
                       <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
                     </div>
+                    {% endcomment %}
 
                     <div id="tags-content" class="project-ict-detail__align-tags-search" style="display:none">
 
+                      {% comment %}
                       {% for kw in object.keywords.all %}
                           <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
                       {% endfor %}
@@ -370,7 +373,7 @@ function selectDesectedTag(object, event) {
                       <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Fourteen</div>
 
                     </div>
-
+                    {% endcomment %}
                     <div class="article-box__view-changer-container" style="margin-bottom:25px">
                       <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
                         <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
