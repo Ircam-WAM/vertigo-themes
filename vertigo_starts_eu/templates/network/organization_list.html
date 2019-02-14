@@ -123,7 +123,7 @@ function parseJSON(jsonObject, map) {
               htmlString += "<br>";
             }
 
-            if (url != "") {
+            if (url != "" && ('image' in item)) {
 
               htmlString += "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>";
             }
