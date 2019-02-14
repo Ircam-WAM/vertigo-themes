@@ -153,7 +153,7 @@ function createMap() {
 
   $(function() {
 
-    currentMap = L.map('mapid').setView([47.91, 6.85], 2);
+    currentMap = L.map('mapid').setView([47.91, 6.85], 3);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -223,7 +223,7 @@ $(function(){
     </div>
 -->
     <div id="map-element-content" style="position:relative;display:block;margin-right:-3.5%;margin-top:2%;height:800px">
-       <div id="mapid" style="height:100%">
+       <div id="mapid" style="height:100%;">
 
          <div id="detail-marker" class="project-ict-detail__detail-marker" style="display:none">
          </div>
