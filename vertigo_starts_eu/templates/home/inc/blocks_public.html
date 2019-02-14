@@ -6,11 +6,11 @@
   </div>
 
   <div class="home-page__public-subtext-main-banner home-page__public-subtext-bold">
-    VERTIGO is a project supported by the H2020 STARTS program of the European Commission.
+    {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
   </div>
-  <div class="home-page__public-subtext-main-banner">
+  {% comment %} <div class="home-page__public-subtext-main-banner">
     Its purpose is to organise artistic collaborations with R&D projects that target innovation.
-  </div>
+  </div> {% endcomment %}
 </div>
 
 <div class="home-page__public-line-divider">
