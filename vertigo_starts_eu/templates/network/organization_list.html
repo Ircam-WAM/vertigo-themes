@@ -48,7 +48,14 @@ function parseJSON(jsonObject, map) {
 
   $(function() {
 
-    var producers = jsonObject["organizations"];
+    var producers = jsonObject["producers"];
+    var organizations = jsonObject["organizations"];
+    var residencies = jsonObject["residencies"];
+    var persons = jsonObject["persons"];
+
+    producers = producers.concat(organizations);
+    producers = producers.concat(residencies);
+    producers = producers.concat(persons);
 
     var markers = L.markerClusterGroup({showCoverageOnHover: true,
                                         zoomToBoundsOnClick: true,
