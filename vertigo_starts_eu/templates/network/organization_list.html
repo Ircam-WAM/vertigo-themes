@@ -123,7 +123,7 @@ function parseJSON(jsonObject, map) {
               htmlString += "<br>";
             }
 
-            if (url != "" && url != "undefined") {
+            if (url != "" && typeof url != 'undefined') {
 
               htmlString += "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>";
             }
