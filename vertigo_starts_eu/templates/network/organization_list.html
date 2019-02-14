@@ -83,6 +83,11 @@ function parseJSON(jsonObject, map) {
             var item = producers[id];
 
             var name = item["name"];
+
+            if ('title' in producers ) {
+              name = ["title"];
+            }
+
             var description = item["description"];
             var url = item["url"];
             var city = item["city"];
@@ -97,6 +102,8 @@ function parseJSON(jsonObject, map) {
 
             htmlString += "<div style=\"padding-top:30%;position:relative\">"
             htmlString += "<center>";
+
+
             htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
 
             if (city != "" && city != null) {
