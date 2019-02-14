@@ -6,7 +6,7 @@
   </div>
 
   <div class="home-page__public-subtext-main-banner home-page__public-subtext-bold">
-    {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
+    {{ organization.description|richtext_filters|safe|truncatechars_html:200 }}
   </div>
   {% comment %} <div class="home-page__public-subtext-main-banner">
     Its purpose is to organise artistic collaborations with R&D projects that target innovation.
