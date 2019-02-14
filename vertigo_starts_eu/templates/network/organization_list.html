@@ -73,8 +73,12 @@ function parseJSON(jsonObject, map) {
         var lon = item["lon"];
         var name = item["name"];
 
+        if ('title' in producers) {
+          name = ["title"];
+        }
+        
         var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
-        marker.id_value = i;
+        marker.id_value = i + 200;
         marker.title = name;
         marker.on('click', function (e) {
 
@@ -84,7 +88,7 @@ function parseJSON(jsonObject, map) {
 
             var name = item["name"];
 
-            if ('title' in producers ) {
+            if ('title' in producers) {
               name = ["title"];
             }
 
