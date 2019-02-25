@@ -34,6 +34,12 @@
       crossorigin=""></link>
    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
       crossorigin=""></link>
+
+
+    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
       crossorigin=""></script>
 
@@ -254,16 +260,60 @@
 
       if (tags.length > 0) {
 
+        var block = 28;
         var contentTags = document.getElementById("tags-content");
 
-        for (var i = 0; i < tags.length; i++) {
+        var splitParts = 0;
+        var parts = tags.length / block;
 
-            var tagText = tags[i];
-            var singleTag = "<div id=\"tag-search\" class=\"project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+        if (parts > 0) {
 
-            contentTags.innerHTML += singleTag;
+          splitParts = parts;
+
+          var modValue = tags.length % block;
+
+          if (modValue > 0) {
+
+            splitParts += 1;
+          }
+        }
+
+        var splicedArray = splice_array(tags, block);
+
+        for (var i = 0; i < splicedArray.length; i++) {
+
+          var arrayTags = splicedArray[i];
+
+          for (var j = 0; i < arrayTags.length; i++) {
+
+              if (j == 0) {
+
+                contentTags.innerHTML += "<div style=\"display:none\">";
+              }
+
+              var tagText = tags[j];
+              var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+
+              contentTags.innerHTML += singleTag;
+
+              if (j == tags.length - 1) {
+
+                contentTags.innerHTML += "</div>";
+              }
+          }
         }
       }
+  }
+
+  function splice_array(arrayObject, size){
+
+    var result = [];
+
+    while(arrayObject.length) {
+        result.push(arrayObject.splice(0,10));
+    }
+
+    return result;
   }
 
   function parseJSON(jsonObject, map) {
@@ -397,7 +447,7 @@
 
     for (var i = 0; i < itemsClass.length; i++) {
 
-      if (itemsClass[i].toLowerCase() == 'project-ict-detail__unselect-tag-search') {
+      if (itemsClass[i].toLowerCase() == 'article-box__unselect-tag-search') {
 
         selectedTag = false;
         break;
@@ -406,13 +456,13 @@
 
     if (selectedTag) {
 
-      clickedItem.classList.remove("project-ict-detail__select-tag-search");
-      clickedItem.classList.add("project-ict-detail__unselect-tag-search");
+      clickedItem.classList.remove("article-box__select-tag-search");
+      clickedItem.classList.add("article-box__unselect-tag-search");
 
     } else {
 
-      clickedItem.classList.remove("project-ict-detail__unselect-tag-search");
-      clickedItem.classList.add("project-ict-detail__select-tag-search");
+      clickedItem.classList.remove("article-box__unselect-tag-search");
+      clickedItem.classList.add("article-box__select-tag-search");
 
     }
   }
@@ -455,38 +505,18 @@
 
 </script>
 
-<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"  style="margin-top:-3%">
+<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"  style="margin-top:-3%;background:white">
+    <div class="article-box__title-style-item">
+      <h1 class="section-title section-title--uppercase section-title--main article-box__title-underline article-box__content-title">{% trans "Available Residencies" %}</h1>
+    </div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
-                <h1 class="section-title section-title--uppercase section-title--main section-title--underline" style="margin-bottom:0px;">{% trans "Available Residencies" %}</h1>
+      <div class="row">
+            <!--<div class="col-sm-16 col-md-10 col-md-push-3 tac">-->
+            <div class="article-box__big-content-item">
+                <div class="article-box__content-row">
 
-                    <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron">
-                      <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
-                    </div>
-
-                    <div id="tags-content" class="project-ict-detail__align-tags-search" style="display:none">
-                      {% comment %}
-                      {% for kw in object.keywords.all %}
-                          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
-                      {% endfor %}
-
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">One</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Two</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Three</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Four</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Five</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Six</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Seven</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eight</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Nine</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
-                      {% endcomment %}
-                    </div>
-
-                    <div class="article-box__view-changer-container article-box__space-center-responsive" style="margin-bottom:25px">
+                    <!--<div class="article-box__view-changer-container article-box__space-center-responsive" style="width: 100px;">-->
+                    <div class="article-box__tag-item-row">
                       <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
                         <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
                           <i class="fa fa-th article-box__align-center-dots"></i>
@@ -497,10 +527,54 @@
                           <i class="fa fa-map-marker article-box__align-center-marker"></i>
                         </a>
                       </div>
+                    </div>
+
+                    <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron article-box__chevron-style-changer">
+                      Filter by Keywords <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down article-box__content-item-reviewer" aria-hidden="true"></i>
+                    </div>
+
+                  <div class="article-box__tag-counter-item">
+                    {% if object.keywords.all|length > 0 %}{{ object.keywords.all|length }}{% else %}0{% endif %} results
+                  </div>
+              </div>
             </div>
 
+            <div id="tags-content" style="text-align:center;display:none">
+
+              {% comment %}
+              {% if object.keywords.all|length > 32 %}
+
+              {% endif %}
+
+              {% for kw in object.keywords.all %}
+                  <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
+              {% endfor %}
+
+
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">One</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Two</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Three</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Four</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Five</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Six</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Seven</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eight</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Nine</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
+              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
+              {% endcomment %}
+
+              <div id="dots-indicator" style="margin-top:1%">
+                <div class="article-box__dot-indicator"></div>
+              </div>
+            </div>
+
+            <div class="article-box__row-item-banner">
+              Want to collarobate with Artist?<br/>
+              <a href="#" class="article-box__link-banner-row"><b>Click here to start your own Call now!</b></a>
+            </div>
         </div>
-    </div>
 
         <div class="row">
 
