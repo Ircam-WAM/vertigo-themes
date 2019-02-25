@@ -269,7 +269,8 @@
       if (tags.length > 0) {
 
         var splicedArray = splice_array(tags, block);
-
+    console.log(splicedArray);
+  /*
         var dotsElement = document.getElementById("dots-indicator");
 
         for (var i = 0; i < splicedArray.length; i++) {
@@ -298,6 +299,7 @@
           dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\"></div>";
         }
       }
+      */
   }
 
 
@@ -308,9 +310,9 @@
         n = arr.length;
 
 
-  for (var i = 0; i < n; i += len) {
-    chunks.push(arr.slice(i, i + len));
-  }
+    for (var i = 0; i < n; i += len) {
+      chunks.push(arr.slice(i, i + len));
+    }
 
 
     return chunks;
