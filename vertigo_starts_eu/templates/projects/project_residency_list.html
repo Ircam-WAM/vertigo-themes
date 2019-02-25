@@ -300,19 +300,18 @@
       }
   }
 
-  function splice_array(arr, len){
+
+  function splice_array(arr, len) {
 
     var chunks = [],
         i = 0,
         n = arr.length;
-        console.log(arr);
-          console.log(len);
-/*
-    for (i = 0;i < n; i+=len) {
 
-      chunks.push(arr.slice(i, len));
-    }
-    */
+
+  for (var i = 0; i < n; i += len) {
+    chunks.push(arr.slice(i, i + len));
+  }
+
 
     return chunks;
   }
