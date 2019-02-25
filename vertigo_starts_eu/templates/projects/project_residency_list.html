@@ -316,16 +316,17 @@
     event.preventDefault();
 
     var idContent = object.id;
+    idContent = idContent.replace("dot-indicator-", "");
 
     for (var i = 0; i < 20; i++) {
 
-      var tagsContent = document.getElementById("dot-indicator-" + i);
+      var tagsContent = document.getElementById("section-" + i);
 
       if (!tagsContent) {
         break;
       }
 
-      if (i == parseInt(idContent)) {
+      if (i == idContent) {
         tagsContent.style.display = "block";
       } else {
         tagsContent.style.display = "none";
