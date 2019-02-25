@@ -258,47 +258,41 @@
         }
       }
 
+      var block = 28;
+      var contentTags = document.getElementById("tags-content");
+
       if (tags.length > 0) {
 
-        var block = 28;
-        var contentTags = document.getElementById("tags-content");
-
-        var splitParts = 0;
-        var parts = tags.length / block;
-
-        if (parts > 0) {
-
-          splitParts = parts;
-
-          var modValue = tags.length % block;
-
-          if (modValue > 0) {
-
-            splitParts += 1;
-          }
-        }
-
         var splicedArray = splice_array(tags, block);
+        var splitParts = splicedArray.length;
 
         for (var i = 0; i < splicedArray.length; i++) {
 
           var arrayTags = splicedArray[i];
 
+          var innerSection = null;
+          var sectionNum = 0;
+          var dotsElement = document.getElementById("dots-indicator");
+
           for (var j = 0; i < arrayTags.length; i++) {
 
-              if (j == 0) {
+              if (j % block == 0) {
 
-                contentTags.innerHTML += "<div style=\"display:none\">";
+                contentTags.innerHTML += "<div id=\"section-" + sectionNum +"\" style=\"display:none\"></div>";
+
+                innerSection = document.getElementById("section-" + sectionNum);
+
+                dotsElement.innerHTML += "<div id=\"dot-indicator-" + sectionNum +"\"class=\"article-box__dot-indicator\"></div>";
+
+                sectionNum++;
               }
 
-              var tagText = tags[j];
-              var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+              if (innerSection != null) {
 
-              contentTags.innerHTML += singleTag;
+                var tagText = tags[j];
+                var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
 
-              if (j == tags.length - 1) {
-
-                contentTags.innerHTML += "</div>";
+                innerSection.innerHTML += singleTag;
               }
           }
         }
@@ -310,7 +304,7 @@
     var result = [];
 
     while(arrayObject.length) {
-        result.push(arrayObject.splice(0,10));
+        result.push(arrayObject.splice(0,size));
     }
 
     return result;
@@ -542,9 +536,6 @@
             <div id="tags-content" style="text-align:center;display:none">
 
               {% comment %}
-              {% if object.keywords.all|length > 32 %}
-
-              {% endif %}
 
               {% for kw in object.keywords.all %}
                   <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
@@ -566,7 +557,7 @@
               {% endcomment %}
 
               <div id="dots-indicator" style="margin-top:1%">
-                <div class="article-box__dot-indicator"></div>
+
               </div>
             </div>
 
