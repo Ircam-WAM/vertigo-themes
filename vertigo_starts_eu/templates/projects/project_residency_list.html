@@ -265,7 +265,7 @@
       var contentTags = document.getElementById("tags-content");
 
       if (tags.length > 0) {
-/*
+
         var splicedArray = splice_array(tags, block);
 
         var dotsElement = document.getElementById("dots-indicator");
@@ -294,9 +294,7 @@
           }
 
           dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\"></div>";
-
         }
-        */
       }
   }
 
@@ -304,8 +302,8 @@
 
     var result = [];
 
-    while(arrayObject.length) {
-        result.push(arrayObject.splice(0, size));
+    for (var i= 0,len = arrayObject.length; i < len; i+=size) {
+        result.push(arr.slice(i, i+size));
     }
 
     return result;
