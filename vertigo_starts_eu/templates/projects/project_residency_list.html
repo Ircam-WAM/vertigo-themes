@@ -258,6 +258,9 @@
         }
       }
 
+      var counter = document.getElementById("tags-counter");
+      counter.innerHTML =  tags.length + " results";
+
       var block = 28;
       var contentTags = document.getElementById("tags-content");
 
@@ -525,8 +528,8 @@
                       Filter by Keywords <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down article-box__content-item-reviewer" aria-hidden="true"></i>
                     </div>
 
-                  <div class="article-box__tag-counter-item">
-                    {% if object.keywords.all|length > 0 %}{{ object.keywords.all|length }}{% else %}0{% endif %} results
+                  <div id="tags-counter" class="article-box__tag-counter-item">
+
                   </div>
               </div>
             </div>
