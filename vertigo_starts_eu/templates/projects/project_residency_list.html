@@ -265,11 +265,9 @@
       var contentTags = document.getElementById("tags-content");
 
       if (tags.length > 0) {
-/*
-        var splicedArray = splice_array(tags, block);
-        var splitParts = splicedArray.length;
 
-        var innerSection;
+        var splicedArray = splice_array(tags, block);
+
         var dotsElement = document.getElementById("dots-indicator");
 
         for (var i = 0; i < splicedArray.length; i++) {
@@ -282,11 +280,11 @@
             contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none\"></div>";
           }
 
-          innerSection = document.getElementById("section-" + i);
+          var innerSection = document.getElementById("section-" + i);
 
           for (var j = 0; i < arrayTags.length; j++) {
 
-              if (innerSection != null) {
+              if (innerSection) {
 
                 var tagText = tags[j];
                 var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
@@ -297,7 +295,6 @@
 
           dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\"></div>";
         }
-        */
       }
   }
 
