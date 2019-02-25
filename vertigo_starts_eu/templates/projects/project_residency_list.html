@@ -281,7 +281,7 @@
           }
 
           var innerSection = document.getElementById("section-" + i);
-
+/*
           for (var j = 0; i < arrayTags.length; j++) {
 
               if (innerSection) {
@@ -292,12 +292,12 @@
                 innerSection.innerHTML += singleTag;
               }
           }
+          */
 
           dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\"></div>";
         }
 
       }
-
   }
 
 
@@ -307,11 +307,9 @@
         i = 0,
         n = arr.length;
 
-
     for (var i = 0; i < n; i += len) {
       chunks.push(arr.slice(i, i + len));
     }
-
 
     return chunks;
   }
