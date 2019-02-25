@@ -300,17 +300,17 @@
       }
   }
 
-  function splice_array(arrayObject, size){
+  function splice_array(arr, len){
 
-    var result = [];
+    var chunks = [],
+        i = 0,
+        n = arr.length;
 
-    var i,j,temparray,chunk = size;
-    for (i=0,j=arrayObject.length; i<j; i+=chunk) {
-        temparray = array.slice(i,i + chunk);
-        result.push(temparray);
+    while (i < n) {
+      chunks.push(arr.slice(i, i += len));
     }
 
-    return result;
+    return chunks;
   }
 
   function parseJSON(jsonObject, map) {
