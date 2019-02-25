@@ -285,10 +285,9 @@
           if (splicedArray.length > 1) {
 
             contentTags.innerHTML += "<div id=\"section-1\" style=\"display:none;width:60%;margin:0 auto\"></div>";
-            for (var i = 1; i < splicedArray.length; i++) {
+            for (var i = 0; i < splicedArray.length; i++) {
 
               var moreTags = splicedArray[i];
-
 
               var innerSection = document.getElementById("section-1");
 
@@ -329,6 +328,9 @@
   function changeTags(object, event) {
 
     event.preventDefault();
+
+    var contentTags = document.getElementById("section-0");
+    contentTags.style.display = 'none';
 
     var contentTags = document.getElementById("section-1");
     contentTags.style.display = 'block';
