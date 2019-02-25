@@ -266,7 +266,8 @@
 
       if (tags.length > 0) {
 
-        var splicedArray = splice_array(tags, block);
+        var tempArray = tags;
+        var splicedArray = splice_array(tempArray, block);
 
         var dotsElement = document.getElementById("dots-indicator");
 
@@ -303,7 +304,7 @@
     var result = [];
 
     while(arrayObject.length) {
-        result.push(arrayObject.splice(0,size));
+        result.push(arrayObject.splice(0, size));
     }
 
     return result;
