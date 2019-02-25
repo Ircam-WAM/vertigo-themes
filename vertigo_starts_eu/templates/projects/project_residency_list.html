@@ -268,7 +268,8 @@
 
       if (tags.length > 0) {
 
-        var splicedArray = 9;//splice_array(tags, block);
+var clone = tags.slice(0);
+        var splicedArray = splice_array(clone, block);
 
         var dotsElement = document.getElementById("dots-indicator");
 
