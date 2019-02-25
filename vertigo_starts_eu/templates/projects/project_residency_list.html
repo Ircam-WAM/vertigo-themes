@@ -268,11 +268,7 @@
 
         var splicedArray = splice_array(tags, block);
 
-        var dotsElement = document.getElementById("dots-indicator");
-
         for (var i = 0; i < splicedArray.length; i++) {
-
-          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
 
           var arrayTags = splicedArray[i];
 
@@ -291,8 +287,12 @@
 
               innerSection.innerHTML += singleTag;
           }
+        }
 
+        var dotsElement = document.getElementById("dots-indicator");
 
+        for (var i = 0; i < splicedArray.length; i++) {
+          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
         }
       }
   }
@@ -556,11 +556,13 @@
               <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
               {% endcomment %}
 
+              <div id="dots-indicator" style="margin-top:1%;text-align:center">
+
+              </div>
+
             </div>
 
-            <div id="dots-indicator" style="margin-top:1%;text-align:center">
 
-            </div>
 
             <div class="article-box__row-item-banner">
               Want to collarobate with Artist?<br/>
