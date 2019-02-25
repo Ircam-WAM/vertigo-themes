@@ -364,7 +364,7 @@
                 var id = e.target.id_value;
 
                 var item = producers[id];
-console.log(item);
+
                 var name = item["name"];
                 var description = item["description"];
                 var url = item["url"];
@@ -373,7 +373,7 @@ console.log(item);
                 var htmlString = "";
 
                 if ('card' in item) {
-                  htmlString += "<div style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');height:100%\">";
+                  htmlString += "<div style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px\">";
                 } else {
                   htmlString += "<div style=\"background:lightgray;height:100%\">";
                 }
