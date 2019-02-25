@@ -272,12 +272,14 @@
 
         for (var i = 0; i < splicedArray.length; i++) {
 
+          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
+
           var arrayTags = splicedArray[i];
 
           if (i == 0) {
-            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:block\"></div>";
+            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:block;width:60%;margin:0 auto\"></div>";
           } else {
-            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none\"></div>";
+            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none;width:60%;margin:0 auto\"></div>";
           }
 
           var innerSection = document.getElementById("section-" + i);
@@ -290,7 +292,7 @@
               innerSection.innerHTML += singleTag;
           }
 
-          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
+
         }
       }
   }
