@@ -273,18 +273,21 @@
           var arrayTags = splicedArray[0];
           contentTags.innerHTML += "<div id=\"section-0\" style=\"display:block;width:60%;margin:0 auto\"></div>";
           var innerSection = document.getElementById("section-0");
-
+          var sequence = 0;
           for (var j = 0; j < arrayTags.length; j++) {
 
               var tagText = arrayTags[j];
-              var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+              var singleTag = "<div id=\"tag-search" + sequence+ "\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
 
               innerSection.innerHTML += singleTag;
+
+              sequence++;
           }
 
           if (splicedArray.length > 1) {
 
             contentTags.innerHTML += "<div id=\"section-1\" style=\"display:none;width:60%;margin:0 auto\"></div>";
+            var counter = 0;
             for (var i = 0; i < splicedArray.length; i++) {
 
               var moreTags = splicedArray[i];
@@ -294,9 +297,11 @@
               for (var j = 0; j < moreTags.length; j++) {
 
                   var tagText = moreTags[j];
-                  var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+                  var singleTag = "<div id=\"tag-search" + counter + "\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
 
                   innerSection.innerHTML += singleTag;
+
+                  counter++;
               }
             }
 
