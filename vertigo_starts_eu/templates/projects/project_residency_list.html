@@ -293,7 +293,7 @@
 
         for (var i = 0; i < splicedArray.length; i++) {
 
-          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\" onclick=\"changeTags(this, event);\"></div>";
+          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + "\" \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\" onclick=\"changeTags(this, event);\"></div>";
         }
       }
   }
@@ -321,7 +321,7 @@
 
       var tagsContent = document.getElementById("dot-indicator-" + i);
 
-      if (tagsContent == null) {
+      if (!tagsContent) {
         break;
       }
 
