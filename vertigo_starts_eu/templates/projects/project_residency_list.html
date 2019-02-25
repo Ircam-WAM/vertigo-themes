@@ -259,7 +259,7 @@
       }
 
       var counter = document.getElementById("tags-counter");
-      counter.innerHTML =  tags.length + " results";
+      counter.innerHTML = tags.length + " results";
 
       var block = 28;
       var contentTags = document.getElementById("tags-content");
@@ -276,7 +276,7 @@
 
           var arrayTags = splicedArray[i];
 
-          if (i % block == 0) {
+          if (i == 0) {
             contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:block\"></div>";
           } else {
             contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none\"></div>";
