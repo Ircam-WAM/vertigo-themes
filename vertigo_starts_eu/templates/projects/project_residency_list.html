@@ -341,23 +341,27 @@
     var dotsElement = document.getElementById("dots-indicator");
     dotsElement.style.display = 'none';
 
-    var unselections = document.getElementsByClassName("article-box__unselect-tag-search");
+    if (selections.length > 0) {
 
-    for (var i = 0; i < selections.length; i++) {
+      var unselections = document.getElementsByClassName("article-box__unselect-tag-search");
 
-      var selItem = selections[i];
-      var textSel = selItem.innerText;
+      for (var i = 0; i < selections.length; i++) {
 
-      for (var j = 0; j < unselections.length; j++) {
+        var selItem = selections[i];
+        var textSel = selItem.innerText;
 
-        var unselItem = unselections[j];
-        var textUnsel = unselItem.innerText;
+        for (var j = 0; j < unselections.length; j++) {
 
-        if (textSel == textUnsel) {
-          unselItem.classList.remove("article-box__unselect-tag-search");
-          unselItem.classList.add("article-box__select-tag-search");
+          var unselItem = unselections[j];
+          var textUnsel = unselItem.innerText;
 
-          break;
+          if (textSel == textUnsel) {
+            
+            unselItem.classList.remove("article-box__unselect-tag-search");
+            unselItem.classList.add("article-box__select-tag-search");
+
+            break;
+          }
         }
       }
     }
