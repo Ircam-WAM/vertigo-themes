@@ -284,11 +284,12 @@
 
           if (splicedArray.length > 1) {
 
+            contentTags.innerHTML += "<div id=\"section-1\" style=\"display:none;width:60%;margin:0 auto\"></div>";
             for (var i = 1; i < splicedArray.length; i++) {
 
               var moreTags = splicedArray[i];
 
-              contentTags.innerHTML += "<div id=\"section-1\" style=\"display:none;width:60%;margin:0 auto\"></div>";
+
               var innerSection = document.getElementById("section-1");
 
               for (var j = 0; j < moreTags.length; j++) {
