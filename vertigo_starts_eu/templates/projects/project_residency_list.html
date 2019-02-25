@@ -341,11 +341,25 @@
     var dotsElement = document.getElementById("dots-indicator");
     dotsElement.style.display = 'none';
 
+    var unselections = document.getElementsByClassName("article-box__unselect-tag-search");
+
     for (var i = 0; i < selections.length; i++) {
 
       var selItem = selections[i];
-      selItem.classList.remove("article-box__unselect-tag-search");
-      selItem.classList.add("article-box__select-tag-search");
+      var textSel = selItem.innerText;
+
+      for (var j = 0; j < unselections.length; j++) {
+
+        var unselItem = unselections[j];
+        var textUnsel = unselItem.innerText;
+
+        if (textSel == textUnsel) {
+          unselItem.classList.remove("article-box__unselect-tag-search");
+          unselItem.classList.add("article-box__select-tag-search");
+
+          break;
+        }
+      }
     }
   }
 
