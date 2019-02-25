@@ -258,6 +258,8 @@
         }
       }
 
+      console.log(tags);
+
       var counter = document.getElementById("tags-counter");
       counter.innerHTML = tags.length + " results";
 
@@ -302,7 +304,7 @@
 
     var result = [];
 
-    for (var i= 0,len = arrayObject.length; i < len; i+=size) {
+    for (var i = 0,len = arrayObject.length; i < len; i+=size) {
         result.push(arrayObject.slice(i, i+size));
     }
 
