@@ -293,7 +293,7 @@
 
         for (var i = 0; i < splicedArray.length; i++) {
 
-          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
+          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\" onclick=\"changeTags(this, event);\"></div>";
         }
       }
   }
@@ -309,6 +309,28 @@
     }
 
     return chunks;
+  }
+
+  function changeTags(object, event) {
+
+    event.preventDefault();
+
+    var idContent = object.id;
+
+    for (var i = 0; i < 20; i++) {
+
+      var tagsContent = document.getElementById("dot-indicator-" + i);
+
+      if (tagsContent == null) {
+        break;
+      }
+
+      if (i == idContent) {
+        tagsContent.style.display = "block";
+      } else {
+        tagsContent.style.display = "none";
+      }
+    }
   }
 
   function parseJSON(jsonObject, map) {
@@ -546,19 +568,6 @@
                   <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
               {% endfor %}
 
-
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">One</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Two</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Three</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Four</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Five</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Six</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Seven</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eight</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Nine</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
-              <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
               {% endcomment %}
 
             </div>
