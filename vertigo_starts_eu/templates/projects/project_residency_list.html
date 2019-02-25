@@ -274,13 +274,15 @@
           var arrayTags = splicedArray[i];
 
           if (i % block == 0) {
-
+            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:block\"></div>";
+          } else {
             contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none\"></div>";
-
-            innerSection = document.getElementById("section-" + i);
           }
 
-          for (var j = 0; i < arrayTags.length; i++) {
+          innerSection = document.getElementById("section-" + i);
+
+
+          for (var j = 0; i < arrayTags.length; j++) {
 
               if (innerSection != null) {
 
