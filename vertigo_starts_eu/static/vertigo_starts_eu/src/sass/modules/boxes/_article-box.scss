@@ -750,6 +750,25 @@ $module: ".article-box";
       display: inline-block !important;
       cursor: pointer !important;
     }
+
+    &__chevron-tag-style-search {
+
+      display: inline-block;
+      border: .2em solid #011020;
+      border-radius: .2em;
+      //color: #50e3c2;
+      //background: transparent;
+      font-size: 1.0em;
+      margin: .5em;
+      padding: .2em .5em;
+      font-family:'Oswald',sans-serif;
+      cursor: pointer;
+
+      &:hover {
+        background: #011020;
+        color: white;
+      }
+    }
 }
 
 ::selection {
