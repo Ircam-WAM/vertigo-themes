@@ -268,17 +268,11 @@
 
         var splicedArray = splice_array(tags, block);
 
-        for (var i = 0; i < splicedArray.length; i++) {
+        if (splicedArray > 0) {
 
-          var arrayTags = splicedArray[i];
-
-          if (i == 0) {
-            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:block;width:60%;margin:0 auto\"></div>";
-          } else {
-            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none;width:60%;margin:0 auto\"></div>";
-          }
-
-          var innerSection = document.getElementById("section-" + i);
+          var arrayTags = splicedArray[0];
+          contentTags.innerHTML += "<div id=\"section-0\" style=\"display:block;width:60%;margin:0 auto\"></div>";
+          var innerSection = document.getElementById("section-0");
 
           for (var j = 0; j < arrayTags.length; j++) {
 
@@ -287,13 +281,33 @@
 
               innerSection.innerHTML += singleTag;
           }
-        }
 
-        var dotsElement = document.getElementById("dots-indicator");
+          if (splicedArray > 1) {
 
-        for (var i = 0; i < splicedArray.length; i++) {
+            for (var i = 1; i < splicedArray.length; i++) {
 
-          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + "\" class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\" onclick=\"changeTags(this, event);\"></div>";
+              var moreTags = splicedArray[i];
+
+              contentTags.innerHTML += "<div id=\"section-1\" style=\"display:none;width:60%;margin:0 auto\"></div>";
+              var innerSection = document.getElementById("section-1");
+
+              for (var j = 0; j < moreTags.length; j++) {
+
+                  var tagText = moreTags[j];
+                  var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+
+                  innerSection.innerHTML += singleTag;
+              }
+            }
+
+            var dotsElement = document.getElementById("dots-indicator");
+            dotsElement.style.display = 'block';
+
+            for (var i = 0; i < 3; i++) {
+
+              dotsElement.innerHTML += "<div id=\"dot-indicator-1\" class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
+            }
+          }
         }
       }
   }
@@ -315,23 +329,8 @@
 
     event.preventDefault();
 
-    var idContent = object.id;
-    idContent = idContent.replace("dot-indicator-", "");
-
-    for (var i = 0; i < 20; i++) {
-
-      var tagsContent = document.getElementById("section-" + i);
-
-      if (!tagsContent) {
-        break;
-      }
-
-      if (i == idContent) {
-        tagsContent.style.display = "block";
-      } else {
-        tagsContent.style.display = "none";
-      }
-    }
+    var contentTags = document.getElementById("dot-indicator-1");
+    contentTags.style.display = 'block';
   }
 
   function parseJSON(jsonObject, map) {
@@ -573,7 +572,7 @@
 
             </div>
 
-            <div id="dots-indicator" style="margin-top:1%;text-align:center">
+            <div id="dots-indicator" style="margin-top:1%;text-align:center;cursor: pointer;diaplsy:none;" onclick="changeTags(this, event);">
 
             </div>
 
