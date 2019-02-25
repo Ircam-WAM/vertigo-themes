@@ -272,11 +272,6 @@
 
         for (var i = 0; i < splicedArray.length; i++) {
 
-          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
-        }
-
-        for (var i = 0; i < splicedArray.length; i++) {
-
           var arrayTags = splicedArray[i];
 
           if (i == 0) {
@@ -284,11 +279,6 @@
           } else {
             contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none\"></div>";
           }
-        }
-
-        for (var i = 0; i < splicedArray.length; i++) {
-
-          var arrayTags = splicedArray[i];
 
           var innerSection = document.getElementById("section-" + i);
 
@@ -299,6 +289,8 @@
 
               innerSection.innerHTML += singleTag;
           }
+
+          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\" style=\"margin-right:0.5%\"></div>";
         }
       }
   }
