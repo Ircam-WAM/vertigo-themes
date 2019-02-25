@@ -266,26 +266,21 @@
         var splicedArray = splice_array(tags, block);
         var splitParts = splicedArray.length;
 
+        var innerSection;
+        var dotsElement = document.getElementById("dots-indicator");
+
         for (var i = 0; i < splicedArray.length; i++) {
 
           var arrayTags = splicedArray[i];
 
-          var innerSection = null;
-          var sectionNum = 0;
-          var dotsElement = document.getElementById("dots-indicator");
+          if (i % block == 0) {
+
+            contentTags.innerHTML += "<div id=\"section-" + i +"\" style=\"display:none\"></div>";
+
+            innerSection = document.getElementById("section-" + i);
+          }
 
           for (var j = 0; i < arrayTags.length; i++) {
-
-              if (j % block == 0) {
-
-                contentTags.innerHTML += "<div id=\"section-" + sectionNum +"\" style=\"display:none\"></div>";
-
-                innerSection = document.getElementById("section-" + sectionNum);
-
-                dotsElement.innerHTML += "<div id=\"dot-indicator-" + sectionNum +"\"class=\"article-box__dot-indicator\"></div>";
-
-                sectionNum++;
-              }
 
               if (innerSection != null) {
 
@@ -295,6 +290,8 @@
                 innerSection.innerHTML += singleTag;
               }
           }
+
+          dotsElement.innerHTML += "<div id=\"dot-indicator-" + i +"\"class=\"article-box__dot-indicator\"></div>";
         }
       }
   }
