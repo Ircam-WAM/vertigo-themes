@@ -445,20 +445,16 @@
       }
     }
 
-    var dotsElement = document.getElementById("dots-indicator");
-
     if (openChevron) {
 
       chevronItem.classList.remove("fa-chevron-down");
       chevronItem.classList.add("fa-chevron-up");
       tagsDivContent.style.display = 'block';
-      dotsElement.style.display = 'block';
     } else {
 
       chevronItem.classList.remove("fa-chevron-up");
       chevronItem.classList.add("fa-chevron-down");
       tagsDivContent.style.display = 'none';
-      dotsElement.style.display = 'none';
     }
   }
 
