@@ -258,8 +258,6 @@
         }
       }
 
-      console.log(tags);
-
       var counter = document.getElementById("tags-counter");
       counter.innerHTML = tags.length + " results";
 
@@ -269,8 +267,7 @@
       if (tags.length > 0) {
 
         var splicedArray = splice_array(tags, block);
-    console.log(splicedArray);
-  /*
+
         var dotsElement = document.getElementById("dots-indicator");
 
         for (var i = 0; i < splicedArray.length; i++) {
@@ -289,7 +286,7 @@
 
               if (innerSection) {
 
-                var tagText = tags[j];
+                var tagText = arrayTags[j];
                 var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
 
                 innerSection.innerHTML += singleTag;
@@ -298,9 +295,9 @@
 
           dotsElement.innerHTML += "<div id=\"dot-indicator-" + i + " \"class=\"article-box__dot-indicator\"></div>";
         }
-        */
+
       }
-      
+
   }
 
 
