@@ -277,7 +277,7 @@
           for (var j = 0; j < arrayTags.length; j++) {
 
               var tagText = arrayTags[j];
-              var singleTag = "<div id=\"tag-search" + sequence+ "\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+              var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
 
               innerSection.innerHTML += singleTag;
           }
@@ -295,7 +295,7 @@
               for (var j = 0; j < moreTags.length; j++) {
 
                   var tagText = moreTags[j];
-                  var singleTag = "<div id=\"tag-search" + counter + "\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
+                  var singleTag = "<div id=\"tag-search\" class=\"article-box__chevron-tag-style-search article-box__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
 
                   innerSection.innerHTML += singleTag;
               }
@@ -347,8 +347,6 @@
       selItem.classList.remove("article-box__unselect-tag-search");
       selItem.classList.add("article-box__select-tag-search");
     }
-
-
   }
 
   function parseJSON(jsonObject, map) {
