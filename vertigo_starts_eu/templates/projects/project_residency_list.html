@@ -399,7 +399,7 @@
                 var item = residencies[id];
 
                 var name = item["name"];
-                var description = item["description"];
+                var description = item["description"].substring(0,100) + "...";
                 var city = item["city"];
                 var keywords = item["keywords"];
                 var location = item["mappable_location"];
