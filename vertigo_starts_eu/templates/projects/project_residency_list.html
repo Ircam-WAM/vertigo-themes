@@ -581,6 +581,17 @@
 
       parseJSON(finalDict, this.currentMap);
     } else {
+
+      var auxSelected = document.getElementsByClassName("article-box__select-tag-search");
+
+      for (var i = 0; i < auxSelected.length; i++) {
+
+        var auxItem = auxSelected[j];
+
+        auxItem.classList.add("article-box__unselect-tag-search");
+        auxItem.classList.remove("article-box__select-tag-search");
+      }
+
       parseJSON(jsonContentData, this.currentMap);
     }
   }
