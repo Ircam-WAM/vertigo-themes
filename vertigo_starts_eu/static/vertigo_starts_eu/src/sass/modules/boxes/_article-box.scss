@@ -767,6 +767,13 @@ $module: ".article-box";
         color: white;
       }
     }
+
+    &__tranlate-responsive {
+
+      @media screen and (max-width: 780px) {
+        transform:translateX(-20px) !important;
+      }
+    }
 }
 
 ::selection {
