@@ -400,8 +400,9 @@
 
                 var name = item["name"];
                 var description = item["description"];
-                var url = item["url"];
                 var city = item["city"];
+                var keywords = item["keywords"];
+                var location = item["mappable_location"];
 
                 var htmlString = "";
 
@@ -411,26 +412,33 @@
                   htmlString += "<div style=\"background:lightgray;height:100%\">";
                 }
 
-                htmlString += "<div style=\"padding-top:30%;position:relative\">"
+                htmlString += "<div style=\"padding-top:10%;position:relative\">"
                 htmlString += "<center>";
-                htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
-
-                if (city != "" && city != null) {
-
-                  htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
-                }
+                htmlString += "<div style=\"font-size:25px;font-family:'Oswald',sans-serif;padding-left:10%;padding-right:10%\">" + name + "</div>";
 
                 if (description != "") {
 
-                  htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
+                  htmlString += "<div style=\"font-size:15px;font-family:'Helvetica';padding-left:10%;padding-right:10%;margin-top:5%\">" + description + "</div><br>";
                 } else {
 
                   htmlString += "<br>";
                 }
 
-                if (url != "") {
+                if (keywords.length > 0) {
 
-                  htmlString += "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>";
+                  htmlString += "<div style=\"width:auto;margin-right:5%;margin-left:5%;margin-top:5%;display:block\">";
+                  htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:2%\">" + keywords[0] + "</div>";
+
+                  if (keywords.length > 1) {
+                    htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:2%\">" + keywords[1] + "</div>";
+                  }
+
+                  htmlString +="</div>";
+                }
+
+                if (location != "" && location != null) {
+
+                  htmlString += "<div style=\"font-size:15px;font-family:'Helvetica';padding-right:10%;padding-left:10%\">" + location + "</div>";
                 }
 
                 htmlString += "</center>";
