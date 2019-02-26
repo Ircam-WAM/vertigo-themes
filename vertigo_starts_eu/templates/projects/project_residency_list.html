@@ -205,8 +205,8 @@
 
           if (currentMap) {
 
-            //parseJSON(jsonContentData, currentMap);
-            triggerFilter();
+            parseJSON(jsonContentData, currentMap);
+            //triggerFilter();
           }
 
         } else {
@@ -541,8 +541,11 @@
 
   function triggerFilter() {
 
-    for (var i = 0; i < markersGlobal.length; i++) {
-        this.currentMap.removeLayer(markersGlobal[i]);
+    if (markersGlobal.length > 0) {
+
+      for (var i = 0; i < markersGlobal.length; i++) {
+          this.currentMap.removeLayer(markersGlobal[i]);
+      }
     }
 
     var firstDiv = document.getElementById('section-0');
