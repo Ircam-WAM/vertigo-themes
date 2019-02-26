@@ -529,10 +529,53 @@
     }
   }
 
+  function arrayContains(needle, arrhaystack)
+  {
+      return (arrhaystack.indexOf(needle) > -1);
+  }
+
   function triggerFilter() {
 
     for(var i = 0; i < markersGlobal.length; i++){
         this.currentMap.removeLayer(markersGlobal[i]);
+    }
+
+    var selectedTags = document.getElementsByClassName("article-box__select-tag-search");
+
+    var finalDict = {};
+
+    if (selectedTags.length > 0) {
+
+       var finalObject = [];
+
+       for (var i = 0; i < selectedTags.length; i++){
+
+         var tagItem = selectedTags[i];
+         var tagtext = tagItem.innerText;
+
+         for (var j = 0; j < residenciesGlobal.length; j++) {
+
+             var item = residenciesGlobal[j];
+
+             var keywords = item["keywords"];
+
+             if (arrayContains(tagtext, keywords)) {
+
+               finalObject.push(item);
+               break;
+             }
+         }
+       }
+
+       if (finalObject.length > 0) {
+
+         finalDict["residencies"] = finalObject
+       }
+    }
+
+    if (!isEmpty(finalDict)) {
+
+      parseJSON(finalDict, this.currentMap);
     }
   }
 
