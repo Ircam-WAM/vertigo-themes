@@ -540,7 +540,7 @@
 
   function triggerFilter() {
 
-    for(var i = 0; i < markersGlobal.length; i++){
+    for (var i = 0; i < markersGlobal.length; i++) {
         this.currentMap.removeLayer(markersGlobal[i]);
     }
 
@@ -581,7 +581,7 @@
 
       parseJSON(finalDict, this.currentMap);
     } else {
-      //parseJSON(jsonContentData, this.currentMap);
+      parseJSON(jsonContentData, this.currentMap);
     }
   }
 
