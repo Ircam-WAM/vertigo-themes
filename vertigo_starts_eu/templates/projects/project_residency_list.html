@@ -657,22 +657,6 @@
 //  window.onload = loadContent;
   $(function(){
      loadContent();
-
-     if (jsonContentData) {
-
-       if (!currentMap) {
-         createMap();
-       }
-
-       if (currentMap) {
-
-         parseJSON(jsonContentData, currentMap);
-       }
-
-     } else {
-
-         createMap();
-     }
   })
 
 </script>
