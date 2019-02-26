@@ -518,15 +518,13 @@
 
       clickedItem.classList.remove("article-box__select-tag-search");
       clickedItem.classList.add("article-box__unselect-tag-search");
-
     } else {
 
       clickedItem.classList.remove("article-box__unselect-tag-search");
       clickedItem.classList.add("article-box__select-tag-search");
-
-      triggerFilter();
-
     }
+
+    triggerFilter();
   }
 
   function arrayContains(needle, arrhaystack) {
@@ -535,7 +533,7 @@
   }
 
   function isEmpty(ob) {
-    
+
     for(var i in ob){ return false;}
     return true;
   }
