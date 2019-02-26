@@ -258,6 +258,10 @@
         }
       }
 
+      tags = tags.filter(function(elem, index, self) {
+          return index === self.indexOf(elem);
+      })
+
       var counter = document.getElementById("tags-counter");
       counter.innerHTML = tags.length + " results";
 
@@ -520,8 +524,9 @@
 
     if (selectedTag) {
 
-      clickedItem.classList.remove("article-box__select-tag-search");
       clickedItem.classList.add("article-box__unselect-tag-search");
+      clickedItem.classList.remove("article-box__select-tag-search");
+
     } else {
 
       clickedItem.classList.remove("article-box__unselect-tag-search");
