@@ -592,13 +592,12 @@
 
             <div id="tags-content" style="text-align:center;display:none">
 
-              {% comment %}
+
 
               {% for kw in object.keywords.all %}
                   <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
               {% endfor %}
 
-              {% endcomment %}
 
             </div>
 
@@ -628,8 +627,6 @@
                                 </div>
                             {% endfor %}
                         </div>
-
-
                     </div>
                 </div>
             </div>
