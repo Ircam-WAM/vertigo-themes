@@ -580,6 +580,8 @@
     if (!isEmpty(finalDict)) {
 
       parseJSON(finalDict, this.currentMap);
+    } else {
+      parseJSON(jsonContentData, this.currentMap);
     }
   }
 
