@@ -422,11 +422,11 @@
 
                 htmlString += "<div style=\"padding-top:10%;position:relative\">"
                 htmlString += "<center>";
-                htmlString += "<div style=\"font-size:25px;font-family:'Oswald',sans-serif;padding-left:10%;padding-right:10%\">" + title + "</div>";
+                htmlString += "<div class=\"article-box__title-card-map\">" + title + "</div>";
 
                 if (description != "") {
 
-                  htmlString += "<div style=\"font-size:15px;font-family:'Helvetica';padding-left:10%;padding-right:10%;margin-top:5%\">" + description + "</div><br>";
+                  htmlString += "<div class=\"article-box__description-card-map\">" + description + "</div><br>";
                 } else {
 
                   htmlString += "<br>";
@@ -434,11 +434,11 @@
 
                 if (keywords.length > 0) {
 
-                  htmlString += "<div style=\"width:auto;margin-right:5%;margin-left:5%;margin-top:5%;display:block;margin-bottom:5%\">";
-                  htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:4%\">" + keywords[0] + "</div>";
+                  htmlString += "<div class=\"article-box__wrap-tags-map-card\">";
+                  htmlString += "<div class=\"article-box__single-keyword-card-map\">" + keywords[0] + "</div>";
 
                   if (keywords.length > 1) {
-                    htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:2%\">" + keywords[1] + "</div>";
+                    htmlString += "<div class=\"article-box__keywords-card-map\">" + keywords[1] + "</div>";
                   }
 
                   htmlString +="</div>";
@@ -446,7 +446,7 @@
 
                 if (location != "" && location != null) {
 
-                  htmlString += "<div style=\"font-size:15px;font-family:'Helvetica';padding-right:10%;padding-left:10%\">" + location + "</div>";
+                  htmlString += "<div class=\"article-box__location-card-map\">" + location + "</div>";
                 }
 
                 htmlString += "</center>";

@@ -782,6 +782,67 @@ $module: ".article-box";
         outline: 3px #47dfba solid;
       }
     }
+
+    &__description-card-map {
+
+      font-size:15px !important;
+      font-family:'Helvetica' !important;
+      padding-left:10% !important;
+      padding-right:10% !important;
+      margin-top:5% !important;
+    }
+
+    &__title-card-map {
+
+      font-size:25px !important;
+      font-family:'Oswald',sans-serif !important;
+      padding-left:10% !important;
+      padding-right:10% !important;
+    }
+
+    &__location-card-map {
+
+      font-size:15px !important;
+      font-family:'Helvetica' !important;
+      padding-right:10% !important;
+      padding-left:10% !important;
+    }
+
+    &__keywords-card-map {
+
+      border-radius:.2em !important;
+      border:2px #47dfba solid !important;
+      color:#47dfba !important;
+      font-size:15px !important;
+      text-align:center !important;
+      font-family:'Helvetica' !important;
+      display:inline-block !important;
+      padding:3% !important;
+      margin-right:2% !important;
+    }
+
+    &__single-keyword-card-map {
+
+      border-radius:.2em !important;
+      border:2px #47dfba solid !important;
+      color:#47dfba !important;
+      font-size:15px !important;
+      text-align:center !important;
+      font-family:'Helvetica' !important;
+      display:inline-block !important;
+      padding:3% !important;
+      margin-right:4% !important;
+    }
+
+    &__wrap-tags-map-card {
+
+      width:auto !important;
+      margin-right:5% !important;
+      margin-left:5% !important;
+      margin-top:5% !important;
+      display:block !important;
+      margin-bottom:5% !important;
+    }
 }
 
 ::selection {
