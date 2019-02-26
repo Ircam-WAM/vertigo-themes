@@ -205,8 +205,8 @@
 
           if (currentMap) {
 
-            parseJSON(jsonContentData, currentMap);
-            //triggerFilter();
+            //parseJSON(jsonContentData, currentMap);
+            triggerFilter();
           }
 
         } else {
@@ -369,6 +369,10 @@
   }
 
   function parseJSON(jsonObject, map) {
+
+    if (!map) {
+      return;
+    }
 
     $(function() {
 
@@ -541,7 +545,7 @@
 
   function triggerFilter() {
 
-    if (markersGlobal.length > 0) {
+    if (markersGlobal.length > 0 && this.currentMap != null) {
 
       for (var i = 0; i < markersGlobal.length; i++) {
           this.currentMap.removeLayer(markersGlobal[i]);
