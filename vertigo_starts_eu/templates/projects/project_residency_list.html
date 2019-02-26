@@ -549,8 +549,34 @@
 
     var selectedTags = firstDiv.getElementsByClassName("article-box__select-tag-search");
 
-    if (secondDiv.style.visibility == 'block') {
+    if (secondDiv.style.display == 'block') {
       selectedTags = secondsDiv.getElementsByClassName("article-box__select-tag-search");
+    }
+
+    if (firstDiv.style.display == 'none') {
+
+      var tempSelected = firstDiv.getElementsByClassName("article-box__select-tag-search");
+
+      for (var i = 0; i < tempSelected.length; i++) {
+
+        var auxItem = tempSelected[i];
+
+        auxItem.classList.add("article-box__unselect-tag-search");
+        auxItem.classList.remove("article-box__select-tag-search");
+      }
+    }
+
+    if (secondDiv.style.display == 'none') {
+
+      var tempSelected = secondDiv.getElementsByClassName("article-box__select-tag-search");
+
+      for (var i = 0; i < tempSelected.length; i++) {
+
+        var auxItem = tempSelected[i];
+
+        auxItem.classList.add("article-box__unselect-tag-search");
+        auxItem.classList.remove("article-box__select-tag-search");
+      }
     }
 
     var finalDict = {};
@@ -587,27 +613,8 @@
     if (!isEmpty(finalDict)) {
 
       parseJSON(finalDict, this.currentMap);
+
     } else {
-
-      var auxSelected = firstDiv.getElementsByClassName("article-box__select-tag-search");
-
-      for (var i = 0; i < auxSelected.length; i++) {
-
-        var auxItem = auxSelected[i];
-
-        auxItem.classList.add("article-box__unselect-tag-search");
-        auxItem.classList.remove("article-box__select-tag-search");
-      }
-
-      auxSelected = secondDiv.getElementsByClassName("article-box__select-tag-search");
-
-      for (var i = 0; i < auxSelected.length; i++) {
-
-        var auxItem = auxSelected[i];
-
-        auxItem.classList.add("article-box__unselect-tag-search");
-        auxItem.classList.remove("article-box__select-tag-search");
-      }
 
       parseJSON(jsonContentData, this.currentMap);
     }
