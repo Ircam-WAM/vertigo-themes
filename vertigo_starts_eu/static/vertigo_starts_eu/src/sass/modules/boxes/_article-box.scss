@@ -774,6 +774,14 @@ $module: ".article-box";
         transform:translateX(-20px) !important;
       }
     }
+
+    &__hovering-map-card {
+
+      &:hover {
+
+        border: 3px #47dfba solid
+      }
+    }
 }
 
 ::selection {

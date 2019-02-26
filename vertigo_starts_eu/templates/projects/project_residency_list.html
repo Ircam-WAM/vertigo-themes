@@ -387,11 +387,11 @@
 
             var lat = item["lat"];
             var lon = item["lon"];
-            var name = item["name"];
+            var title = item["title"];
 
-            var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
+            var marker = L.marker(new L.LatLng(lat, lon), {  title: title });
             marker.id_value = i;
-            marker.title = name;
+            marker.title = title;
             marker.on('click', function (e) {
 
                 var id = e.target.id_value;
@@ -407,9 +407,9 @@
                 var htmlString = "";
 
                 if ('card' in item) {
-                  htmlString += "<div style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px\">";
+                  htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px\">";
                 } else {
-                  htmlString += "<div style=\"background:lightgray;height:100%\">";
+                  htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background:lightgray;height:100%\">";
                 }
 
                 htmlString += "<div style=\"padding-top:10%;position:relative\">"
@@ -523,10 +523,17 @@
       clickedItem.classList.remove("article-box__unselect-tag-search");
       clickedItem.classList.add("article-box__select-tag-search");
 
+      triggerFilter();
+
     }
   }
 
+  function triggerFilter() {
+
+  }
+
   var jsonContentData = {};
+  var residenciesGlobal = {};
 
   function loadContent() {
 
@@ -540,6 +547,7 @@
           if (data) {
 
             jsonContentData = data;
+            residenciesGlobal = jsonContentData["residencies"];
 
             parseJSONTags(jsonContentData);
 
