@@ -452,6 +452,7 @@
         }
 
         map.addLayer(markers);
+        markersGlobal.push(markers);
 
         map.on('click', function(e) {
 
@@ -530,10 +531,14 @@
 
   function triggerFilter() {
 
+    for(var i = 0; i < markersGlobal.length; i++){
+        this.map.removeLayer(markersGlobal[i]);
+    }
   }
 
   var jsonContentData = {};
   var residenciesGlobal = {};
+  var markersGlobal = [];
 
   function loadContent() {
 
