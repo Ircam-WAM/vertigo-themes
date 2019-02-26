@@ -260,7 +260,7 @@
 
       tags = tags.filter(function(elem, index, self) {
           return index === self.indexOf(elem);
-      })
+      });
 
       var counter = document.getElementById("tags-counter");
       counter.innerHTML = tags.length + " results";
