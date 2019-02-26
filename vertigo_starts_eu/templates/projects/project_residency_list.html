@@ -529,9 +529,15 @@
     }
   }
 
-  function arrayContains(needle, arrhaystack)
-  {
-      return (arrhaystack.indexOf(needle) > -1);
+  function arrayContains(needle, arrhaystack) {
+
+    return (arrhaystack.indexOf(needle) > -1);
+  }
+
+  function isEmpty(ob) {
+    
+    for(var i in ob){ return false;}
+    return true;
   }
 
   function triggerFilter() {
