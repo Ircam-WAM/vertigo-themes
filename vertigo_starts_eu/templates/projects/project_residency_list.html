@@ -398,8 +398,8 @@
 
                 var item = residencies[id];
 
-                var name = item["name"];
-                var description = item["description"].substring(0,100) + "...";
+                var title = item["title"];
+                var description = item["description"].substring(0,50) + "...";
                 var city = item["city"];
                 var keywords = item["keywords"];
                 var location = item["mappable_location"];
@@ -414,7 +414,7 @@
 
                 htmlString += "<div style=\"padding-top:10%;position:relative\">"
                 htmlString += "<center>";
-                htmlString += "<div style=\"font-size:25px;font-family:'Oswald',sans-serif;padding-left:10%;padding-right:10%\">" + name + "</div>";
+                htmlString += "<div style=\"font-size:25px;font-family:'Oswald',sans-serif;padding-left:10%;padding-right:10%\">" + title + "</div>";
 
                 if (description != "") {
 
@@ -426,8 +426,8 @@
 
                 if (keywords.length > 0) {
 
-                  htmlString += "<div style=\"width:auto;margin-right:5%;margin-left:5%;margin-top:5%;display:block\">";
-                  htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:2%\">" + keywords[0] + "</div>";
+                  htmlString += "<div style=\"width:auto;margin-right:5%;margin-left:5%;margin-top:5%;display:block;margin-bottom:5%\">";
+                  htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:4%\">" + keywords[0] + "</div>";
 
                   if (keywords.length > 1) {
                     htmlString += "<div style=\"border-radius:.2em;border:2px #47dfba solid;color:#47dfba;font-size:15px;text-align:center;font-family:'helvetica';display:inline-block;padding:3%;margin-right:2%\">" + keywords[1] + "</div>";
