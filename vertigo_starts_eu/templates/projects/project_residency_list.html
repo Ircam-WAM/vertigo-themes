@@ -544,7 +544,14 @@
         this.currentMap.removeLayer(markersGlobal[i]);
     }
 
-    var selectedTags = document.getElementsByClassName("article-box__select-tag-search");
+    var firstDiv = document.getElementById('section-0');
+    var secondsDiv = document.getElementById('section-1');
+
+    var selectedTags = firstDiv.getElementsByClassName("article-box__select-tag-search");
+
+    if (secondDiv.style.visibility == 'block') {
+      selectedTags = secondsDiv.getElementsByClassName("article-box__select-tag-search");
+    }
 
     var finalDict = {};
 
@@ -582,7 +589,17 @@
       parseJSON(finalDict, this.currentMap);
     } else {
 
-      var auxSelected = document.getElementsByClassName("article-box__select-tag-search");
+      var auxSelected = firstDiv.getElementsByClassName("article-box__select-tag-search");
+
+      for (var i = 0; i < auxSelected.length; i++) {
+
+        var auxItem = auxSelected[i];
+
+        auxItem.classList.add("article-box__unselect-tag-search");
+        auxItem.classList.remove("article-box__select-tag-search");
+      }
+
+      auxSelected = secondDiv.getElementsByClassName("article-box__select-tag-search");
 
       for (var i = 0; i < auxSelected.length; i++) {
 
