@@ -265,6 +265,8 @@
       var counter = document.getElementById("tags-counter");
       counter.innerHTML = tags.length + " results";
 
+      globalTags = tags;
+
       var block = 28;
       var contentTags = document.getElementById("tags-content");
 
@@ -631,6 +633,18 @@
 
       parseJSON(jsonContentData, this.currentMap);
     }
+
+    var tagsItems = document.getElementsByClassName("article-box__select-tag-search");
+
+    var counter = document.getElementById("tags-counter");
+
+    if (tagsItems.length > 0) {
+
+        counter.innerHTML = tagsItems.length + " results";
+    } else {
+
+        counter.innerHTML = globalTags.length + " results";
+    }
   }
 
   function removeDuplicates(arr, prop) {
@@ -648,6 +662,7 @@
   var jsonContentData = {};
   var residenciesGlobal = {};
   var markersGlobal = [];
+  var globalTags = [];
 
   function loadContent() {
 
