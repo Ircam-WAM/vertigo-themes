@@ -263,7 +263,7 @@
       });
 
       var counter = document.getElementById("tags-counter");
-      counter.innerHTML = tags.length + " results";
+      counter.innerHTML = residencies.length + (residencies.length == 1 ? " result" : " results");
 
       globalTags = tags;
 
@@ -408,8 +408,6 @@
 
                 var item = residencies[id];
 
-
-
                 var htmlString = createCardHTML(item);
 
                 detailMarker.innerHTML = htmlString;
@@ -436,13 +434,14 @@
     var city = item["city"];
     var keywords = item["keywords"];
     var location = item["mappable_location"];
+    var detaillURL = item["url"];
 
-    var htmlString = "";
+    var htmlString = "<a href=\"" + detaillURL + "\" target=\"_blank\">";
 
     if ('card' in item) {
-      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px\">";
+      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px;color:white\">";
     } else {
-      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background:lightgray;height:100%\">";
+      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background:lightgray;height:100%;color:white\">";
     }
 
     htmlString += "<div style=\"padding-top:10%;position:relative\">"
@@ -466,7 +465,7 @@
         htmlString += "<div class=\"article-box__keywords-card-map\">" + keywords[1] + "</div>";
       }
 
-      htmlString +="</div>";
+      htmlString +="</div><";
     }
 
     if (location != "" && location != null) {
@@ -475,7 +474,7 @@
     }
 
     htmlString += "</center>";
-    htmlString += "</div></div>";
+    htmlString += "</div></div></a>";
 
     return htmlString;
   }
@@ -567,6 +566,9 @@
       }
     }
 
+    var listContainer = document.getElementById("residency-list");
+    listContainer.innerHTML = "";
+
     var firstDiv = document.getElementById('section-0');
     var secondDiv = document.getElementById('section-1');
 
@@ -622,7 +624,6 @@
              if (arrayContains(tagtext, keywords)) {
 
                finalObject.push(item);
-               break;
              }
          }
        }
@@ -634,26 +635,26 @@
        }
     }
 
+    var counter = document.getElementById("tags-counter");
+
+    var totalItems = 0;
+
     if (!isEmpty(finalDict)) {
 
       parseJSON(finalDict, this.currentMap);
+      createListItems(finalDict);
+
+      totalItems = finalDict["residencies"];
 
     } else {
 
       parseJSON(jsonContentData, this.currentMap);
+      createListItems(jsonContentData);
+
+      totalItems = jsonContentData["residencies"];
     }
 
-    var tagsItems = document.getElementsByClassName("article-box__select-tag-search");
-
-    var counter = document.getElementById("tags-counter");
-
-    if (tagsItems.length > 0) {
-
-        counter.innerHTML = tagsItems.length + " results";
-    } else {
-
-        counter.innerHTML = globalTags.length + " results";
-    }
+    counter.innerHTML = totalItems.length + (totalItems.length == 1 ? " result" : " results");
   }
 
   function removeDuplicates(arr, prop) {
@@ -666,6 +667,83 @@
     var newArr = [];
     for ( var key in obj ) newArr.push(obj[key]);
     return newArr;
+  }
+
+  function createListCardHTML(item) {
+
+    var title = item["title"];
+    var description = item["description"].substring(0,130) + "...";
+    var city = item["city"];
+    var keywords = item["keywords"];
+    var location = item["mappable_location"];
+    var detaillURL = item["url"];
+
+    var htmlString = "";
+
+    if ('card' in item) {
+      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:400px;max-height:400px;width:auto;height:400px;color:white\">";
+    } else {
+      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background:lightgray;height:100%;color:white\">";
+    }
+
+    htmlString += "<div style=\"padding-top:10%;position:relative\">"
+    htmlString += "<center>";
+    htmlString += "<div class=\"article-box__title-card-map\">" + title + "</div>";
+
+    if (description != "") {
+
+      htmlString += "<div class=\"article-box__description-card-map\">" + description + "</div><br>";
+    } else {
+
+      htmlString += "<br>";
+    }
+
+    if (keywords.length > 0) {
+
+      htmlString += "<div class=\"article-box__wrap-tags-map-card\">";
+      htmlString += "<div class=\"article-box__single-keyword-card-map\">" + keywords[0] + "</div>";
+
+      if (keywords.length > 1) {
+        htmlString += "<div class=\"article-box__keywords-card-map\">" + keywords[1] + "</div>";
+      }
+
+      htmlString +="</div>";
+    }
+
+    if (location != "" && location != null) {
+
+      htmlString += "<div class=\"article-box__location-card-map\">" + location + "</div>";
+    }
+
+    htmlString += "</center>";
+    htmlString += "</div></div>";
+
+    return htmlString;
+  }
+
+  function createListItems(content) {
+
+    var allResidencies = content["residencies"];
+
+    var listContainer = document.getElementById("residency-list");
+
+    if (allResidencies.length > 0) {
+
+      for (var i = 0; i < allResidencies.length; i++) {
+
+        var singleItem = allResidencies[i];
+
+        var titleValue = singleItem["title"];
+        var urlValue = singleItem["url"];
+
+        var htmlContent = "<div class=\"col-xs-8 page__row-responsive\" id=\"" + titleValue + "\">";
+        htmlContent += "<a href=\"" + urlValue + "\" target=\"_blank\" class=\"residency-box\">";
+        htmlContent += createListCardHTML(singleItem);
+        htmlContent += "</a><div>";
+
+        listContainer.innerHTML += htmlContent;
+      }
+    }
   }
 
   var jsonContentData = {};
@@ -688,6 +766,7 @@
             residenciesGlobal = jsonContentData["residencies"];
 
             parseJSONTags(jsonContentData);
+            createListItems(jsonContentData);
 
             var chevronItem = document.getElementById("chevron-tags");
             var tagsDivContent = document.getElementById("tags-content");
@@ -771,7 +850,7 @@
                 <div class="page__content">
                     <div class="container">
                         <div id="residency-list" class="row page__space-responsive">
-
+                            {% comment %}
                             {% for object in object_list %}
                                 <div class="col-xs-8 page__row-responsive" id="{{ object.slug }}">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
@@ -781,7 +860,7 @@
                                     {% endwith %}
                                 </div>
                             {% endfor %}
-
+                            {% endcomment %}
                         </div>
                     </div>
                 </div>
