@@ -408,51 +408,9 @@
 
                 var item = residencies[id];
 
-                var title = item["title"];
-                var description = item["description"].substring(0,50) + "...";
-                var city = item["city"];
-                var keywords = item["keywords"];
-                var location = item["mappable_location"];
 
-                var htmlString = "";
 
-                if ('card' in item) {
-                  htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px\">";
-                } else {
-                  htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background:lightgray;height:100%\">";
-                }
-
-                htmlString += "<div style=\"padding-top:10%;position:relative\">"
-                htmlString += "<center>";
-                htmlString += "<div class=\"article-box__title-card-map\">" + title + "</div>";
-
-                if (description != "") {
-
-                  htmlString += "<div class=\"article-box__description-card-map\">" + description + "</div><br>";
-                } else {
-
-                  htmlString += "<br>";
-                }
-
-                if (keywords.length > 0) {
-
-                  htmlString += "<div class=\"article-box__wrap-tags-map-card\">";
-                  htmlString += "<div class=\"article-box__single-keyword-card-map\">" + keywords[0] + "</div>";
-
-                  if (keywords.length > 1) {
-                    htmlString += "<div class=\"article-box__keywords-card-map\">" + keywords[1] + "</div>";
-                  }
-
-                  htmlString +="</div>";
-                }
-
-                if (location != "" && location != null) {
-
-                  htmlString += "<div class=\"article-box__location-card-map\">" + location + "</div>";
-                }
-
-                htmlString += "</center>";
-                htmlString += "</div></div>";
+                var htmlString = createCardHTML(item);
 
                 detailMarker.innerHTML = htmlString;
                 detailMarker.style.display = 'block';
@@ -469,6 +427,57 @@
             detailMarker.style.display = 'none';
         });
     });
+  }
+
+  function createCardHTML(item) {
+
+    var title = item["title"];
+    var description = item["description"].substring(0,50) + "...";
+    var city = item["city"];
+    var keywords = item["keywords"];
+    var location = item["mappable_location"];
+
+    var htmlString = "";
+
+    if ('card' in item) {
+      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["card"] + "');background-size:cover;max-width:300px;max-height:300px;width:auto;height:300px\">";
+    } else {
+      htmlString += "<div class=\"article-box__hovering-map-card\" style=\"background:lightgray;height:100%\">";
+    }
+
+    htmlString += "<div style=\"padding-top:10%;position:relative\">"
+    htmlString += "<center>";
+    htmlString += "<div class=\"article-box__title-card-map\">" + title + "</div>";
+
+    if (description != "") {
+
+      htmlString += "<div class=\"article-box__description-card-map\">" + description + "</div><br>";
+    } else {
+
+      htmlString += "<br>";
+    }
+
+    if (keywords.length > 0) {
+
+      htmlString += "<div class=\"article-box__wrap-tags-map-card\">";
+      htmlString += "<div class=\"article-box__single-keyword-card-map\">" + keywords[0] + "</div>";
+
+      if (keywords.length > 1) {
+        htmlString += "<div class=\"article-box__keywords-card-map\">" + keywords[1] + "</div>";
+      }
+
+      htmlString +="</div>";
+    }
+
+    if (location != "" && location != null) {
+
+      htmlString += "<div class=\"article-box__location-card-map\">" + location + "</div>";
+    }
+
+    htmlString += "</center>";
+    htmlString += "</div></div>";
+
+    return htmlString;
   }
 
   function showHideChevronTags(object, event) {
@@ -762,6 +771,7 @@
                 <div class="page__content">
                     <div class="container">
                         <div id="residency-list" class="row page__space-responsive">
+
                             {% for object in object_list %}
                                 <div class="col-xs-8 page__row-responsive" id="{{ object.slug }}">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
@@ -771,6 +781,7 @@
                                     {% endwith %}
                                 </div>
                             {% endfor %}
+
                         </div>
                     </div>
                 </div>
