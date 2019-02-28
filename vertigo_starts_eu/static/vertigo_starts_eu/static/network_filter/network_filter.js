@@ -487,7 +487,7 @@ function triggerFilter() {
   } else {
 
     if (jsonContentData != null ) {
-      
+
       parseJSON(jsonContentData, this.currentMap);
 
       totalItems = jsonContentData["residencies"];
@@ -523,7 +523,7 @@ function createMapView() {
 
           parseJSON(data, currentMap);
 
-          parseJSONTags(data);
+          //parseJSONTags(data);
 
           triggerFilter();
         }
