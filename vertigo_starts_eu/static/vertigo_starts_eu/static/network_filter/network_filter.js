@@ -525,7 +525,7 @@ function createMapView() {
 
           //parseJSONTags(data);
 
-          triggerFilter();
+          //triggerFilter();
         }
     },
     error: function(request, status, errorThrown) {
