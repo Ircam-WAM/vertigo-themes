@@ -40,25 +40,29 @@
 <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
   crossorigin=""></script>
 
+
 <script src="{% static 'vertigo_starts_eu/static/network_filter/network_filter.js' %}"></script>
 
 <script>
 
 $(function(){
 
-   document.body.style.backgroundColor = "white";
+
 
    createMapView();
-
+{% comment %}
+document.body.style.backgroundColor = "white";
    var chevronItem = document.getElementById("chevron-tags");
    var tagsDivContent = document.getElementById("tags-content");
 
    chevronItem.classList.remove("fa-chevron-down");
    chevronItem.classList.add("fa-chevron-up");
    tagsDivContent.style.display = 'block';
+   {% endcomment %}
 })
 
 </script>
+
 {% endblock %}
 
 {% block page_slider %}
@@ -75,7 +79,7 @@ $(function(){
         </div>
     </div>
 -->
-
+{% comment %}
     <div class="article-box__content-row" style="position:relative;padding-top:3%">
 
         <!--<div class="article-box__view-changer-container article-box__space-center-responsive" style="width: 100px;">-->
@@ -105,7 +109,7 @@ $(function(){
   <div style="width:100%;display:block;text-align:center">
     <a id="dots-indicator" href="#" style="display:none;margin-top:1%;text-align:center;" onclick="changeTags(this, event);"></a>
   </div>
-
+{% endcomment %}
 
     <div id="map-element-content" style="position:relative;display:block;margin-right:-3.5%;margin-top:2%;height:800px">
        <div id="mapid" style="height:100%;">
