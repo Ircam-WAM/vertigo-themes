@@ -487,6 +487,7 @@ function triggerFilter() {
   } else {
 
     if (jsonContentData != null ) {
+      
       parseJSON(jsonContentData, this.currentMap);
 
       totalItems = jsonContentData["residencies"];
