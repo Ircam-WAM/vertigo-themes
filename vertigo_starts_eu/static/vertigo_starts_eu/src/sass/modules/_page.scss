@@ -910,12 +910,13 @@ $module: ".page";
 
       color:white !important;
       font-size:20px !important;
-      font-family:'Oswald',sans-serif !important;
-      text-align:center;margin-top:1% !important;
+      font-family:'Helvetica' !important;
+      text-align:center !important;
+      margin-top:1% !important;
       display:inline !important;
       width:auto !important;
-      left:5.5% !important;
       position:relative !important;
+      margin-left: -2.5% !important;
     }
 
     &__link-public-profile {
