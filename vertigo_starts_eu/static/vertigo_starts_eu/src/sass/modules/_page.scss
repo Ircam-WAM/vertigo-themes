@@ -1028,4 +1028,18 @@ $module: ".page";
       margin-left:18% !important;
       margin-top:10% !important;
     }
+
+    &__residency-blog-content {
+
+      font-family: 'Oswald', sans-serif !important;
+      color:gray !important;
+      font-weight:normal !important;
+    }
+
+    &__about-content {
+
+      font-family: 'Oswald', sans-serif !important;
+      color:black !important;
+      font-weight:normal !important;
+    }
 }

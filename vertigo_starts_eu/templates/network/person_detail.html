@@ -136,38 +136,12 @@
       window.onload = selectCurrentTab;
 
       </script>
-      {% if request.user.is_authenticated and person.user == request.user %}
-        {# Private section #}
-      <div class="page__item_selector">
-      		<a href="{% url 'profile_update' %}"><span id="select-profile" class="page__option-selected">Profile</span></a>
-      	<!--	<a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
-      		<!-- <a href="{% url 'organization-network-profile-following' request.user %}"><span id="select-following" class="page__option-unselected">Following</span></a>
-      		<a href="{% url 'organization-network-profile-followers' request.user %}><span id="select-follower" class="page__option-unselected">Followers</span></a> -->
-          <a href="{% url 'organization-network-profile-applications' %}"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
-      		<a href="{% url 'organization-network-profile-settings' %}"><span id="select-settings" class="page__option-unselected">Settings</span></a>
-      </div>
 
 
-      <div class="page__item_content">
-{% comment %}
-          <div class="page__center-bio section-title section-title--big" style="color:black">{{ person.title|upper }}</h1>
-{% endcomment %}
-      </div>
-    {% endif %}
-
-      {# Public section #}
+      {# Public and Private section #}
       {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
-          {% if request.user.is_authenticated %}
-            <div class="page__image-container">
-              <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
-              {% if card_images.first.credits|length > 0 %}
-                <div style="text-align:left;{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-                  <p sytle="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %};font-size:12px;">Credits: {{ card_images.first.credits }}</p>
-                </div>
-              {% endif %}
-            </div>
-          {% else %}
+
             <div class="page__image-container" style="height:auto;margin-top:-6.5%;padding-top:20px;background:gray;">
               <div style="position:relative">
                 {% if card_images.first %}
@@ -212,13 +186,15 @@
                   </div>
                 </div>
             </div>
-          {% endif %}
+        {% else %}
+            <div style="padding-botton:2%">
+
+            </div>
         {% endif %}
       {% endwith %}
 
-      {% if not request.user.is_authenticated %}
-      <div class="page__submenu-public-profile">
-        <a href="#"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">Profile</span></a>
+      <div class="page__submenu-public-profile" {% if person.images.all|length == 0 %} style="padding-top:5%"{% endif %}>
+        <a href="#"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">{% if request.user.is_authenticated %}About{% else %}Profile{% endif %}</span></a>
         <a href="#"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
         <a href="#"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
         <a href="#"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Follower</span></a>
@@ -233,11 +209,9 @@
         You will no longer receive updates by mail.
       </div>
 
-      {% endif %}
-
       {% if request.user.is_authenticated %}
 
-        <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
+      <!--  <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1> -->
 
         <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
             {% if person.email %}Email: <a href="mailto:{{ person.email }}">{{ person.email }}</a><br/><br/>{% endif %}
@@ -248,6 +222,7 @@
         </div>
       {% endif %}
 
+      {% comment %}
       {% if request.user.is_authenticated %}
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% if person.bio %}
@@ -255,13 +230,25 @@
         {% endif %}
       </div>
       {% else %}
-
-          <div id="content_public-profile-item"class="page__fancy-font page__items-public-menu" style="display:block;">{% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}</div>
-          <div id="content_public-residency-blog-item"class="page__fancy-font page__items-public-menu" style="display:none;">Residency Blog content</div>
+      {% endcomment %}
+          <div id="content_public-profile-item"class="page__fancy-font page__items-public-menu" style="display:block;">
+            <div class="page__about-content">
+            {% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}
+            </div>
+          </div>
+          <div id="content_public-residency-blog-item" class="page__fancy-font page__items-public-menu" style="display:none;">
+            <div class="page__residency-blog-content">
+              {{ person.title }} hasn't shared any update yet.
+              <br/><br/>
+              Follow {{ person.title }} to receive notifications about future updates.
+            </div>
+          </div>
           <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">Following content</div>
           <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">Follower content</div>
 
+      {% comment %}
       {% endif %}
+
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% with person.links.all.0 as link %}
@@ -270,6 +257,7 @@
             {% endif %}
         {% endwith %}
       </div>
+        {% endcomment %}
 
 {% comment %}
     {% editable person.title %}
@@ -297,7 +285,7 @@
 {% block main %}
     {{ block.super }}
 
-{% if not request.user.is_authenticated %}
+
 
 <script type="text/javascript">
 
@@ -311,7 +299,7 @@ function changeBackground() {
 window.onload = changeBackground;
 
 </script>
-{% endif %}
+
 
 {% endblock %}
 
