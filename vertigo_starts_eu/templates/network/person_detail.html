@@ -39,21 +39,47 @@
         var blog = document.getElementById("public-residency-blog-item");
         var following = document.getElementById("public-following-item");
         var follower = document.getElementById("public-follower-item");
+        var applicationForm = document.getElementById("public-application-form");
+        var profileSettings = document.getElementById("public-profile-settings");
 
         document.getElementById("content_public-profile-item").style.display = "none";
         document.getElementById("content_public-residency-blog-item").style.display = "none";
         document.getElementById("content_public-following-item").style.display = "none";
         document.getElementById("content_public-follower-item").style.display = "none";
 
+        if (applicationForm != null) {
+          document.getElementById("content_public-application-form").style.display = "none";
+        }
+
+        if (profileSettings != null) {
+          document.getElementById("content_public-profile-settings").style.display = "none";
+        }
+
         profile.classList.remove("page__option-selected");
         blog.classList.remove("page__option-selected");
         following.classList.remove("page__option-selected");
         follower.classList.remove("page__option-selected");
 
+        if (applicationForm != null) {
+          applicationForm.classList.remove("page__option-selected");
+        }
+
+        if (profileSettings != null) {
+          profileSettings.classList.remove("page__option-selected");
+        }
+
         profile.classList.add("page__option-unselected");
         blog.classList.add("page__option-unselected");
         following.classList.add("page__option-unselected");
         follower.classList.add("page__option-unselected");
+
+        if (applicationForm != null) {
+          applicationForm.classList.add("page__option-unselected");
+        }
+
+        if (profileSettings != null) {
+          profileSettings.classList.add("page__option-unselected");
+        }
 
         object.classList.add("page__option-selected");
         object.classList.remove("page__option-unselected");
@@ -198,6 +224,11 @@
         <a href="#"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
         <a href="#"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
         <a href="#"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Followers</span></a>
+      {% if request.user.is_authenticated %}
+        <a href="#"><span id="public-application-form" onclick="changePublicView(event,this);" class="page__option-unselected">Application form(s)</span></a>
+        <a href="#"><span id="public-profile-settings" onclick="changePublicView(event,this);" class="page__option-unselected">Profile & Settings</span></a>
+       {% endif %}
+
       </div>
 
       <div id="start-follow-item" style="display:none" class="page__follow-public-text">
