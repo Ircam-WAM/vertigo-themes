@@ -224,10 +224,10 @@
         <a href="#"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
         <a href="#"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
         <a href="#"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Followers</span></a>
-      {% if request.user.is_authenticated %}
+        {% if request.user.is_authenticated %}
         <a href="#"><span id="public-application-form" onclick="changePublicView(event,this);" class="page__option-unselected">Application form(s)</span></a>
         <a href="#"><span id="public-profile-settings" onclick="changePublicView(event,this);" class="page__option-unselected">Profile & Settings</span></a>
-       {% endif %}
+        {% endif %}
 
       </div>
 
@@ -259,7 +259,7 @@
       {% if request.user.is_authenticated %}
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% if person.bio %}
-          <div class="page__fancy-font">Biography: {{ person.bio|richtext_filters|safe }}</div>
+          <div class="page__fancy-font">{{ person.bio|richtext_filters|safe }}</div>
         {% endif %}
       </div>
       {% else %}
@@ -278,6 +278,11 @@
           </div>
           <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">Following content</div>
           <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">Follower content</div>
+
+          {% if request.user.is_authenticated %}
+          <div id="content_public-application-form"class="page__fancy-font page__items-public-menu" style="display:none;">Application form content</div>
+          <div id="content_public-profile-settings"class="page__fancy-font page__items-public-menu" style="display:none;">Settings content</div>
+          {% endif %}
 
       {% comment %}
       {% endif %}
