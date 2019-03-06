@@ -266,7 +266,7 @@
       {% endcomment %}
           <div id="content_public-profile-item"class="page__fancy-font page__items-public-menu" style="display:block;">
             <div class="page__about-content">
-            {% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}
+            {% if person.bio %}{{ person.bio|richtext_filters|safe }}{% else %}Backend object missing{% endif %}
             </div>
           </div>
           <div id="content_public-residency-blog-item" class="page__fancy-font page__items-public-menu" style="display:none;">
@@ -276,17 +276,48 @@
               Follow {{ person.title }} to receive notifications about future updates.
             </div>
           </div>
-          <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">Following content</div>
-          <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">Follower content</div>
+          <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">
+
+            <div style="width:100%;height:auto;display:flex;">
+              <div style="width:33%;height:300px;margin: 0 auto;background:green;margin-right:5%;">
+
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:green;margin-right:5%;">
+
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:green;margin-right:5%;">
+
+              </div>
+            </div>
+            <br/>
+            Following backend object missing
+          </div>
+          <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">
+            <div style="width:100%;height:auto;display:flex;">
+              <div style="width:33%;height:300px;margin: 0 auto;background:red;margin-right:5%;">
+
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:red;margin-right:5%;">
+
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:red;margin-right:5%;">
+
+              </div>
+            </div>
+            <br/>
+            Follower  backend object missing
+          </div>
 
           {% if request.user.is_authenticated %}
-          <div id="content_public-application-form"class="page__fancy-font page__items-public-menu" style="display:none;">Application form content</div>
-          <div id="content_public-profile-settings"class="page__fancy-font page__items-public-menu" style="display:none;">Settings content</div>
+          <div id="content_public-application-form"class="page__fancy-font page__items-public-menu" style="display:none;">Application form  backend object missing</div>
+          <div id="content_public-profile-settings"class="page__fancy-font page__items-public-menu" style="display:none;">
+
+            Settings backend object missing
+          </div>
           {% endif %}
 
       {% comment %}
       {% endif %}
-
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% with person.links.all.0 as link %}
