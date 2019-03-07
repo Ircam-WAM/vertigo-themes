@@ -916,6 +916,10 @@ $module: ".page";
       width:auto !important;
       position:relative !important;
       margin-left: -66% !important;
+
+      @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+        margin-left: -65% !important;
+      }
     }
 
     &__link-public-profile {
