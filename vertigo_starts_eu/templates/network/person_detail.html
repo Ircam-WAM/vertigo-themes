@@ -192,7 +192,15 @@
                     {% endif %}
                 {% endwith %}
                 {% endcomment %}
-                  <a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>
+
+                {% with person.links.all.0 as link %}
+                    {% if person.links.all.0 %}
+                        <a href="{{ link }}" blank="true" class="page__link-public-profile">{{ link }}</a>
+                    {% else %}
+                        <a href="http://wekit.eu/" blank="true" class="page__link-public-profile">http://wekit.eu/</a>
+                    {% endif %}
+                {% endwith %}
+                  <!--<a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>-->
                   <div class="page__container-buttons-share">
                     <div id="share-twitter" class="page__circle-small-share-button page__twitter-share-container" onclick="shareActionButton(event, this);">
                       <i class="fa fa-twitter page__twitter-icon-style" aria-hidden="true"></i>
@@ -516,6 +524,7 @@ window.onload = changeBackground;
     </div>
 {% endblock %}
 
+{% comment %}
 {% block page_link %}
     {% with person.links.all as links %}
         {% if links %}
@@ -524,3 +533,4 @@ window.onload = changeBackground;
         {% endif %}
     {% endwith %}
 {% endblock %}
+{% endcomment %}
