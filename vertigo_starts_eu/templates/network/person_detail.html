@@ -27,6 +27,11 @@
 
       function selectCurrentTab() {
 
+        var links = document.getElementsByClassName("mb2 col-sm-16 page__content");
+
+        for (var i = 0;i < links.length; i++) {
+          links[i].style.display = "none";
+        }
 
         //document.getElementById("select-messages").className = "page__option-selected";
       }
