@@ -183,8 +183,8 @@
                 </div>
               </div>
               <div class="page__main-title-profile-public">{{ person.title }}</div>
-              <div style="margin-top:1%;position:relative;padding-bottom:1%">
-                <div class="page__main-subtitle-profile-public page__subtitle-public-item">Researcher, Autor - Oxford, UK</div>
+              <div style="margin-top:1%;padding-bottom:1%;display:flex;width:100%">
+
                 {% comment %}
                 {% with person.links.all.0 as link %}
                     {% if person.links.all.0 %}
@@ -200,6 +200,7 @@
                         <a href="http://wekit.eu/" blank="true" class="page__link-public-profile">http://wekit.eu/</a>
                     {% endif %}
                 {% endwith %}
+                <div style="margin:0 auto;margin;padding-left:1%">Researcher, Autor - Oxford, UK</div>
                   <!--<a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>-->
                   <div class="page__container-buttons-share">
                     <div id="share-twitter" class="page__circle-small-share-button page__twitter-share-container" onclick="shareActionButton(event, this);">
