@@ -387,6 +387,20 @@ function changeBackground() {
   document.getElementById("main-content").style.background = "white";
 
   document.getElementById("body").style.background = "white";
+
+  var items = document.getElementsByTagName("p");
+
+  for (var i = 0; i < items.length; i++) {
+
+    var links = items[i].getElementsByTagName("a");
+
+    for (var j = 0; j < links.length; j++) {
+
+      var link = links[j];
+
+      link.style.color = "black";
+    }
+  }
 }
 
 window.onload = changeBackground;
