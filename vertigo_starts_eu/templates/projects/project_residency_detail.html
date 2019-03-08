@@ -70,7 +70,25 @@ $(function(){
 {% endcomment %}
 
 <div style="width:100%;height:400px;background:gray;">
-
+  <div style="text-align:center;color:white;padding-top:4%">
+    <div style="font-size:50px;font-family:'Oswald',sans-serif;">{{ object.project.title }}</div>
+    <div style="font-size:15px;font-family:'Helvetica';margin-top:1%;">{{ object.description }}</div>
+  </div>
+  <div style="margin-top:7%;text-align:center;color:white">
+    <div style="font-size:15px;font-family:'Helvetica';">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+    <br/>
+    <div style="font-size:15px;font-family:'Helvetica';">+</div>
+    <div style="font-size:15px;font-family:'Helvetica';">
+      {% with object.producers.all as producers %}
+          {% if producers %}
+              {% if producers|length > 0 %}
+                  {{ producers.0.organization }}
+              {% endif %}
+          {% endif %}
+      {% endwith %}
+    </div>
+    <div style="font-size:15px;font-family:'Helvetica';">{{ object.city }}, {{ object.country.name }}</div>
+  </div>
 </div>
 
 <div class="residency-detail__background-main residency-detail__margin-global">
