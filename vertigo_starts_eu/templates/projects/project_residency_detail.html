@@ -179,14 +179,12 @@ $(function(){
 </div>
 {% endcomment %}
 
-<div style="width:100%;height:auto;background:gray;padding-bottom:5%">
   {% with object.images.all|get_type:'slider' as images %}
       {% if images %}
-      <div class="residency-detail__header-image" style="background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 0 400 padding=true %}');">
+<div style="width:100%;height:auto;background:gray;padding-bottom:5%;background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% images|first 0 100% padding=true %}');">
       {% else %}
-      <div class="residency-detail__header-image">
+<div style="width:100%;height:auto;background:gray;padding-bottom:5%">
       {% endif %}
-      </div>
   {% endwith %}
   <div style="text-align:center;color:white;padding-top:4%">
     <div style="text-align:center">
