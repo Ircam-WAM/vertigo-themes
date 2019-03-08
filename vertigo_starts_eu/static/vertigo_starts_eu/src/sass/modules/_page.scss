@@ -865,6 +865,34 @@ $module: ".page";
       margin-top:0.2% !important;
     }
 
+    &__follow-public-text-spaceless {
+
+      width:100% !important;
+      height:auto !important;
+      background:#46dfba !important;
+      color:white !important;
+      font-size:15px !important;
+      text-align:center !important;
+      font-family:'Oswald',sans-serif !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+      margin-top:0 !important;
+    }
+
+    &__unfollow-public-text-spaceless {
+
+      width:100% !important;
+      height:auto !important;
+      background:#f11b34 !important;
+      color:white !important;
+      font-size:15px !important;
+      text-align:center !important;
+      font-family:'Oswald',sans-serif !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+      margin-top:0 !important;
+    }
+
     &__unfollow-public-text {
 
       width:100% !important;
