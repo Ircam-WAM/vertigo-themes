@@ -1048,4 +1048,87 @@ $module: ".page";
       font-weight:normal !important;
       text-align:justify !important;
     }
+
+
+    &__main-timeline-style {
+
+      height:50px !important;
+      width:60% !important;
+      text-align:center !important;
+      margin:0 auto !important;
+      margin-top:2% !important;
+      font-family:'Oswald',sans-serif !important;
+      font-size:20px !important;
+    }
+
+    &__timeline-first-row {
+
+      width:100% !important;
+      display:flex !important;
+      color:white !important;
+    }
+
+    &__timeline-draw {
+
+      width:100% !important;
+      text-align:center !important;
+      color:white !important;
+      margin-top:2% !important;
+    }
+
+    &__timeline-info {
+
+      width:100% !important;
+      display:flex !important;
+      color:white !important;
+    }
+
+    &__timeline-draw-part-one {
+
+      background:white !important;
+      width:30px !important;
+      height:30px !important;
+      border-radius: 50% !important;
+      display:inline-block !important;
+    }
+
+    &__timeline-draw-part-two {
+
+      background:white !important;
+      width:33% !important;
+      height:5px !important;
+      display:inline-block !important;
+      transform: translate(-5%,-250%) !important;
+      padding-left:5% !important;
+    }
+
+    &__timeline-draw-part-three {
+
+      background:white !important;
+      width:30px !important;
+      height:30px !important;
+      border-radius: 50% !important;
+      display:inline-block !important;
+      transform: translate(-80%) !important;
+    }
+
+    &__timeline-draw-part-four {
+
+      background:white !important;
+      width:33% !important;
+      height:5px !important;
+      display:inline-block !important;
+      transform: translate(-5%,-250%) !important;
+      margin-left:-2% !important;
+    }
+
+    &__timeline-draw-part-five {
+
+      background:white !important;
+      width:30px !important;
+      height:30px !important;
+      border-radius: 50% !important;
+      display:inline-block !important;
+      margin-left:-2.5% !important;
+    }
 }
