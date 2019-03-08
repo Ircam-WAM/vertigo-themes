@@ -113,7 +113,7 @@ $(function(){
 </div>
 {% endcomment %}
 
-<div style="width:100%;height:400px;background:gray;">
+<div style="width:100%;height:auto;background:gray;padding-bottom:2%">
   <div style="text-align:center;color:white;padding-top:4%">
     <div style="text-align:center">
       <div style="font-size:50px;font-family:'Oswald',sans-serif;display:inline-block">{{ object.project.title }}</div>
@@ -145,14 +145,40 @@ $(function(){
     {% endfor %}
   </div>
   {% endif %}
+
+  <div class="main-timeline-style">
+    <div class="timeline-first-row">
+      <div style="margin:0 auto">Call for Submissions</div>
+      <div style="margin:0 auto">End for Submissions</div>
+      <div style="margin:0 auto">Results Announcements</div>
+    </div>
+    <div class="timeline-draw">
+      <div class="timeline-draw-part-one"></div>
+      <div class="timeline-draw-part-two"></div>
+      <div class="timeline-draw-part-three"></div>
+      <div class="timeline-draw-part-four"></div>
+      <div class="timeline-draw-part-five"></div>
+    </div>
+    <div class="timeline-info">
+      <div style="margin:0 auto">April 15, 2019</div>
+      <div style="margin:0 auto">May 5, 2019</div>
+      <div style="margin:0 auto">June 2, 2019</div>
+    </div>
+    <div class="timeline-info">
+      <div style="margin:0 auto">3 PM UTC</div>
+      <div style="margin:0 auto">4 PM UTC</div>
+      <div style="margin:0 auto">5 PM UTC</div>
+    </div>
+  </div>
+ </div>
 </div>
 
 <div id="start-follow-item" class="page__follow-public-text" style="display:none;margin-top:0px"  >
-  <b>You just started following {{ person.title }}.</b><br />
+  <b>You just started following {{ object.project.title }}.</b><br />
   You will receive updates monthly by mail.
 </div>
 <div id="stop-follow-item" class="page__unfollow-public-text" style="display:block;margin-top:0px">
-  <b>You just stopped following {{ person.title }}.</b><br />
+  <b>You just stopped following {{ object.project.title }}.</b><br />
   You will no longer receive updates by mail.
 </div>
 
