@@ -179,13 +179,13 @@ $(function(){
 </div>
 {% endcomment %}
 
-  {% with object.images.all|get_type:'slider' as images %}
+{% with object.images.all|get_type:'slider' as images %}
       {% if images %}
-<div style="width:100%;height:auto;background:gray;padding-bottom:5%;background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% images|first 0 100% padding=true %}');">
+<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% images|first 0 1000 padding=true %}');">
       {% else %}
 <div style="width:100%;height:auto;background:gray;padding-bottom:5%">
       {% endif %}
-  {% endwith %}
+{% endwith %}
   <div style="text-align:center;color:white;padding-top:4%">
     <div style="text-align:center">
       <div style="font-size:50px;font-family:'Oswald',sans-serif;display:inline-block">{{ object.project.title }}</div>
