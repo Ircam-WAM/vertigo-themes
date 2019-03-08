@@ -55,6 +55,46 @@
 
 function changeFollowStatus() {
 
+  event.preventDefault();
+
+  var styleList = document.getElementById("element-social").classList;
+
+  var followItem = document.getElementById("element-social-follow");
+  var unfollowItem = document.getElementById("element-social-unfollow");
+
+  var followItemContent = document.getElementById("start-follow-item");
+  var unfollowItemContent = document.getElementById("stop-follow-item");
+
+  for (var i = 0; i < styleList.length;i++) {
+
+    var currentStyle = styleList[i];
+
+    if (currentStyle == "page__circle-cross-red") {
+
+      object.classList.add("page__circle-check-green");
+      object.classList.remove("page__circle-cross-red");
+
+      followItem.style.display = "block";
+      unfollowItem.style.display = "none";
+
+      followItemContent.style.display = "block";
+      unfollowItemContent.style.display = "none";
+      break;
+    }
+
+    if (currentStyle == "page__circle-check-green") {
+
+      object.classList.add("page__circle-cross-red");
+      object.classList.remove("page__circle-check-green");
+
+      followItem.style.display = "none";
+      unfollowItem.style.display = "block";
+
+      followItemContent.style.display = "none";
+      unfollowItemContent.style.display = "block";
+      break;
+    }
+  }
 }
 
 $(function(){
@@ -105,6 +145,15 @@ $(function(){
     {% endfor %}
   </div>
   {% endif %}
+</div>
+
+<div id="start-follow-item" style="display:none" class="page__follow-public-text">
+  <b>You just started following {{ person.title }}.</b><br />
+  You will receive updates monthly by mail.
+</div>
+<div id="stop-follow-item" style="display:block" class="page__unfollow-public-text">
+  <b>You just stopped following {{ person.title }}.</b><br />
+  You will no longer receive updates by mail.
 </div>
 
 <div class="residency-detail__background-main residency-detail__margin-global">
