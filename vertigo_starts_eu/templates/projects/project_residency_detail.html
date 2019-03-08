@@ -181,7 +181,7 @@ $(function(){
 
 {% with object.images.all|get_type:'slider' as images %}
       {% if images %}
-<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 3000 0 padding=true %}');">
+<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 1000 0 padding=true %}');">
       {% else %}
 <div style="width:100%;height:auto;background:gray;padding-bottom:5%">
       {% endif %}
