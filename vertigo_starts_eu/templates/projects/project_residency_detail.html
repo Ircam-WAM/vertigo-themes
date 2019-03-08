@@ -211,7 +211,7 @@ $(function(){
     <div style="font-size:20px;font-family:'Helvetica';">{{ object.city }}, {{ object.country.name }}</div>
   </div>
   {% if object.keywords.all %}
-  <div style="margin-top:2%;color:#50e3c2;font-family:'Oswald',sans-serif;font-size:20px;width:100%;margin 0 auto;text-align:center;display:block;height:auto;">
+  <div style="margin-top:2%;color:#50e3c2;font-family:'Oswald',sans-serif;font-size:20px;width:60%;margin 0 auto;text-align:center;display:block;height:50px;margin:0 auto;margin-top:2%">
     {% for kw in object.keywords.all %}
         <div style="border:.2em solid #50e3c2;margin:0 auto;padding:0.5%;height:auto;border-radius:.2em;display:inline-block;margin-left:1%">{{ kw }}</div>
     {% endfor %}
