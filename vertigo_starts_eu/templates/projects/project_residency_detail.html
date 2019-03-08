@@ -72,7 +72,7 @@ $(function(){
 <div style="width:100%;height:400px;background:gray;">
   <div style="text-align:center;color:white;padding-top:4%">
     <div style="font-size:50px;font-family:'Oswald',sans-serif;font-weight:bold">{{ object.project.title }}</div>
-    <div style="font-size:25px;font-family:'Helvetica';margin-top:1%;">{{ object.description|limit 100 }}</div>
+    <div style="font-size:25px;font-family:'Helvetica';margin-top:1%;">{{ object.description|truncatechars:100 }}</div>
   </div>
   <div style="margin-top:2%;text-align:center;color:white">
     <div style="font-size:25px;font-family:'Helvetica';">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
