@@ -53,7 +53,7 @@
 
 <script>
 
-function changeOptionDetail(event,this) {
+function changeOptionDetail(event,link) {
 
     event.preventDefault();
 
@@ -148,13 +148,12 @@ function changeFollowStatus(event,object) {
   }
 }
 
-function load(){
+$(function(){
   var bodyItem = document.getElementById("body");
 
   bodyItem.style.background = "white";
-}
+})
 
-window.load = load;
 </script>
 
 {% comment %}
