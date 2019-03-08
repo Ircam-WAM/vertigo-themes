@@ -53,7 +53,7 @@
 
 <script>
 
-function clickedLink(link,event) {
+function changeOptionDetail(event,this) {
 
     event.preventDefault();
 
@@ -224,6 +224,16 @@ $(function(){
  </div>
 </div>
 
+<div class="page__submenu-public-profile" {% if person.images.all|length == 0 %} style="padding-top:5%"{% endif %}>
+  <a href="#" style="margin: 0 auto"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected">About</span></a>
+  <a href="#" style="margin: 0 auto"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Artistic Proposal</span></a>
+  <a href="#" style="margin: 0 auto"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Artist</span></a>
+  <a href="#" style="margin: 0 auto"><span id="blog-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Residency Blog</span></a>
+  <a href="#" style="margin: 0 auto"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Followers</span></a>
+</div>
+
+<div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
+
 <div id="start-follow-item" class="page__follow-public-text-spaceless" style="display:none;">
   <b>You just started following {{ object.project.title }}.</b><br />
   You will receive updates monthly by mail.
@@ -232,6 +242,12 @@ $(function(){
   <b>You just stopped following {{ object.project.title }}.</b><br />
   You will no longer receive updates by mail.
 </div>
+
+<div id="content-about-item">content-about-item</div>
+<div id="content-artistic-item">ontent-artistic-item</div>
+<div id="content-artist-item">content-artist-item"</div>
+<div id="content-blog-item">content-blog-item</div>
+<div id="content-followers-item">content-followers-item</div>
 
 {% comment %}
 <div class="residency-detail__background-main residency-detail__margin-global">
