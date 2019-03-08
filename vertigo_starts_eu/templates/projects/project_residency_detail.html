@@ -148,12 +148,13 @@ function changeFollowStatus(event,object) {
   }
 }
 
-$(function(){
+function load(){
   var bodyItem = document.getElementById("body");
 
   bodyItem.style.background = "white";
-})
+}
 
+window.load = load;
 </script>
 
 {% comment %}
@@ -224,7 +225,7 @@ $(function(){
  </div>
 </div>
 
-<div class="page__submenu-public-profile" {% if person.images.all|length == 0 %} style="padding-top:5%"{% endif %}>
+<div class="page__submenu-public-profile" style="padding-top:5%">
   <a href="#" style="margin: 0 auto"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected">About</span></a>
   <a href="#" style="margin: 0 auto"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Artistic Proposal</span></a>
   <a href="#" style="margin: 0 auto"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Artist</span></a>
