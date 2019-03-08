@@ -57,20 +57,23 @@ function changeOptionDetail(event,link) {
 
     event.preventDefault();
 
-    var firstDiv = document.getElementById("first_div");
-    var secondDiv = document.getElementById("second_div");
-    var thirdDiv = document.getElementById("third_div");
-    var fourthDiv = document.getElementById("fourth_div");
+    var aboutItemContent = document.getElementById("content-about-item");
+    var artisticItemContent = document.getElementById("content-artistic-item");
+    var artistItemContent = document.getElementById("content-artist-item");
+    var blogItemContent = document.getElementById("content-blog-item");
+    var followersTitemContent = document.getElementById("content-followers-item");
 
-    firstDiv.style.display = 'none';
-    secondDiv.style.display = 'none';
-    thirdDiv.style.display = 'none';
-    fourthDiv.style.display = 'none';
+    aboutItemContent.style.display = 'none';
+    artisticItemContent.style.display = 'none';
+    artistItemContent.style.display = 'none';
+    blogItemContent.style.display = 'none';
+    followersTitemContent.style.display = 'none';
 
-    var linkArtist = document.getElementById("artist");
-    var linkArtistResidency = document.getElementById("artist_residency");
-    var linkProject = document.getElementById("project");
-    var linkOutcome = document.getElementById("outcome");
+    var linkArtist = document.getElementById("about-item");
+    var linkArtistic = document.getElementById("artistic-item");
+    var linkArtist = document.getElementById("artist-item");
+    var linkBlog = document.getElementById("blog-item");
+    var linkFollowers = document.getElementById("followers-item");
 
     var buttons = document.getElementsByClassName('residency-detail__button');
 
@@ -79,28 +82,34 @@ function changeOptionDetail(event,link) {
         buttons[i].classList.remove('active');
     }
 
-    if (link.id === 'artist')
+    if (link.id === 'about-item')
     {
-        firstDiv.style.display = 'block';
+        aboutItemContent.style.display = 'block';
         linkArtist.classList.add('active');
     }
 
-    if (link.id === 'artist_residency')
+    if (link.id === 'artistic-item')
     {
-        secondDiv.style.display = 'block';
-        linkArtistResidency.classList.add('active');
+        artisticItemContent.style.display = 'block';
+        linkArtistic.classList.add('active');
     }
 
-    if (link.id === 'project')
+    if (link.id === 'artist-item')
     {
-        thirdDiv.style.display = 'block';
-        linkProject.classList.add('active');
+        artistItemContent.style.display = 'block';
+        linkArtist.classList.add('active');
     }
 
-    if (link.id === 'outcome')
+    if (link.id === 'blog-item')
     {
-        fourthDiv.style.display = 'block';
-        linkOutcome.classList.add('active');
+        blogItemContent.style.display = 'block';
+        linkBlog.classList.add('active');
+    }
+
+    if (link.id === 'bfollowers-item')
+    {
+        followersTitemContent.style.display = 'block';
+        linkFollowers.classList.add('active');
     }
 }
 
@@ -233,11 +242,39 @@ $(function(){
   You will no longer receive updates by mail.
 </div>
 
-<div id="content-about-item">content-about-item</div>
-<div id="content-artistic-item">ontent-artistic-item</div>
-<div id="content-artist-item">content-artist-item"</div>
-<div id="content-blog-item">content-blog-item</div>
-<div id="content-followers-item">content-followers-item</div>
+<div id="content-about-item">
+
+</div>
+<div id="content-artistic-item">
+  content-artistic-item
+</div>
+<div id="content-artist-item">
+
+  {% with object.project.public_data.all|first as project_public_data %}
+      <div class="residency-detail__right-image">
+          {% if project_public_data.image_is_panoramic %}
+              <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
+          {% else %}
+              <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
+          {% endif %}
+          {% if object.project.public_data.all.0.credits|length > 0 %}
+            <div style="text-align:left">
+              <p sytle="color:black;font-size:12px;">Credits: {{ object.project.public_data.all.0.credits }}</p>
+            </div>
+          {% endif %}
+      </div>
+      <div class="residency-detail__text-detail">
+          <p>{{ project_public_data.challenges_description }}</p>
+      </div>
+  {% endwith %}
+
+</div>
+<div id="content-blog-item">
+  content-blog-item<br/>Missing backend object
+</div>
+<div id="content-followers-item">
+  content-followers-item<br/>Missing backend object
+</div>
 
 {% comment %}
 <div class="residency-detail__background-main residency-detail__margin-global">
