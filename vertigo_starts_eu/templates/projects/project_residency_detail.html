@@ -69,47 +69,53 @@ function changeOptionDetail(event,link) {
     blogItemContent.style.display = 'none';
     followersTitemContent.style.display = 'none';
 
-    var linkArtist = document.getElementById("about-item");
+    var linkAbout = document.getElementById("about-item");
     var linkArtistic = document.getElementById("artistic-item");
     var linkArtist = document.getElementById("artist-item");
     var linkBlog = document.getElementById("blog-item");
     var linkFollowers = document.getElementById("followers-item");
 
-    var buttons = document.getElementsByClassName('residency-detail__button');
+    var buttons = document.getElementsByClassName('link-sections');
 
     for (var i = 0; i < buttons.length; i++)
     {
-        buttons[i].classList.remove('active');
+        buttons[i].classList.remove('page__option-selected');
+        buttons[i].classList.add('page__option-unselected');
     }
 
     if (link.id === 'about-item')
     {
         aboutItemContent.style.display = 'block';
-        linkArtist.classList.add('active');
+        linkAbout.classList.add('page__option-selected');
+        linkAbout.classList.remove('page__option-unselected');
     }
 
     if (link.id === 'artistic-item')
     {
         artisticItemContent.style.display = 'block';
-        linkArtistic.classList.add('active');
+        linkArtistic.classList.add('page__option-selected');
+        linkArtistic.classList.remove('page__option-unselected');
     }
 
     if (link.id === 'artist-item')
     {
         artistItemContent.style.display = 'block';
-        linkArtist.classList.add('active');
+        linkArtist.classList.add('page__option-selected');
+        linkArtist.classList.remove('page__option-unselected');
     }
 
     if (link.id === 'blog-item')
     {
         blogItemContent.style.display = 'block';
-        linkBlog.classList.add('active');
+        linkBlog.classList.add('page__option-selected');
+        linkBlog.classList.remove('page__option-unselected');
     }
 
     if (link.id === 'bfollowers-item')
     {
         followersTitemContent.style.display = 'block';
-        linkFollowers.classList.add('active');
+        linkFollowers.classList.add('page__option-selected');
+        linkFollowers.classList.remove('page__option-unselected');
     }
 }
 
@@ -224,11 +230,11 @@ $(function(){
 </div>
 
 <div class="page__submenu-public-profile" style="padding-top:5%">
-  <a href="#" style="margin: 0 auto"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected">About</span></a>
-  <a href="#" style="margin: 0 auto"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Artistic Proposal</span></a>
-  <a href="#" style="margin: 0 auto"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Artist</span></a>
-  <a href="#" style="margin: 0 auto"><span id="blog-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Residency Blog</span></a>
-  <a href="#" style="margin: 0 auto"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected">Followers</span></a>
+  <a href="#" style="margin: 0 auto"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">About</span></a>
+  <a href="#" style="margin: 0 auto"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artistic Proposal</span></a>
+  <a href="#" style="margin: 0 auto"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
+  <a href="#" style="margin: 0 auto"><span id="blog-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Residency Blog</span></a>
+  <a href="#" style="margin: 0 auto"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Followers</span></a>
 </div>
 
 <div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
