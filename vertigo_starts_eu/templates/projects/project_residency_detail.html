@@ -91,7 +91,7 @@ $(function(){
   {% if object.keywords.all %}
   <div style="margin-top:2%;color:#50e3c2;font-family:'Oswald',sans-serif;font-size:20px;width:60%;margin 0 auto;text-align:center;display:block;height:50px;">
     {% for kw in object.keywords.all %}
-        <span style="border:.2em solid #50e3c2;margin:0 auto;padding:1%;height:auto;border-radius:.2em;display:inline-block;margin-left:1%">{{ kw }}</span>
+        <div style="border:.2em solid #50e3c2;margin:0 auto;padding:1%;height:auto;border-radius:.2em;display:inline-block;margin-left:1%">{{ kw }}</div>
     {% endfor %}
   </div>
   {% endif %}
