@@ -50,6 +50,7 @@
 {% block main %}
 
 <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
+
 <script src="https://unpkg.com/jquery@2.2.4/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -92,7 +93,7 @@ $(function() {
 
 {% with object.images.all|get_type:'slider' as images %}
     {% if images %}
-<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 64, 64, 0.2), rgba(0, 64, 64, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat">
+<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat">
     {% else %}
 <div style="width:100%;height:auto;background:gray;padding-bottom:5%">
     {% endif %}
@@ -190,6 +191,102 @@ $(function() {
 </div>
 <div id="content-artistic-item" class="page__artistic-content-residencies">
 
+  <div class="residency-detail__title">{{ object.title }}</div>
+  <p>{{ object.content|safe }}</p>
+
+  {% if object.date_from and object.date_to %}
+
+      <div class="residency-detail__title">{% trans "About this residency" %}</div>
+          <br>
+          <div class="residency-detail__details">
+              <div class="residency-detail__map" id="network-map-small"></div>
+              {% if object.lat and object.lon %}
+                  <div class="container hide">
+                      <div class="row">
+                          <div class="col-xs-12 col-md-10 col-md-push-1">
+                              <div class="slider-network">
+                                  <ul class="slider-network__slider" data-slider-network>
+                                      <li class="slider-network__slide" data-marker-small-color="blue" data-marker-small-idx="{{forloop.counter0}}" data-marker-small-lat="{{ object.lat }}" data-marker-small-lng="{{ object.lon }}">
+                                          <div class="slider-network__slide-title" data-marker-small-title>
+                                              {{ object.title }}
+                                          </div>
+                                          <div class="slider-network__slide-subtitle" data-marker-small-subtitle>
+                                              {{ object.city }}, {{ object.country.name }}
+                                          </div>
+                                          <div class="slider-network__slide-description" data-marker-small-description>
+                                              {{ object.description }}
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endif %}
+              <div class="residency-detail__width-text-second-tab">
+                  {% if object.date_from %}
+                      From {{ object.date_from}}
+                      {% if object.date_to %}
+                          to {{ object.date_to }}
+                      {% endif %}
+                      <br><br>
+                  {% endif %}
+                  {% with object.producers.all as producers %}
+
+                      {% if producers %}
+                          {% if producers|length == 1 %}
+                              Producer: {{ producers.0.organization }}<br>
+                          {% else %}
+                              Producers:
+                              {% for producer in producers %}
+                                  {% if forloop.first %}
+                                      {{ producer.organization }}
+                                  {% else %}
+                                      — {{ producer.organization }}
+                                  {% endif %}
+                              {% endfor %}
+                              <br>
+                          {% endif %}
+                      {% endif %}
+                  {% endwith %}
+                  {% if object.city and object.country %}
+                      Localization: {{ object.city }}, {{ object.country }}<br><br>
+                  {% endif %}
+                  {% for keyword in object.keywords.all %}
+                      {{ keyword }} &nbsp;
+                  {% endfor %}
+              </div>
+          </div>
+          {% with object.user_images.all as user_images %}
+              {% if object.user_images %}
+                  <div>
+                      <div class="page__slider">
+                          <ul class="slider-page" data-slider-page>
+                              {% for user_image in user_images %}
+                                  <li class="slider-page__slide" data-src="{{ MEDIA_URL }}{{ user_image.file }}">
+                                      <div class="slider-page__wrapper">
+                                          <img title="{{ user_image.title }}" alt="{{ user_image.title }} {{ user_image.description }} {{ user_image.credits }}" class="slider-page__img" src="{{ MEDIA_URL}}{% thumbnail user_image.file 0 400 %}" alt="" />
+                                          <div class="slider-page__caption">
+                                              {{ user_image.title }}
+                                              {% if user_image.description %}
+                                                  {{ user_image.description }}
+                                              {% endif %}
+                                              {% if user_image.credits|length > 0 %}
+                                                  {{ user_image.credits }}
+                                              {% endif %}
+                                          </div>
+                                      </div>
+                                  </li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                  </div>
+              {% endif %}
+          {% endwith %}
+  {% endif %}
+</div>
+<div id="content-artist-item" style="display:none;" class="page__artist-content-residencies-detail">
+
     {% with object.project.public_data.all|first as project_public_data %}
         <div class="residency-detail__right-image">
             {% if project_public_data.image_is_panoramic %}
@@ -207,10 +304,6 @@ $(function() {
             <p>{{ project_public_data.challenges_description }}</p>
         </div>
     {% endwith %}
-
-</div>
-<div id="content-artist-item" style="display:none;" class="page__artist-content-residencies-detail">
-
 </div>
 <div id="content-blog-item" style="display:none;" class="page__content-blog-detail-residencies">
   content-blog-item<br/>Missing backend object
