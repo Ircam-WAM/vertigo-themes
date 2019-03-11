@@ -782,6 +782,15 @@ $module: ".page";
       border-radius: 50%;
     }
 
+    &__circle-cross-red-detail-residencies {
+
+      width: 40px;
+      height: 40px;
+      background: #f11a33;
+      border: 6px solid black;
+      border-radius: 50%;
+    }
+
     &__image-main_banner_profile {
 
       width:auto !important;
@@ -816,6 +825,16 @@ $module: ".page";
       text-align:center !important;
       color:black !important;
       font-size:30px !important;
+      margin-left:5% !important;
+      top:8% !important;
+      position:relative !important;
+    }
+
+    &__style-cross-icon-detail-residencies {
+
+      text-align:center !important;
+      color:black !important;
+      font-size:25px !important;
       margin-left:5% !important;
       top:8% !important;
       position:relative !important;
@@ -1086,7 +1105,7 @@ $module: ".page";
       margin:0 auto !important;
       margin-top:2% !important;
       font-family:'Oswald',sans-serif !important;
-      font-size:20px !important;
+      font-size:15px !important;
     }
 
     &__timeline-first-row {
@@ -1204,7 +1223,7 @@ $module: ".page";
     &__style-detail-content {
 
       font-size:20px !important;
-      font-family:'Helvetica' !important;
+      font-family:'Merriweather', serif !important;
     }
 
     &__keywords-residencies {
@@ -1230,6 +1249,8 @@ $module: ".page";
       border-radius:.2em !important;
       display:inline-block !important;
       margin-left:1% !important;
+      font-family:'Merriweather',serif !important;
+      font-size: 1em !important;
     }
 
     &__container-inforesidency-detail {

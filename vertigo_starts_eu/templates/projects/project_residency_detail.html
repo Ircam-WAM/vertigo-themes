@@ -100,9 +100,9 @@ $(function() {
   <div class="page__content-detail-header">
     <div class="page__center-element">
       <div class="page__title-detail-residencies">{{ object.project.title }}</div>
-      <div id="element-social" class="page__circle-cross-red page__residencies-red-banner" onclick="changeFollowStatus(event,this);">
+      <div id="element-social" class="page__circle-cross-red-detail-residencies page__residencies-red-banner" onclick="changeFollowStatus(event,this);">
         <i id="element-social-follow" class="fa fa-check page__style-check-icon" style="display:none;" aria-hidden="true"></i>
-        <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon" style="display:block;" aria-hidden="true"></i>
+        <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon-detail-residencies" style="display:block;" aria-hidden="true"></i>
       </div>
     </div>
     <div class="page__description-residencies">{{ object.description|truncatechars:50 }}</div>
@@ -167,7 +167,25 @@ $(function() {
 
 <div id="content-about-item" style="display:none;" class="page__container-description-residencies-detail">
   <div class="page__descrition-residencies-content">
-    {{ object.description }}
+    <div class="residency-detail__title">{{ object.project.title }}</div>
+    <br>
+    {% with object.project.public_data.all|first as project_public_data %}
+        <div class="residency-detail__right-image">
+            {% if project_public_data.image_is_panoramic %}
+                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
+            {% else %}
+                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
+            {% endif %}
+            {% if object.project.public_data.all.0.credits|length > 0 %}
+              <div style="text-align:left">
+                <p sytle="color:black;font-size:12px;">Credits: {{ object.project.public_data.all.0.credits }}</p>
+              </div>
+            {% endif %}
+        </div>
+        <div class="residency-detail__text-detail">
+            <p>{{ project_public_data.challenges_description }}</p>
+        </div>
+    {% endwith %}
   </div>
 </div>
 <div id="content-artistic-item" class="page__artistic-content-residencies">
