@@ -29,7 +29,7 @@ function changeOptionDetail(event,link) {
         buttons[i].classList.add('page__option-unselected');
     }
 
-    var map = document.getElementById("mapid");
+    var map = document.getElementById("map-element-content");
 
     if (map != null) {
       map.style.display = "block";
