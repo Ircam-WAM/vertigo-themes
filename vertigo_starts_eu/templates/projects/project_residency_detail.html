@@ -77,20 +77,20 @@ $(function(){
 <div style="width:100%;height:auto;background:gray;padding-bottom:5%">
     {% endif %}
 {% endwith %}
-  <div style="text-align:center;color:white;padding-top:4%">
-    <div style="text-align:center">
-      <div style="font-size:50px;font-family:'Oswald',sans-serif;display:inline-block">{{ object.project.title }}</div>
-      <div id="element-social" class="page__circle-cross-red " style="position:absolute;cursor:pointer;display:inline-block;margin-top:-1.5%" onclick="changeFollowStatus(event,this);">
+  <div class="page__content-detail-header">
+    <div class="page__center-element">
+      <div class="page__title-detail-residencies">{{ object.project.title }}</div>
+      <div id="element-social" class="page__circle-cross-red page__residencies-red-banner" onclick="changeFollowStatus(event,this);">
         <i id="element-social-follow" class="fa fa-check page__style-check-icon" style="display:none;" aria-hidden="true"></i>
         <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon" style="display:block;" aria-hidden="true"></i>
       </div>
     </div>
-    <div style="font-size:20px;font-family:'Helvetica';margin-top:1%;">{{ object.description|truncatechars:50 }}</div>
+    <div class="page__descrioption-residencies">{{ object.description|truncatechars:50 }}</div>
   </div>
-  <div style="margin-top:2%;text-align:center;color:white">
-    <div style="font-size:20px;font-family:'Helvetica';">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
-    <div style="font-size:20px;font-family:'Helvetica';">+</div>
-    <div style="font-size:20px;font-family:'Helvetica';">
+  <div class="page__artist-element-residencies">
+    <div class="page__style-detail-content">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+    <div class="page__style-detail-content">+</div>
+    <div class="page__style-detail-content">
       {% with object.producers.all as producers %}
           {% if producers %}
               {% if producers|length > 0 %}
@@ -99,12 +99,12 @@ $(function(){
           {% endif %}
       {% endwith %}
     </div>
-    <div style="font-size:20px;font-family:'Helvetica';">{{ object.city }}, {{ object.country.name }}</div>
+    <div class="page__style-detail-content">{{ object.city }}, {{ object.country.name }}</div>
   </div>
   {% if object.keywords.all %}
-  <div style="margin-top:2%;color:#50e3c2;font-family:'Oswald',sans-serif;font-size:20px;width:60%;margin 0 auto;text-align:center;display:block;height:50px;margin:0 auto;margin-top:2%">
+  <div class="page__keywords-residencies">
     {% for kw in object.keywords.all %}
-        <div style="border:.2em solid #50e3c2;margin:0 auto;padding:0.5%;height:auto;border-radius:.2em;display:inline-block;margin-left:1%">{{ kw }}</div>
+        <div class="page__keywords-style-residencies">{{ kw }}</div>
     {% endfor %}
   </div>
   {% endif %}
@@ -134,7 +134,7 @@ $(function(){
   <a href="#" style="margin: 0 auto"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Followers</span></a>
 </div>
 
-<div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
+<div class="page__container-inforesidency-detail"></div>
 
 <div id="start-follow-item" class="page__follow-public-text-spaceless" style="display:none;">
   <b>You just started following {{ object.project.title }}.</b><br />
@@ -145,12 +145,12 @@ $(function(){
   You will no longer receive updates by mail.
 </div>
 
-<div id="content-about-item" style="display:block;color:black;text-align:center;width:100%;height:100px;padding-top:1%;padding-bottom:1%">
-  <div style="width:60%;height:auto;text-align:justify;font-size:15px;color:black;font-family:'Helvetica';margin:0 auto">
+<div id="content-about-item" style="display:none;" class="page__container-description-residencies-detail">
+  <div class="page__descriotion-residencies-content">
     {{ object.description }}
   </div>
 </div>
-<div id="content-artistic-item" style="display:none;color:black;text-align:center;width:100%;height:100px;padding-top:1%;padding-bottom:1%">
+<div id="content-artistic-item" class="page__artistic-content-residencies">
 
     {% with object.project.public_data.all|first as project_public_data %}
         <div class="residency-detail__right-image">
@@ -171,11 +171,10 @@ $(function(){
     {% endwith %}
 
 </div>
-<div id="content-artist-item" style="display:none;color:black;text-align:center;width:100%;height:auto;padding-top:1%;padding-bottom:1%">
-
+<div id="content-artist-item" style="display:none;" class="page__artist-content-residencies-detail">
 
 </div>
-<div id="content-blog-item" style="display:none;color:black;text-align:center;width:100%;height:auto;padding-top:1%;padding-bottom:1%">
+<div id="content-blog-item" style="display:none;" class="page__content-blog-detail-residencies">
   content-blog-item<br/>Missing backend object
 
   <div class="page__residency-blog-content">
@@ -184,7 +183,7 @@ $(function(){
     Follow {{ object.project.title }} to receive notifications about future updates.
   </div>
 </div>
-<div id="content-followers-item" style="display:none;color:black;text-align:center;width:100%;height:auto;padding-top:1%;padding-bottom:1%">
+<div id="content-followers-item" style="display:none;" class="page__content-blog-residencies-detail">
   content-followers-item<br/>Missing backend object
 </div>
 

@@ -1159,4 +1159,147 @@ $module: ".page";
       display:inline-block !important;
       margin-left:-2.5% !important;
     }
+
+    &__content-detail-header {
+
+      text-align:center !important;
+      color:white !important;
+      padding-top:4% !important;
+    }
+
+    &__center-element {
+
+      text-align:center !important;
+    }
+
+    &__title-detail-residencies {
+
+      font-size:50px !important;
+      font-family:'Oswald',sans-serif !important;
+      display:inline-block !important;
+    }
+
+    &__residencies-red-banner {
+
+      position:absolute !important;
+      cursor:pointer !important;
+      display:inline-block !important;
+      margin-top:-1.5% !important;
+    }
+
+    &__descrioption-residencies {
+
+      font-size:20px !important;
+      font-family:'Helvetica' !important;
+      margin-top:1% !important;
+    }
+
+    &__artist-element-residencies {
+
+      margin-top:2% !important;
+      text-align:center !important;
+      color:white !important;
+    }
+
+    &__style-detail-content {
+
+      font-size:20px !important;
+      font-family:'Helvetica' !important;
+    }
+
+    &__keywords-residencies {
+
+      margin-top:2% !important;
+      color:#50e3c2 !important;
+      font-family:'Oswald',sans-serif !important;
+      font-size:20px !important;
+      width:60% !important;
+      text-align:center !important;
+      display:block !important;
+      height:50px !important;
+      margin:0 auto !important;
+      margin-top:2% !important;
+    }
+
+    &__keywords-style-residencies {
+
+      border:.2em solid #50e3c2 !important;
+      margin:0 auto !important;
+      padding:0.5% !important;
+      height:auto !important;
+      border-radius:.2em !important;
+      display:inline-block !important;
+      margin-left:1% !important;
+    }
+
+    &__container-inforesidency-detail {
+
+      background:lightgray !important;
+      width:100% !important;
+      height:2px !important;
+      margin-top:5px !important;
+    }
+
+    &__container-description-residencies-detail {
+
+      display:block !important;
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:100px !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__descriotion-residencies-content {
+
+      width:60% !important;
+      height:auto !important;
+      text-align:justify !important;
+      font-size:15px !important;
+      color:black !important;
+      font-family:'Helvetica' !important;
+      margin:0 auto !important;
+    }
+
+    &__artistic-content-residencies {
+
+      display:none !important;
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__artist-content-residencies-detail {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__content-blog-detail-residencies {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__content-blog-residencies-detail {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
 }
