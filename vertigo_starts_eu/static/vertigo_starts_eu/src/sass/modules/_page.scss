@@ -1323,9 +1323,8 @@ $module: ".page";
       padding-bottom:1% !important;
     }
 
-    &__content-see-progile-button {
+    &__content-see-profile-button {
 
-      cursor: pointer;
       float:right !important;
       background:#50e3c2 !important;
       width:150px !important;
@@ -1335,5 +1334,14 @@ $module: ".page";
       font-size:25px !important;
       text-align:center !important;
       padding-top:2.5% !important;
+    }
+
+    &__link-profile-artist {
+
+      display:inline-block !important;
+      width:100% !important;
+      height:100% !important;
+      padding-top:20% !important;
+      color:white !important;
     }
 }

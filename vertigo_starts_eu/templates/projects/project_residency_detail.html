@@ -342,8 +342,20 @@ $(function() {
           {% endwith %}
       </div>
   </div>
-  <div class="page__content-see-progile-button">
-    See Profile
+  <div class="page__content-see-profile-button">
+
+    {% with object.artist.links.all as links %}
+        {% if links %}
+            {% with links|get_type_link:"link" as webpage_links %}
+                {% if webpage_links %}
+                    <a target="_blank" href="{{ webpage_links|first|safe }}" class="page__link-profile-artist">See Profile</a>
+                {% endif %}
+            {% endwith %}
+        {% else %}
+        <a target="_blank" href="#" class="page__link-profile-artist">See Profile</a>
+        {% endif %}
+      {% endwith %}
+
   </div>
 </div>
 <div id="content-blog-item" style="display:none;" class="page__content-blog-detail-residencies">
