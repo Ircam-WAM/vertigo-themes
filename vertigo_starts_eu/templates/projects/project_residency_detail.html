@@ -50,7 +50,7 @@
 {% block main %}
 
 <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
-<script src="{% static "vertigo_starts_eu/static/residencies/residencies.js" %}"></script>
+<script  type="text/javascript" src="{% static 'vertigo_starts_eu/static/residencies/residencies.js' %}"></script>
 
 <script>
 
@@ -151,27 +151,28 @@ $(function(){
   </div>
 </div>
 <div id="content-artistic-item" style="display:none;color:black;text-align:center;width:100%;height:100px;padding-top:1%;padding-bottom:1%">
-  content-artistic-item
+
+    {% with object.project.public_data.all|first as project_public_data %}
+        <div class="residency-detail__right-image">
+            {% if project_public_data.image_is_panoramic %}
+                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
+            {% else %}
+                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
+            {% endif %}
+            {% if object.project.public_data.all.0.credits|length > 0 %}
+              <div style="text-align:left">
+                <p sytle="color:black;font-size:12px;">Credits: {{ object.project.public_data.all.0.credits }}</p>
+              </div>
+            {% endif %}
+        </div>
+        <div class="residency-detail__text-detail">
+            <p>{{ project_public_data.challenges_description }}</p>
+        </div>
+    {% endwith %}
+
 </div>
 <div id="content-artist-item" style="display:none;color:black;text-align:center;width:100%;height:auto;padding-top:1%;padding-bottom:1%">
 
-  {% with object.project.public_data.all|first as project_public_data %}
-      <div class="residency-detail__right-image">
-          {% if project_public_data.image_is_panoramic %}
-              <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
-          {% else %}
-              <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
-          {% endif %}
-          {% if object.project.public_data.all.0.credits|length > 0 %}
-            <div style="text-align:left">
-              <p sytle="color:black;font-size:12px;">Credits: {{ object.project.public_data.all.0.credits }}</p>
-            </div>
-          {% endif %}
-      </div>
-      <div class="residency-detail__text-detail">
-          <p>{{ project_public_data.challenges_description }}</p>
-      </div>
-  {% endwith %}
 
 </div>
 <div id="content-blog-item" style="display:none;color:black;text-align:center;width:100%;height:auto;padding-top:1%;padding-bottom:1%">
