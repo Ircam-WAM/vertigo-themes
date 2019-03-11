@@ -1333,7 +1333,6 @@ $module: ".page";
       font-family:'Oswald',sans-serif !important;
       font-size:25px !important;
       text-align:center !important;
-      padding-top:2.5% !important;
     }
 
     &__link-profile-artist {
@@ -1341,7 +1340,9 @@ $module: ".page";
       display:inline-block !important;
       width:100% !important;
       height:100% !important;
-      padding-top:1% !important;
       color:white !important;
+      margin: 0 auto !important;
+      vertical-align: middle !important;
+      line-height:3 !important;
     }
 }
