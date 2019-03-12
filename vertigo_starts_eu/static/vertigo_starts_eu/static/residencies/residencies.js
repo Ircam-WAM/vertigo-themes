@@ -77,7 +77,7 @@ function changeOptionDetail(event,link) {
 
 function changeFollowStatus(event,object) {
 
-  event.preventDefault();
+  //event.preventDefault();
 
   var styleList = document.getElementById("element-social").classList;
 
