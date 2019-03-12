@@ -166,7 +166,7 @@ $(function() {
   You will no longer receive updates by mail.
 </div>
 
-<div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra"  style="display:block;margin-right:20%;margin-left:20%">
+<div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white"  style="display:block;margin-right:20%;margin-left:20%">
   <div class="page__descrition-residencies-content">
     <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
     <br>
@@ -190,7 +190,7 @@ $(function() {
     {% endwith %}
   </div>
 </div>
-<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white" style="margin-right:20%;margin-left:20%;text-align:justify;white-space:none;display:none">
+<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white-extra" style="margin-right:20%;margin-left:20%;text-align:justify;white-space:none;display:none">
 
   <div class="residency-detail__title">{{ object.title }}</div>
   <p style="text-align:left">{{ object.content|safe }}</p>
@@ -286,7 +286,7 @@ $(function() {
           {% endwith %}
   {% endif %}
 </div>
-<div id="content-artist-item" class="residency-detail__block--white residency-detail__margin-white" style="display:none;margin-left:20%;margin-right:20%;">
+<div id="content-artist-item" class="residency-detail__block--white residency-detail__margin-white-extra" style="display:none;margin-left:20%;margin-right:20%;">
   <div>
       <div class="residency-detail__image-left">
         <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
