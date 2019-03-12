@@ -171,7 +171,7 @@ $(function() {
     <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
     <br>
     {% with object.project.public_data.all|first as project_public_data %}
-        <div class="residency-detail__text-detail page__style-text-profile">
+        <div class="residency-detail__text-detail page__style-text-profile" style="text-align:justify">
             <p>{{ project_public_data.challenges_description }}</p>
         </div>
         <div style="text-align:center">
@@ -190,7 +190,7 @@ $(function() {
     {% endwith %}
   </div>
 </div>
-<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white" style="margin-right:20%;margin-left:20%;text-align:justify">
+<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white" style="margin-right:20%;margin-left:20%;text-align:justify;display:none">
 
   <div class="residency-detail__title">{{ object.title }}</div>
   <p style="text-align:left">{{ object.content|safe }}</p>
