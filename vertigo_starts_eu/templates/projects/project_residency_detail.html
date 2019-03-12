@@ -171,7 +171,10 @@ $(function() {
     <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
     <br>
     {% with object.project.public_data.all|first as project_public_data %}
-        <div class="residency-detail__right-image">
+        <div class="residency-detail__text-detail page__style-text-profile">
+            <p>{{ project_public_data.challenges_description }}</p>
+        </div>
+        <div class="residency-detail__right-image" style="text-align:center">
             {% if project_public_data.image_is_panoramic %}
                 <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
             {% else %}
@@ -183,9 +186,7 @@ $(function() {
               </div>
             {% endif %}
         </div>
-        <div class="residency-detail__text-detail page__style-text-profile">
-            <p>{{ project_public_data.challenges_description }}</p>
-        </div>
+
     {% endwith %}
   </div>
 </div>
