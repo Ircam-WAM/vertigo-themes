@@ -174,7 +174,7 @@ $(function() {
         <div class="residency-detail__text-detail page__style-text-profile">
             <p>{{ project_public_data.challenges_description }}</p>
         </div>
-        <div class="residency-detail__right-image" style="text-align:center">
+        <div style="text-align:center">
             {% if project_public_data.image_is_panoramic %}
                 <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
             {% else %}
