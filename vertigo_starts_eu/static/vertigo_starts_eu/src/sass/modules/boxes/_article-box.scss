@@ -754,7 +754,7 @@ $module: ".article-box";
     &__chevron-tag-style-search {
 
       display: inline-block;
-      border: .2em solid #011020;
+      border: .2em solid #50e3c2;
       border-radius: .2em;
       font-size: 1.0em;
       margin: .5em;
@@ -763,7 +763,7 @@ $module: ".article-box";
       cursor: pointer;
 
       &:hover {
-        background: #011020;
+        background: #50e3c2;
         color: white;
       }
     }
