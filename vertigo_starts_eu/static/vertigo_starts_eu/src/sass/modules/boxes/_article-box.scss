@@ -768,6 +768,18 @@ $module: ".article-box";
       }
     }
 
+    &__chevron-tag-style-search-no-hover {
+
+      display: inline-block;
+      border: .2em solid #50e3c2;
+      border-radius: .2em;
+      font-size: 1.0em;
+      margin: .5em;
+      padding: .2em .5em;
+      font-family:'Oswald',sans-serif;
+    }
+
+
     &__tranlate-responsive {
 
       @media screen and (max-width: 780px) {
