@@ -868,6 +868,11 @@ $module: ".page";
       height:auto !important;
       text-align:center !important;
       margin-top:-3% !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:90% !important;
+      }
     }
 
     &__follow-public-text {
@@ -1106,6 +1111,11 @@ $module: ".page";
       margin-top:2% !important;
       font-family:'Oswald',sans-serif !important;
       font-size:15px !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:90% !important;
+      }
     }
 
     &__timeline-first-row {
@@ -1157,6 +1167,11 @@ $module: ".page";
       border-radius: 50% !important;
       display:inline-block !important;
       transform: translate(-80%) !important;
+
+      @media screen and (max-width: 768px) {
+
+        transform: translate(-17%) !important;
+      }
     }
 
     &__timeline-draw-part-four {
@@ -1238,6 +1253,12 @@ $module: ".page";
       height:50px !important;
       margin:0 auto !important;
       margin-top:2% !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:90% !important;
+        margin-bottom: 15% !important;
+      }
     }
 
     &__keywords-style-residencies {
