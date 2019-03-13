@@ -882,6 +882,11 @@ $module: ".page";
 
         width:90% !important;
       }
+
+      @media screen and (min-width: 2560px) {
+
+        margin-top:-2% !important;
+      }
     }
 
     &__follow-public-text {
