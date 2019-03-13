@@ -169,7 +169,7 @@
       {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
 
-            <div class="page__image-container page__padding-container-main" style="height:auto;margin-top:-6.5%;background:gray;">
+            <div class="page__image-container page__padding-container-main page__top-padding-container page__top-padding-container" style="height:auto;background:gray;">
               <div style="position:relative">
                 {% if card_images.first %}
                 <img class="lazyload page__image-main_banner_profile" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
@@ -184,7 +184,7 @@
                 </div>
               </div>
               <div class="page__main-title-profile-public">{{ person.title }}</div>
-              <div style="margin-top:1%;padding-bottom:1%;display:flex;width:100%">
+              <div class="page__container-info-profile-user">
 
                 {% comment %}
                 {% with person.links.all.0 as link %}
