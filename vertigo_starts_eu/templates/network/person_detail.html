@@ -196,9 +196,9 @@
 
                 {% with person.links.all.0 as link %}
                     {% if person.links.all.0 %}
-                        <a href="{{ link }}" target="_blank" blank="true" class="page__link-public-profile" style="width:220px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ link }}</a>
+                        <a href="{{ link }}" target="_blank" blank="true" class="page__link-public-profile" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ link }}</a>
                     {% else %}
-                        <a href="http://wekit.eu/" target="_blank" blank="true" class="page__link-public-profile" style="width:220px;text-align:left;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">http://wekit.eu/</a>
+                        <a href="http://wekit.eu/" target="_blank" blank="true" class="page__link-public-profile" style="text-align:left;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">http://wekit.eu/</a>
                     {% endif %}
                 {% endwith %}
                 <div style="margin:0 auto;margin;padding-left:1%">Researcher, Autor - Oxford, UK</div>

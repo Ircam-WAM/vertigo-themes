@@ -1014,6 +1014,12 @@ $module: ".page";
       position:relative !important;
       float:left !important;
       top:3% !important;
+      width: 220px !important;
+
+      @media screen and (max-width: 768px) {
+
+        width: 100% !important;
+      }
     }
 
     &__circle-small-share-button {
@@ -1039,7 +1045,7 @@ $module: ".page";
       @media screen and (max-width: 768px) {
 
         width:83% !important;
-        height:50px !important;
+        height:45px !important;
       }
 
       @media screen and (min-width: 5120px) {
