@@ -818,7 +818,7 @@ $module: ".page";
       left:53% !important;
       cursor:pointer !important;
 
-      @media screen and (min-width: 768px) {
+      @media screen and (max-width: 768px) {
         left:60% !important;
       }
     }
