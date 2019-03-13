@@ -1,4 +1,4 @@
-
+ver
 function changeOptionDetail(event,link) {
 
     event.preventDefault();
@@ -77,7 +77,7 @@ function changeOptionDetail(event,link) {
 
 function changeFollowStatus(event,object) {
 
-  //event.preventDefault();
+  event.preventDefault();
 
   var styleList = document.getElementById("element-social").classList;
 
@@ -91,10 +91,10 @@ function changeFollowStatus(event,object) {
 
     var currentStyle = styleList[i];
 
-    if (currentStyle == "page__circle-cross-red") {
+    if (currentStyle == "page__circle-cross-red-detail-residencies") {
 
       object.classList.add("page__circle-check-green");
-      object.classList.remove("page__circle-cross-red");
+      object.classList.remove("page__circle-cross-red-detail-residencies");
 
       followItem.style.display = "block";
       unfollowItem.style.display = "none";
@@ -106,7 +106,7 @@ function changeFollowStatus(event,object) {
 
     if (currentStyle == "page__circle-check-green") {
 
-      object.classList.add("page__circle-cross-red");
+      object.classList.add("page__circle-cross-red-detail-residencies");
       object.classList.remove("page__circle-check-green");
 
       followItem.style.display = "none";
