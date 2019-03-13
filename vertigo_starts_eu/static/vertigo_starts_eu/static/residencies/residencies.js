@@ -93,7 +93,7 @@ function changeFollowStatus(event,object) {
 
     if (currentStyle == "page__circle-cross-red-detail-residencies") {
 
-      object.classList.add("page__circle-check-green");
+      object.classList.add("page__circle-check-green-detail-residencies");
       object.classList.remove("page__circle-cross-red-detail-residencies");
 
       followItem.style.display = "block";
@@ -104,10 +104,10 @@ function changeFollowStatus(event,object) {
       break;
     }
 
-    if (currentStyle == "page__circle-check-green") {
+    if (currentStyle == "page__circle-check-green-detail-residencies") {
 
       object.classList.add("page__circle-cross-red-detail-residencies");
-      object.classList.remove("page__circle-check-green");
+      object.classList.remove("page__circle-check-green-detail-residencies");
 
       followItem.style.display = "none";
       unfollowItem.style.display = "block";
