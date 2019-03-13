@@ -1,4 +1,4 @@
-ver
+
 function changeOptionDetail(event,link) {
 
     event.preventDefault();
