@@ -1025,12 +1025,17 @@ $module: ".page";
     &__container-buttons-share {
 
       width:auto !important;
-      height:40px !important;
+      height:auto !important;
       position:relative !important;
       float:right !important;
       display:inline-flex !important;
       padding-right:3% !important;
       margin-top:-0.5% !important;
+
+      @media screen and (min-width: 5120px) {
+
+        height:40px !important;
+      }
     }
 
     &__twitter-share-container {
