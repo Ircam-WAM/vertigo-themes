@@ -885,10 +885,24 @@ $module: ".page";
 
       @media screen and (min-width: 2560px) {
 
-        margin-top:-2% !important;
+        margin-top:-2.5% !important;
+      }
+
+      @media screen and (min-width: 5120px) {
+
+        margin-top:-1% !important;
       }
     }
 
+    &__padding-container-main {
+
+      padding-top:2% !important;
+
+      @media screen and (min-width: 5120px) {
+
+        padding-top:4% !important;
+      }
+    }
     &__follow-public-text {
 
       width:100% !important;
