@@ -1099,7 +1099,7 @@ $module: ".page";
       @media screen and (max-width: 768px) {
 
         margin-top:-25% !important;
-        margin-bottom: -1% !important;
+        margin-bottom: 2% !important;
       }
     }
 
@@ -1233,6 +1233,10 @@ $module: ".page";
       color:black !important;
       font-weight:normal !important;
       text-align:justify !important;
+
+      @media screen and (max-width: 768px) {
+        padding-right: 10% !important;
+      }
     }
 
 
