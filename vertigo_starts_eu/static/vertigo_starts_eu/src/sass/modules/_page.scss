@@ -1425,11 +1425,12 @@ $module: ".page";
       float:right !important;
       background:#50e3c2 !important;
       width:150px !important;
-      height:80px !important;
+      height:50px !important;
       color:white !important;
       font-family:'Oswald',sans-serif !important;
       font-size:25px !important;
       text-align:center !important;
+      margin-top:-2% !important;
     }
 
     &__link-profile-artist {
@@ -1440,7 +1441,7 @@ $module: ".page";
       color:white !important;
       margin: 0 auto !important;
       vertical-align: middle !important;
-      line-height:3 !important;
+      line-height:2 !important;
     }
 
     &__style-text-profile {
