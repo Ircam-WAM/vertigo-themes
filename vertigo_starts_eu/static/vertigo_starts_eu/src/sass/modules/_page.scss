@@ -1132,6 +1132,10 @@ $module: ".page";
       font-size:25px !important;
       margin-left:3% !important;
       margin-top:15% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__facebook-share-container {
@@ -1148,6 +1152,10 @@ $module: ".page";
       font-size:25px !important;
       margin-left:3% !important;
       margin-top:13% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__instagram-share-container {
@@ -1164,6 +1172,10 @@ $module: ".page";
       font-size:25px !important;
       margin-left:3% !important;
       margin-top:15% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__youtube-share-container {
@@ -1180,6 +1192,10 @@ $module: ".page";
       font-size:25px !important;
       margin-left:3% !important;
       margin-top:15% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__linkedin-share-container {
@@ -1196,6 +1212,10 @@ $module: ".page";
       font-size:25px !important;
       margin-left:3% !important;
       margin-top:10% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__residency-blog-content {
