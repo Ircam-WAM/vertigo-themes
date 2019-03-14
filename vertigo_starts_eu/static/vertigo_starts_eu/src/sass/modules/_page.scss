@@ -860,6 +860,23 @@ $module: ".page";
       font-family:'Oswald',sans-serif !important;
       text-align:center !important;
       margin-top:1% !important;
+
+      @media screen and (max-width: 768px) {
+
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        margin-bottom: 2% !important;
+      }
+    }
+
+    &__bottom-space-city {
+
+      margin-bottom: 0 !important;
+
+      @media screen and (max-width: 768px) {
+
+        margin-bottom: 2% !important;
+      }
     }
 
     &__main-subtitle-profile-public {
@@ -920,6 +937,12 @@ $module: ".page";
       padding-top:1% !important;
       padding-bottom:1% !important;
       margin-top:0.2% !important;
+
+      @media screen and (max-width: 768px) {
+
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
     }
 
     &__follow-public-text-spaceless {
@@ -962,6 +985,12 @@ $module: ".page";
       padding-top:1% !important;
       padding-bottom:1% !important;
       margin-top:0.2% !important;
+
+      @media screen and (max-width: 768px) {
+
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
     }
 
     &__circle-gray {
@@ -981,6 +1010,12 @@ $module: ".page";
       margin-top:5% !important;
       margin-left:20% !important;
       margin-right:20% !important;
+
+      @media screen and (max-width: 768px) {
+
+        margin-left:10% !important;
+        margin-right:0% !important;
+      }
     }
 
     &__style-user-icon {
@@ -1020,6 +1055,7 @@ $module: ".page";
       @media screen and (max-width: 768px) {
 
         width: 100% !important;
+        margin-bottom: 2% !important;
       }
     }
 
@@ -1047,6 +1083,7 @@ $module: ".page";
 
         width:83% !important;
         height:45px !important;
+        margin-bottom:2% !important;
       }
 
       @media screen and (min-width: 5120px) {
