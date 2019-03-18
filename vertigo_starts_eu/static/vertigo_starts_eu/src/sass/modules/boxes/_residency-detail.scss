@@ -206,6 +206,12 @@ $module: ".residency-detail";
         }
     }
 
+    &__custom-text-style {
+
+      font-family: 'Merriweather' !important;
+      line-height: 1.875rem !important;
+      font-weight: 300 !important;
+    }
 
     &__center-buttons {
 	    width: auto;

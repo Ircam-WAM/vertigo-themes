@@ -1508,7 +1508,9 @@ $module: ".page";
     &__style-text-profile {
 
       color: #000 !important;
-      font-weight:400 !important;
+      font-weight:300 !important;
+      font-family: 'Merriweather' !important;
+      line-height: 1.875rem !important;
 /*
       @media screen and (max-width: 768px) {
 
