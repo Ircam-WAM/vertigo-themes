@@ -28,6 +28,8 @@ $module: ".nav-footer";
 
     &--horizontal {
 
+        color: white !important;
+        
         #{$module}__item {
 
             display: inline-block;
