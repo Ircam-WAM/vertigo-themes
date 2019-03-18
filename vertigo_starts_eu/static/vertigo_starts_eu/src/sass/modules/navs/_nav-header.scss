@@ -142,6 +142,10 @@ $module: ".nav-header";
       }
     }
 
+    @media screen and (min-width: 768px) and (max-width: 768px) {
+      margin-top:6% !important;
+    }
+
     @media screen and (max-width: 779px) {
 
       &__image-logo {
