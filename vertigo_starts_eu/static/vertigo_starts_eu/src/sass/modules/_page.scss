@@ -1387,14 +1387,14 @@ $module: ".page";
       width:60% !important;
       text-align:center !important;
       display:block !important;
-      height:50px !important;
+      height:auto !important;
       margin:0 auto !important;
       margin-top:2% !important;
 
       @media screen and (max-width: 768px) {
 
         width:90% !important;
-        margin-bottom: 15% !important;
+        margin-bottom: 5% !important;
       }
     }
 
