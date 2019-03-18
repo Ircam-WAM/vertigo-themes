@@ -676,6 +676,16 @@ $module: ".home-page";
       }
     }
 
+    &__page-space-responsive {
+
+      margin-top:-5% !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:-45% !important;
+      }
+    }
+
     &__responsive-index-application-home {
 
       @media screen and (max-width: 780px) {
