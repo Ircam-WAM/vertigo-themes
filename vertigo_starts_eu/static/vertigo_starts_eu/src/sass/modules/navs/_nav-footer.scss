@@ -47,7 +47,7 @@ $module: ".nav-footer";
         @include font-size(m);
         @include typeface(sans-serif);
         font-weight: weight(regular);
-        color: white;
+        color: white !important;
     }
 
 }

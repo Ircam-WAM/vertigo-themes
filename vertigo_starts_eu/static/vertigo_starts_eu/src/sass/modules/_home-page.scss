@@ -684,6 +684,14 @@ $module: ".home-page";
       }
     }
 
+    &__responsive-header {
+
+      @media screen and (max-width: 780px) {
+
+        margin-top:-45% !important;
+      }
+    }
+
     &__responsive-footer-application-home {
 
       @media screen and (max-width: 780px) {
