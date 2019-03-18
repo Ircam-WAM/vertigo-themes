@@ -288,7 +288,7 @@ $(function() {
           {% endwith %}
   {% endif %}
 </div>
-<div id="content-artist-item" class="residency-detail__block--white residency-detail__margin-white-extra" style="display:none;margin-left:20%;margin-right:20%;">
+<div id="content-artist-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="display:none;margin-left:20%;margin-right:20%;">
   <div>
       <div class="residency-detail__image-left">
         <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
