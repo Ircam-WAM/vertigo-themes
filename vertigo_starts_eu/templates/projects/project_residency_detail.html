@@ -95,9 +95,9 @@ $(function() {
 
 {% with object.images.all|get_type:'slider' as images %}
     {% if images %}
-<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat;;background-size:cover;background-position: center">
+<div class="page__responsive-space-big" style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat;;background-size:cover;background-position: center">
     {% else %}
-<div style="width:100%;height:auto;background:gray;padding-bottom:5%">
+<div class="page__responsive-space-big" style="width:100%;height:auto;background:gray;padding-bottom:5%">
     {% endif %}
 {% endwith %}
   <div class="page__content-detail-header">

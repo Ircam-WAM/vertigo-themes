@@ -1301,6 +1301,14 @@ $module: ".page";
       }
     }
 
+    &__responsive-space-big {
+
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+
+        transform: translate(0%,-250%) !important;
+      }
+    }
+
     &__timeline-draw-part-three {
 
       background:white !important;
