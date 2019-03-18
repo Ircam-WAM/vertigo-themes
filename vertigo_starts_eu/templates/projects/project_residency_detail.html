@@ -95,7 +95,7 @@ $(function() {
 
 {% with object.images.all|get_type:'slider' as images %}
     {% if images %}
-<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat">
+<div style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat;;background-size:cover;background-position: center">
     {% else %}
 <div style="width:100%;height:auto;background:gray;padding-bottom:5%">
     {% endif %}
@@ -127,7 +127,7 @@ $(function() {
   {% if object.keywords.all %}
   <div class="page__keywords-residencies">
     {% for kw in object.keywords.all %}
-        <div class="article-box__chevron-tag-style-search-no-hover ">{{ kw }}</div>
+        <div class="article-box__chevron-tag-style-search-no-hover-thin ">{{ kw }}</div>
     {% endfor %}
   </div>
   {% endif %}

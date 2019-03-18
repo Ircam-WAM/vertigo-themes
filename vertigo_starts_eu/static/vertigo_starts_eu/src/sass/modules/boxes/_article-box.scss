@@ -779,6 +779,17 @@ $module: ".article-box";
       font-family:'Oswald',sans-serif;
     }
 
+    &__chevron-tag-style-search-no-hover-thin {
+
+      display: inline-block;
+      border: .1em solid #50e3c2;
+      border-radius: .2em;
+      font-size: 1.0em;
+      margin: .5em;
+      padding: .2em .5em;
+      font-family:'Oswald',sans-serif;
+    }
+
 
     &__tranlate-responsive {
 
