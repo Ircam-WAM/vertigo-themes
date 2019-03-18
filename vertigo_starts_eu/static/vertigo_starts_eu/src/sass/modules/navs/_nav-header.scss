@@ -541,6 +541,10 @@ $module: ".nav-header";
 
               float:none !important;
             }
+
+            @media screen and (min-width: 952px) and (max-width: 952px) {
+              margin-top: 4% !important;
+            }
         }
 
         &--special {
