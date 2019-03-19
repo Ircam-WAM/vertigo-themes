@@ -7,9 +7,10 @@ function showFullNotice(object,event) {
   event.preventDefault();
 
   var bodyDiv = document.getElementById("body");
-  bodyDiv.style.overflow = "hidden";
-  
+
   closeOverlay();
+
+  bodyDiv.style.overflow = "hidden";
 
   var dynamicDiv = document.createElement('div');
   dynamicDiv.id = 'overlay-news';
@@ -31,6 +32,12 @@ function showFullNotice(object,event) {
   dynamicDiv.innerHTML = innerString;
 
   bodyDiv.insertBefore(dynamicDiv, bodyDiv.firstChild);
+}
+
+function enableOverflowBody() {
+
+  var bodyDiv = document.getElementById("body");
+  bodyDiv.style.overflow = "auto";
 }
 
 function closeOverlay() {
