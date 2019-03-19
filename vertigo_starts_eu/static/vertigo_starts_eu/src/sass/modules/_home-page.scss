@@ -1214,7 +1214,6 @@ $module: ".home-page";
       position:fixed !important;
       background-color:rgba(0, 0, 0, 0.7) !important;
       z-index:9999999 !important;
-      overflow:auto !important;
       display: block !important;
     }
 
@@ -1224,7 +1223,7 @@ $module: ".home-page";
       font-size:5rem !important;
       top:15% !important;
       right:5% !important;
-      position:absolute !important;
+      position:absolute ss!important;
     }
 
     &__overlay-contaner-info-home {
@@ -1232,19 +1231,32 @@ $module: ".home-page";
       width:30% !important;
       height:auto !important;
       background-color: rgba(255, 255, 255, 1) !important;
-      top:40% !important;
+      top:20% !important;
       left:40% !important;
       position:absolute !important;
       padding:1% !important;
       font-weight:300 !important;
       line-height:1.875rem !important;
+      overflow:auto !important;
     }
 
     &__overlay-content-title-home {
 
-      font-size:3rem !important;
+      font-size:2rem !important;
       font-family:'Merriweather' !important;
       color:black !important;
+      font-weight:300 !important;
+      line-height:1.875rem !important;
+    }
+
+    &__overlay-description-home {
+
+      font-size:1rem !important;
+      font-family:'Merriweather' !important;
+      color:black !important;
+      font-weight:300 !important;
+      line-height:1.875rem !important;
+      text-align:justify !important;
     }
 }
 
