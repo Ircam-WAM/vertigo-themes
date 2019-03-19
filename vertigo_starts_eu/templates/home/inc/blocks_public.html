@@ -10,7 +10,8 @@ function showFullNotice(object,event) {
 
   closeOverlay();
 
-  bodyDiv.style.overflow = "hidden";
+  var htmlTag = document.getElementsByTagName("html");
+  htmlTag.style.overflow = "hidden";
 
   var dynamicDiv = document.createElement('div');
   dynamicDiv.id = 'overlay-news';
@@ -34,20 +35,16 @@ function showFullNotice(object,event) {
   bodyDiv.insertBefore(dynamicDiv, bodyDiv.firstChild);
 }
 
-function enableOverflowBody() {
-
-  var bodyDiv = document.getElementById("body");
-  bodyDiv.style.overflow = "auto";
-}
-
 function closeOverlay() {
 
+  var htmlTag = document.getElementsByTagName("html");
+  htmlTag.style.overflow = "auto";
+  
   var childrenOverlay = document.getElementsByClassName("home-page__overlay-style-home");
 
   if (childrenOverlay != null) {
 
     var bodyDiv = document.getElementById("body");
-    bodyDiv.style.overflow = "auto";
 
     for (var i = 0; i < childrenOverlay.length; i++) {
 
