@@ -11,7 +11,10 @@ function showFullNotice(object,event) {
   closeOverlay();
 
   var htmlTag = document.getElementsByTagName("html");
-  htmlTag[0].style.overflow = "hidden";
+
+  if (htmlTag != null) {
+    htmlTag[0].style.overflow = "hidden";
+  }
 
   var dynamicDiv = document.createElement('div');
   dynamicDiv.id = 'overlay-news';
@@ -38,7 +41,10 @@ function showFullNotice(object,event) {
 function closeOverlay() {
 
   var htmlTag = document.getElementsByTagName("html");
-  htmlTag[0].style.overflow = "auto";
+
+  if (htmlTag != null) {
+    htmlTag[0].style.overflow = "auto";
+  }
 
   var childrenOverlay = document.getElementsByClassName("home-page__overlay-style-home");
 
