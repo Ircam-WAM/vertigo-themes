@@ -8,20 +8,28 @@ function showFullNotice(object,event) {
 
   var bodyDiv = document.getElementById("body");
 
-  var childrenOverlay = document.getElementById("overlay-news");
-
-  for (var i = 0; i < childrenOverlay.length; i++) {
-
-    var child = childrenOverlay[i];
-
-    bodyDiv.removeChild(child);
-  }
+  closeOverlay();
 
   var dynamicDiv = document.createElement('div');
   dynamicDiv.id = 'overlay-news';
   dynamicDiv.class = "home-page__overlay-style-home";
 
   bodyDiv.insertBefore(dynamicDiv, bodyDiv.firstChild);
+}
+
+function closeOverlay() {
+
+  var childrenOverlay = document.getElementById("overlay-news");
+
+  if (childrenOverlay != null) {
+
+    for (var i = 0; i < childrenOverlay.length; i++) {
+
+      var child = childrenOverlay[i];
+
+      bodyDiv.removeChild(child);
+    }
+  }
 }
 
 </script>
