@@ -21,7 +21,7 @@ function showFullNotice(object,event) {
   innerString += "{{ article.title }}";
   innerString += "</div>";
   innerString += "</div>";
-  innerString += "<img class=\"home-page__public-article-image\" src=\"{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}\" >";
+  //innerString += "<img class=\"home-page__public-article-image\" src=\"{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}\" >";
   innerString += "<div>";
   innerString += "{{ article.description|richtext_filters|safe|truncatechars_html:1000 }}";
   innerString += "</div>";
