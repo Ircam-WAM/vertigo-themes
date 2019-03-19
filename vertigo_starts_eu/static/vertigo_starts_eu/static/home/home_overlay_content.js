@@ -1,4 +1,3 @@
-
 function showFullNotice(object,event) {
 
   event.preventDefault();
