@@ -1,7 +1,5 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
-<script src="{% static "vertigo_starts_eu/static/home/home_overlay_content.js" %}"></script>
-
 
 <div class="home-page__public-main-container-text-banner">
   <div class="home-page__public-main-text-banner">
@@ -25,7 +23,7 @@
   <div class="home-page__first-big-block home-page__public-container-common home-page__height-auto">
     <div class="home-page__inner-big-block">
       <!--<a href="{{ article.get_absolute_url }}">-->
-      <div style="cursor:pointer" onclick="showFullNotice(this,event);">
+      <div style="cursor:pointer" onclick="showFullNotice();">
         <div class="home-page__full-frame home-page__public-white-background">
 
           <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
