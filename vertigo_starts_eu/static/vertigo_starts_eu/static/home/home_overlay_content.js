@@ -1,6 +1,4 @@
-function showFullNotice(object,event) {
-
-  event.preventDefault();
+function showFullNotice() {
 
   var bodyDiv = document.getElementById("body");
 
