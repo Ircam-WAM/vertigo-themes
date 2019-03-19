@@ -19,7 +19,12 @@ function showFullNotice(object,event) {
   innerString += "<div class=\"home-page__overlay-title-home\">";
   innerString += "<div class=\"home-page__overlay-content-title-home\">";
   innerString += "{{ article.title }}";
-  innerString += "</div></div>";
+  innerString += "</div>";
+  innerString += "</div>";
+  innerString += "<img class=\"home-page__public-article-image\" src=\"{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}\" >";
+  innerString += "<div>";
+  innerString += "{{ article.description|richtext_filters|safe|truncatechars_html:1000 }}";
+  innerString += "</div>";
   innerString += "</div>";
 
   dynamicDiv.innerHTML = innerString;
