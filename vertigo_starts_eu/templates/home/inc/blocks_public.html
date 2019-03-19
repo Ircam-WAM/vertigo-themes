@@ -7,7 +7,8 @@ function showFullNotice(object,event) {
   event.preventDefault();
 
   var bodyDiv = document.getElementById("body");
-
+  bodyDiv.style.overflow = "hidden";
+  
   closeOverlay();
 
   var dynamicDiv = document.createElement('div');
@@ -39,6 +40,7 @@ function closeOverlay() {
   if (childrenOverlay != null) {
 
     var bodyDiv = document.getElementById("body");
+    bodyDiv.style.overflow = "auto";
 
     for (var i = 0; i < childrenOverlay.length; i++) {
 
