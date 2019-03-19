@@ -1212,20 +1212,39 @@ $module: ".home-page";
       width:100% !important;
       height:100% !important;
       position:fixed !important;
-      background:black !important;
+      background-color:rgb(0, 0, 0, 0.7) !important;
       z-index:9999999 !important;
       overflow:auto !important;
-      opacity: 0.7 !important;
       display: block !important;
     }
 
     &__overlay_close-home {
 
-      color:white;
-      font-size:5rem;
-      top:15%;
-      right:5%;
-      position:absolute;
+      color:white !important;
+      font-size:5rem !important;
+      top:15% !important;
+      right:5% !important;
+      position:absolute !important;
+    }
+
+    &__overlay-title-home {
+
+      width:30% !important;
+      height:auto !important;
+      background-color: rgba(255, 255, 255, 3) !important;
+      top:40% !important;
+      left:40% !important;
+      position:absolute !important;
+      padding:1% !important;
+      font-weight:300 !important;
+      line-height:1.875rem !important;
+    }
+
+    &__overlay-content-title-home {
+
+      font-size:3rem !important;
+      font-family:'Merriweather' !important;
+      color:black !important;
     }
 }
 
