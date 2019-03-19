@@ -1218,6 +1218,15 @@ $module: ".home-page";
       opacity: 0.7 !important;
       display: block !important;
     }
+
+    &__overlay_close-home {
+
+      color:white;
+      font-size:5rem;
+      top:15%;
+      right:5%;
+      position:absolute;
+    }
 }
 
 img.help-icon {

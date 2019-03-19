@@ -14,6 +14,11 @@ function showFullNotice(object,event) {
   dynamicDiv.id = 'overlay-news';
   dynamicDiv.className = "home-page__overlay-style-home";
 
+  var innerString = "<div onclick=\"closeOverlay();\">";
+  innerString += "<i class=\"fa fa-times\" aria-hidden=\"true\" style=\"home-page__overlay_close-home\"></i>";
+  innerString += "</div>";
+
+  dynamicDiv.innerHTML = innerString;
   bodyDiv.insertBefore(dynamicDiv, bodyDiv.firstChild);
 }
 
