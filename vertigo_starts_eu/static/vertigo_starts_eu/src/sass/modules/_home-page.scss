@@ -1206,6 +1206,18 @@ $module: ".home-page";
         }
       }
     }
+
+    &__overlay-style-home {
+
+      width:100% !important;
+      height:100% !important;
+      position:fixed !important;
+      background:red !important;
+      z-index:9999999 !important;
+      overflow:auto !important;
+      opacity: 0.7 !important;
+      display: block !important;
+    }
 }
 
 img.help-icon {

@@ -1,5 +1,31 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
+<script>
+
+function showFullNotice(object,event) {
+
+  event.preventDefault();
+
+  var bodyDiv = document.getElementById("body");
+
+  var childrenOverlay = document.getElementById("overlay-news");
+
+  for (var i = 0; i < childrenOverlay.length; i++) {
+
+    var child = childrenOverlay[i];
+
+    bodyDiv.removeChild(child);
+  }
+
+  var dynamicDiv = document.createElement('div');
+  dynamicDiv.id = 'overlay-news';
+  dynamicDiv.class = "home-page__overlay-style-home";
+
+  bodyDiv.insertBefore(dynamicDiv, bodyDiv.firstChild);
+}
+
+</script>
+
 <div class="home-page__public-main-container-text-banner">
   <div class="home-page__public-main-text-banner">
     ART X TECHNOLOGY X INNOVATION
@@ -22,7 +48,7 @@
   <div class="home-page__first-big-block home-page__public-container-common home-page__height-auto">
     <div class="home-page__inner-big-block">
       <!--<a href="{{ article.get_absolute_url }}">-->
-      <div style="cursor:pointer">
+      <div style="cursor:pointer" onclick="showFullNotice(this,event);">
         <div class="home-page__full-frame home-page__public-white-background">
 
           <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
