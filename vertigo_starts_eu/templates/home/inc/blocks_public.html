@@ -11,7 +11,9 @@
         <div class="home-page__overlay-description-home">
           by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
         </div>
-        <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+        {% if article.images.all|length > 0 %}
+        <img class="home-page__public-article-image home-page__extra-margin-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" />
+        {% endif %}
         <div class="home-page__overlay-description-home">
           {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
         </div>
@@ -44,7 +46,7 @@
       <div style="cursor:pointer" onclick="showFullNotice();">
         <div class="home-page__full-frame home-page__public-white-background">
           {% if article.images.all|length > 0 %}
-          <img class="home-page__public-article-image home-page__extra-margin-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+          <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
           {% endif %}
           <div class="home-page__public-article-title-main">
             {{ article.title }}
