@@ -7,7 +7,8 @@
       <i class="fa fa-times home-page__overlay_close-home" aria-hidden="true"></i>
       <div class="home-page__overlay-contaner-info-home">
         <div class="home-page__overlay-content-title-home">
-          {{ article.title }}"
+          {{ article.title }}<br/>
+          by {{ article.department.name }}, {{ article.publish_date|date:"DATE_FORMAT" }}, 
         </div>
         <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
         <div class="home-page__overlay-description-home">
