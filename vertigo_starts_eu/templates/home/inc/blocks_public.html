@@ -1,9 +1,9 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
 <div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home">
-  <div style="cursor:pointer;" onclick="closeOverlay()" class="home-page__overlay_close-home">
-    <!--  <i class="fa fa-times home-page__overlay_close-home" aria-hidden="true"></i>-->
-    &times;
+  <div style="cursor:pointer;" onclick="closeOverlay()">
+     <i class="home-page__overlay_close-home" aria-hidden="true">&times;</i>
+
       <div class="home-page__overlay-contaner-info-home">
         <div class="home-page__overlay-content-title-home">
           {{ article.title }}
