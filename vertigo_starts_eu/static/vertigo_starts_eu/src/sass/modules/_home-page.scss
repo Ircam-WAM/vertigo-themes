@@ -835,20 +835,10 @@ $module: ".home-page";
             height:75% !important;
           }
 
-          @media screen and (max-width: 375px) {
+          @media screen and (max-width: 414px) {
             height:80% !important;
           }
-/*
-          @media screen and (max-width: 780px) {
 
-            height:75% !important;
-
-            @-moz-document url-prefix() {
-
-              height: 72% !important;
-            }
-          }
-*/
           @media screen and (min-width: 780px) {
             height: 90% !important;
           }
