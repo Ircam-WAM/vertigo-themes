@@ -1209,9 +1209,9 @@ $module: ".home-page";
 
     &__overlay-style-home {
 
-      width:100vw !important;
-      height:100vh!important;
-      position:absolute !important;
+      width:100% !important;
+      height:100% !important;
+      position:fixed !important;
       background-color:rgba(0, 0, 0, 0.7) !important;
       z-index:9999999 !important;
       overflow-y: scroll !important;
