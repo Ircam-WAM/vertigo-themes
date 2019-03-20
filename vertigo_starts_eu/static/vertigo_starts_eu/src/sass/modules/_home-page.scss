@@ -1243,16 +1243,15 @@ $module: ".home-page";
     &__overlay-content-title-home {
 
       font-size:2rem !important;
-      font-family:'Merriweather' !important;
       color:black !important;
-      font-weight:300 !important;
-      line-height:1.875rem !important;
+      font-weight:bold !important;
+      line-height:2rem !important;
     }
 
     &__overlay-description-home {
 
       font-size:1rem !important;
-      font-family:'Merriweather' !important;
+      //font-family:'Merriweather' !important;
       color:black !important;
       font-weight:300 !important;
       line-height:1.875rem !important;
