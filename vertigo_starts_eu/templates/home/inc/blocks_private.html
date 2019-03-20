@@ -12,7 +12,7 @@
         <div class="home-page__overlay-content-title-home">
           {{ article.title }}"
         </div>
-        <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+        <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}"/>
         <div class="home-page__overlay-description-home">
           {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
         </div>
