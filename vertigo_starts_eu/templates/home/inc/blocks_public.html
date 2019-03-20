@@ -49,7 +49,7 @@
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
-          <div class="home-page__overlay-description-home">
+          <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
             by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
           </div>
           <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
