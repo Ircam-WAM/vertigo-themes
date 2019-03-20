@@ -831,16 +831,16 @@ $module: ".home-page";
 
           z-index: 0;
 
-          @media screen and (max-width: 375px) {
-            height:75% !important;
+          @media screen and (min-width: 780px) {
+            height: 90% !important;
           }
 
           @media screen and (max-width: 414px) {
             height:80% !important;
           }
 
-          @media screen and (min-width: 780px) {
-            height: 90% !important;
+          @media screen and (max-width: 375px) {
+            height:75% !important;
           }
       }
     }
