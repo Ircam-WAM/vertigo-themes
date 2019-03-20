@@ -1,4 +1,3 @@
-<script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
 
 function showFullNotice() {
 
