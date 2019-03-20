@@ -1,4 +1,3 @@
-<script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
 
 function showFullNotice() {
 
@@ -41,8 +40,9 @@ function closeOverlay() {
   }
 }
 
-$( document ).on( 'keydown', function ( e ) {
+
+  $(document).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) { // ESC
         closeOverlay();
     }
-});
+  });
