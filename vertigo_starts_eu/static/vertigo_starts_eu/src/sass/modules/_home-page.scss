@@ -1214,7 +1214,7 @@ $module: ".home-page";
       width:100% !important;
       height:100% !important;
       position:fixed !important;
-      background-color:rgba(0, 15, 36, 0.7) !important;
+      background-color:rgba(0, 15, 36, 0.93) !important;
       z-index:9999999 !important;
       overflow-y: scroll !important;
     }
@@ -1223,10 +1223,11 @@ $module: ".home-page";
 
       color:white !important;
       font-size:8rem !important;
-      top:15% !important;
-      right:5% !important;
+      top:60px !important;
+      right:50px !important;
       position:absolute !important;
       cursor:pointer !important;
+      font-weight: 2 !important;
     }
 
     &__overlay-contaner-info-home {
