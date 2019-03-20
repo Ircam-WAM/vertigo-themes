@@ -14,8 +14,19 @@ function showFullNotice(object,event) {
     htmlTag[0].style.overflow = "hidden";
   }
 
-  var hiddenDiv = document.getElementById("overlay-news");
-  hiddenDiv.style.display = "block";
+  var bodyDiv = document.getElementById("body");
+  var childBody = document.getElementById("overlay-news");
+
+  if (childBody != null) {
+      bodyDiv.removeChild(childBody);
+  }
+
+  var hiddenDiv = document.getElementById("overlay-news-temp");
+  var cloneDiv = hiddenDiv.cloneNode(true);
+  cloneDiv.id = "overlay-news";
+  cloneDiv.style.display = "block";
+
+  bodyDiv.insertBefore(cloneDiv, bodyDiv.firstChild);
 }
 
 function closeOverlay() {
@@ -26,13 +37,17 @@ function closeOverlay() {
     htmlTag[0].style.overflow = "auto";
   }
 
-  var hiddenDiv = document.getElementById("overlay-news");
-  hiddenDiv.style.display = "none";
+  var bodyDiv = document.getElementById("body");
+  var childBody = document.getElementById("overlay-news");
+
+  if (childBody != null) {
+      bodyDiv.removeChild(childBody);
+  }
 }
 
 </script>
 
-<div id="overlay-news" style="display:none;" class="home-page__overlay-style-home">
+<div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home">
   <div style="cursor:pointer;" onclick="closeOverlay()">
       <i class="fa fa-times home-page__overlay_close-home" aria-hidden="true"></i>
       <div class="home-page__overlay-contaner-info-home">
