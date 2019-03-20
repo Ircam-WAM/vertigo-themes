@@ -831,6 +831,14 @@ $module: ".home-page";
 
           z-index: 0;
 
+          @media screen and (max-width: 375px) {
+            height:75% !important;
+          }
+
+          @media screen and (max-width: 375px) {
+            height:80% !important;
+          }
+
           @media screen and (max-width: 780px) {
 
             height:75% !important;
@@ -839,6 +847,10 @@ $module: ".home-page";
 
               height: 72% !important;
             }
+          }
+
+          @media screen and (max-width: 780px) and and (min-width: 780px){
+            height: 90% !important;
           }
       }
     }
