@@ -1,51 +1,6 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
-<script>
-
-function showFullNotice(object,event) {
-
-  event.preventDefault();
-
-  closeOverlay();
-
-  var htmlTag = document.getElementsByTagName("html");
-
-  if (htmlTag != null) {
-    htmlTag[0].style.overflow = "hidden";
-  }
-
-  var bodyDiv = document.getElementById("body");
-  var childBody = document.getElementById("overlay-news");
-
-  if (childBody != null) {
-      bodyDiv.removeChild(childBody);
-  }
-
-  var hiddenDiv = document.getElementById("overlay-news-temp");
-  var cloneDiv = hiddenDiv.cloneNode(true);
-  cloneDiv.id = "overlay-news";
-  cloneDiv.style.display = "block";
-
-  bodyDiv.insertBefore(cloneDiv, bodyDiv.firstChild);
-}
-
-function closeOverlay() {
-
-  var htmlTag = document.getElementsByTagName("html");
-
-  if (htmlTag != null) {
-    htmlTag[0].style.overflow = "auto";
-  }
-
-  var bodyDiv = document.getElementById("body");
-  var childBody = document.getElementById("overlay-news");
-
-  if (childBody != null) {
-      bodyDiv.removeChild(childBody);
-  }
-}
-
-</script>
+<script src="{% static "vertigo_starts_eu/static/home/home__overlay_content.js" %}"></script>
 
 <div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home">
   <div style="cursor:pointer;" onclick="closeOverlay()">

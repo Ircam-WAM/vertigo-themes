@@ -1,6 +1,6 @@
-function showFullNotice() {
+function showFullNotice(object,event) {
 
-  var bodyDiv = document.getElementById("body");
+  event.preventDefault();
 
   closeOverlay();
 
@@ -10,26 +10,19 @@ function showFullNotice() {
     htmlTag[0].style.overflow = "hidden";
   }
 
-  var dynamicDiv = document.createElement('div');
-  dynamicDiv.id = 'overlay-news';
-  dynamicDiv.className = "home-page__overlay-style-home";
+  var bodyDiv = document.getElementById("body");
+  var childBody = document.getElementById("overlay-news");
 
-  var innerString = "<div style=\"cursor:pointer\" onclick=\"closeOverlay();\">";
-  innerString += "<i class=\"fa fa-times home-page__overlay_close-home\" aria-hidden=\"true\"></i>";
-  innerString += "<div class=\"home-page__overlay-contaner-info-home\">";
-  innerString += "<div class=\"home-page__overlay-content-title-home\">";
-  innerString += "{{ article.title }}";
-  innerString += "</div>";
-  innerString += "<img class=\"home-page__public-article-image\" src=\"{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}\" >";
-  innerString += "<div class=\"home-page__overlay-description-home\">";
-  innerString += "{{ article.description|richtext_filters|safe|truncatechars_html:1000 }}";
-  innerString += "</div>";
-  innerString += "</div>";
-  innerString += "</div>";
+  if (childBody != null) {
+      bodyDiv.removeChild(childBody);
+  }
 
-  dynamicDiv.innerHTML = innerString;
+  var hiddenDiv = document.getElementById("overlay-news-temp");
+  var cloneDiv = hiddenDiv.cloneNode(true);
+  cloneDiv.id = "overlay-news";
+  cloneDiv.style.display = "block";
 
-  bodyDiv.insertBefore(dynamicDiv, bodyDiv.firstChild);
+  bodyDiv.insertBefore(cloneDiv, bodyDiv.firstChild);
 }
 
 function closeOverlay() {
@@ -40,17 +33,10 @@ function closeOverlay() {
     htmlTag[0].style.overflow = "auto";
   }
 
-  var childrenOverlay = document.getElementsByClassName("home-page__overlay-style-home");
+  var bodyDiv = document.getElementById("body");
+  var childBody = document.getElementById("overlay-news");
 
-  if (childrenOverlay != null) {
-
-    var bodyDiv = document.getElementById("body");
-
-    for (var i = 0; i < childrenOverlay.length; i++) {
-
-      var child = childrenOverlay[i];
-
-      bodyDiv.removeChild(child);
-    }
+  if (childBody != null) {
+      bodyDiv.removeChild(childBody);
   }
 }
