@@ -1232,6 +1232,11 @@ $module: ".home-page";
       position:absolute !important;
       cursor:pointer !important;
       font-weight: 2 !important;
+
+      @media screen and (max-width: 780px) {
+
+          right:0px !important;
+      }
     }
 
     &__overlay-contaner-info-home {
@@ -1246,6 +1251,12 @@ $module: ".home-page";
       font-weight:300 !important;
       line-height:1.875rem !important;
       overflow:auto !important;
+
+      @media screen and (max-width: 780px) {
+
+          width:95% !important;
+          left: 2% !important;
+      }
     }
 
     &__overlay-content-title-home {
@@ -1253,7 +1264,7 @@ $module: ".home-page";
       font-size:2rem !important;
       color:black !important;
       font-weight:bold !important;
-      line-height:2rem !important;
+      line-height:2.3rem !important;
     }
 
     &__overlay-description-home {
