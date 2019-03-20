@@ -3,16 +3,20 @@
 <script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
 {% endcomment %}
 
-<script src="{% static "vertigo_starts_eu/static/home/home_overlay_content.js" %}"></script>
+<div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home" onclick="closeOverlay()">
+  <div>
+     <div class="home-page__overlay_close-home">&times;</div>
 
-<div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home">
-  <div style="cursor:pointer;" onclick="closeOverlay()">
-      <i class="fa fa-times home-page__overlay_close-home" aria-hidden="true"></i>
       <div class="home-page__overlay-contaner-info-home">
         <div class="home-page__overlay-content-title-home">
-          {{ article.title }}"
+          {{ article.title }}
         </div>
-        <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+        <div class="home-page__overlay-description-home">
+          by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+        </div>
+        {% if article.images.all|length > 0 %}
+        <img class="home-page__public-article-image home-page__extra-margin-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" />
+        {% endif %}
         <div class="home-page__overlay-description-home">
           {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
         </div>
@@ -50,13 +54,15 @@
       <!--<a href="{{ article.get_absolute_url }}">-->
       <div style="cursor:pointer" onclick="showFullNotice();">
         <div class="home-page__private-full-frame home-page__public-white-background">
-
+          {% if article.images.all|length > 0 %}
           <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
-
+          {% endif %}
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
-
+          <div class="home-page__public-article-body-main home-page__private-left-text">
+            by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+          </div>
           <div class="home-page__public-article-body-main home-page__private-left-text">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>

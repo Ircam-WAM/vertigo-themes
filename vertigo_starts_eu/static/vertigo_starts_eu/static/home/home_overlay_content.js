@@ -1,3 +1,4 @@
+
 function showFullNotice() {
 
   closeOverlay();
@@ -38,3 +39,9 @@ function closeOverlay() {
       bodyDiv.removeChild(childBody);
   }
 }
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) { // ESC
+        closeOverlay();
+    }
+});

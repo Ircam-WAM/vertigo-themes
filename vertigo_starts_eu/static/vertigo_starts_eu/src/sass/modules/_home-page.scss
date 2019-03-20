@@ -766,6 +766,10 @@ $module: ".home-page";
       color:black;
     }
 
+    &__extra-margin-image {
+        margin-bottom:4% !important;
+    }
+
     &__public-article-image {
 
       display:block;
@@ -831,14 +835,16 @@ $module: ".home-page";
 
           z-index: 0;
 
-          @media screen and (max-width: 780px) {
+          @media screen and (min-width: 768px) {
+            height: 90% !important;
+          }
 
+          @media screen and (max-width: 414px) {
+            height:80% !important;
+          }
+
+          @media screen and (max-width: 375px) {
             height:75% !important;
-
-            @-moz-document url-prefix() {
-
-              height: 72% !important;
-            }
           }
       }
     }
@@ -1212,7 +1218,7 @@ $module: ".home-page";
       width:100% !important;
       height:100% !important;
       position:fixed !important;
-      background-color:rgba(0, 0, 0, 0.7) !important;
+      background-color:rgba(0, 15, 36, 0.93) !important;
       z-index:9999999 !important;
       overflow-y: scroll !important;
     }
@@ -1220,10 +1226,17 @@ $module: ".home-page";
     &__overlay_close-home {
 
       color:white !important;
-      font-size:5rem !important;
-      top:15% !important;
-      right:5% !important;
+      font-size:8rem !important;
+      top:60px !important;
+      right:50px !important;
       position:absolute !important;
+      cursor:pointer !important;
+      font-weight: 2 !important;
+
+      @media screen and (max-width: 780px) {
+
+          right:0px !important;
+      }
     }
 
     &__overlay-contaner-info-home {
@@ -1238,21 +1251,26 @@ $module: ".home-page";
       font-weight:300 !important;
       line-height:1.875rem !important;
       overflow:auto !important;
+
+      @media screen and (max-width: 780px) {
+
+          width:95% !important;
+          left: 2% !important;
+      }
     }
 
     &__overlay-content-title-home {
 
       font-size:2rem !important;
-      font-family:'Merriweather' !important;
       color:black !important;
-      font-weight:300 !important;
-      line-height:1.875rem !important;
+      font-weight:bold !important;
+      line-height:2.3rem !important;
     }
 
     &__overlay-description-home {
 
       font-size:1rem !important;
-      font-family:'Merriweather' !important;
+      //font-family:'Merriweather' !important;
       color:black !important;
       font-weight:300 !important;
       line-height:1.875rem !important;
