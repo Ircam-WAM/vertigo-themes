@@ -1,16 +1,16 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
-
-
 <div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home">
   <div style="cursor:pointer;" onclick="closeOverlay()">
       <i class="fa fa-times home-page__overlay_close-home" aria-hidden="true"></i>
       <div class="home-page__overlay-contaner-info-home">
         <div class="home-page__overlay-content-title-home">
-          {{ article.title }}<br/>
-          by {{ article.department.name }}, {{ article.publish_date|date:"DATE_FORMAT" }}, 
+          {{ article.title }}
         </div>
         <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
+        <div class="home-page__overlay-description-home">
+          by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+        </div>
         <div class="home-page__overlay-description-home">
           {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
         </div>
