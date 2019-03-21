@@ -1244,7 +1244,7 @@ $module: ".home-page";
     &__overlay-contaner-info-home {
 
       width:30% !important;
-      height:auto !important;
+      min-height:auto !important;
       background-color: rgba(255, 255, 255, 1) !important;
       //top:20% !important;
       //left:38% !important;
