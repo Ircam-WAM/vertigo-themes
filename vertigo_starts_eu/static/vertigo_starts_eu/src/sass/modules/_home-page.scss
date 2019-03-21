@@ -350,7 +350,7 @@ $module: ".home-page";
     &__private-post-medium {
 
         width:325px;
-        height:1015px;
+        min-height:auto;
     }
 
     &__private-margin-top-fixer {
@@ -373,7 +373,7 @@ $module: ".home-page";
     &__private-profile-large {
 
       width:325px;
-      height:670px;
+      min-height:auto;
     }
 
     &__private-item-right-banner {
@@ -388,8 +388,6 @@ $module: ".home-page";
       height:auto;
       margin:50px auto;
       transform:translateX(3.2%);
-
-
     }
 
     &__private-item-right-column {
