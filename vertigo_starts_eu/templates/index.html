@@ -1,5 +1,5 @@
 {% extends "vertigo_starts_eu/base.html" %}
-{% load i18n pages_tags mezzanine_tags %}
+{% load i18n pages_tags mezzanine_tags staticfiles %}
 
 
 {% block meta_title %}
@@ -39,4 +39,8 @@
     </div>
     {% endcomment %}
 
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static "vertigo_starts_eu/js/home/home_overlay_content.js" %}"></script>
 {% endblock %}

@@ -52,19 +52,38 @@ gulp.task("favicons", function () {
 });
 
 gulp.task('main-js', function() {
-    return gulp.src(srcFolder + 'js/**/*.js')
+    return gulp.src(srcFolder + 'js/index.js')
         .pipe(plumber({
             errorHandler: function (error) {
                 console.log(error.message);
                 this.emit('end');
             }})
         )
-        .pipe(concat('index.min.js'))
+        .pipe(browserify({
+            insertGlobals : true,
+            debug : false
+        }))
+        .pipe(rename('index.min.js'))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(destFolder + 'js'))
         .pipe(browserSync.stream());
 });
+
+gulp.task('copy-js', function() {
+	return gulp.src(srcFolder + 'js/**/*.js')
+        .pipe(plumber({
+            errorHandler: function (error) {
+                console.log(error.message);
+                this.emit('end');
+            }})
+        )
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(destFolder + 'js'))
+        .pipe(browserSync.stream());
+});
+
 
 gulp.task('main-css', function() {
     return gulp.src(srcFolder + 'sass/*.scss')
@@ -132,7 +151,7 @@ gulp.task('serve', ['clean'], function () {
 
 });
 
-gulp.task('default', ['main-js', 'main-css', 'copy-assets-img', 'serve']);
-gulp.task('build', ['main-js', 'main-css', 'copy-assets-img'], function() {
+gulp.task('default', ['main-js', 'copy-js', 'main-css', 'copy-assets-img', 'serve']);
+gulp.task('build', ['main-js', 'copy-js', 'main-css', 'copy-assets-img'], function() {
     runSequence(['cssmin', 'jsmin', 'imagemin', 'favicons', 'clean']);
 });
