@@ -52,18 +52,14 @@ gulp.task("favicons", function () {
 });
 
 gulp.task('main-js', function() {
-    return gulp.src(srcFolder + 'js/index.js')
+    return gulp.src(srcFolder + 'js/**/*.js')
         .pipe(plumber({
             errorHandler: function (error) {
                 console.log(error.message);
                 this.emit('end');
             }})
         )
-        .pipe(browserify({
-		  insertGlobals : true,
-		  debug : false
-		}))
-        .pipe(rename('index.min.js'))
+        .pipe(concat('index.min.js'))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(destFolder + 'js'))

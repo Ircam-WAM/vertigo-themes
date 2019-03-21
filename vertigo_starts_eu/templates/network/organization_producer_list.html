@@ -1,15 +1,7 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
 
-{% comment %}
-<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
-{% endcomment %}
-
-
-
 {% block extra_head %}
-
-    <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
     <script>
         $(function(){
             $(".list_header").click(function () {

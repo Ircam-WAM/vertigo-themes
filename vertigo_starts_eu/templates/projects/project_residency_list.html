@@ -1,17 +1,29 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
 
-{% comment %}
-<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
-{% endcomment %}
-
-
-
 {% block extra_head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin="">
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin="">
+{% endblock %}
+
+{% block extra_js %}
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+      crossorigin=""></script>
 
 
-    <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
-    <script>
+        <script type="text/javascript">
+
+					$(function(){
+						loadContent();
+					})
+
         $(function(){
             $(".list_header").click(function () {
                 $header = $(this);
@@ -19,32 +31,6 @@
                 $content.slideToggle(500);
             });
         });
-    </script>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-      crossorigin=""/>
-
-      <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-      crossorigin=""></script>
-
-   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
-      crossorigin=""></link>
-   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
-      crossorigin=""></link>
-
-
-    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
-      crossorigin=""></script>
-
-
-        <script type="text/javascript">
             var selectedFilters = []
             function addFilter(residencyButton, keyword) {
                 if (selectedFilters.length == 0) {
@@ -158,15 +144,6 @@
 
 
 {% block main %}
-<script src="{% static 'vertigo_starts_eu/static/filters/filters.js' %}"></script>
-
-<script>
-
-  $(function(){
-     loadContent();
-  })
-
-</script>
 
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"  style="margin-top:-3%;background:white">
     <div class="article-box__title-style-item">
