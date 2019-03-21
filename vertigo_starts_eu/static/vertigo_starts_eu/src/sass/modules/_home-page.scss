@@ -350,12 +350,12 @@ $module: ".home-page";
     &__private-post-medium {
 
         width:325px;
-        height:1015px;
+        min-height:auto;
     }
 
     &__private-margin-top-fixer {
 
-      margin-top:-670px;
+      margin-top:-457px;
     }
 
     &__private-post-large {
@@ -373,7 +373,7 @@ $module: ".home-page";
     &__private-profile-large {
 
       width:325px;
-      height:670px;
+      min-height:auto;
     }
 
     &__private-item-right-banner {
@@ -388,8 +388,6 @@ $module: ".home-page";
       height:auto;
       margin:50px auto;
       transform:translateX(3.2%);
-
-
     }
 
     &__private-item-right-column {
@@ -644,6 +642,7 @@ $module: ".home-page";
         margin-left:1% !important;
         margin-right:1% !important;
         width:93vw !important;
+        background:white !important;
       }
 
       @media screen and (min-width: 768px) and (max-width: 768px) {
@@ -995,15 +994,16 @@ $module: ".home-page";
       @media screen and (max-width: 767px) {
 
         clear:both !important;
-        height:750px !important;
+        min-height:750px !important;
         margin-left:1% !important;
         margin-right:1% !important;
         width:93vw !important;
       }
 
       @media screen and (min-width: 768px) and (max-width: 768px) {
+
         clear:both !important;
-        height:750px !important;
+        min-height:750px !important;
         margin-left:2% !important;
         margin-right:1% !important;
         width:93vw !important;
@@ -1236,26 +1236,33 @@ $module: ".home-page";
       @media screen and (max-width: 780px) {
 
           right:0px !important;
+          font-size:5rem !important;
+          top:30px !important;
       }
     }
 
     &__overlay-contaner-info-home {
 
       width:30% !important;
-      height:auto !important;
+      min-height:auto !important;
       background-color: rgba(255, 255, 255, 1) !important;
-      top:20% !important;
-      left:40% !important;
-      position:absolute !important;
+      //top:20% !important;
+      //left:38% !important;
+      position:relative !important;
       padding:1% !important;
       font-weight:300 !important;
       line-height:1.875rem !important;
       overflow:auto !important;
+      margin: auto !important;
+      margin-top: 5% !important;
 
       @media screen and (max-width: 780px) {
 
           width:95% !important;
-          left: 2% !important;
+          left: 2.5% !important;
+          margin: 0 !important;
+          position: absolute !important;
+          top:15% !important;
       }
     }
 
@@ -1264,7 +1271,7 @@ $module: ".home-page";
       font-size:2rem !important;
       color:black !important;
       font-weight:bold !important;
-      line-height:2.3rem !important;
+      line-height:3rem !important;
     }
 
     &__overlay-description-home {
