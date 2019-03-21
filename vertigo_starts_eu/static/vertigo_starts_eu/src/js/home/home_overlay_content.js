@@ -9,6 +9,8 @@ function showFullNotice() {
   }
 
   var bodyDiv = document.getElementById("body");
+  body.classList.add("noscroll");
+
   var childBody = document.getElementById("overlay-news");
 
   if (childBody != null) {
@@ -32,6 +34,7 @@ function closeOverlay() {
   }
 
   var bodyDiv = document.getElementById("body");
+  body.classList.remove("noscroll");
   var childBody = document.getElementById("overlay-news");
 
   if (childBody != null) {
