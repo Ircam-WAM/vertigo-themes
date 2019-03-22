@@ -1014,15 +1014,15 @@ $module: ".home-page";
 
     &__private-right-side-event-fix-responsive {
 
-      @media screen  and (max-width: 768px) {
-        
+      @media screen and (max-width: 768px) {
+
         position:absolute !important;
       }
     }
 
     &__private-left-image-fix-responsive  {
 
-      @media screen  and (max-width: 768px) {
+      @media screen and (max-width: 768px) {
 
         width:100% !important;
         min-height:300px !important;
@@ -1076,7 +1076,7 @@ $module: ".home-page";
 
         width: 100% !important;
         height: 100% !important;
-        top: 0px !important;
+        top: -300px !important;
         text-align: center !important;
         margin: 0 auto !important;
         padding-right: 5% !important;
