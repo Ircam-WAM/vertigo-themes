@@ -1031,11 +1031,11 @@ $module: ".home-page";
 
           @media screen and (max-width: 780px) {
 
-            height:100% !important;
+            height:101% !important;
 
             @-moz-document url-prefix() {
 
-              height: 100% !important;
+              height: 101% !important;
             }
           }
       }
