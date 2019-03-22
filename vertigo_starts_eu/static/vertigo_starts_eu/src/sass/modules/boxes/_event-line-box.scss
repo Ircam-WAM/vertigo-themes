@@ -251,6 +251,10 @@ $module: ".event-line-box";
             @include padding(1);
         }
 
+        @media screen and (max-width: 768px) {
+
+          left:0 !important;
+        }
     }
 
     &__title {
