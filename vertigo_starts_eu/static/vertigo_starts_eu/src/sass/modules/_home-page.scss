@@ -1215,7 +1215,7 @@ $module: ".home-page";
 
     &__overlay-style-home {
 
-      position: absolute !important;
+      position: fixed !important;
       z-index: 1000 !important;
       top: 0 !important;
       bottom: 0 !important;
@@ -1223,6 +1223,10 @@ $module: ".home-page";
       right: 0 !important;
       background: black !important;
       overflow-y: scroll !important;
+
+      @media screen and (max-width: 780px) {
+        position: absolute !important;
+      }
     }
 
     &__overlay_close-home {
@@ -1252,6 +1256,11 @@ $module: ".home-page";
       right: 0 !important;
       text-align: right !important;
       padding-right:5% !important;
+      top:10% !important;
+
+      @media screen and (max-width: 780px) {
+        top:5% !important;
+      }
     }
 
     &__overlay-contaner-info-home {
@@ -1282,6 +1291,17 @@ $module: ".home-page";
       position: static !important;
       margin: 10% 2%;
       background: white;
+
+      width:33% !important;
+      padding:1% !important;
+      margin:auto !important;
+
+        @media screen and (max-width: 780px) {
+
+          width:95% !important;
+          padding:1% !important;
+          margin:auto !important;
+        }
     }
 
     &__overlay-content-title-home {
