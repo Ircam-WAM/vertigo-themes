@@ -1295,13 +1295,14 @@ $module: ".home-page";
       width:33% !important;
       padding:1% !important;
       margin:auto !important;
+      margin-bottom: 2% !important;
+      
+      @media screen and (max-width: 780px) {
 
-        @media screen and (max-width: 780px) {
-
-          width:95% !important;
-          padding:1% !important;
-          margin:auto !important;
-        }
+        width:95% !important;
+        padding:1% !important;
+        margin:auto !important;
+      }
     }
 
     &__overlay-content-title-home {
