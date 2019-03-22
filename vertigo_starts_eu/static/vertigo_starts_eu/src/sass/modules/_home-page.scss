@@ -1230,22 +1230,6 @@ $module: ".home-page";
     }
 
     &__overlay_close-home {
-/*
-      color:white !important;
-      font-size:8rem !important;
-      top:60px !important;
-      right:50px !important;
-      position:absolute !important;
-      cursor:pointer !important;
-      font-weight: 2 !important;
-
-      @media screen and (max-width: 780px) {
-
-          right:0px !important;
-          font-size:5rem !important;
-          top:30px !important;
-      }
-      */
 
       position:  relative !important;
       overflow: hidden !important;
@@ -1260,33 +1244,11 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
         top:5% !important;
+        padding-right:0% !important;
       }
     }
 
     &__overlay-contaner-info-home {
-/*
-      width:30% !important;
-      min-height:auto !important;
-      background-color: rgba(255, 255, 255, 1) !important;
-      //top:20% !important;
-      //left:38% !important;
-      position:relative !important;
-      padding:1% !important;
-      font-weight:300 !important;
-      line-height:1.875rem !important;
-      overflow:auto !important;
-      margin: auto !important;
-      margin-top: 5% !important;
-
-      @media screen and (max-width: 780px) {
-
-          width:95% !important;
-          left: 2.5% !important;
-          margin: 0 !important;
-          position: absolute !important;
-          top:15% !important;
-      }
-      */
 
       position: static !important;
       margin: 10% 2%;
