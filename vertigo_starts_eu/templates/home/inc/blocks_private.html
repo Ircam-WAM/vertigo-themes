@@ -1,7 +1,7 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags staticfiles %}
 
 <div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home" onclick="closeOverlay()">
-  <div>
+
      <div class="home-page__overlay_close-home">&times;</div>
 
       <div class="home-page__overlay-contaner-info-home">
@@ -18,8 +18,6 @@
           {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
         </div>
       </div>
-      <div style="padding-bottom:2%"></div>
-   </div>
 </div>
 
 <div class="home-page__private-main-block">
@@ -200,7 +198,7 @@
       </a>
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__private-responsive-width-special" style="min-height:300px;margin-top:480px;">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__private-responsive-width-special" style="min-height:300px;margin-top:-458px;">
 
       <a href="{{ organization.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">

@@ -1,7 +1,6 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
 <div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home" onclick="closeOverlay()">
-  <div>
      <div class="home-page__overlay_close-home">&times;</div>
 
       <div class="home-page__overlay-contaner-info-home">
@@ -18,8 +17,6 @@
           {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
         </div>
       </div>
-      <div style="padding-bottom:2%"></div>
-   </div>
 </div>
 
 <div class="home-page__public-main-container-text-banner">

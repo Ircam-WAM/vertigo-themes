@@ -140,3 +140,37 @@ function createMap() {
     });
   }
 }
+
+function insertAfter(el, referenceNode) {
+	referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
+
+function reworkFooter() {
+
+  var currentFooter = document.getElementsByTagName("footer");
+
+  if (currentFooter != null) {
+
+    var tempFooter = currentFooter[0];
+    tempFooter.style.display = "none";
+
+    var mapElement = document.getElementById("map-element-content");
+
+    var cloneFooter = tempFooter.cloneNode(true);
+    cloneFooter.id = "footer-rework";
+    cloneFooter.style.display = "block";
+
+    insertAfter(cloneFooter, mapElement);
+  }
+}
+
+function reworkContent() {
+
+  var currentMain = document.getElementsByTagName("main");
+
+  if (currentMain != null) {
+
+    var tempMain = currentMain[0];
+    tempMain.style.display = "none";
+  }
+}
