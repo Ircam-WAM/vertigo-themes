@@ -153,15 +153,15 @@
         <div class="home-page__full-frame home-page__public-container-common-relative {% if event.images %}home-page__private-left-image-gradient{% endif %}">
             {% if event.images %}
               {% with event.images.all|get_type:'card' as images %}
-              <img class="home-page__private-image_full-width home-page__private-left-image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 1015 350 padding=true %}" >
+              <img class="home-page__private-image_full-width home-page__private-left-image-gradient home-page__private-left-image-fix-responsive" src="{{ MEDIA_URL }}{% thumbnail images.0.file 1015 350 padding=true %}" >
               {% endwith %}
             {% else %}
-              <div class="home-page__private-image_full-width" style="border: 1px solid white;"></div>
+              <div class="home-page__private-image_full-width home-page__private-left-image-fix-responsive" style="border: 1px solid white;"></div>
             {% endif %}
 
         </div>
 
-        <div class="home-page__private-right-side-event">
+        <div class="home-page__private-right-side-event home-page__private-right-side-event-fix-responsive">
 
           {% if event.departments.all %}
           <div class="event-line-box__tag-event">

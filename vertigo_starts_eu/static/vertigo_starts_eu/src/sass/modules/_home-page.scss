@@ -1012,6 +1012,23 @@ $module: ".home-page";
       }
     }
 
+    &__private-right-side-event-fix-responsive {
+
+      @media screen  and (max-width: 768px) {
+        
+        position:absolute !important;
+      }
+    }
+
+    &__private-left-image-fix-responsive  {
+
+      @media screen  and (max-width: 768px) {
+
+        width:100% !important;
+        min-height:300px !important;
+      }
+    }
+
     &__private-left-image-gradient {
 
 
