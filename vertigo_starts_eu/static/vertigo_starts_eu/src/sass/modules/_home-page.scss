@@ -980,10 +980,14 @@ $module: ".home-page";
           @media screen and (max-width: 780px) {
 
             height:100% !important;
+            top: 0 !important;
+            position: absolute !important;
 
             @-moz-document url-prefix() {
 
               height: 100% !important;
+              top: 0 !important;
+              position: absolute !important;
             }
           }
       }
