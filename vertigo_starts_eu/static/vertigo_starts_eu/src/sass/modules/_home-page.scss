@@ -1050,11 +1050,15 @@ $module: ".home-page";
 
           @media screen and (max-width: 780px) {
 
+            position:absolute !important;
+            top:0 !important;
             height:101% !important;
 
             @-moz-document url-prefix() {
 
               height: 101% !important;
+              position:absolute !important;
+              top:0 !important;
             }
           }
       }
