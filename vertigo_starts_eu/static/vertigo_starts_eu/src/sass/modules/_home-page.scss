@@ -1087,7 +1087,23 @@ $module: ".home-page";
 
         }
       }
+    }
 
+    &__relative-container {
+
+      @media screen and (max-width: 780px) {
+
+        position: relative !important;
+      }
+    }
+
+    &__absolute-item {
+
+      @media screen and (max-width: 780px) {
+
+        position: absolute !important;
+        top: 0 !important;
+      }
     }
 
     &__margin-removal {
