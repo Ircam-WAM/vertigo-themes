@@ -1,17 +1,30 @@
 {% extends "vertigo_starts_eu/pages/page.html" %}
 {% load mezzanine_tags staticfiles keyword_tags i18n organization_tags pages_tags %}
 
-{% comment %}
-<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
-{% endcomment %}
-
-
-
 {% block extra_head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin="">
+   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin="">
+{% endblock %}
+
+{% block extra_js %}
+      <script src="{% static 'vertigo_starts_eu/js/filters/filters.js' %}"></script>
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+      crossorigin=""></script>
 
 
-    <script type="text/javascript" src="{% static "mezzanine/js/jquery-1.8.3.min.js" %}"></script>
-    <script>
+        <script type="text/javascript">
+
+          $(function(){
+            loadContent();
+          })
+
         $(function(){
             $(".list_header").click(function () {
                 $header = $(this);
@@ -19,26 +32,6 @@
                 $content.slideToggle(500);
             });
         });
-    </script>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-      crossorigin=""/>
-
-      <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-      crossorigin=""></script>
-
-   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
-      crossorigin=""></link>
-   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
-      crossorigin=""></link>
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
-      crossorigin=""></script>
-
-
-        <script type="text/javascript">
             var selectedFilters = []
             function addFilter(residencyButton, keyword) {
                 if (selectedFilters.length == 0) {
@@ -91,7 +84,6 @@
                 {% endfor %}
             }
         </script>
-
 
 
 {% endblock %}
@@ -154,339 +146,18 @@
 
 {% block main %}
 
-<script>
-
-  var currentMap;
-
-  function reloadContentTags(id_item) {
-
-      var clickedItem = document.getElementById(id_item);
-      var altItem = document.getElementById((id_item == "dots-item") ? "map-marker" : "dots-item");
-
-      var clickedItemIcon = document.getElementById(id_item + "-icon");
-      var altItemIcon = document.getElementById(((id_item == "dots-item") ? "map-marker" : "dots-item") + "-icon");
-
-      altItem.classList.remove("article-box__icon-marker-item-highlight");
-      altItem.classList.add("article-box__icon-marker-item-clean");
-
-      altItemIcon.classList.remove("article-box__icon-marker-item-highlight-icon");
-      altItemIcon.classList.add("article-box__icon-marker-item-clean-icon");
-
-      clickedItem.classList.add("article-box__icon-marker-item-highlight");
-      clickedItem.classList.remove("article-box__icon-marker-item-clean");
-
-      clickedItemIcon.classList.add("article-box__icon-marker-item-highlight-icon");
-      clickedItemIcon.classList.remove("article-box__icon-marker-item-clean-icon");
-
-      var mapElement = document.getElementById("map-element-content");
-      var listElemet = document.getElementById("residency-list");
-
-      if (id_item == "dots-item") {
-
-        mapElement.style.display = "none";
-        listElemet.style.display = "block";
-
-      } else {
-
-        mapElement.style.display = "block";
-        listElemet.style.display = "none";
-
-        if (jsonContentData) {
-
-          if (!currentMap) {
-            createMap();
-          }
-
-          if (currentMap) {
-
-            parseJSON(jsonContentData, currentMap);
-          }
-
-        } else {
-
-            createMap();
-        }
-     }
-  }
-
-  function changeViewItems(object, event) {
-
-    event.preventDefault();
-
-    var id_item = object.id;
-
-    reloadContentTags(id_item);
-  }
-
-  function createMap() {
-
-    $(function() {
-
-        currentMap = L.map('mapid').setView([47.91, 6.85], 2);
-
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-        }).addTo(currentMap);
-
-      });
-  }
-
-  function parseJSONTags(jsonObject) {
-
-      var residencies = jsonObject["residencies"];
-
-      var tags = [];
-      for (var i = 0; i < residencies.length; i++) {
-
-        var dict = residencies[i];
-        var tagsSingle = dict["keywords"];
-
-        if (tagsSingle.length > 0) {
-
-          tags.push.apply(tags, tagsSingle);
-        }
-      }
-
-      if (tags.length > 0) {
-
-        var contentTags = document.getElementById("tags-content");
-
-        for (var i = 0; i < tags.length; i++) {
-
-            var tagText = tags[i];
-            var singleTag = "<div id=\"tag-search\" class=\"project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search\" onclick=\"selectDesectedTag(this, event);\">" + tagText + "</div>"
-
-            contentTags.innerHTML += singleTag;
-        }
-      }
-  }
-
-  function parseJSON(jsonObject, map) {
-
-    $(function() {
-
-        var producers = jsonObject["producers"];
-
-        var markers = L.markerClusterGroup({showCoverageOnHover: true,
-                                            zoomToBoundsOnClick: true,
-                                            removeOutsideVisibleBounds: true});
-
-        var detailMarker = document.getElementById("detail-marker");
-
-        detailMarker.style.display = 'none';
-
-        for (var i = 0; i < producers.length; i++) {
-
-            var item = producers[i];
-
-            var lat = item["lat"];
-            var lon = item["lon"];
-            var name = item["name"];
-
-            var marker = L.marker(new L.LatLng(lat, lon), {  title: name });
-            marker.id_value = i;
-            marker.title = name;
-            marker.on('click', function (e) {
-
-                var id = e.target.id_value;
-
-                var item = producers[id];
-
-                var name = item["name"];
-                var description = item["description"];
-                var url = item["url"];
-                var city = item["city"];
-
-                var htmlString = "";
-
-                if ('image' in producers) {
-                  htmlString += "<div style=\"background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('" + item["image"] + "');height:100%\">";
-                } else {
-                  htmlString += "<div style=\"background:lightgray;height:100%\">";
-                }
-
-                htmlString += "<div style=\"padding-top:30%;position:relative\">"
-                htmlString += "<center>";
-                htmlString += "<div style=\"font-size:30px;font-family:'Oswald',sans-serif;\"><b>" + name + "</b></div><br>";
-
-                if (city != "" && city != null) {
-
-                  htmlString += "<div style=\"font-family:15px;\"><b>" + city + "</b></div><br><br>";
-                }
-
-                if (description != "") {
-
-                  htmlString += "<div style=\"text-transform:capitalize;font-family:15px;\">" + description + "</div><br>";
-                } else {
-
-                  htmlString += "<br>";
-                }
-
-                if (url != "") {
-
-                  htmlString += "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>";
-                }
-
-                htmlString += "</center>";
-                htmlString += "</div></div>";
-
-                detailMarker.innerHTML = htmlString;
-                detailMarker.style.display = 'block';
-            });
-
-            markers.addLayer(marker);
-        }
-
-        map.addLayer(markers);
-
-        map.on('click', function(e) {
-
-            detailMarker.style.display = 'none';
-        });
-    });
-  }
-
-  function showHideChevronTags(object, event) {
-
-    event.preventDefault();
-
-    var id_item = object.id;
-
-    var chevronItem = document.getElementById("chevron-tags");
-    var itemsClass = chevronItem.classList;
-    var tagsDivContent = document.getElementById("tags-content");
-
-    var openChevron = false;
-
-    for (var i = 0; i < itemsClass.length; i++) {
-
-      if (itemsClass[i].toLowerCase() == 'fa-chevron-down') {
-
-        openChevron = true;
-        break;
-      }
-    }
-
-    if (openChevron) {
-
-      chevronItem.classList.remove("fa-chevron-down");
-      chevronItem.classList.add("fa-chevron-up");
-      tagsDivContent.style.display = 'block';
-    } else {
-
-      chevronItem.classList.remove("fa-chevron-up");
-      chevronItem.classList.add("fa-chevron-down");
-      tagsDivContent.style.display = 'none';
-    }
-  }
-
-  function selectDesectedTag(object, event) {
-
-    event.preventDefault();
-
-    var clickedItem = object;
-
-    var itemsClass = clickedItem.classList;
-
-    var selectedTag = true;
-
-    for (var i = 0; i < itemsClass.length; i++) {
-
-      if (itemsClass[i].toLowerCase() == 'project-ict-detail__unselect-tag-search') {
-
-        selectedTag = false;
-        break;
-      }
-    }
-
-    if (selectedTag) {
-
-      clickedItem.classList.remove("project-ict-detail__select-tag-search");
-      clickedItem.classList.add("project-ict-detail__unselect-tag-search");
-
-    } else {
-
-      clickedItem.classList.remove("project-ict-detail__unselect-tag-search");
-      clickedItem.classList.add("project-ict-detail__select-tag-search");
-
-    }
-  }
-
-  var jsonContentData = {};
-
-  function loadContent() {
-
-    $.ajax({
-      type: 'GET',
-      url: '/public-network-data/',
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      success: function (data) {
-
-          if (data) {
-
-            jsonContentData = data;
-
-            parseJSONTags(jsonContentData);
-
-            var chevronItem = document.getElementById("chevron-tags");
-            var tagsDivContent = document.getElementById("tags-content");
-
-            chevronItem.classList.remove("fa-chevron-down");
-            chevronItem.classList.add("fa-chevron-up");
-            tagsDivContent.style.display = 'block';
-          }
-      },
-      error: function(request, status, errorThrown) {
-
-      }
-    });
-  }
-
-//  window.onload = loadContent;
-  $(function(){
-     loadContent();
-  })
-
-</script>
-
-<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"  style="margin-top:-3%">
+<div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"  style="margin-top:-3%;background:white">
+    <div class="article-box__title-style-item">
+      <h1 class="section-title section-title--uppercase section-title--main article-box__title-underline article-box__content-title">{% trans "Available Residencies" %}</h1>
+    </div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
-                <h1 class="section-title section-title--uppercase section-title--main section-title--underline" style="margin-bottom:0px;">{% trans "Available Residencies" %}</h1>
+      <div class="row">
+            <!--<div class="col-sm-16 col-md-10 col-md-push-3 tac">-->
+            <div class="article-box__big-content-item">
+                <div class="article-box__content-row">
 
-                    <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron">
-                      <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down" aria-hidden="true"></i>
-                    </div>
-
-                    <div id="tags-content" class="project-ict-detail__align-tags-search" style="display:none">
-                      {% comment %}
-                      {% for kw in object.keywords.all %}
-                          <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
-                      {% endfor %}
-
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">One</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Two</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Three</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Four</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Five</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Six</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Seven</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eight</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Nine</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Ten</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Eleven</div>
-                      <div id="tag-search" class="project-ict-detail__chevron-tag-style-search project-ict-detail__unselect-tag-search" onclick="selectDesectedTag(this, event);">Twelve</div>
-                      {% endcomment %}
-                    </div>
-
-                    <div class="article-box__view-changer-container article-box__space-center-responsive" style="margin-bottom:25px">
+                    <!--<div class="article-box__view-changer-container article-box__space-center-responsive" style="width: 100px;">-->
+                    <div class="article-box__tag-item-row">
                       <div id="dots-item" class="article-box__item-marker-common article-box__icon-marker-item-highlight" onclick="changeViewItems(this, event);">
                         <a id="dots-item-icon" class="article-box__icon-marker-item-highlight-icon" href="#">
                           <i class="fa fa-th article-box__align-center-dots"></i>
@@ -497,10 +168,39 @@
                           <i class="fa fa-map-marker article-box__align-center-marker"></i>
                         </a>
                       </div>
+                    </div>
+
+                    <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron article-box__chevron-style-changer article-box__tranlate-responsive">
+                      Filter by Keywords <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down article-box__content-item-reviewer" aria-hidden="true"></i>
+                    </div>
+
+                  <div id="tags-counter" class="article-box__tag-counter-item">
+
+                  </div>
+              </div>
             </div>
 
+            <div id="tags-content" style="text-align:center;display:none">
+
+              {% comment %}
+
+              {% for kw in object.keywords.all %}
+                  <div id="tag-search" class="article-box__chevron-tag-article article-box__unselect-tag-search"  onclick="selectDesectedTag(this, event);">{{ kw|capfirst }}</div>
+              {% endfor %}
+
+              {% endcomment %}
+
+            </div>
+
+            <div style="width:100%;display:block;text-align:center">
+              <a id="dots-indicator" href="#" style="display:none;margin-top:1%;text-align:center;" onclick="changeTags(this, event);"></a>
+            </div>
+
+            <div class="article-box__row-item-banner">
+              Want to collarobate with Artist?<br/>
+              <a href="/submit-your-call/" class="article-box__link-banner-row"><b>Click here to start your own Call now!</b></a>
+            </div>
         </div>
-    </div>
 
         <div class="row">
 
@@ -508,6 +208,7 @@
                 <div class="page__content">
                     <div class="container">
                         <div id="residency-list" class="row page__space-responsive">
+                            {% comment %}
                             {% for object in object_list %}
                                 <div class="col-xs-8 page__row-responsive" id="{{ object.slug }}">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
@@ -517,9 +218,8 @@
                                     {% endwith %}
                                 </div>
                             {% endfor %}
+                            {% endcomment %}
                         </div>
-
-
                     </div>
                 </div>
             </div>

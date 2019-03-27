@@ -1,5 +1,5 @@
-{# {% extends "vertigo_starts_eu/pages/page.html" %} #}
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{# {% extends "vertigo_starts_eu/pages/page_profile_detail.html" %} #}
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations_detail.html" %}
 {% load mezzanine_tags keyword_tags i18n organization_tags pages_tags %}
 
 {% block meta_title %}{{ person.meta_title }}{% endblock %}
@@ -28,6 +28,7 @@
       function selectCurrentTab() {
 
 
+
         //document.getElementById("select-messages").className = "page__option-selected";
       }
 
@@ -39,21 +40,47 @@
         var blog = document.getElementById("public-residency-blog-item");
         var following = document.getElementById("public-following-item");
         var follower = document.getElementById("public-follower-item");
+        var applicationForm = document.getElementById("public-application-form");
+        var profileSettings = document.getElementById("public-profile-settings");
 
         document.getElementById("content_public-profile-item").style.display = "none";
         document.getElementById("content_public-residency-blog-item").style.display = "none";
         document.getElementById("content_public-following-item").style.display = "none";
         document.getElementById("content_public-follower-item").style.display = "none";
 
+        if (applicationForm != null) {
+          document.getElementById("content_public-application-form").style.display = "none";
+        }
+
+        if (profileSettings != null) {
+          document.getElementById("content_public-profile-settings").style.display = "none";
+        }
+
         profile.classList.remove("page__option-selected");
         blog.classList.remove("page__option-selected");
         following.classList.remove("page__option-selected");
         follower.classList.remove("page__option-selected");
 
+        if (applicationForm != null) {
+          applicationForm.classList.remove("page__option-selected");
+        }
+
+        if (profileSettings != null) {
+          profileSettings.classList.remove("page__option-selected");
+        }
+
         profile.classList.add("page__option-unselected");
         blog.classList.add("page__option-unselected");
         following.classList.add("page__option-unselected");
         follower.classList.add("page__option-unselected");
+
+        if (applicationForm != null) {
+          applicationForm.classList.add("page__option-unselected");
+        }
+
+        if (profileSettings != null) {
+          profileSettings.classList.add("page__option-unselected");
+        }
 
         object.classList.add("page__option-selected");
         object.classList.remove("page__option-unselected");
@@ -136,39 +163,13 @@
       window.onload = selectCurrentTab;
 
       </script>
-      {% if request.user.is_authenticated and person.user == request.user %}
-        {# Private section #}
-      <div class="page__item_selector">
-      		<a href="{% url 'profile_update' %}"><span id="select-profile" class="page__option-selected">Profile</span></a>
-      	<!--	<a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
-      		<!-- <a href="{% url 'organization-network-profile-following' request.user %}"><span id="select-following" class="page__option-unselected">Following</span></a>
-      		<a href="{% url 'organization-network-profile-followers' request.user %}><span id="select-follower" class="page__option-unselected">Followers</span></a> -->
-          <a href="{% url 'organization-network-profile-applications' %}"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
-      		<a href="{% url 'organization-network-profile-settings' %}"><span id="select-settings" class="page__option-unselected">Settings</span></a>
-      </div>
 
 
-      <div class="page__item_content">
-{% comment %}
-          <div class="page__center-bio section-title section-title--big" style="color:black">{{ person.title|upper }}</h1>
-{% endcomment %}
-      </div>
-    {% endif %}
-
-      {# Public section #}
+      {# Public and Private section #}
       {% with person.images.all|get_type:'card' as card_images %}
         {% if card_images %}
-          {% if request.user.is_authenticated %}
-            <div class="page__image-container">
-              <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
-              {% if card_images.first.credits|length > 0 %}
-                <div style="text-align:left;{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-                  <p sytle="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %};font-size:12px;">Credits: {{ card_images.first.credits }}</p>
-                </div>
-              {% endif %}
-            </div>
-          {% else %}
-            <div class="page__image-container" style="height:auto;margin-top:-6.5%;padding-top:20px;background:gray;">
+
+            <div class="page__image-container page__padding-container-main page__top-padding-container" style="height:auto;background:gray;">
               <div style="position:relative">
                 {% if card_images.first %}
                 <img class="lazyload page__image-main_banner_profile" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
@@ -183,16 +184,25 @@
                 </div>
               </div>
               <div class="page__main-title-profile-public">{{ person.title }}</div>
-              <div style="margin-top:1%;position:relative;padding-bottom:1%">
-                <div class="page__main-subtitle-profile-public page__subtitle-public-item">Researcher, Autor - Oxford, UK</div>
+              <div class="page__container-info-profile-user">
+
                 {% comment %}
                 {% with person.links.all.0 as link %}
                     {% if person.links.all.0 %}
-                        <a href="{{ link }}" blank="true" class="page__link-public-profile">{{ link }}</a><br/><br/>
+                        <a href="{{ link }}" blank="true" class="page__link-public-profile" >{{ link }}</a><br/><br/>
                     {% endif %}
                 {% endwith %}
                 {% endcomment %}
-                  <a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>
+
+                {% with person.links.all.0 as link %}
+                    {% if person.links.all.0 %}
+                        <a href="{{ link }}" target="_blank" blank="true" class="page__link-public-profile" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ link }}</a>
+                    {% else %}
+                        <a href="http://wekit.eu/" target="_blank" blank="true" class="page__link-public-profile" style="text-align:left;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">http://wekit.eu/</a>
+                    {% endif %}
+                {% endwith %}
+                <div class="page__bottom-space-city" style="margin:0 auto;margin;padding-left:1%">Researcher, Autor - Oxford, UK</div>
+                  <!--<a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>-->
                   <div class="page__container-buttons-share">
                     <div id="share-twitter" class="page__circle-small-share-button page__twitter-share-container" onclick="shareActionButton(event, this);">
                       <i class="fa fa-twitter page__twitter-icon-style" aria-hidden="true"></i>
@@ -212,17 +222,26 @@
                   </div>
                 </div>
             </div>
-          {% endif %}
+        {% else %}
+            <div style="padding-botton:2%">
+
+            </div>
         {% endif %}
       {% endwith %}
 
-      {% if not request.user.is_authenticated %}
-      <div class="page__submenu-public-profile">
-        <a href="#"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">Profile</span></a>
-        <a href="#"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
-        <a href="#"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
-        <a href="#"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Follower</span></a>
+      <div class="page__submenu-public-profile" {% if person.images.all|length == 0 %} style="padding-top:5%"{% endif %}>
+        <a href="#" style="margin: 0 auto"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">{% if request.user.is_authenticated %}About{% else %}Profile{% endif %}</span></a>
+        <a href="#" style="margin: 0 auto"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
+        <a href="#" style="margin: 0 auto"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
+        <a href="#" style="margin: 0 auto"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Followers</span></a>
+        {% if request.user.is_authenticated %}
+        <a href="#" style="margin: 0 auto"><span id="public-application-form" onclick="changePublicView(event,this);" class="page__option-unselected">Application forms</span></a>
+        <a href="#" style="margin: 0 auto"><span id="public-profile-settings" onclick="changePublicView(event,this);" class="page__option-unselected">Profile & Settings</span></a>
+        {% endif %}
+
       </div>
+
+      <div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
 
       <div id="start-follow-item" style="display:none" class="page__follow-public-text">
         <b>You just started following {{ person.title }}.</b><br />
@@ -233,11 +252,10 @@
         You will no longer receive updates by mail.
       </div>
 
-      {% endif %}
-
+      {% comment %}s
       {% if request.user.is_authenticated %}
 
-        <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1>
+      <!--  <h1 class="section-title section-title--big section-title--uppercase section-title--main" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ person.title|upper }}</h1> -->
 
         <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
             {% if person.email %}Email: <a href="mailto:{{ person.email }}">{{ person.email }}</a><br/><br/>{% endif %}
@@ -247,20 +265,84 @@
             {% if person.country %}Country: {{ person.country }}<br/><br/>{% endif %}
         </div>
       {% endif %}
+      {% endcomment %}
 
+      {% comment %}
       {% if request.user.is_authenticated %}
       <div id="bio-item" class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
         {% if person.bio %}
-          <div class="page__fancy-font">Biography: {{ person.bio|richtext_filters|safe }}</div>
+          <div class="page__fancy-font">{{ person.bio|richtext_filters|safe }}</div>
         {% endif %}
       </div>
       {% else %}
+      {% endcomment %}
+          <div id="content_public-profile-item"class="page__fancy-font page__items-public-menu" style="display:block;">
+            <div class="page__about-content">
+            {% if person.bio %}{{ person.bio|richtext_filters|safe }}{% else %}Backend object missing{% endif %}
+            </div>
+          </div>
+          <div id="content_public-residency-blog-item" class="page__fancy-font page__items-public-menu" style="display:none;">
+            <div class="page__residency-blog-content">
+              {{ person.title }} hasn't shared any update yet.
+              <br/><br/>
+              Follow {{ person.title }} to receive notifications about future updates.
+            </div>
+          </div>
+          <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">
+            <!--
+            <div style="width:100%;height:auto;display:flex;">
+              <div style="width:33%;height:300px;margin: 0 auto;background:green;margin-right:5%;">
 
-          <div id="content_public-profile-item"class="page__fancy-font page__items-public-menu" style="display:block;">{% if person.bio %}{{ person.bio|richtext_filters|safe }}{% endif %}</div>
-          <div id="content_public-residency-blog-item"class="page__fancy-font page__items-public-menu" style="display:none;">Residency Blog content</div>
-          <div id="content_public-following-item"class="page__fancy-font page__items-public-menu" style="display:none;">Following content</div>
-          <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">Follower content</div>
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:green;margin-right:5%;">
 
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:green;margin-right:5%;">
+
+              </div>
+            </div>
+            -->
+            <br/>
+            Following backend object missing
+            <br/>
+            <div class="page__residency-blog-content">
+              {{ person.title }} doesn't follow any user for now.
+            </div>
+          </div>
+          <div id="content_public-follower-item"class="page__fancy-font page__items-public-menu" style="display:none;">
+            <div style="width:100%;height:auto;display:flex;">
+              <div style="width:33%;height:300px;margin: 0 auto;background:red;margin-right:5%;">
+
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:red;margin-right:5%;">
+
+              </div>
+              <div style="width:33%;height:300px;margin: 0 auto;background:red;margin-right:5%;">
+
+              </div>
+            </div>
+            <br/>
+            Follower  backend object missing
+          </div>
+
+          {% if request.user.is_authenticated %}
+          <div id="content_public-application-form"class="page__fancy-font page__items-public-menu" style="display:none;">Application form  backend object missing</div>
+          <div id="content_public-profile-settings"class="page__fancy-font page__items-public-menu" style="display:none;">
+
+            <form>
+             Username:<br>
+             <input type="text" name="username"><br>
+             First name:<br>
+             <input type="text" name="firstname"><br>
+             Last name:<br>
+             <input type="text" name="lastname">
+            </form>
+            <br/>
+            Settings backend object missing
+          </div>
+          {% endif %}
+
+      {% comment %}
       {% endif %}
 
       <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
@@ -270,6 +352,7 @@
             {% endif %}
         {% endwith %}
       </div>
+        {% endcomment %}
 
 {% comment %}
     {% editable person.title %}
@@ -297,7 +380,7 @@
 {% block main %}
     {{ block.super }}
 
-{% if not request.user.is_authenticated %}
+
 
 <script type="text/javascript">
 
@@ -306,12 +389,32 @@ function changeBackground() {
   document.getElementById("main-content").style.background = "white";
 
   document.getElementById("body").style.background = "white";
+
+  var items = document.getElementsByTagName("p");
+
+  for (var i = 0; i < items.length; i++) {
+
+    var links = items[i].getElementsByTagName("a");
+
+    for (var j = 0; j < links.length; j++) {
+
+      var link = links[j];
+
+      link.style.color = "black";
+    }
+  }
+
+  var outLinks = document.getElementsByClassName("mb2 col-sm-16 page__content");
+
+  for (var i = 0;i < outLinks.length; i++) {
+    outLinks[i].style.display = "none";
+  }
 }
 
 window.onload = changeBackground;
 
 </script>
-{% endif %}
+
 
 {% endblock %}
 
@@ -443,6 +546,7 @@ window.onload = changeBackground;
     </div>
 {% endblock %}
 
+{% comment %}
 {% block page_link %}
     {% with person.links.all as links %}
         {% if links %}
@@ -451,3 +555,4 @@ window.onload = changeBackground;
         {% endif %}
     {% endwith %}
 {% endblock %}
+{% endcomment %}

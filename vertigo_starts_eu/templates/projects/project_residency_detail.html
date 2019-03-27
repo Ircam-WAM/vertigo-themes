@@ -47,14 +47,343 @@
 
 {% endblock %}
 
-{% block main %}
+{% block extra_head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+  crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+  crossorigin="" />
+{% endblock %}
 
+{% block extra_js %}
+
+<script  type="text/javascript" src="{% static 'vertigo_starts_eu/js/residencies/residencies.js' %}"></script>
+
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+  crossorigin=""></script>
+
+
+<script>
+
+$(function() {
+
+  var bodyItem = document.getElementById("body");
+
+  bodyItem.style.background = "white";
+
+  createMap();
+
+  reworkFooter();
+  reworkContent();
+})
+
+</script>
+
+{% comment %}
 <div class="row">
     <div class="col-sm-16 col-md-10 col-md-push-3 tac">
         <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Current Residencies" %}</h1>
     </div>
 </div>
+{% endcomment %}
 
+{% with object.images.all|get_type:'slider' as images %}
+    {% if images %}
+<div class="page__responsive-space-big" style="width:100%;height:auto;padding-bottom:5%;background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ MEDIA_URL }}{% thumbnail images|first 2000 0 padding=true %}');background-repeat:no-repeat;;background-size:cover;background-position: center">
+    {% else %}
+<div class="page__responsive-space-big" style="width:100%;height:auto;background:gray;padding-bottom:5%">
+    {% endif %}
+{% endwith %}
+  <div class="page__content-detail-header">
+    <div class="page__center-element">
+      <div class="page__title-detail-residencies">{{ object.project.title }}</div>
+      <div id="element-social" class="page__circle-cross-red-detail-residencies page__residencies-red-banner" onclick="changeFollowStatus(event,this);">
+        <i id="element-social-follow" class="fa fa-check page__style-cross-icon-detail-residencies" style="display:none;" aria-hidden="true"></i>
+        <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon-detail-residencies" style="display:block;" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="page__description-residencies">{{ object.description|truncatechars:50 }}</div>
+  </div>
+  <div class="page__artist-element-residencies">
+    <div class="page__style-detail-content">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+    <div class="page__style-detail-content">+</div>
+    <div class="page__style-detail-content">
+      {% with object.producers.all as producers %}
+          {% if producers %}
+              {% if producers|length > 0 %}
+                  {{ producers.0.organization }}
+              {% endif %}
+          {% endif %}
+      {% endwith %}
+    </div>
+    <div class="page__style-detail-content">{{ object.city }}, {{ object.country.name }}</div>
+  </div>
+  {% if object.keywords.all %}
+  <div class="page__keywords-residencies">
+    {% for kw in object.keywords.all %}
+        <div class="article-box__chevron-tag-style-search-no-hover-thin ">{{ kw }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="page__main-timeline-style">
+    <div class="page__timeline-first-row">
+      <div style="margin:0 auto">Start of Residency</div>
+      <div style="margin:0 auto"></div>
+      <div style="margin:0 auto">End of Residency</div>
+    </div>
+    <div class="page__timeline-draw">
+      <div class="page__timeline-draw-part-one"></div>
+      <div class="page__timeline-draw-part-two"></div>
+      <div class="page__timeline-draw-part-three"></div>
+      <div class="page__timeline-draw-part-four"></div>
+      <div class="page__timeline-draw-part-five"></div>
+    </div>
+  </div>
+ </div>
+</div>
+
+<div class="page__submenu-public-profile" style="padding-top:3.5%">
+  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">About</span></a>
+  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artistic Proposal</span></a>
+  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
+  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="blog-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Residency Blog</span></a>
+  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Followers</span></a>
+</div>
+
+<div class="page__container-inforesidency-detail"></div>
+
+<div id="start-follow-item" class="page__follow-public-text-spaceless" style="display:none;">
+  <b>You just started following {{ object.project.title }}.</b><br />
+  You will receive updates monthly by mail.
+</div>
+<div id="stop-follow-item" class="page__unfollow-public-text-spaceless" style="display:block;">
+  <b>You just stopped following {{ object.project.title }}.</b><br />
+  You will no longer receive updates by mail.
+</div>
+
+<div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style"  style="display:block;margin-right:20%;margin-left:20%">
+  <div class="page__descrition-residencies-content">
+    <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
+    <br>
+    {% with object.project.public_data.all|first as project_public_data %}
+        <div class="residency-detail__text-detail page__style-text-profile" style="text-align:justify;;white-space:pre-line">
+            <p>{{ project_public_data.challenges_description }}</p>
+        </div>
+        <div style="text-align:center">
+            {% if project_public_data.image_is_panoramic %}
+                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 300 0 padding=true %}"  />
+            {% else %}
+                <img src="{{ MEDIA_URL }}{% thumbnail project_public_data.image 0 300 padding=true %}" />
+            {% endif %}
+            {% if object.project.public_data.all.0.credits|length > 0 %}
+              <div class="page__style-text-profile" style="text-align:left">
+                <p sytle="color:black;font-size:12px;">Credits: {{ object.project.public_data.all.0.credits }}</p>
+              </div>
+            {% endif %}
+        </div>
+
+    {% endwith %}
+  </div>
+</div>
+<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="margin-right:20%;margin-left:20%;text-align:justify;white-space:none;display:none">
+
+  <div class="residency-detail__title">{{ object.title }}</div>
+  <p style="text-align:left">{{ object.content|safe }}</p>
+
+  {% if object.date_from and object.date_to %}
+
+      <div class="residency-detail__title">{% trans "About this residency" %}</div>
+          <br>
+          <div class="residency-detail__details">
+              <div class="residency-detail__map" id="network-map-small"></div>
+              {% if object.lat and object.lon %}
+                  <div class="container hide">
+                      <div class="row">
+                          <div class="col-xs-12 col-md-10 col-md-push-1">
+                              <div class="slider-network">
+                                  <ul class="slider-network__slider" data-slider-network>
+                                      <li class="slider-network__slide" data-marker-small-color="blue" data-marker-small-idx="{{forloop.counter0}}" data-marker-small-lat="{{ object.lat }}" data-marker-small-lng="{{ object.lon }}">
+                                          <div class="slider-network__slide-title" data-marker-small-title>
+                                              {{ object.title }}
+                                          </div>
+                                          <div class="slider-network__slide-subtitle" data-marker-small-subtitle>
+                                              {{ object.city }}, {{ object.country.name }}
+                                          </div>
+                                          <div class="slider-network__slide-description" data-marker-small-description>
+                                              {{ object.description }}
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endif %}
+              <div class="residency-detail__width-text-second-tab">
+                  {% if object.date_from %}
+                      From {{ object.date_from}}
+                      {% if object.date_to %}
+                          to {{ object.date_to }}
+                      {% endif %}
+                      <br><br>
+                  {% endif %}
+                  {% with object.producers.all as producers %}
+
+                      {% if producers %}
+                          {% if producers|length == 1 %}
+                              Producer: {{ producers.0.organization }}<br>
+                          {% else %}
+                              Producers:
+                              {% for producer in producers %}
+                                  {% if forloop.first %}
+                                      {{ producer.organization }}
+                                  {% else %}
+                                      — {{ producer.organization }}
+                                  {% endif %}
+                              {% endfor %}
+                              <br>
+                          {% endif %}
+                      {% endif %}
+                  {% endwith %}
+                  {% if object.city and object.country %}
+                      Localization: {{ object.city }}, {{ object.country }}<br><br>
+                  {% endif %}
+                  {% for keyword in object.keywords.all %}
+                      {{ keyword }} &nbsp;
+                  {% endfor %}
+              </div>
+          </div>
+          {% with object.user_images.all as user_images %}
+              {% if object.user_images %}
+                  <div>
+                      <div class="page__slider">
+                          <ul class="slider-page" data-slider-page>
+                              {% for user_image in user_images %}
+                                  <li class="slider-page__slide" data-src="{{ MEDIA_URL }}{{ user_image.file }}">
+                                      <div class="slider-page__wrapper">
+                                          <img title="{{ user_image.title }}" alt="{{ user_image.title }} {{ user_image.description }} {{ user_image.credits }}" class="slider-page__img" src="{{ MEDIA_URL}}{% thumbnail user_image.file 0 400 %}" alt="" />
+                                          <div class="slider-page__caption">
+                                              {{ user_image.title }}
+                                              {% if user_image.description %}
+                                                  {{ user_image.description }}
+                                              {% endif %}
+                                              {% if user_image.credits|length > 0 %}
+                                                  {{ user_image.credits }}
+                                              {% endif %}
+                                          </div>
+                                      </div>
+                                  </li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                  </div>
+              {% endif %}
+          {% endwith %}
+  {% endif %}
+</div>
+<div id="content-artist-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="display:none;margin-left:20%;margin-right:20%;">
+  <div>
+      <div class="residency-detail__image-left">
+        <img  src="{{ MEDIA_URL }}{% thumbnail object.artist.images.all|first 300 300 padding=true %}">
+        {% if object.artist.images.all.0.credits|length > 0 %}
+          <div style="text-align:left">
+            <p sytle="color:black;font-size:12px;">Credits: {{ object.artist.images.all.0.credits }}</p>
+          </div>
+        {% endif %}
+      </img>
+      </div>
+      <div class="residency-detail__title">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
+      <div class="residency-detail__text-detail">
+          <p>{{ object.artist.bio|safe }}</p>
+          {% with object.artist.links.all as links %}
+              {% if links %}
+                  {% with links|get_type_link:"link" as webpage_links %}
+                      {% if webpage_links %}
+                          <div class="residency-detail__underline-text">
+                              <a href="{{ webpage_links|first|safe }}">{{ webpage_links|first }}</a>
+                          </div>
+                      {% endif %}
+                  {% endwith %}
+                      <div class="residency-detail__social-links">
+                          {% with links|get_type_link:"facebook" as facebook_links %}
+                          {% if facebook_links %}
+                              <a class="residency-detail__social-link" href="{{ facebook_links|first|safe }}">
+                                  <img src="{{ STATIC_URL }}vertigo_starts_eu/src/assets/img/vertigo/logos/facebook-logo-residencies.png" width="32" height="32" alt="Facebook">
+                              </a>
+                          {% endif %}
+                          {% endwith %}
+                          {% with links|get_type_link:"twitter" as twitter_links %}
+                              {% if twitter_links %}
+                                  <a class="residency-detail__social-link" href="{{ twitter_links|first|safe }}">
+                                      <img src="{{ STATIC_URL }}vertigo_starts_eu/src/assets/img/vertigo/logos/twitter-logo-residencies.png" width="32" height="32" alt="Twitter">
+                                  </a>
+                              {% endif %}
+                          {% endwith %}
+                          {% with links|get_type_link:"youtube" as youtube_links %}
+                          {% if youtube_links %}
+                              <a class="residency-detail__social-link" href="{{ youtube_links|first|safe }}">
+                                  <img src="{{ STATIC_URL }}vertigo_starts_eu/src/assets/img/vertigo/logos/youtube-logo-residencies.png" width="32" height="32" alt="Youtube">
+                              </a>
+                          {% endif %}
+                          {% endwith %}
+                          {% with links|get_type_link:"instagram" as instagram_links %}
+                          {% if instagram_links %}
+                              <a class="residency-detail__social-link" href="{{ instagram_links|first|safe }}">
+                                  <img src="{{ STATIC_URL }}vertigo_starts_eu/src/assets/img/vertigo/logos/instagram-logo-residencies.png" width="32" height="32" alt="Instagram">
+                              </a>
+                          {% endif %}
+                          {% endwith %}
+                      </div>
+              {% endif %}
+          {% endwith %}
+      </div>
+  </div>
+  <div class="page__content-see-profile-button">
+
+    {% with object.artist.links.all as links %}
+        {% if links %}
+            {% with links|get_type_link:"link" as webpage_links %}
+                {% if webpage_links %}
+                    <a target="_blank" href="{{ webpage_links|first|safe }}" class="page__link-profile-artist">See Profile</a>
+                {% endif %}
+            {% endwith %}
+        {% else %}
+        <a target="_blank" href="#" class="page__link-profile-artist">See Profile</a>
+        {% endif %}
+      {% endwith %}
+
+  </div>
+</div>
+<div id="content-blog-item" style="display:none;" class="page__content-blog-detail-residencies">
+  content-blog-item<br/>Missing backend object
+
+  <div class="page__residency-blog-content">
+    {{ object.project.title }} hasn't shared any update yet.
+    <br/><br/>
+    Follow {{ object.project.title }} to receive notifications about future updates.
+  </div>
+</div>
+<div id="content-followers-item" style="display:none;" class="page__content-blog-residencies-detail">
+  content-followers-item<br/>Missing backend object
+</div>
+
+<div id="map-element-content" style="position:relative;display:block;margin-right:-3.5%;margin-top:2%;height:300px">
+   <div id="mapid" style="height:300px;">
+
+     <div id="detail-marker" class="project-ict-detail__detail-marker" style="display:none">
+     </div>
+   </div>
+</div>
+
+{% comment %}
 <div class="residency-detail__background-main residency-detail__margin-global">
 
     <div>
@@ -85,58 +414,6 @@
         </div>
     </div>
 
-    <script>
-        function clickedLink(link,event) {
-
-            event.preventDefault();
-
-            var firstDiv = document.getElementById("first_div");
-            var secondDiv = document.getElementById("second_div");
-            var thirdDiv = document.getElementById("third_div");
-            var fourthDiv = document.getElementById("fourth_div");
-
-            firstDiv.style.display = 'none';
-            secondDiv.style.display = 'none';
-            thirdDiv.style.display = 'none';
-            fourthDiv.style.display = 'none';
-
-            var linkArtist = document.getElementById("artist");
-            var linkArtistResidency = document.getElementById("artist_residency");
-            var linkProject = document.getElementById("project");
-            var linkOutcome = document.getElementById("outcome");
-
-            var buttons = document.getElementsByClassName('residency-detail__button');
-
-            for (var i = 0; i < buttons.length; i++)
-            {
-                buttons[i].classList.remove('active');
-            }
-
-            if (link.id === 'artist')
-            {
-                firstDiv.style.display = 'block';
-                linkArtist.classList.add('active');
-            }
-
-            if (link.id === 'artist_residency')
-            {
-                secondDiv.style.display = 'block';
-                linkArtistResidency.classList.add('active');
-            }
-
-            if (link.id === 'project')
-            {
-                thirdDiv.style.display = 'block';
-                linkProject.classList.add('active');
-            }
-
-            if (link.id === 'outcome')
-            {
-                fourthDiv.style.display = 'block';
-                linkOutcome.classList.add('active');
-            }
-        }
-    </script>
 
     <div class ="row residency-detail__margin-row">
             <div class="col-sm-16 col-md-12 residency-detail__center-buttons">
@@ -574,5 +851,5 @@
         </div>
     </div>
 {% endif %}
-
+{% endcomment %}
 {% endblock %}

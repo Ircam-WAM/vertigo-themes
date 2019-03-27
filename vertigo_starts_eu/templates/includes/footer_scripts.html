@@ -16,7 +16,7 @@
     <!-- <script src="{% static "js/water.js" %}"></script> -->
     <script src="{% static "js/index.min.js" %}"></script>
 {% block extra_js %}{% endblock %}
-
+{% editable_loader %}
 {% endcompress %}
 
 {% if settings.GOOGLE_ANALYTICS_ID and not request.user.is_staff and not settings.DEBUG %}

@@ -1,7 +1,24 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags staticfiles %}
-{% comment %}
-<script src="{% static "vertigo_starts_eu/static/home/home_modifier.js" %}"></script>
-{% endcomment %}
+
+<div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home" onclick="closeOverlay()">
+
+     <div class="home-page__overlay_close-home">&times;</div>
+
+      <div class="home-page__overlay-contaner-info-home">
+        <div class="home-page__overlay-content-title-home">
+          {{ article.title }}
+        </div>
+        <div class="home-page__overlay-description-home">
+          by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+        </div>
+        {% if article.images.all|length > 0 %}
+        <img class="home-page__public-article-image home-page__extra-margin-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" />
+        {% endif %}
+        <div class="home-page__overlay-description-home">
+          {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
+        </div>
+      </div>
+</div>
 
 <div class="home-page__private-main-block">
 {% comment %}
@@ -28,24 +45,27 @@
 
   <div id="left-div-content" class="home-page__show-content home-page__private-content-main-left">
 
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__private-responsive-width-special">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__private-responsive-width-special" style="background:white">
 
-      <a href="{{ article.get_absolute_url }}">
+      <!--<a href="{{ article.get_absolute_url }}">-->
+      <div style="cursor:pointer" onclick="showFullNotice();">
         <div class="home-page__private-full-frame home-page__public-white-background">
-
+          {% if article.images.all|length > 0 %}
           <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
-
+          {% endif %}
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
-
+          <div class="home-page__public-article-body-main home-page__private-left-text">
+            by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+          </div>
           <div class="home-page__public-article-body-main home-page__private-left-text">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
         </div>
-      </a>
-
+      <!--</a>-->
+      </div>
     </div>
     <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-position-common home-page__private-responsive-width-special">
 
@@ -68,7 +88,7 @@
       </a>
 
     </div>
-    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__private-responsive-width-special">
+    <div class="home-page__private-profile-medium home-page__private-content-float-left home-page__private-inner-margin-bottom home-page__responsive-common home-page__responsive-position-common home-page__responsive-width-common home-page__private-responsive-width-special home-page__relative-container">
 
       <a href="{{ project.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-container-common-relative {% if project.public_data.all.0.image %}home-page__private-image-gradient{% endif %}">
@@ -127,21 +147,21 @@
       </a>
 
     </div>
-    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__private-responsive-width-special">
+    <div class="home-page__private-post-large home-page__private-content-float-left home-page__private-inner-margin-top home-page__private-inner-margin-right home-page__responsive-common home-page__responsive-width-common home-page__responsive-top-margin-common home-page__private-responsive-width-special home-page__relative-container">
 
       <a href="{{ event.get_absolute_url }}">
         <div class="home-page__full-frame home-page__public-container-common-relative {% if event.images %}home-page__private-left-image-gradient{% endif %}">
             {% if event.images %}
               {% with event.images.all|get_type:'card' as images %}
-              <img class="home-page__private-image_full-width home-page__private-left-image-gradient" src="{{ MEDIA_URL }}{% thumbnail images.0.file 1015 350 padding=true %}" >
+              <img class="home-page__private-image_full-width home-page__private-left-image-gradient home-page__private-left-image-fix-responsive" src="{{ MEDIA_URL }}{% thumbnail images.0.file 1015 350 padding=true %}" >
               {% endwith %}
             {% else %}
-              <div class="home-page__private-image_full-width" style="border: 1px solid white;"></div>
+              <div class="home-page__private-image_full-width home-page__private-left-image-fix-responsive" style="border: 1px solid white;"></div>
             {% endif %}
 
         </div>
 
-        <div class="home-page__private-right-side-event">
+        <div class="home-page__private-right-side-event home-page__private-right-side-event-fix-responsive home-page__absolute-item">
 
           {% if event.departments.all %}
           <div class="event-line-box__tag-event">
@@ -178,7 +198,7 @@
       </a>
 
     </div>
-    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__private-responsive-width-special">
+    <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__private-responsive-width-special" style="min-height:300px;margin-top:-458px;">
 
       <a href="{{ organization.get_absolute_url }}">
         <div class="home-page__private-full-frame home-page__public-white-background">

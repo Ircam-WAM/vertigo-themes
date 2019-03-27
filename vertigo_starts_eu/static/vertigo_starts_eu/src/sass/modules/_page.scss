@@ -778,7 +778,25 @@ $module: ".page";
       width: 50px;
       height: 50px;
       background: #f11a33;
-      border: 8px solid black;
+      border: 6px solid black;
+      border-radius: 50%;
+    }
+
+    &__circle-check-green-detail-residencies {
+
+      width: 40px;
+      height: 40px;
+      background: #47dfba;
+      border: 6px solid black;
+      border-radius: 50%;
+    }
+
+    &__circle-cross-red-detail-residencies {
+
+      width: 40px;
+      height: 40px;
+      background: #f11a33;
+      border: 6px solid black;
       border-radius: 50%;
     }
 
@@ -797,8 +815,12 @@ $module: ".page";
 
       position:absolute !important;
       top:3% !important;
-      left:52% !important;
+      left:53% !important;
       cursor:pointer !important;
+
+      @media screen and (max-width: 768px) {
+        left:60% !important;
+      }
     }
 
     &__style-check-icon {
@@ -817,17 +839,44 @@ $module: ".page";
       color:black !important;
       font-size:30px !important;
       margin-left:5% !important;
-      top:5% !important;
+      top:8% !important;
+      position:relative !important;
+    }
+
+    &__style-cross-icon-detail-residencies {
+
+      text-align:center !important;
+      color:black !important;
+      font-size:25px !important;
+      margin-left:5% !important;
+      top:8% !important;
       position:relative !important;
     }
 
     &__main-title-profile-public {
 
       color:white !important;
-      font-size:50px !important;
+      font-size:25px !important;
       font-family:'Oswald',sans-serif !important;
       text-align:center !important;
       margin-top:1% !important;
+
+      @media screen and (max-width: 768px) {
+
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        margin-bottom: 2% !important;
+      }
+    }
+
+    &__bottom-space-city {
+
+      margin-bottom: 0 !important;
+
+      @media screen and (max-width: 768px) {
+
+        margin-bottom: 2% !important;
+      }
     }
 
     &__main-subtitle-profile-public {
@@ -845,13 +894,37 @@ $module: ".page";
     &__submenu-public-profile {
 
       margin:auto !important;
-      width:100% !important;
+      width:70% !important;
       height:auto !important;
-      display:block !important;
       text-align:center !important;
       margin-top:-3% !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:90% !important;
+        margin-top:0 !important;
+      }
+
+      @media screen and (min-width: 2560px) {
+
+        margin-top:-2.5% !important;
+      }
+
+      @media screen and (min-width: 5120px) {
+
+        margin-top:-1% !important;
+      }
     }
 
+    &__padding-container-main {
+
+      padding-top:2% !important;
+
+      @media screen and (min-width: 5120px) {
+
+        padding-top:4% !important;
+      }
+    }
     &__follow-public-text {
 
       width:100% !important;
@@ -864,6 +937,40 @@ $module: ".page";
       padding-top:1% !important;
       padding-bottom:1% !important;
       margin-top:0.2% !important;
+
+      @media screen and (max-width: 768px) {
+
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
+    }
+
+    &__follow-public-text-spaceless {
+
+      width:100% !important;
+      height:auto !important;
+      background:#46dfba !important;
+      color:white !important;
+      font-size:15px !important;
+      text-align:center !important;
+      font-family:'Oswald',sans-serif !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+      margin-top:1px !important;
+    }
+
+    &__unfollow-public-text-spaceless {
+
+      width:100% !important;
+      height:auto !important;
+      background:#f11b34 !important;
+      color:white !important;
+      font-size:15px !important;
+      text-align:center !important;
+      font-family:'Oswald',sans-serif !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+      margin-top:1px !important;
     }
 
     &__unfollow-public-text {
@@ -878,6 +985,12 @@ $module: ".page";
       padding-top:1% !important;
       padding-bottom:1% !important;
       margin-top:0.2% !important;
+
+      @media screen and (max-width: 768px) {
+
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+      }
     }
 
     &__circle-gray {
@@ -897,6 +1010,12 @@ $module: ".page";
       margin-top:5% !important;
       margin-left:20% !important;
       margin-right:20% !important;
+
+      @media screen and (max-width: 768px) {
+
+        margin-left:10% !important;
+        margin-right:0% !important;
+      }
     }
 
     &__style-user-icon {
@@ -909,13 +1028,18 @@ $module: ".page";
     &__subtitle-public-item {
 
       color:white !important;
-      font-size:20px !important;
-      font-family:'Oswald',sans-serif !important;
-      text-align:center;margin-top:1% !important;
+      font-size:15px !important;
+      font-family:'Helvetica' !important;
+      text-align:center !important;
+      margin-top:1% !important;
       display:inline !important;
       width:auto !important;
-      left:36% !important;
       position:relative !important;
+      margin-left: -66% !important;
+
+      @-moz-document url-prefix() {
+        margin-left: -67% !important;
+      }
     }
 
     &__link-public-profile {
@@ -926,14 +1050,21 @@ $module: ".page";
       position:relative !important;
       float:left !important;
       top:3% !important;
+      width: 220px !important;
+
+      @media screen and (max-width: 768px) {
+
+        width: 100% !important;
+        margin-bottom: 2% !important;
+      }
     }
 
     &__circle-small-share-button {
 
-      width: 50px !important;
+      width: 45px !important;
       height: auto !important;
       background: white !important;
-      border: 5px solid black !important;
+      border: 2px solid black !important;
       border-radius: 50% !important;
       position:relative !important;
     }
@@ -947,6 +1078,45 @@ $module: ".page";
       display:inline-flex !important;
       padding-right:3% !important;
       margin-top:-0.5% !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:83% !important;
+        height:45px !important;
+        margin-bottom:2% !important;
+      }
+
+      @media screen and (min-width: 5120px) {
+
+        height:40px !important;
+      }
+    }
+
+    &__top-padding-container {
+
+      margin-top:-6.5% !important;
+
+      @media screen and (max-width: 768px) {
+
+        margin-top:-25% !important;
+        margin-bottom: 2% !important;
+      }
+    }
+
+    &__container-info-profile-user {
+
+      margin-top:1% !important;
+      padding-bottom:1% !important;
+      display:flex !important;
+      width:100% !important;
+
+      @media screen and (max-width: 768px) {
+
+        margin-top:2% !important;
+        padding-bottom:2% !important;
+        display:inline-block !important;
+        width:100% !important;
+      }
     }
 
     &__twitter-share-container {
@@ -961,8 +1131,12 @@ $module: ".page";
 
       color:black !important;
       font-size:25px !important;
-      margin-left:18% !important;
+      margin-left:3% !important;
       margin-top:15% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__facebook-share-container {
@@ -977,8 +1151,12 @@ $module: ".page";
 
       color:black !important;
       font-size:25px !important;
-      margin-left:25% !important;
+      margin-left:3% !important;
       margin-top:13% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__instagram-share-container {
@@ -993,8 +1171,12 @@ $module: ".page";
 
       color:black !important;
       font-size:25px !important;
-      margin-left:18% !important;
+      margin-left:3% !important;
       margin-top:15% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__youtube-share-container {
@@ -1009,8 +1191,12 @@ $module: ".page";
 
       color:black !important;
       font-size:25px !important;
-      margin-left:12% !important;
+      margin-left:3% !important;
       margin-top:15% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
     }
 
     &__linkedin-share-container {
@@ -1025,7 +1211,325 @@ $module: ".page";
 
       color:black !important;
       font-size:25px !important;
-      margin-left:18% !important;
+      margin-left:3% !important;
       margin-top:10% !important;
+
+      @media screen and (max-width: 768px) {
+        margin-top:20% !important;
+      }
+    }
+
+    &__residency-blog-content {
+
+      font-family: 'Oswald', sans-serif !important;
+      color:gray !important;
+      font-weight:normal !important;
+      font-size:20px !important;
+    }
+
+    &__about-content {
+
+      font-family: 'Oswald', sans-serif !important;
+      color:black !important;
+      font-weight:normal !important;
+      text-align:justify !important;
+
+      @media screen and (max-width: 768px) {
+        padding-right: 10% !important;
+      }
+    }
+
+    &__main-timeline-style {
+
+      height:auto !important;
+      width:60% !important;
+      text-align:center !important;
+      margin:0 auto !important;
+      margin-top:2% !important;
+      font-family:'Oswald',sans-serif !important;
+      font-size:15px !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:90% !important;
+      }
+    }
+
+    &__timeline-first-row {
+
+      width:100% !important;
+      display:flex !important;
+      color:white !important;
+    }
+
+    &__timeline-draw {
+
+      width:100% !important;
+      text-align:center !important;
+      color:white !important;
+      margin-top:2% !important;
+    }
+
+    &__timeline-info {
+
+      width:100% !important;
+      display:flex !important;
+      color:white !important;
+    }
+
+    &__timeline-draw-part-one {
+
+      background:white !important;
+      width:30px !important;
+      height:30px !important;
+      border-radius: 50% !important;
+      display:inline-block !important;
+    }
+
+    &__timeline-draw-part-two {
+
+      background:white !important;
+      width:33% !important;
+      height:5px !important;
+      display:inline-block !important;
+      transform: translate(-5%,-250%) !important;
+      padding-left:5% !important;
+
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+
+        transform: translate(0%,-250%) !important;
+      }
+    }
+
+    &__responsive-space-big {
+
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+
+        margin-top: 15% !important;
+      }
+    }
+
+    &__timeline-draw-part-three {
+
+      background:white !important;
+      width:30px !important;
+      height:30px !important;
+      border-radius: 50% !important;
+      display:inline-block !important;
+      transform: translate(-80%) !important;
+
+      @media screen and (max-width: 768px) {
+
+        transform: translate(-17%) !important;
+      }
+    }
+
+    &__timeline-draw-part-four {
+
+      background:white !important;
+      width:33% !important;
+      height:5px !important;
+      display:inline-block !important;
+      transform: translate(-5%,-250%) !important;
+      margin-left:-2% !important;
+    }
+
+    &__timeline-draw-part-five {
+
+      background:white !important;
+      width:30px !important;
+      height:30px !important;
+      border-radius: 50% !important;
+      display:inline-block !important;
+      margin-left:-2.5% !important;
+    }
+
+    &__content-detail-header {
+
+      text-align:center !important;
+      color:white !important;
+      padding-top:6% !important;
+    }
+
+    &__center-element {
+
+      text-align:center !important;
+    }
+
+    &__title-detail-residencies {
+
+      font-size:25px !important;
+      font-family:'Oswald',sans-serif !important;
+      display:inline-block !important;
+    }
+
+    &__residencies-red-banner {
+
+      position:absolute !important;
+      cursor:pointer !important;
+      display:inline-block !important;
+      margin-top:-1.5% !important;
+    }
+
+    &__description-residencies {
+
+      font-size:1em !important;
+      font-family:'Helvetica' !important;
+      margin-top:1% !important;
+    }
+
+    &__artist-element-residencies {
+
+      margin-top:2% !important;
+      text-align:center !important;
+      color:white !important;
+    }
+
+    &__style-detail-content {
+
+      font-size:1em !important;
+      font-family:'Merriweather', serif !important;
+    }
+
+    &__keywords-residencies {
+
+      margin-top:2% !important;
+      color:#50e3c2 !important;
+      font-family:'Oswald',sans-serif !important;
+      //font-size:20px !important;
+      width:60% !important;
+      text-align:center !important;
+      display:block !important;
+      height:auto !important;
+      margin:0 auto !important;
+      margin-top:2% !important;
+
+      @media screen and (max-width: 768px) {
+
+        width:90% !important;
+        margin-bottom: 5% !important;
+      }
+    }
+
+    &__keywords-style-residencies {
+
+      border:.2em solid #50e3c2 !important;
+      margin:0 auto !important;
+      padding:0.5% !important;
+      height:auto !important;
+      border-radius:.2em !important;
+      display:inline-block !important;
+      margin-left:1% !important;
+      font-family:'Merriweather',serif !important;
+      font-size: 1em !important;
+    }
+
+    &__container-inforesidency-detail {
+
+      background:lightgray !important;
+      width:100% !important;
+      height:2px !important;
+      margin-top:5px !important;
+    }
+
+    &__container-description-residencies-detail {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:400px !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__description-residencies-content {
+
+      width:60% !important;
+      height:auto !important;
+      text-align:justify !important;
+      font-size:15px !important;
+      color:black !important;
+      font-family:'Helvetica' !important;
+      margin:0 auto !important;
+    }
+
+    &__artistic-content-residencies {
+
+      display:none;
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__artist-content-residencies-detail {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:400px !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__content-blog-detail-residencies {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__content-blog-residencies-detail {
+
+      color:black !important;
+      text-align:center !important;
+      width:100% !important;
+      height:auto !important;
+      padding-top:1% !important;
+      padding-bottom:1% !important;
+    }
+
+    &__content-see-profile-button {
+
+      float:right !important;
+      background:#50e3c2 !important;
+      width:150px !important;
+      height:50px !important;
+      color:white !important;
+      font-family:'Oswald',sans-serif !important;
+      font-size:25px !important;
+      text-align:center !important;
+      margin-top:-2% !important;
+    }
+
+    &__link-profile-artist {
+
+      display:inline-block !important;
+      width:100% !important;
+      height:100% !important;
+      color:white !important;
+      margin: 0 auto !important;
+      vertical-align: middle !important;
+      line-height:2 !important;
+    }
+
+    &__style-text-profile {
+
+      color: #000 !important;
+      font-weight:300 !important;
+      font-family: 'Merriweather' !important;
+      line-height: 1.875rem !important;
+/*
+      @media screen and (max-width: 768px) {
+
+          margin-left:20% !important;
+          margin-right:15% !important;
+      }
+      */
     }
 }

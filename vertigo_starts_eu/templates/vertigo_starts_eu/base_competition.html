@@ -72,13 +72,14 @@
     {% endblock %}
 
     {% block container %}
-        <div id="container" class="container-vertigo">
-            <main class="main" role="main">
-                {% block content_header %}{% endblock %}
+        <!--<div id="container" class="container-vertigo">-->
+
+
+
                 {% block main %}{% endblock %}
                 {% block content_section %}{% endblock %}
                 {% block content_footer %}{% endblock %}
-            </main>
+
 
             {% block social %}
                 {# {% include "vertigo_starts_eu/includes/social.html" %}#}
@@ -115,11 +116,8 @@
     {% endblock %}
 
     {% block footer_scripts %}
-        {% include "vertigo_starts_eu/includes/footer_scripts.html" %}
+        {% include "includes/footer_scripts.html" %}
     {% endblock %}
-
-		{% comment %} Use this block if you need to execute JS with libraries {% endcomment %}
-		{% block extra_js %}{% endblock %}
 
     {% endspaceless %}
 

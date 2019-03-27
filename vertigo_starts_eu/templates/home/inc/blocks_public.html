@@ -1,5 +1,24 @@
 {% load i18n pages_tags mezzanine_tags media_tags organization_tags pages_tags %}
 
+<div id="overlay-news-temp" style="display:none;" class="home-page__overlay-style-home" onclick="closeOverlay()">
+     <div class="home-page__overlay_close-home">&times;</div>
+
+      <div class="home-page__overlay-contaner-info-home">
+        <div class="home-page__overlay-content-title-home">
+          {{ article.title }}
+        </div>
+        <div class="home-page__overlay-description-home">
+          by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+        </div>
+        {% if article.images.all|length > 0 %}
+        <img class="home-page__public-article-image home-page__extra-margin-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" />
+        {% endif %}
+        <div class="home-page__overlay-description-home">
+          {{ article.description|richtext_filters|safe|truncatechars_html:1000 }}
+        </div>
+      </div>
+</div>
+
 <div class="home-page__public-main-container-text-banner">
   <div class="home-page__public-main-text-banner">
     ART X TECHNOLOGY X INNOVATION
@@ -21,21 +40,25 @@
 
   <div class="home-page__first-big-block home-page__public-container-common home-page__height-auto">
     <div class="home-page__inner-big-block">
-      <a href="{{ article.get_absolute_url }}">
+      <!--<a href="{{ article.get_absolute_url }}">-->
+      <div style="cursor:pointer" onclick="showFullNotice();">
         <div class="home-page__full-frame home-page__public-white-background">
-
+          {% if article.images.all|length > 0 %}
           <img class="home-page__public-article-image" src="{{ MEDIA_URL }}{% thumbnail article.images.all|first 300 300 padding=true %}" >
-
+          {% endif %}
           <div class="home-page__public-article-title-main">
             {{ article.title }}
           </div>
-
+          <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
+            by {% if article.department.name %}{{ article.department.name }}{% else %}STARTS{% endif %}, {{ article.publish_date|date:"DATE_FORMAT" }},
+          </div>
           <div class="home-page__public-article-body-main home-page__mini-padding-bottom">
             {{ article.description|richtext_filters|safe|truncatechars_html:500 }}
           </div>
 
         </div>
-      </a>
+      <!--</a>-->
+      </div>
     </div>
     <div class="home-page__inner-blog-block-right home-page__top-padding-none">
       <a href="{{ event.get_absolute_url }}">
