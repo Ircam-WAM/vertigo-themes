@@ -186,10 +186,12 @@
                   <i class="fa fa-user page__style-user-icon" style="display:block;font-size:170px;text-align:center;" aria-hidden="true"></i>
                 </div>
                 {% endif %}
+								{% comment %}
                 <div id="element-social" class="page__circle-cross-red page__icon-follow-action" onclick="changeFollowStatus(event,this);">
                   <i id="element-social-follow" class="fa fa-check page__style-check-icon" style="display:none;" aria-hidden="true"></i>
                   <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon" style="display:block;" aria-hidden="true"></i>
                 </div>
+								{% endcomment %}
               </div>
               <div class="page__main-title-profile-public">{{ person.title }}</div>
               <div class="page__container-info-profile-user">

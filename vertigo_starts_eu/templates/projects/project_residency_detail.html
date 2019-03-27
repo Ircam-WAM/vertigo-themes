@@ -104,10 +104,12 @@ $(function() {
   <div class="page__content-detail-header">
     <div class="page__center-element">
       <div class="page__title-detail-residencies">{{ object.project.title }}</div>
+			{% comment %}
       <div id="element-social" class="page__circle-cross-red-detail-residencies page__residencies-red-banner" onclick="changeFollowStatus(event,this);">
         <i id="element-social-follow" class="fa fa-check page__style-cross-icon-detail-residencies" style="display:none;" aria-hidden="true"></i>
         <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon-detail-residencies" style="display:block;" aria-hidden="true"></i>
       </div>
+			{% endcomment %}
     </div>
     <div class="page__description-residencies">{{ object.description|truncatechars:50 }}</div>
   </div>
