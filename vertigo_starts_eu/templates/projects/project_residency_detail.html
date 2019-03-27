@@ -154,12 +154,15 @@ $(function() {
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">About</span></a>
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artistic Proposal</span></a>
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
+	{% comment %}
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="blog-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Residency Blog</span></a>
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Followers</span></a>
+	{% endcomment %}
 </div>
 
 <div class="page__container-inforesidency-detail"></div>
 
+{% comment %}
 <div id="start-follow-item" class="page__follow-public-text-spaceless" style="display:none;">
   <b>You just started following {{ object.project.title }}.</b><br />
   You will receive updates monthly by mail.
@@ -168,6 +171,7 @@ $(function() {
   <b>You just stopped following {{ object.project.title }}.</b><br />
   You will no longer receive updates by mail.
 </div>
+{% endcomment %}
 
 <div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style"  style="display:block;margin-right:20%;margin-left:20%">
   <div class="page__descrition-residencies-content">
