@@ -1068,10 +1068,10 @@ $module: ".home-page";
       }
     }
 
-    &__resposive-display {
+    &__responsive-display {
 
       @media screen and (max-width: 780px) {
-        
+
         display: block !important;
       }
     }
