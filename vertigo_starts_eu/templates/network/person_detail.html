@@ -58,8 +58,12 @@
 
         profile.classList.remove("page__option-selected");
         blog.classList.remove("page__option-selected");
-        following.classList.remove("page__option-selected");
-        follower.classList.remove("page__option-selected");
+				if (following) {
+					following.classList.remove("page__option-selected");
+				}
+				if (follower) {
+					follower.classList.remove("page__option-selected");
+				}
 
         if (applicationForm != null) {
           applicationForm.classList.remove("page__option-selected");
@@ -71,8 +75,12 @@
 
         profile.classList.add("page__option-unselected");
         blog.classList.add("page__option-unselected");
-        following.classList.add("page__option-unselected");
-        follower.classList.add("page__option-unselected");
+				if (following) {
+					following.classList.add("page__option-unselected");
+				}
+				if (follower) {
+					follower.classList.add("page__option-unselected");
+				}
 
         if (applicationForm != null) {
           applicationForm.classList.add("page__option-unselected");
@@ -178,10 +186,12 @@
                   <i class="fa fa-user page__style-user-icon" style="display:block;font-size:170px;text-align:center;" aria-hidden="true"></i>
                 </div>
                 {% endif %}
+								{% comment %}
                 <div id="element-social" class="page__circle-cross-red page__icon-follow-action" onclick="changeFollowStatus(event,this);">
                   <i id="element-social-follow" class="fa fa-check page__style-check-icon" style="display:none;" aria-hidden="true"></i>
                   <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon" style="display:block;" aria-hidden="true"></i>
                 </div>
+								{% endcomment %}
               </div>
               <div class="page__main-title-profile-public">{{ person.title }}</div>
               <div class="page__container-info-profile-user">
@@ -232,17 +242,20 @@
       <div class="page__submenu-public-profile" {% if person.images.all|length == 0 %} style="padding-top:5%"{% endif %}>
         <a href="#" style="margin: 0 auto"><span id="public-profile-item" onclick="changePublicView(event,this);" class="page__option-selected">{% if request.user.is_authenticated %}About{% else %}Profile{% endif %}</span></a>
         <a href="#" style="margin: 0 auto"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
+				{% comment %}
         <a href="#" style="margin: 0 auto"><span id="public-following-item" onclick="changePublicView(event,this);" class="page__option-unselected">Following</span></a>
         <a href="#" style="margin: 0 auto"><span id="public-follower-item" onclick="changePublicView(event,this);" class="page__option-unselected">Followers</span></a>
         {% if request.user.is_authenticated %}
         <a href="#" style="margin: 0 auto"><span id="public-application-form" onclick="changePublicView(event,this);" class="page__option-unselected">Application forms</span></a>
         <a href="#" style="margin: 0 auto"><span id="public-profile-settings" onclick="changePublicView(event,this);" class="page__option-unselected">Profile & Settings</span></a>
         {% endif %}
+				{% endcomment %}
 
       </div>
 
       <div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
 
+			{% comment %}
       <div id="start-follow-item" style="display:none" class="page__follow-public-text">
         <b>You just started following {{ person.title }}.</b><br />
         You will receive updates monthly by mail.
@@ -251,6 +264,7 @@
         <b>You just stopped following {{ person.title }}.</b><br />
         You will no longer receive updates by mail.
       </div>
+			{% endcomment %}
 
       {% comment %}s
       {% if request.user.is_authenticated %}
