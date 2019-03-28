@@ -559,25 +559,25 @@ function showGroupTags(object, event) {
 
       if (itemId == "tag-residencies") {
 
-        var residenciesItems = data["residencies"];
+        var residenciesItems = jsonContentData["residencies"];
         finalObject["residencies"] = residenciesItems:
         totalItems += residenciesItems.length;
       }
 
       if (itemId == "tag-users") {
-        var personsItems = data["persons"];
+        var personsItems = jsonContentData["persons"];
         finalObject["persons"] = personsItems;
         totalItems += personsItems.length;
       }
 
       if (itemId == "tag-organizations") {
-        var orgsItems = data["organizations"];
+        var orgsItems = jsonContentData["organizations"];
         finalObject["oraganizations"] = orgsItems;
         totalItems += orgsItems.length;
       }
 
       if (itemId == "tag-producers") {
-        var prodsItems = data["producers"];
+        var prodsItems = jsonContentData["producers"];
         finalObject["producers"] = prodsItems;
         totalItems += prodsItems.length;
       }
