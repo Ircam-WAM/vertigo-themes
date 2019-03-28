@@ -592,7 +592,7 @@ function showGroupTags(object, event) {
   if (totalItems == 0) {
 
     for (var key in jsonContentData) {
-      var values = dictionary[key];
+      var values = jsonContentData[key];
       totalItems += values.length;
     }
   }
