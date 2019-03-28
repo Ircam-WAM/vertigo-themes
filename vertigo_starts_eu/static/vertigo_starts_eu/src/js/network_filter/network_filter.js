@@ -548,7 +548,7 @@ function showGroupTags(object, event) {
 
     for (var i = 0; i < selectedTags.length; i++){
 
-      var item = selectedTag[i];
+      var item = selectedTags[i];
       var itemId = item.id.toLowerCase();
 
       if (itemId == "tag-calls") {
