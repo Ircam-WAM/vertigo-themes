@@ -539,7 +539,7 @@ function showGroupTags(object, event) {
     object.classList.remove("article-box__active-tag");
   }
 
-  var selectedTags = document.getElementsByClassName("active-tag")
+  var selectedTags = document.getElementsByClassName("article-box__active-tag")
 
   var finalObject = [];
 
