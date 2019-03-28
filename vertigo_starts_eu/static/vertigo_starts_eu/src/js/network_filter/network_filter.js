@@ -543,7 +543,7 @@ function showGroupTags(object, event) {
 
   var finalObject = [];
 
-  if (selectedTags.lenght == 0) {
+  if (selectedTags.length == 0) {
 
     var totalItems = 0;
 
@@ -561,25 +561,25 @@ function showGroupTags(object, event) {
 
         var residenciesItems = data["residencies"];
         finalObject["residencies"] = residenciesItems:
-        totalItems += residenciesItems.lenght;
+        totalItems += residenciesItems.length;
       }
 
       if (itemId == "tag-users") {
         var personsItems = data["persons"];
         finalObject["persons"] = personsItems;
-        totalItems += personsItems.lenght;
+        totalItems += personsItems.length;
       }
 
       if (itemId == "tag-organizations") {
         var orgsItems = data["organizations"];
         finalObject["oraganizations"] = orgsItems;
-        totalItems += orgsItems.lenght;
+        totalItems += orgsItems.length;
       }
 
       if (itemId == "tag-producers") {
         var prodsItems = data["producers"];
         finalObject["producers"] = prodsItems;
-        totalItems += prodsItems.lenght;
+        totalItems += prodsItems.length;
       }
 
       if (itemId == "tag-partners") {
@@ -590,7 +590,7 @@ function showGroupTags(object, event) {
     parseJSON(finalObject, currentMap);
   }
 
-  if (finalObject.lenght == 0) {
+  if (finalObject.length == 0) {
 
     for (var key in jsonContentData) {
       var values = dictionary[key];
