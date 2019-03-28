@@ -899,6 +899,16 @@ $module: ".article-box";
     color:black !important;
     background: clear !important;
   }
+
+  &__title-tags {
+
+    background: clear !important;
+    color:black !important;
+    font-family:'Helvetica' !important;
+    font-size: 30px !important;
+    width:100% !important;
+    margin: auto !important;
+  }
 }
 
 ::selection {
