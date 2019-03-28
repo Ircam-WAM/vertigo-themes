@@ -633,7 +633,7 @@ function createMapView() {
             counter += personsItems.lenght;
           }
 
-          var orgsItems = data["oraganizations"];
+          var orgsItems = data["organizations"];
 
           if (orgsItems.length > 0) {
             document.getElementById("tag-organizations").style.display = "block";
