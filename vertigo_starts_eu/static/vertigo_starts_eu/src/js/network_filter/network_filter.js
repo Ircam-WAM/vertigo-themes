@@ -630,28 +630,32 @@ function createMapView() {
           var residenciesItems = data["residencies"];
 
           if (residenciesItems.length > 0) {
-            document.getElementById("tag-residencies").style.display = "block";
+            var item = document.getElementById("tag-residencies");
+            item.classList.remove("article-box__hide-tag");
             itemsCount += residenciesItems.length;
           }
 
           var personsItems = data["persons"];
 
           if (personsItems.length > 0) {
-            document.getElementById("tag-users").style.display = "block";
+            var item = document.getElementById("tag-users");
+            item.classList.remove("article-box__hide-tag");
             itemsCount += personsItems.length;
           }
 
           var orgsItems = data["organizations"];
 
           if (orgsItems.length > 0) {
-            document.getElementById("tag-organizations").style.display = "block";
+            var item = document.getElementById("tag-organizations");
+            item.classList.remove("article-box__hide-tag");
             itemsCount += orgsItems.length;
           }
 
           var prodsItems = data["producers"];
 
           if (prodsItems.length > 0) {
-            document.getElementById("tag-producers").style.display = "block";
+            var item = document.getElementById("tag-producers");
+            item.classList.remove("article-box__hide-tag");
             itemsCount += prodsItems.length;
           }
 
