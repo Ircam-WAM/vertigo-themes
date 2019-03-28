@@ -554,7 +554,6 @@ function showGroupTags(object, event) {
 
       if (itemId == "tag-calls") {
 
-
       }
 
       if (itemId == "tag-residencies") {
@@ -632,25 +631,32 @@ function createMapView() {
 
           if (residenciesItems.length > 0) {
             document.getElementById("tag-residencies").style.display = "block";
+            totalItems += residenciesItems.length;
           }
 
           var personsItems = data["persons"];
 
           if (personsItems.length > 0) {
             document.getElementById("tag-users").style.display = "block";
+            totalItems += personsItems.length;
           }
 
           var orgsItems = data["organizations"];
 
           if (orgsItems.length > 0) {
             document.getElementById("tag-organizations").style.display = "block";
+            totalItems += orgsItems.length;
           }
 
           var prodsItems = data["producers"];
 
           if (prodsItems.length > 0) {
             document.getElementById("tag-producers").style.display = "block";
+            totalItems += prodsItems.length;
           }
+
+          counter.innerHTML = totalItems + (totalItems == 1 ? " result" : " results");
+
         }
     },
     error: function(request, status, errorThrown) {
