@@ -558,19 +558,28 @@ function showGroupTags(object, event) {
       }
 
       if (itemId == "tag-residencies") {
-        finalObject["residencies"] = jsonContentData["residencies"];
+
+        var residenciesItems = data["residencies"];
+        finalObject["residencies"] = residenciesItems:
+        totalItems += residenciesItems.lenght;
       }
 
       if (itemId == "tag-users") {
-        finalObject["persons"] = jsonContentData["persons"];
+        var personsItems = data["persons"];
+        finalObject["persons"] = personsItems;
+        totalItems += personsItems.lenght;
       }
 
       if (itemId == "tag-organizations") {
-        finalObject["oraganizations"] = jsonContentData["oraganizations"];
+        var orgsItems = data["organizations"];
+        finalObject["oraganizations"] = orgsItems;
+        totalItems += orgsItems.lenght;
       }
 
       if (itemId == "tag-producers") {
-        finalObject["producers"] = jsonContentData["producers"];
+        var prodsItems = data["producers"];
+        finalObject["producers"] = prodsItems;
+        totalItems += prodsItems.lenght;
       }
 
       if (itemId == "tag-partners") {
@@ -623,34 +632,25 @@ function createMapView() {
 
           if (residenciesItems.length > 0) {
             document.getElementById("tag-residencies").style.display = "block";
-            itemsCount += residenciesItems.lenght;
           }
 
           var personsItems = data["persons"];
 
           if (personsItems.length > 0) {
             document.getElementById("tag-users").style.display = "block";
-            itemsCount += personsItems.lenght;
           }
 
           var orgsItems = data["organizations"];
 
           if (orgsItems.length > 0) {
             document.getElementById("tag-organizations").style.display = "block";
-            itemsCount += orgsItems.lenght;
           }
 
           var prodsItems = data["producers"];
 
           if (prodsItems.length > 0) {
             document.getElementById("tag-producers").style.display = "block";
-            itemsCount += prodsItems.lenght;
           }
-
-          var counter = document.getElementById("tags-counter");
-          counter.style.display = "block";
-          counter.innerHTML = itemsCount.length + (itemsCount.length == 1 ? " result" : " results");
-
         }
     },
     error: function(request, status, errorThrown) {
