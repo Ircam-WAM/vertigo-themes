@@ -617,39 +617,39 @@ function createMapView() {
 
           //triggerFilter();
 
-          var counter = 0;
+          var itemsCount = 0;
 
           var residenciesItems = data["residencies"];
 
           if (residenciesItems.length > 0) {
             document.getElementById("tag-residencies").style.display = "block";
-            counter += residenciesItems.lenght;
+            itemsCount += residenciesItems.lenght;
           }
 
           var personsItems = data["persons"];
 
           if (personsItems.length > 0) {
             document.getElementById("tag-users").style.display = "block";
-            counter += personsItems.lenght;
+            itemsCount += personsItems.lenght;
           }
 
           var orgsItems = data["organizations"];
 
           if (orgsItems.length > 0) {
             document.getElementById("tag-organizations").style.display = "block";
-            counter += orgsItems.lenght;
+            itemsCount += orgsItems.lenght;
           }
 
           var prodsItems = data["producers"];
 
           if (prodsItems.length > 0) {
             document.getElementById("tag-producers").style.display = "block";
-            counter += prodsItems.lenght;
+            itemsCount += prodsItems.lenght;
           }
 
           var counter = document.getElementById("tags-counter");
           counter.style.display = "block";
-          counter.innerHTML = prodsItems.length + (prodsItems.length == 1 ? " result" : " results");
+          counter.innerHTML = itemsCount.length + (itemsCount.length == 1 ? " result" : " results");
 
         }
     },
