@@ -586,6 +586,8 @@ function showGroupTags(object, event) {
     }
 
     parseJSON(finalObject, currentMap);
+  } else {
+    parseJSON(jsonContentData, currentMap);
   }
 
   if (totalItems == 0) {
