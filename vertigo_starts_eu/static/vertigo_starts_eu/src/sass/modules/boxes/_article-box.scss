@@ -868,7 +868,7 @@ $module: ".article-box";
     }
 
     &__tag-style {
-      
+
     	border: .1em solid black !important;
     	margin: 0 auto !important;
     	padding: 1% !important;
@@ -876,6 +876,17 @@ $module: ".article-box";
     	border-radius: .2em !important;
     	display: inline-block !important;
     	margin-right: 1% !important;
+      color:black !important;
+      font-family:'Helvetica' !important;
+      font-size: 20px !important;
+      margin-right: 2% !important;
+      background: clear !important;
+
+      &:hover {
+
+        color:white !important;
+        background: black !important;
+      }
   }
 }
 
