@@ -560,7 +560,7 @@ function showGroupTags(object, event) {
       if (itemId == "tag-residencies") {
 
         var residenciesItems = jsonContentData["residencies"];
-        finalObject["residencies"] = residenciesItems:
+        finalObject["residencies"] = residenciesItems;
         totalItems += residenciesItems.length;
       }
 
