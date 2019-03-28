@@ -889,6 +889,16 @@ $module: ".article-box";
         background: black !important;
       }
   }
+
+  &__active-tag {
+    color:white !important;
+    background: black !important;
+  }
+
+  &__unactive-tag {
+    color:black !important;
+    background: clear !important;
+  }
 }
 
 ::selection {
