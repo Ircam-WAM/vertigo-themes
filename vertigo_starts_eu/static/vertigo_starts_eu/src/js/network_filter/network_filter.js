@@ -52,6 +52,25 @@ function parseJSON(jsonObject, map) {
 
     detailMarker.style.display = 'none';
 
+    var filterOrgs = [];
+
+    for (var i = 0; i < producers.length; i++) {
+
+      var item = producers[i];
+
+      var lat = item["lat"];
+      var lon = item["lon"];
+
+      if ((lat != null && lat != 0 && lat != undefined) && (lon != null && lon != 0 && lon != undefined)) {
+
+        filterOrgs.push(item);
+      }
+    }
+
+    if (filterOrgs.length > 0) {
+      producers = filterOrgs;
+    }
+
     for (var i = 0; i < producers.length; i++) {
 
         var item = producers[i];
