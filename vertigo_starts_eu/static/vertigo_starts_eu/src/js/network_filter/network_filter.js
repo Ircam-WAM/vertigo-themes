@@ -656,6 +656,7 @@ function createMapView() {
             itemsCount += prodsItems.length;
           }
 
+          var counter = document.getElementById("tags-counter");
           counter.innerHTML = itemsCount + (itemsCount == 1 ? " result" : " results");
         }
     },
