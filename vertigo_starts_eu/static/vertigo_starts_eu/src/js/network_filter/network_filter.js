@@ -242,7 +242,6 @@ function createMap() {
   });
 }
 
-
 function showHideChevronTags(object, event) {
 
   event.preventDefault();
@@ -521,6 +520,78 @@ function arrayContains(needle, arrhaystack) {
   return (arrhaystack.indexOf(needle) > -1);
 }
 
+function showGroupTags(object, event) {
+
+  event.preventDefault();
+
+  if (markersGlobal.length > 0 && this.currentMap != null) {
+
+    for (var i = 0; i < markersGlobal.length; i++) {
+        this.currentMap.removeLayer(markersGlobal[i]);
+    }
+  }
+
+  var currentClassList = object.classList;
+
+  if (!currentClassList.contains("active-tag")) {
+    object.classList.add("active-tag");
+  } else {
+    object.classList.remove("active-tag");
+  }
+
+  var selectedTags = document.getElementsByClassName("active-tag")
+
+  var finalObject = [];
+
+  if (selectedTags.lenght == 0) {
+
+    var totalItems = 0;
+
+    for (var i = 0; i < selectedTags.length; i++){
+
+      var item = selectedTag[i];
+      var itemId = item.id.toLowerCase();
+
+      if (itemId == "tag-calls") {
+
+
+      }
+
+      if (itemId == "tag-residencies") {
+        finalObject["residencies"] = jsonContentData["residencies"];
+      }
+
+      if (itemId == "tag-users") {
+        finalObject["persons"] = jsonContentData["persons"];
+      }
+
+      if (itemId == "tag-organizations") {
+        finalObject["oraganizations"] = jsonContentData["oraganizations"];
+      }
+
+      if (itemId == "tag-producers") {
+        finalObject["producers"] = jsonContentData["producers"];
+      }
+
+      if (itemId == "tag-partners") {
+
+      }
+    }
+
+    parseJSON(finalObject, currentMap);
+  }
+
+  if (finalObject.lenght == 0) {
+
+    for (var key in jsonContentData) {
+      var values = dictionary[key];
+      totalItems += values.length;
+    }
+  }
+
+  counter.innerHTML = totalItems + (totalItems == 1 ? " result" : " results");
+}
+
 function createMapView() {
 
   $.ajax({
@@ -545,6 +616,31 @@ function createMapView() {
           //parseJSONTags(data);
 
           //triggerFilter();
+
+
+          var residenciesItems = data["residencies"];
+
+          if (residenciesItems.length > 0) {
+            document.getElementById("tag-residencies").style.display = "block";
+          }
+
+          var personsItems = data["persons"];
+
+          if (personsItems.length > 0) {
+            document.getElementById("tag-users").style.display = "block";
+          }
+
+          var orgsItems = data["oraganizations"];
+
+          if (orgsItems.length > 0) {
+            document.getElementById("tag-organizations").style.display = "block";
+          }
+
+          var prodsItems = data["producers"];
+
+          if (prodsItems.length > 0) {
+            document.getElementById("tag-producers").style.display = "block";
+          }
         }
     },
     error: function(request, status, errorThrown) {

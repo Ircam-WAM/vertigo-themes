@@ -45,18 +45,10 @@
 
 $(function(){
 
-
-
    createMapView();
-{% comment %}
-document.body.style.backgroundColor = "white";
-   var chevronItem = document.getElementById("chevron-tags");
-   var tagsDivContent = document.getElementById("tags-content");
 
-   chevronItem.classList.remove("fa-chevron-down");
-   chevronItem.classList.add("fa-chevron-up");
-   tagsDivContent.style.display = 'block';
-   {% endcomment %}
+   document.body.style.backgroundColor = "white";
+
 })
 
 </script>
@@ -77,7 +69,7 @@ document.body.style.backgroundColor = "white";
         </div>
     </div>
 -->
-{% comment %}
+
     <div class="article-box__content-row" style="position:relative;padding-top:3%">
 
         <!--<div class="article-box__view-changer-container article-box__space-center-responsive" style="width: 100px;">-->
@@ -90,24 +82,19 @@ document.body.style.backgroundColor = "white";
           </div>
         </div>
 
-        <div onclick="showHideChevronTags(this, event);" class="project-ict-detail__single-separator project-ict-detail__place-chevron article-box__chevron-style-changer article-box__tranlate-responsive" style="color:white">
-          Filter by Keywords <i id="chevron-tags" class="fa project-ict-detail__divider-chevron-section fa-chevron-down article-box__content-item-reviewer" aria-hidden="true"></i>
+        <div id="tags-content" style="text-align:center;display:block">
+      <!--    <div id="tag-calls" class="article-box__tag-style" style="display:none" onlcick="showGroupTags(this, event);">Calls</div> -->
+          <div id="tag-residencies" class="article-box__tag-style" style="display:none" onlcick="showGroupTags(this, event);">Residencies</div>
+          <div id="tag-users" class="article-box__tag-style" style="display:none" onlcick="showGroupTags(this, event);">Users</div>
+          <div id="tag-organizations" class="article-box__tag-style" style="display:none" onlcick="showGroupTags(this, event);">Organizations</div>
+          <div id="tag-producers" class="article-box__tag-style" style="display:none" onlcick="showGroupTags(this, event);">Producers</div>
+        <!--  <div id="tag-partners"class="article-box__tag-style" style="display:none" onlcick="showGroupTags(this, event);">network Partners</div> -->
         </div>
 
       <div id="tags-counter" class="article-box__tag-counter-item">
 
       </div>
   </div>
-
-  <div id="tags-content" style="text-align:center;display:none">
-
-
-  </div>
-
-  <div style="width:100%;display:block;text-align:center">
-    <a id="dots-indicator" href="#" style="display:none;margin-top:1%;text-align:center;" onclick="changeTags(this, event);"></a>
-  </div>
-{% endcomment %}
 
     <div id="map-element-content" style="position:relative;display:block;margin-right:-3.5%;margin-top:2%;height:800px">
        <div id="mapid" style="height:100%;">

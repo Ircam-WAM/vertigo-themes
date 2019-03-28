@@ -866,6 +866,17 @@ $module: ".article-box";
       display:block !important;
       margin-bottom:5% !important;
     }
+
+    &__tag-style {
+      
+    	border: .1em solid black !important;
+    	margin: 0 auto !important;
+    	padding: 1% !important;
+    	height: auto !important;
+    	border-radius: .2em !important;
+    	display: inline-block !important;
+    	margin-right: 1% !important;
+  }
 }
 
 ::selection {
