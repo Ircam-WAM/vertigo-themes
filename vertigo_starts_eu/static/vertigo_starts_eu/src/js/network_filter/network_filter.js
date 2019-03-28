@@ -533,7 +533,7 @@ function showGroupTags(object, event) {
 
   var currentClassList = object.classList;
 
-  if (!currentClassList.contains("active-tag")) {
+  if (!currentClassList.contains("article-box__active-tag")) {
     object.classList.add("article-box__active-tag");
   } else {
     object.classList.remove("article-box__active-tag");
