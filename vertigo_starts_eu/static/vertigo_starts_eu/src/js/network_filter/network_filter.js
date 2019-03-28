@@ -590,7 +590,7 @@ function showGroupTags(object, event) {
     parseJSON(finalObject, currentMap);
   }
 
-  if (finalObject.length == 0) {
+  if (totalItems == 0) {
 
     for (var key in jsonContentData) {
       var values = dictionary[key];
