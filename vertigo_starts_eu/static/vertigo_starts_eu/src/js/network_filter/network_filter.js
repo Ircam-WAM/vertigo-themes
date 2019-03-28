@@ -597,6 +597,7 @@ function showGroupTags(object, event) {
     }
   }
 
+  var counter = document.getElementById("tags-counter");
   counter.innerHTML = totalItems + (totalItems == 1 ? " result" : " results");
 }
 
@@ -656,7 +657,6 @@ function createMapView() {
           }
 
           counter.innerHTML = totalItems + (totalItems == 1 ? " result" : " results");
-
         }
     },
     error: function(request, status, errorThrown) {
