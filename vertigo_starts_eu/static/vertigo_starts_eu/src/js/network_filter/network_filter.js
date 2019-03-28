@@ -542,10 +542,9 @@ function showGroupTags(object, event) {
   var selectedTags = document.getElementsByClassName("article-box__active-tag")
 
   var finalObject = {};
+  var totalItems = 0;
 
   if (selectedTags.length == 0) {
-
-    var totalItems = 0;
 
     for (var i = 0; i < selectedTags.length; i++){
 
