@@ -544,7 +544,7 @@ function showGroupTags(object, event) {
   var finalObject = {};
   var totalItems = 0;
 
-  if (selectedTags.length == 0) {
+  if (selectedTags.length > 0) {
 
     for (var i = 0; i < selectedTags.length; i++){
 
