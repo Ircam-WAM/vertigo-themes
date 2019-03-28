@@ -875,7 +875,7 @@ $module: ".article-box";
     	padding: 1% !important;
     	height: auto !important;
     	border-radius: .2em !important;
-    	//display: inline-block !important;
+    	display: inline !important;
     	margin-right: 1% !important;
       color:black !important;
       font-family:'Helvetica' !important;
@@ -888,6 +888,10 @@ $module: ".article-box";
         color:white !important;
         background: black !important;
       }
+  }
+
+  &__hide-tag {
+    display:none !important;
   }
 
   &__active-tag {
