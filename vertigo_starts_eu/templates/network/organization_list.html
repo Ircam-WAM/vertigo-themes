@@ -73,6 +73,7 @@ $(function(){
     <div class="article-box__content-row" style="position:relative;padding-top:3%">
 
         <!--<div class="article-box__view-changer-container article-box__space-center-responsive" style="width: 100px;">-->
+        {% comment %}
         <div class="article-box__tag-item-row">
           <div id="dots-item" class="article-box__item-marker-common" onclick="changeViewItems(this, event);">
 
@@ -81,14 +82,14 @@ $(function(){
 
           </div>
         </div>
-
+        {% endcomment %}
         <div id="tags-content" style="text-align:center;display:flex;margin:auto">
-      <!--    <div id="tag-calls" class="article-box__tag-style" style="display:none" onclick="showGroupTags(this, event);">Calls</div> -->
+   <div id="tag-calls" class="article-box__tag-style" style="display:none" >Calls</div> 
           <div id="tag-residencies" class="article-box__tag-style" style="display:none" onclick="showGroupTags(this, event);">Residencies</div>
           <div id="tag-users" class="article-box__tag-style" style="display:none" onclick="showGroupTags(this, event);">Users</div>
           <div id="tag-organizations" class="article-box__tag-style" style="display:none" onclick="showGroupTags(this, event);">Organizations</div>
           <div id="tag-producers" class="article-box__tag-style" style="display:none" onclick="showGroupTags(this, event);">Producers</div>
-        <!--  <div id="tag-partners"class="article-box__tag-style" style="display:none" onclick="showGroupTags(this, event);">network Partners</div> -->
+    <div id="tag-partners"class="article-box__tag-style" style="display:none" ">network Partners</div>
         </div>
 
       <div id="tags-counter" class="article-box__tag-counter-item">
