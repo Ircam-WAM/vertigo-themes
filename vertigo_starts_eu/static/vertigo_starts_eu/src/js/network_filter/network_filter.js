@@ -61,7 +61,7 @@ function parseJSON(jsonObject, map) {
       var lat = item["lat"];
       var lon = item["lon"];
 
-      if ((lat != null && lat != 0 && lat != undefined) && (lon != null && lon != 0 && lon != undefined)) {
+      if ((lat != "null" && lat != null && lat != 0 && lat != undefined) && (lon != "null" && lon != null && lon != 0 && lon != undefined)) {
 
         filterOrgs.push(item);
       }
