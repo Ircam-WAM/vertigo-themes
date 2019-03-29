@@ -570,7 +570,7 @@ function showGroupTags(object, event) {
 
       if (itemId == "tag-organizations") {
         var orgsItems = jsonContentData["organizations"];
-        finalObject["oraganizations"] = orgsItems;
+        finalObject["organizations"] = orgsItems;
         totalItems += orgsItems.length;
       }
 
@@ -578,10 +578,6 @@ function showGroupTags(object, event) {
         var prodsItems = jsonContentData["producers"];
         finalObject["producers"] = prodsItems;
         totalItems += prodsItems.length;
-      }
-
-      if (itemId == "tag-partners") {
-
       }
     }
 
