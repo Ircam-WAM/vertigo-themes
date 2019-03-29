@@ -896,6 +896,7 @@ $module: ".article-box";
     margin:auto !important;
     width:100% !important;
     position:absolute !important;
+    z-index:9999 !important;
   }
 
   &__tag-restyle {
@@ -906,7 +907,6 @@ $module: ".article-box";
     margin-top:-1% !important;
     text-align: right !important;
     padding-right: 1% !important;
-    z-index:9999 !important;
 
     @media screen and (max-width: 780px) {
 
