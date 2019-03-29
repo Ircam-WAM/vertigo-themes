@@ -629,42 +629,53 @@ function createMapView() {
 
           var callsItems = data["calls"];
 
-          if (callsItems.length > 0) {
-            var item = document.getElementById("tag-calls");
-            item.classList.remove("article-box__hide-tag");
-            itemsCount += callsItems.length;
+          if (callsItems != null) {
+            if (callsItems.length > 0) {
+              var item = document.getElementById("tag-calls");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += callsItems.length;
+            }
           }
 
           var residenciesItems = data["residencies"];
 
-          if (residenciesItems.length > 0) {
-            var item = document.getElementById("tag-residencies");
-            item.classList.remove("article-box__hide-tag");
-            itemsCount += residenciesItems.length;
+          if (residenciesItems != null) {
+            if (residenciesItems.length > 0) {
+              var item = document.getElementById("tag-residencies");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += residenciesItems.length;
+            }
           }
+
 
           var personsItems = data["persons"];
 
-          if (personsItems.length > 0) {
-            var item = document.getElementById("tag-users");
-            item.classList.remove("article-box__hide-tag");
-            itemsCount += personsItems.length;
+          if (personsItems != null) {
+            if (personsItems.length > 0) {
+              var item = document.getElementById("tag-users");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += personsItems.length;
+            }
           }
 
           var orgsItems = data["organizations"];
 
-          if (orgsItems.length > 0) {
-            var item = document.getElementById("tag-organizations");
-            item.classList.remove("article-box__hide-tag");
-            itemsCount += orgsItems.length;
+          if (personsItems != null) {
+            if (orgsItems.length > 0) {
+              var item = document.getElementById("tag-organizations");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += orgsItems.length;
+            }
           }
 
           var prodsItems = data["producers"];
 
-          if (prodsItems.length > 0) {
-            var item = document.getElementById("tag-producers");
-            item.classList.remove("article-box__hide-tag");
-            itemsCount += prodsItems.length;
+          if (prodsItems != null) {
+            if (prodsItems.length > 0) {
+              var item = document.getElementById("tag-producers");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += prodsItems.length;
+            }
           }
 
           var counter = document.getElementById("tags-counter");
