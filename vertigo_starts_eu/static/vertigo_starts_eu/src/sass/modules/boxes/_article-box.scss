@@ -889,6 +889,23 @@ $module: ".article-box";
       }
   }
 
+  &__container-tags-style {
+
+    text-align:center !important;
+    display:block !important;
+    margin:auto !important;
+    width:100% !important;
+    position:relative !important;
+  }
+
+  &__tag-restyle {
+
+    position:relative !important;
+    top:0 !important;
+    right:0 !important;
+    margin-top:-1% !important;
+  }
+
   &__hide-tag {
     display:none !important;
   }
