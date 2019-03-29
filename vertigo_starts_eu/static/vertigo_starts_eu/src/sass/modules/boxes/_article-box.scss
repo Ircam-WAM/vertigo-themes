@@ -906,6 +906,25 @@ $module: ".article-box";
     margin-top:-1% !important;
     text-align: right !important;
     padding-right: 1% !important;
+
+    @media screen and (max-width: 780px) {
+
+        text-align: center !important;
+        margin-top:5% !important;
+    }
+  }
+
+  &__map-network-style {
+
+    position:relative !important;
+    display:block !important;
+    margin-right:-3.5% !important;
+    margin-top:3% !important;
+    height:800pxx !important;
+
+    @media screen and (max-width: 780px) {
+      margin-top:20% !important;
+    }
   }
 
   &__hide-tag {
