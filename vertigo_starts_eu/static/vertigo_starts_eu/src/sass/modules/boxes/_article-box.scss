@@ -870,23 +870,22 @@ $module: ".article-box";
     &__tag-style {
 
       cursor:pointer !important;
-    	border: .1em solid black !important;
+    	border: .1em solid #50e3c2 !important;
     	margin: 0 auto !important;
-    	padding: 1% !important;
+    	padding: .2em .5em!important;
     	height: auto !important;
     	border-radius: .2em !important;
     	display: inline !important;
-    	margin-right: 1% !important;
-      color:black !important;
-      font-family:'Helvetica' !important;
-      font-size: 20px !important;
-      margin-right: 2% !important;
+      color:#50e3c2 !important;
+      font-family:'Oswald',sans-serif !important;
+      font-size: 1em !important;
+      margin: .5em !important;
       background: clear !important;
 
       &:hover {
 
         color:white !important;
-        background: black !important;
+        background: #50e3c2 !important;
       }
   }
 
