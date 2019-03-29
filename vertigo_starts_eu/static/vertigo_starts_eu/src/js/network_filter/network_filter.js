@@ -647,7 +647,6 @@ function createMapView() {
             }
           }
 
-
           var personsItems = data["persons"];
 
           if (personsItems != null) {
