@@ -552,7 +552,9 @@ function showGroupTags(object, event) {
       var itemId = item.id.toLowerCase();
 
       if (itemId == "tag-calls") {
-
+        var callsItems = jsonContentData["calls"];
+        finalObject["calls"] = callsItems;
+        totalItems += callsItems.length;
       }
 
       if (itemId == "tag-residencies") {
@@ -624,6 +626,14 @@ function createMapView() {
           //triggerFilter();
 
           var itemsCount = 0;
+
+          var callsItems = data["calls"];
+
+          if (callsItems.length > 0) {
+            var item = document.getElementById("tag-calls");
+            item.classList.remove("article-box__hide-tag");
+            itemsCount += callsItems.length;
+          }
 
           var residenciesItems = data["residencies"];
 
