@@ -355,7 +355,7 @@ $module: ".home-page";
 
     &__private-margin-top-fixer {
 
-      margin-top:-457px;
+      transform:translateY(-415px) !important;
     }
 
     &__private-post-large {
