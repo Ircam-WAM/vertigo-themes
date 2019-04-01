@@ -201,7 +201,7 @@
     <div class="home-page__private-post-medium home-page__private-content-float-left home-page__private-margin-top-fixer home-page__responsive-common home-page__responsive-position-common home-page__responsive-top-margin-common home-page__private-responsive-width-special" style="min-height:300px">
 
       <a href="{{ organization.get_absolute_url }}">
-        <div class="home-page__private-full-frame home-page__public-white-background">
+        <div class="home-page__private-full-frame home-page__public-white-background"  style="min-height:300px">
 
           {% if organization.images.all %}
           <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
@@ -218,7 +218,7 @@
             {{ organization.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
           {% endif %}
-          
+
         </div>
       </a>
 
