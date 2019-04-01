@@ -356,7 +356,10 @@ $module: ".home-page";
     &__private-margin-top-fixer {
 
       transform:translateY(-462px) !important;
-      position:inherit !important;
+
+      @media screen and (max-width: 780px) {
+        transform:translateY(0) !important;
+      }
     }
 
     &__private-post-large {
