@@ -362,6 +362,24 @@ $module: ".home-page";
       }
     }
 
+    &__private-fix-column-position {
+
+      min-height:300px !important;
+      position:absolute !important;
+      right:0 !important;
+      top:0 !important;
+      margin-right:5.4% !important;
+      margin-top:58.3% !important;
+
+      @-moz-document url-prefix() {
+        margin-top:58.6% !important;
+      }
+
+      @media screen and (max-width: 780px) {
+        min-height:300px !important;
+      }
+    }
+
     &__private-post-large {
 
       width:1015px;
