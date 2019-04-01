@@ -207,14 +207,18 @@
           <img class="home-page__public-article-image home-page__private-img-article-width home-page__image-padding home-page__image-padding" src="{{ MEDIA_URL }}{% thumbnail organization.images.all|first 300 300 padding=true %}" >
           {% endif %}
 
+          {% if organization.title %}
           <div class="home-page__public-article-title-main">
             {{ organization.title }}
           </div>
+          {% endif %}
 
+          {% if organization.description %}
           <div class="home-page__public-article-body-main">
             {{ organization.description|richtext_filters|safe|truncatechars_html:100 }}
           </div>
-
+          {% endif %}
+          
         </div>
       </a>
 
