@@ -1095,6 +1095,8 @@ $module: ".home-page";
 
     &__responsive-display {
 
+      display: block !important;
+      
       @media screen and (max-width: 780px) {
 
         display: block !important;
