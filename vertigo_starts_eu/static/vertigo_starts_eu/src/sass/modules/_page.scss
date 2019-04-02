@@ -1532,4 +1532,15 @@ $module: ".page";
       }
       */
     }
+
+    &__title-blog-page {
+
+      width: 100%  !important;
+      height: auto  !important;
+      font-size:20px !important;
+      font-family:'Oswald',sans-serif !important;
+      color:#000f24 !important;
+      text-decoration:underline !important;
+      line-height:5em !important;
+    }
 }

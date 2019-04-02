@@ -25,10 +25,26 @@
     {% endmetablock %}
 {% endblock %}
 
+{% block extra_head %}
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+$(function(){
+
+   document.body.style.backgroundColor = "white";
+
+})
+
+</script>
+
+{% endblock %}
+
 {% block main %}
 
-<div>
-	<h1>Residency Blog list</h1>
-</div>
+<div class="page__title-blog-page">Residencies Blog</div>
 
 {% endblock %}
