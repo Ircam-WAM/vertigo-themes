@@ -1423,6 +1423,11 @@ $module: ".home-page";
       border:1px solid gray !important;
       width:60% !important;
       margin-top:3% !important;
+
+      @media screen and (max-width: 780px) {
+
+        width:90% !important;
+      }
     }
 
     &__header-top-blog-post {
@@ -1430,6 +1435,11 @@ $module: ".home-page";
       height:200px !important;
       margin-top:30px !important;
       margin-left:30px !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-left:10px !important;
+      }
     }
 
     &__main-content-blog-post {
@@ -1441,6 +1451,13 @@ $module: ".home-page";
       margin-left:30px !important;
       margin-bottom:30px !important;
       color:black !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-right: 10px !important;
+        margin-left:10px !important;
+        margin-bottom:10px !important;
+      }
     }
 
     &__image-style-blog-news {
