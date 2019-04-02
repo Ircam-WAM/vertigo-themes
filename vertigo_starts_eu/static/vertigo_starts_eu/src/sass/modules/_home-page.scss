@@ -1442,6 +1442,23 @@ $module: ".home-page";
       margin-bottom:30px !important;
       color:black !important;
     }
+
+    &__image-style-blog-news {
+
+      width:20% !important;
+      height:200px !important;
+      background:red !important;
+      float:left !important;
+      margin-right:2% !important;
+    }
+
+    &__title-content-log-news {
+
+      width:75% !important;
+      height:200px !important;
+      background:blue !important;
+      float:left !important;
+    }
 }
 
 img.help-icon {
