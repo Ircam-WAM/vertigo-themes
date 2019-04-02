@@ -1371,8 +1371,14 @@ $module: ".home-page";
       font-size:20px !important;
       font-family:'Oswald',sans-serif !important;
       color:#000f24 !important;
-      text-decoration:underline !important;
-      line-height:5em !important;
+    }
+
+    &__underline-style-blog {
+
+      padding-bottom: 2px !important;
+      border-bottom: #000f24 2px solid !important;
+      margin-bottom: 3% !important;
+      display:inline-block !important;
     }
 }
 
