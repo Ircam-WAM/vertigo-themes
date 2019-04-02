@@ -1416,6 +1416,32 @@ $module: ".home-page";
       padding-bottom:0.5% !important;
       display:inline-block !important;
     }
+
+    &__container-blog-news {
+
+      display:inline-block !important;
+      border:1px solid gray !important;
+      width:60% !important;
+      margin-top:3% !important;
+    }
+
+    &__header-top-blog-post {
+
+      width:100% !important;
+      height:auto !important;
+      margin-top:50px !important;
+      margin-right:3px !important;
+      margin-left:30px !important;
+    }
+
+    &__main-content-blog-post {
+
+      width:100% !important;
+      height:auto !important;
+      margin-top:50px !important;
+      margin-right: 3px !important;
+      margin-left:30px !important;
+    }
 }
 
 img.help-icon {
