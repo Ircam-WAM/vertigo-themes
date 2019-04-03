@@ -1476,6 +1476,36 @@ $module: ".home-page";
       background:clear !important;
       float:left !important;
     }
+
+    &__main-title-text-style {
+
+      color:black !important;
+      font-family:'Merriweather' !important;
+      font-size:60px !important;
+      line-height:1em !important;
+      text-align:left !important;
+      background:clear !important;
+    }
+
+    &__main-subtitle-text-style {
+
+      color:black !important;
+      font-family:'Merriweather' !important;
+      font-size:15px !important;
+      line-height:1.2em !important;
+      text-align:left !important;
+      margin-top:3.2% !important;
+      background: clear !important;
+    }
+
+    &__content-blog-news-style {
+
+      background:clear !important;
+      font-size:'Merriweather' !important;
+      font-size:20px !important;
+      text-align:justify !important;
+      color:black !important;
+    }
 }
 
 img.help-icon {
