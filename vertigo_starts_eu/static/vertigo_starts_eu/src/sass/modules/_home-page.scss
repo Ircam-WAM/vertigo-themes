@@ -1467,6 +1467,11 @@ $module: ".home-page";
       background:red !important;
       float:left !important;
       margin-right:2% !important;
+
+      @media screen and (max-width: 780px) {
+
+        width:50% !important;
+      }
     }
 
     &__title-content-log-news {
@@ -1475,6 +1480,11 @@ $module: ".home-page";
       height:200px !important;
       background:clear !important;
       float:left !important;
+
+      @media screen and (max-width: 780px) {
+
+        width:48% !important;
+      }
     }
 
     &__main-title-text-style {
@@ -1487,8 +1497,8 @@ $module: ".home-page";
       background:clear !important;
 
       @media screen and (max-width: 780px) {
-        
-        font-size:30px !important;
+
+        font-size:25px !important;
       }
     }
 
@@ -1504,8 +1514,8 @@ $module: ".home-page";
 
       @media screen and (max-width: 780px) {
 
-        font-size:14px !important;
-        margin-top:12% !important;
+        font-size:13px !important;
+        margin-top:8% !important;
       }
     }
 
