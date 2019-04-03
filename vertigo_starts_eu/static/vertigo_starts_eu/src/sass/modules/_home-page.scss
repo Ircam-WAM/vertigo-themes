@@ -1487,6 +1487,7 @@ $module: ".home-page";
       background:clear !important;
 
       @media screen and (max-width: 780px) {
+        
         font-size:30px !important;
       }
     }
@@ -1500,6 +1501,12 @@ $module: ".home-page";
       text-align:left !important;
       margin-top:3.2% !important;
       background: clear !important;
+
+      @media screen and (max-width: 780px) {
+
+        font-size:14px !important;
+        margin-top:12% !important;
+      }
     }
 
     &__content-blog-news-style {
