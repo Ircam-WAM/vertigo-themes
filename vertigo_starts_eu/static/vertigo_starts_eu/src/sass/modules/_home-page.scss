@@ -1465,7 +1465,7 @@ $module: ".home-page";
       width:20% !important;
       height:200px !important;
       background:red !important;
-      float:left !important;
+      float: left !important;
       margin-right:2% !important;
 
       @media screen and (max-width: 780px) {
@@ -1479,7 +1479,7 @@ $module: ".home-page";
       width:75.3% !important;
       height:200px !important;
       background:clear !important;
-      float:left !important;
+      float: left !important;
 
       @media screen and (max-width: 780px) {
 
@@ -1492,8 +1492,8 @@ $module: ".home-page";
       color:black !important;
       font-family:'Merriweather' !important;
       font-size:60px !important;
-      line-height:1em !important;
-      text-align:left !important;
+      line-height: 1em !important;
+      text-align: left !important;
       background:clear !important;
       font-weight: bold !important;
 
@@ -1505,12 +1505,12 @@ $module: ".home-page";
 
     &__main-subtitle-text-style {
 
-      color:black !important;
+      color: black !important;
       font-family:'Merriweather' !important;
-      font-size:15px !important;
-      line-height:1.2em !important;
-      text-align:left !important;
-      margin-top:3.2% !important;
+      font-size: 15px !important;
+      line-height: 1.2em !important;
+      text-align: left !important;
+      margin-top: 3.2% !important;
       background: clear !important;
 
       @media screen and (max-width: 780px) {
