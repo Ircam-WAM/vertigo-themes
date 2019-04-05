@@ -46,7 +46,7 @@
     <div class="nav-header__item nav-header__item--right nav-header__item--no-separator nav-header__dropdown-menu">
         {% if request.user.is_authenticated %}
             <div id="username_hover" onmouseover="show_user_menu(this, event)" onmouseout="hide_user_menu(this,event)">
-              <a href="/accounts/update/" class="nav-header__top-menu-user">
+							<a href="{% url 'profile_update' %}" class="nav-header__top-menu-user">
                   {{ request.user }}&nbsp;
                   <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
               </a>
@@ -56,7 +56,7 @@
                 <ul class="nav-header__items-menu-user-dropdown" onmouseover="show_user_menu(this,event)" onmouseout="hide_user_menu(this,event)">
                   <li id="option-menu-0" class="nav-header__item-user">
                     <div class="nav-header__item-separator"></div>
-                    <a id="option-menu-link-0" href="{% url 'organization-network-profile' %}" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
+                    <a id="option-menu-link-0" href="{% url 'profile_update' %}" class="nav-header__link-user-menu" title="Profile" onmouseover="select_user_menu_option(this,event)">Profile</a>
                   </li>
                   <li id="option-menu-1" class="nav-header__item-user">
                     <div class="nav-header__item-separator"></div>
