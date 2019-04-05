@@ -111,7 +111,7 @@ $(function() {
       </div>
 			{% endcomment %}
     </div>
-    <div class="page__description-residencies">{{ object.description|truncatechars:50 }}</div>
+    <div class="page__description-residencies">{{ object.description|truncatechars:130 }}</div>
   </div>
   <div class="page__artist-element-residencies">
     <div class="page__style-detail-content">{{ object.artist.first_name }} {{ object.artist.last_name }}</div>
@@ -125,7 +125,7 @@ $(function() {
           {% endif %}
       {% endwith %}
     </div>
-    <div class="page__style-detail-content">{{ object.city }}, {{ object.country.name }}</div>
+    <div class="page__style-detail-content">{{ object.project.title }}</div>
   </div>
   {% if object.keywords.all %}
   <div class="page__keywords-residencies">
@@ -153,7 +153,7 @@ $(function() {
 </div>
 
 <div class="page__submenu-public-profile" style="padding-top:3.5%">
-  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">About</span></a>
+  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">Tech Project</span></a>
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artistic Proposal</span></a>
   <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
 	{% comment %}

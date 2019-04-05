@@ -1531,6 +1531,16 @@ $module: ".home-page";
       text-align:justify !important;
       color:black !important;
     }
+
+    &__space-responsive-application {
+
+      margin-top: 5% !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top: 45% !important;
+      }
+    }
 }
 
 img.help-icon {
