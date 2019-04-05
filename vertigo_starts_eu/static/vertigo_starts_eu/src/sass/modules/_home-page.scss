@@ -355,7 +355,29 @@ $module: ".home-page";
 
     &__private-margin-top-fixer {
 
-      margin-top:-457px;
+      transform:translateY(-462px) !important;
+
+      @media screen and (max-width: 780px) {
+        transform:translateY(0) !important;
+      }
+    }
+
+    &__private-fix-column-position {
+
+      min-height:300px !important;
+      position:absolute !important;
+      right:0 !important;
+      top:0 !important;
+      margin-right:5.5% !important;
+      margin-top:58.3% !important;
+
+      @-moz-document url-prefix() {
+        margin-top:58.6% !important;
+      }
+
+      @media screen and (max-width: 780px) {
+        min-height:300px !important;
+      }
     }
 
     &__private-post-large {
@@ -903,6 +925,7 @@ $module: ".home-page";
 
       width:100%;
       height:100%;
+      padding-bottom: 5%;
     }
 
     &__private-img-article-width {
@@ -1003,6 +1026,7 @@ $module: ".home-page";
         margin-right:1% !important;
         width:93vw !important;
         background:white !important;
+        min-height: 300px !important;
       }
 
       @media screen and (min-width: 768px) and (max-width: 768px) {
@@ -1013,6 +1037,7 @@ $module: ".home-page";
         margin-right:1% !important;
         width:93vw !important;
         background:white !important;
+        min-height: 300px !important;
       }
     }
 
@@ -1050,7 +1075,7 @@ $module: ".home-page";
           background-image: linear-gradient(to left, rgba(0,15,36,0.00) 0%, rgba(0,15,36,0.90) 99%);
 
           z-index: 0;
-          top: -102%;
+          top: -100%;
 
           @media screen and (max-width: 780px) {
 
@@ -1065,6 +1090,16 @@ $module: ".home-page";
               top:0 !important;
             }
           }
+      }
+    }
+
+    &__responsive-display {
+
+      display: block !important;
+
+      @media screen and (max-width: 780px) {
+
+        display: block !important;
       }
     }
 
@@ -1327,6 +1362,184 @@ $module: ".home-page";
       font-weight:300 !important;
       line-height:1.875rem !important;
       text-align:justify !important;
+    }
+
+    &__title-blog-page {
+
+      width: 100% !important;
+      height: auto !important;
+      font-size:20px !important;
+      font-family:'Oswald',sans-serif !important;
+      color:#000f24 !important;
+    }
+
+    &__underline-style-blog {
+
+      padding-bottom: 2px !important;
+      border-bottom: #000f24 2px solid !important;
+      margin-bottom: 3% !important;
+      margin-top: 5% !important;
+      display:inline-block !important;
+      width: auto !important;
+      position:relative !important;
+    }
+
+    &__wrapper-content-options {
+
+      width:100% !important;
+      height:auto !important;
+      text-align:center !important;
+      margin-bottom:3% !important;
+    }
+
+    &__content-left-option {
+
+      font-family:'Oswald',sans-serif !important;
+      color:black !important;
+      font-size:20px !important;
+      width:auto !important;
+      height:auto !important;
+      margin-right:5% !important;
+      border-bottom:2px solid #000f24 !important;
+      padding-bottom:0.5% !important;
+      display:inline-block !important;
+    }
+
+    &__content-right-option {
+
+      font-family:'Oswald',sans-serif !important;
+      color:black !important;
+      font-size:20px !important;
+      width:auto !important;
+      height:auto !important;
+      border-bottom:2px solid #000f24 !important;
+      padding-bottom:0.5% !important;
+      display:inline-block !important;
+    }
+
+    &__container-blog-news {
+
+      display:inline-block !important;
+      border:1px solid gray !important;
+      width:60% !important;
+      margin-top:3% !important;
+
+      @media screen and (max-width: 780px) {
+
+        width:90% !important;
+      }
+    }
+
+    &__header-top-blog-post {
+
+      height:200px !important;
+      margin-top:30px !important;
+      margin-left:30px !important;
+      margin-right: 30px !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-left:10px !important;
+        margin-right: 10px !important;
+        margin-top:10px !important;
+      }
+    }
+
+    &__main-content-blog-post {
+
+      width:auto !important;
+      min-height:200px !important;
+      margin-top:20px !important;
+      margin-right: 30px !important;
+      margin-left:30px !important;
+      margin-bottom:30px !important;
+      color:black !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-right: 10px !important;
+        margin-left:10px !important;
+        margin-bottom:10px !important;
+      }
+    }
+
+    &__image-style-blog-news {
+
+      width:20% !important;
+      height:200px !important;
+      background:red !important;
+      float: left !important;
+      margin-right:2% !important;
+
+      @media screen and (max-width: 780px) {
+
+        width:50% !important;
+      }
+    }
+
+    &__title-content-log-news {
+
+      width:78% !important;
+      height:200px !important;
+      background:clear !important;
+      float: left !important;
+
+      @media screen and (max-width: 780px) {
+
+        width:48% !important;
+      }
+    }
+
+    &__main-title-text-style {
+
+      color:black !important;
+      font-family:'Merriweather' !important;
+      font-size:60px !important;
+      line-height: 1em !important;
+      text-align: left !important;
+      background:clear !important;
+      font-weight: bold !important;
+
+      @media screen and (max-width: 780px) {
+
+        font-size:25px !important;
+      }
+    }
+
+    &__main-subtitle-text-style {
+
+      color: black !important;
+      font-family:'Merriweather' !important;
+      font-size: 15px !important;
+      line-height: 1.2em !important;
+      text-align: left !important;
+      margin-top: 3.2% !important;
+      background: clear !important;
+
+      @media screen and (max-width: 780px) {
+
+        font-size:13px !important;
+        margin-top:8% !important;
+      }
+    }
+
+    &__content-blog-news-style {
+
+      background:clear !important;
+      font-family:'Merriweather' !important;
+      font-size:15px !important;
+      text-align:justify !important;
+      color:black !important;
+    }
+
+    &__space-responsive-application {
+
+      margin-top: 5% !important;
+
+      @media screen and (max-width: 780px) {
+
+        margin-top: 45% !important;
+      }
     }
 }
 

@@ -596,4 +596,12 @@ $module: ".event-line-box";
         font-weight: weight(regular);
         color: $color-main;
     }
+
+    &__responsive-title {
+
+      @media screen and (max-width: 780px) {
+
+        font-size:28px !important;
+      }
+    }
 }

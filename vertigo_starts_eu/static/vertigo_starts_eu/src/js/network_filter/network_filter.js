@@ -52,6 +52,25 @@ function parseJSON(jsonObject, map) {
 
     detailMarker.style.display = 'none';
 
+    var filterOrgs = [];
+
+    for (var i = 0; i < producers.length; i++) {
+
+      var item = producers[i];
+
+      var lat = item["lat"];
+      var lon = item["lon"];
+
+      if ((lat != "null" && lat != null && lat != 0 && lat != undefined) && (lon != "null" && lon != null && lon != 0 && lon != undefined)) {
+
+        filterOrgs.push(item);
+      }
+    }
+
+    if (filterOrgs.length > 0) {
+      producers = filterOrgs;
+    }
+
     for (var i = 0; i < producers.length; i++) {
 
         var item = producers[i];
@@ -222,7 +241,6 @@ function createMap() {
 
   });
 }
-
 
 function showHideChevronTags(object, event) {
 
@@ -502,6 +520,86 @@ function arrayContains(needle, arrhaystack) {
   return (arrhaystack.indexOf(needle) > -1);
 }
 
+function showGroupTags(object, event) {
+
+  event.preventDefault();
+
+  if (markersGlobal.length > 0 && this.currentMap != null) {
+
+    for (var i = 0; i < markersGlobal.length; i++) {
+        this.currentMap.removeLayer(markersGlobal[i]);
+    }
+  }
+
+  var currentClassList = object.classList;
+
+  if (!currentClassList.contains("article-box__active-tag")) {
+    object.classList.add("article-box__active-tag");
+  } else {
+    object.classList.remove("article-box__active-tag");
+  }
+
+  var selectedTags = document.getElementsByClassName("article-box__active-tag")
+
+  var finalObject = {};
+  var totalItems = 0;
+
+  if (selectedTags.length > 0) {
+
+    for (var i = 0; i < selectedTags.length; i++){
+
+      var item = selectedTags[i];
+      var itemId = item.id.toLowerCase();
+
+      if (itemId == "tag-calls") {
+        var callsItems = jsonContentData["calls"];
+        finalObject["calls"] = callsItems;
+        totalItems += callsItems.length;
+      }
+
+      if (itemId == "tag-residencies") {
+
+        var residenciesItems = jsonContentData["residencies"];
+        finalObject["residencies"] = residenciesItems;
+        totalItems += residenciesItems.length;
+      }
+
+      if (itemId == "tag-users") {
+        var personsItems = jsonContentData["persons"];
+        finalObject["persons"] = personsItems;
+        totalItems += personsItems.length;
+      }
+
+      if (itemId == "tag-organizations") {
+        var orgsItems = jsonContentData["organizations"];
+        finalObject["organizations"] = orgsItems;
+        totalItems += orgsItems.length;
+      }
+
+      if (itemId == "tag-producers") {
+        var prodsItems = jsonContentData["producers"];
+        finalObject["producers"] = prodsItems;
+        totalItems += prodsItems.length;
+      }
+    }
+
+    parseJSON(finalObject, currentMap);
+  } else {
+    parseJSON(jsonContentData, currentMap);
+  }
+
+  if (totalItems == 0) {
+
+    for (var key in jsonContentData) {
+      var values = jsonContentData[key];
+      totalItems += values.length;
+    }
+  }
+
+  var counter = document.getElementById("tags-counter");
+  counter.innerHTML = totalItems + (totalItems == 1 ? " result" : " results");
+}
+
 function createMapView() {
 
   $.ajax({
@@ -526,6 +624,61 @@ function createMapView() {
           //parseJSONTags(data);
 
           //triggerFilter();
+
+          var itemsCount = 0;
+
+          var callsItems = data["calls"];
+
+          if (callsItems != null) {
+            if (callsItems.length > 0) {
+              var item = document.getElementById("tag-calls");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += callsItems.length;
+            }
+          }
+
+          var residenciesItems = data["residencies"];
+
+          if (residenciesItems != null) {
+            if (residenciesItems.length > 0) {
+              var item = document.getElementById("tag-residencies");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += residenciesItems.length;
+            }
+          }
+
+          var personsItems = data["persons"];
+
+          if (personsItems != null) {
+            if (personsItems.length > 0) {
+              var item = document.getElementById("tag-users");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += personsItems.length;
+            }
+          }
+
+          var orgsItems = data["organizations"];
+
+          if (personsItems != null) {
+            if (orgsItems.length > 0) {
+              var item = document.getElementById("tag-organizations");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += orgsItems.length;
+            }
+          }
+
+          var prodsItems = data["producers"];
+
+          if (prodsItems != null) {
+            if (prodsItems.length > 0) {
+              var item = document.getElementById("tag-producers");
+              item.classList.remove("article-box__hide-tag");
+              itemsCount += prodsItems.length;
+            }
+          }
+
+          var counter = document.getElementById("tags-counter");
+          counter.innerHTML = itemsCount + (itemsCount == 1 ? " result" : " results");
         }
     },
     error: function(request, status, errorThrown) {

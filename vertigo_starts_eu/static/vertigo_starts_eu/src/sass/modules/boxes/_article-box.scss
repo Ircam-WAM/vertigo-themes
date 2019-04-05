@@ -866,6 +866,95 @@ $module: ".article-box";
       display:block !important;
       margin-bottom:5% !important;
     }
+
+    &__tag-style {
+
+      cursor:pointer !important;
+    	border: .1em solid #50e3c2 !important;
+    	margin: 0 auto !important;
+    	padding: .2em .5em!important;
+    	height: auto !important;
+    	border-radius: .2em !important;
+    	display: inline !important;
+      color:#50e3c2 !important;
+      font-family:'Oswald',sans-serif !important;
+      font-size: 1em !important;
+      margin: .5em !important;
+      background: clear !important;
+
+      &:hover {
+
+        color:white !important;
+        background: #50e3c2 !important;
+      }
+  }
+
+  &__container-tags-style {
+
+    text-align:center !important;
+    display:block !important;
+    margin:auto !important;
+    width:100% !important;
+    position:absolute !important;
+    z-index:99 !important;
+  }
+
+  &__tag-restyle {
+
+    position:absolute !important;
+    width:100% !important;
+    right:0 !important;
+    margin-top:-1% !important;
+    text-align: right !important;
+    padding-right: 1% !important;
+
+    @media screen and (max-width: 780px) {
+
+        text-align: center !important;
+        margin-top:5% !important;
+    }
+  }
+
+  &__map-network-style {
+
+    position:relative !important;
+    display:block !important;
+    margin-right:-3.5% !important;
+    margin-top:3% !important;
+    height:800px !important;
+
+    @media screen and (max-width: 780px) {
+
+      margin-top:20% !important;
+    }
+  }
+
+  &__hide-tag {
+    display:none !important;
+  }
+
+  &__active-tag {
+    color:white !important;
+    background: #50e3c2 !important;
+  }
+
+  &__unactive-tag {
+    color:#50e3c2 !important;
+    background: clear !important;
+  }
+
+  &__title-tags {
+
+    background: clear !important;
+    color:black !important;
+    font-family:'Helvetica' !important;
+    font-size: 20px !important;
+    width:100% !important;
+    margin: auto !important;
+    text-align: center !important;
+    padding-top:4% !important;
+    text-decoration:underline !important;
+  }
 }
 
 ::selection {
