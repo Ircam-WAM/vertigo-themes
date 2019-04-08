@@ -1405,6 +1405,12 @@ $module: ".home-page";
       display:inline-block !important;
     }
 
+    &__clear-border-bottom {
+
+      color:lightgray !important;
+      border-bottom:0px solid clear !important;
+    }
+
     &__content-right-option {
 
       font-family:'Oswald',sans-serif !important;

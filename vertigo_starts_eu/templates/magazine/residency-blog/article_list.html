@@ -52,8 +52,8 @@ $(function(){
 </div>
 
 <div class="home-page__wrapper-content-options">
-  <div class="home-page__content-left-option"><a href="/residency-blog/list/all" style="display:block">All Activity</a></div>
-  <div class="home-page__content-right-option"><a href="/residency-blog/list/followed" style="display:block">People I Follow</a></div>
+  <div class="home-page__content-left-option {% if request.path == '/residency-blog/list/all' %}home-page__clear-border-bottom{% endif %}"><a href="/residency-blog/list/all" style="display:block;">All Activity</a></div>
+  <div class="home-page__content-right-option {% if request.path == '/residency-blog/list/all' %}home-page__clear-border-bottom{% endif %}"><a href="/residency-blog/list/followed" style="display:block;">People I Follow</a></div>
 <div>
 
 {# single news for blog layout #}
