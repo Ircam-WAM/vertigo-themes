@@ -1,9 +1,6 @@
 {% load i18n pages_tags staticfiles mezzanine_tags organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-
-{% spaceless %}
-
 <script>
 
 window.onload = function () {
@@ -34,11 +31,6 @@ function resizeIconObject() {
   magnifyItem.classList.add("nav-header__show-now");
   userItem.classList.add("nav-header__hide-now");
 
-  var firstMenu = document.getElementById("first-menu");
-
-  var elementsSearch = firstMenu.getElementsByClassName("fa-search");
-
-
   if (width <= 780) {
 
     magnifyItem.classList.remove("nav-header__show-now");
@@ -47,8 +39,6 @@ function resizeIconObject() {
     userItem.classList.add("nav-header__show-now");
     userItem.classList.remove("nav-header__hide-now");
 
-    elementsSearch[0].style.display = "none";
-
   } else {
 
     userItem.classList.remove("nav-header__show-now");
@@ -56,48 +46,49 @@ function resizeIconObject() {
 
     magnifyItem.classList.add("nav-header__show-now");
     magnifyItem.classList.remove("nav-header__hide-now");
-
-    elementsSearch[0].style.display = "block";
   }
 }
 
 </script>
 
+{% spaceless %}
 {% if page_branch_in_menu %}
     {% for page in page_branch %}
         {% if page.is_primary %}
             {% if forloop.first %}
                 <ul class="nav-header" role="navigation" style="padding-right:4%">
-                    <li class="nav-header__item menu-btn  nav-header__item-responsive">
+                    <li class="nav-header__item menu-btn nav-header__item-responsive"
+											style="padding-bottom: 0.5%">
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big " style="float:left">
+                    <li class="nav-header__item nav-header__item--image-big" style="float: left;">
 
-                        <div class="nav-header__non-responsive-image" >
-                          <a href="{% url "home" %}" title="{% trans 'Home' %}">
-                            {% with host_organization.images|get_type:"logo_header" as images %}
-                              {% if images %}
-                               {% with images|first as img %}
-                                <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" style="width:620px;height:40px;margin-top:-5px"/>
-                               {% endwith %}
-                              {% endif %}
-                            {% endwith %}
-                          </a>
-                        </div>
+                      <div class="nav-header__non-responsive-image" >
+                        <a href="{% url "home" %}" title="{% trans 'Home' %}">
+                          {% with host_organization.images|get_type:"logo_header" as images %}
+                            {% if images %}
+                             {% with images|first as img %}
+                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo"  style="width:620px;height:40px;margin-top:-5px"/>
+                             {% endwith %}
+                            {% endif %}
+                          {% endwith %}
+                        </a>
+                      </div>
 
-                        <div class="nav-header__responsive-image nav-header__image-logo-responsive nav-header__responsive-image">
-                            {% with host_organization.images|get_type:"logo_header" as images %}
-                              {% if images %}
-                               {% with images|first as img %}
-                                {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="menu-btn-responsive nav-header__image-size-responsive-logo" />#}
-                                <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-size-responsive-logo item-image-menu" /></a>
-                               {% endwith %}
-                              {% endif %}
-                            {% endwith %}
-                        </div>
+                      <div class="nav-header__responsive-image">
+                          {% with host_organization.images|get_type:"logo_header" as images %}
+                            {% if images %}
+                             {% with images|first as img %}
+                              {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo " />#}
 
+                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo item-image-menu" /></a>
+                             {% endwith %}
+                            {% endif %}
+                          {% endwith %}
+                      </div>
                     </li>
+
             {% endif %}
         {% endif %}
         {% if page.in_menu %}
@@ -108,14 +99,17 @@ function resizeIconObject() {
                             <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
                         </li>
                     {% else %}
-                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line {% endif %} ">
-                            <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %}{% endif %} title="{{ page.title }}">{{ page.title }}</a>
+                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line{% endif %}">
+                            <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}" style="padding-bottom: 0.5%">{{ page.title }} </a>
+                            {% if page.has_children_in_menu %}
+                                {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
+                            {% endif %}
                         </li>
                     {% endif %}
                 {% endwith %}
             {% else %}
-                <li class="nav-header__item">
-                    <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
+                <li class="nav-header__item nav-header__bottom-menu-space">
+                    <a class="nav-header__item-link  {% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}" style="padding-bottom: 0.5%">{{ page.title }}</a>
                     {% if page.has_children_in_menu %}
                         {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
                     {% endif %}
@@ -125,13 +119,21 @@ function resizeIconObject() {
         {% if page.is_primary %}
             {% if forloop.last %}
 
-            <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__show-now search-link-item">
-                <a href="#" class="fsxl" data-open-button="search" data-search-button><i class="fa fa-search" aria-hidden="true"></i></a>
-            </li>
+                <li class="nav-header__item nav-header__item--right nav-header__item--separator">
+                    {% include "includes/languages.html" %}
+                </li>
 
-            <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__hide-now user-link-item nav-header__user-icon-responsive" >
-              <a href="#" class="menu-btn-responsive nav-header__user-icon-size-responsive"><i class="fa fa-user" aria-hidden="true"></i></a>
-            </li>
+                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
+
+                      <a href="#" class="nav-header__item-link fsxl nav-header__hide-now search-link-item " data-open-button="search" data-search-button >
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                      </a>
+
+                      <a href="#" class="nav-header__item-link nav-header__show-now menu-btn-responsive user-link-item ">
+                          <i class="fa fa-user nav-header__user-icon-responsive" aria-hidden="true"></i>
+                      </a>
+
+                </li>
 
             </ul>
             {% endif %}
