@@ -1400,9 +1400,15 @@ $module: ".home-page";
       width:auto !important;
       height:auto !important;
       margin-right:5% !important;
-      border-bottom:2px solid #000f24 !important;
+      border-bottom:2px solid #000f24;
       padding-bottom:0.5% !important;
       display:inline-block !important;
+    }
+
+    &__clear-border-bottom {
+
+      color:gray !important;
+      border-bottom:0px solid transparent !important;
     }
 
     &__content-right-option {
@@ -1412,7 +1418,7 @@ $module: ".home-page";
       font-size:20px !important;
       width:auto !important;
       height:auto !important;
-      border-bottom:2px solid #000f24 !important;
+      border-bottom:2px solid #000f24;
       padding-bottom:0.5% !important;
       display:inline-block !important;
     }

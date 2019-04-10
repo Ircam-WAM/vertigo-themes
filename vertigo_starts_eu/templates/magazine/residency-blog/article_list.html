@@ -52,9 +52,15 @@ $(function(){
 </div>
 
 <div class="home-page__wrapper-content-options">
-  <div class="home-page__content-left-option"><a href="/residency-blog/list/all" style="display:block">All Activity</a></div>
-  <div class="home-page__content-right-option"><a href="/residency-blog/list/followed" style="display:block">People I Follow</a></div>
+  <div class="home-page__content-left-option {% if request.path == '/residency-blog/list/followed' %}home-page__clear-border-bottom{% endif %}">
+    <a href="/residency-blog/list/all" class="{% if request.path == '/residency-blog/list/followed' %}home-page__clear-border-bottom{% endif %}" style="display:block;">All Activity</a>
+  </div>
+  <div class="home-page__content-right-option {% if request.path == '/residency-blog/list/all' %}home-page__clear-border-bottom{% endif %}">
+    <a href="/residency-blog/list/followed" class="{% if request.path == '/residency-blog/list/all' %}home-page__clear-border-bottom{% endif %}" style="display:block;">People I Follow</a>
+  </div>
 <div>
+
+{% if request.path == '/residency-blog/list/followed' %}
 
 {# single news for blog layout #}
 <div class="home-page__container-blog-news">
@@ -77,5 +83,7 @@ $(function(){
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
   </div>
 </div>
+
+{% endif %}
 
 {% endblock %}
