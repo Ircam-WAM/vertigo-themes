@@ -43,7 +43,7 @@ function highlight_item_option(event,object) {
                     <ul class="nav-header__list_items-subheader-menu" ><!--class="unstyled-list col-sm-3 col-md-3">-->
                       <li id="item-option-element-{{forloop.counter0}}"  class="nav-header__item-sub nav-header__item-sub--first{% if page.is_current_or_ascendant %} active{% endif %} nav-header__single-item-subheader-menu" style="margin-bottom:0px;" >
                           <div class="nav-header__item-separator-user-menu"></div>
-                          <a id="item-option-element-link-{{forloop.counter0}}" class="nav-header__single-item-subheader-menu" onmouseout="highlight_item_option(event,this)" onmouseover="highlight_item_option(event,this)" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
+                          <a id="item-option-element-link-{{forloop.counter0}}" class="nav-header__single-item-subheader-menu-link" onmouseout="highlight_item_option(event,this)" onmouseover="highlight_item_option(event,this)" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
                       </li>
                     </ul>
                 {% endif %}
