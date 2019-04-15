@@ -126,9 +126,8 @@ $module: ".nav-header";
 
       //width:174px;
       //height:172.2px;
-      margin-top: -1em;
-      width:100%;
-      height:auto;
+
+      max-height: 40px;
     }
 
     &__switch-display {
@@ -144,13 +143,6 @@ $module: ".nav-header";
     &__responsive-image {
 
       display: none !important;
-    }
-
-    &__non-responsive-image {
-
-      display: block !important;
-      width:40%  !important;
-      height:auto  !important;
     }
 
     &__image-logo-responsive {
@@ -444,18 +436,6 @@ $module: ".nav-header";
             @include padding-right(.50);
 
             margin-right: 0% !important;
-
-            @media screen and (min-width: 780px) {
-
-              margin-right: -20% !important;
-            }
-
-            @-moz-document url-prefix() {
-              @media screen and (min-width: 780px) {
-
-                margin-right: -20% !important;
-              }
-            }
 
             @include mq($until: lg) {
                 height: $header-height - 10px;
@@ -941,7 +921,6 @@ $module: ".nav-header";
       @media only screen and (max-width: 780px) {
 
         width:90% !important;
-        margin-right: -20% !important;
         margin-top: 12% !important;
       }
     }
