@@ -1,42 +1,129 @@
 {% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
-{% load i18n mezzanine_tags %}
+{% load i18n mezzanine_tags organization_tags %}
 
 {% block page_content %}
 
-            <script>
+<script>
 
-            function selectCurrentTab() {
+function selectCurrentTab() {
 
-            document.getElementById("select-settings").className = "page__option-selected";
-            }
+document.getElementById("select-settings").className = "page__option-selected";
+}
 
-            window.onload = selectCurrentTab;
+window.onload = selectCurrentTab;
 
-            </script>
+</script>
 
-            <div class="container page__margin-top">
-            <div class="page__item_info">
+<div class="container page__margin-top">
+    <div class="page__item_info">
+        {{ block.super }}
+        <div class="page__item_content">
+            <div id="info-profile" class="page__info-block">
+                {% errors_for form %}
+                <form class="account-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row" >
+                        <div class="col-md-6" >
 
-            {{ block.super }}
+                            <h3>{% trans "Public Informations" %}</h3>
+                            {{ inlines.0.management_form }}
+                            
+                            {% for inline in inlines.0 %}
+                                    
+                                <img src="{{ MEDIA_URL }}{{ person.user_images.first.file }}">
+                                {{ inline }}
+                            {% endfor %}
 
-                <div class="page__item_content">
-                    <div id="info-profile" class="page__info-block">
+                            <!-- role / occupation -->
+                            {{ form.role.errors }}
+                            {{ form.role.label_tag }}
+                            {{ form.role }}
 
-                        {% errors_for form %}
+                            <!-- Biography -->
 
+                            {{ form.bio.errors }}
+                            {{ form.bio.label_tag }}
+                            {{ form.bio }}
+                            
+                            <!-- URL -->
+                            {{  inlines.1.management_form }}
+                            {% for inline in inlines.1 %}
+                                <div class="row">
+                                    <div class="col-md-10" >
+                                    {{ inline.url.errors }}
+                                    {{ inline.url.label_tag }}
+                                    {{ inline.url }}
+                                    </div>
+                                    <div class="col-md-6" >
+                                    {{ inline.link_type.errors }}
+                                    {{ inline.link_type.label_tag }}
+                                    {{ inline.link_type }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
 
-                <h3>Please fill out your interests below!</h3>
+                        <div class="col-md-6" >
 
-                <form class="account-form" method="POST">
-                {% csrf_token %}
-                {% for form in forms %}
-                    {{ form.as_p }}
-                {% endfor %}
-                    <input type="submit" value="Save" />
+                            <h3>{% trans "Private Informations" %}</h3>
+
+                            <!--Adress 1 -->
+                            {{ form.address.errors }}
+                            {{ form.address.label_tag }}
+                            {{ form.address }}
+
+                            <!-- address 2 -->
+                            {{ form.address_2.errors }}
+                            {{ form.address_2.label_tag }}
+                            {{ form.address_2 }}
+
+                            <!-- ZIP Code -->
+                            {{ form.postal_code.errors }}
+                            {{ form.postal_code.label_tag }}
+                            {{ form.postal_code }}
+                            
+                            <!-- Country -->
+                            {{ form.country.errors }}
+                            {{ form.country.label_tag }}
+                            {{ form.country }}
+                            
+                            <!-- Phone 1 -->
+                            {{ form.telephone.errors }}
+                            {{ form.telephone.label_tag }}
+                            {{ form.telephone }}
+
+                            <!-- Phone 2 -->
+                            {{ form.telephone_2.errors }}
+                            {{ form.telephone_2.label_tag }}
+                            {{ form.telephone_2 }}
+
+                            <!-- Date of Birth -->
+                            {{ form.birthday.errors }}
+                            {{ form.birthday.label_tag }}
+                            {{ form.birthday }}
+
+                            <!-- Gender -->
+                            {{ form.gender.errors }}
+                            {{ form.gender.label_tag }}
+                            {{ form.gender }}
+                            
+                            <!-- Citizenship -->
+                            {{ form.citizenship.errors }}
+                            {{ form.citizenship.label_tag }}
+                            {{ form.citizenship }}
+
+                            <h3>{% trans "Options" %}</h3>
+                            <!-- Options -->
+                            {{  inlines.2.management_form }}
+                            {{  inlines.2.as_p }}
+
+                        </div>
+
+                        <input type="submit" value="Save" />
+                    </div>
                 </form>
-
-             </div>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

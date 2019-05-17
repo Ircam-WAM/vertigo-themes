@@ -135,6 +135,12 @@ $module: ".account-form";
 
     }
 
+
+    .user-form-file {
+        font-size: 0.8em;
+    }
+
+
     select {
 
         @include font-size(m);
