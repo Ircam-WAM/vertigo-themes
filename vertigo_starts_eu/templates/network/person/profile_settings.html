@@ -47,7 +47,6 @@ window.onload = selectCurrentTab;
                                 </div>
                             </div>
 
-                            <hr/>
                             <!-- Background image -->
                             <div class="form-group">
                                 {{ form.background_image.label_tag }}
@@ -67,8 +66,6 @@ window.onload = selectCurrentTab;
                                 </div>
                             </div>
 
-                            <hr/>
-
                             <!-- Biography -->
                             <div class="form-group">
                                 {{ form.bio.errors }}
@@ -83,9 +80,6 @@ window.onload = selectCurrentTab;
                                     {{ inline.errors }}
                                     {{ inline.label_tag }}
                                     {{ inline }}
-                                    {% if not forloop.last %}
-                                    <hr/>
-                                    {% endif %}
                                 {% endfor %}
                             </div>
                            
