@@ -13,12 +13,7 @@
 {% block page_content %}
 
 <div class="page__item_selector">
-		<a href="{% url 'organization-network-profile-edit' %}"><span id="select-profile" class="page__option-unselected">Profile</span></a>
-	<!--	<a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
-		<!-- <a href="{% url 'organization-network-profile-following' request.user %}"><span id="select-following" class="page__option-unselected">Following</span></a>
-		<a href="{% url 'organization-network-profile-followers' request.user %}><span id="select-follower" class="page__option-unselected">Followers</span></a> -->
-		<a href="{% url 'organization-network-profile-applications' %}"><span id="select-application-form" class="page__option-unselected">Application form(s)</span></a>
-		<a href="{% url 'profile_update' %}"><span id="select-settings" class="page__option-unselected">Settings</span></a>
+	{% include 'vertigo_starts_eu/accounts/accout_form_profile_menu.html' %}
 </div>
 
 
