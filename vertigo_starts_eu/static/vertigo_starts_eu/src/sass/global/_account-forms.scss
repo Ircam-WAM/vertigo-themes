@@ -23,6 +23,12 @@ $module: ".account-form";
 
 #{$module} {
 
+    h3 {
+        font-family: $sans-serif;
+        text-transform: none;
+        font-weight: weight(regular);
+    }
+
     fieldset {
       border: 0px;
       border-bottom: 0px solid transparent;
@@ -30,7 +36,8 @@ $module: ".account-form";
 
     p {
         @include margin(0);
-
+        text-align : left;
+        font-size: 0.8em;
         a:hover {
           box-shadow: none;
         }
@@ -56,8 +63,6 @@ $module: ".account-form";
         text-align: center;
     }
 
-
-
     label {
         text-align: left;
         display: block;
@@ -65,7 +70,7 @@ $module: ".account-form";
         float: left;
         width: 60%;
 
-        @include padding(0.25 1 0.25 0);
+        @include padding(0.25 1 0.6 0);
         @include font-size(m);
         @include line-height(1);
         //@include typeface(sans-serif);
@@ -115,7 +120,8 @@ $module: ".account-form";
         display: block;
 
         @include transition(all 0.25s ease-in-out);
-
+        border: 1px solid #ccc;
+        border-radius: 4px;
         outline: 0;
         border: 0;
         border-bottom: 1px solid transparent;
@@ -135,12 +141,6 @@ $module: ".account-form";
 
     }
 
-
-    .user-form-file {
-        font-size: 0.8em;
-    }
-
-
     select {
 
         @include font-size(m);
@@ -156,7 +156,6 @@ $module: ".account-form";
        border: 0;
        border-bottom: 1px solid transparent;
        outline: 0;
-       color: red;
        -webkit-appearance: none;
        background-color: rgba(#50E3C2, 0.05);
        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#FFFFFF" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
@@ -175,12 +174,138 @@ $module: ".account-form";
     select::-ms-expand {
         display: none;
     }
+
+    label[for*="_image-clear_id"] {
+        font-size: 0.8em;
+        padding-top: 0;
+        color: grey;
+        padding-right: 0;
+        width: 55%;
+    }
+
+    label[for^='id_links-'][for$='-DELETE'] {
+        font-size: 0.8em;
+        width: 10%;
+        float: left;
+        padding-top: 0;
+        padding-right: 0;
+        margin-top: 1rem;
+        color: grey;
+    } 
+
+    input[id^='id_links-'][id$='-DELETE'] {
+        float: left;
+        margin-top: 1.25rem;
+    }
+
+    label[for^='id_links-'][for$='-url'] {
+        clear: left;
+    }
+
+    // .url-inline {
+    //     -moz-column-count: 2;
+    //     -moz-column-gap: 50%;
+    //     -webkit-column-count: 2;
+    //     -webkit-column-gap: 50%;
+    //     column-count: 2;
+    //     column-gap: 50%;
+    // }
+
+    // link type
+    /*label[for^='id_links-'][for$='-url'] {
+        float: left;
+    }
+
+    input[id^='id_links-'][id$='-url'] {
+        width: 60%;
+        float: left;
+    }
+
+    // url
+    label[for^='id_links-'][for$='-link_type'] {
+        float: right;
+        width: 35%;
+    }
+
+    select[id^='id_links-'][id$='-link_type'] {
+        width: 35%;
+        float: right;
+        clear: right;
+    }
+
+    // url delete
+    label[for^='id_links-'][for$='-DELETE'] {
+        clear: both;
+        float: left;
+    }
+
+    input[id^='id_links-'][id$='-DELETE'] {
+        clear: both;
+        float: right;
+    }*/
+
+    label[for^='id_links-'][for$='-link_type'] {
+        font-size: 0.8rem;
+    }
+
+    .image {
+        &-field {
+            background-color: rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
+        }
+    
+        &-input {
+            text-align: left;
+        }
+    }
+
+    hr {
+        margin: 2rem 0;
+        clear: both;
+    }
+
+    .checkbox {
+        height: 3rem;
+    }
+
+    label[for="id_personoptions-0-id"],
+    label[for="id_personoptions-0-person"] {
+        display: none;
+    }
+
+    label[for^="id_personoptions-"] {
+        width: 91%;
+    }
+
+    input[id^="id_personoptions-"] {
+        margin-top: 0.6rem;
+    }
+
+    .errorlist {
+        color: red;
+        font-size: 0.8rem;
+    }
+
+    .help_text {
+        font-size: 0.8rem;
+        color: grey;
+        width: 100%;
+        text-align: left;
+        display: inline-block;
+    }
+
 }
 
-.form-errors {
+#info-profile .form-errors {
     list-style-type: none;
-    padding: 0;
     margin: 0;
+    color: red;
+    background: rgba(255,255,255,0.3);
+    padding: 1rem;
+    font-size: 1rem;
+
 
     @include margin-bottom(1);
 
