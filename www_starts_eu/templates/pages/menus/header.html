@@ -62,14 +62,14 @@ function resizeIconObject() {
                         <span class="first"></span>
                         <span class="second"></span>
                     </li>
-                    <li class="nav-header__item nav-header__item--image-big" style="float: left;">
+                    <li class="nav-header__item nav-header__item--image-big" style="float: left; padding-bottom: 0.5%;">
 
                       <div class="nav-header__non-responsive-image" >
                         <a href="{% url "home" %}" title="{% trans 'Home' %}">
                           {% with host_organization.images|get_type:"logo_header" as images %}
                             {% if images %}
                              {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo"  style="width:620px;height:40px;margin-top:-5px"/>
+                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo" />
                              {% endwith %}
                             {% endif %}
                           {% endwith %}
@@ -95,11 +95,11 @@ function resizeIconObject() {
             {% if page.content_model == "link" %}
                 {% with page.link.link_images.all|first as link_image %}
                     {% if link_image %}
-                        <li class="nav-header__item nav-header__item--image">
+                        <li class="nav-header__item nav-header__item--image" style="padding-bottom: 0.5%;">
                             <a href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}"><img width="83" height="65" src="{{ MEDIA_URL }}{% thumbnail link_image.image 166 130 %}" /></a>
                         </li>
                     {% else %}
-                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line{% endif %}">
+                        <li class="nav-header__item {% if page.title|lower == 'calls' %} nav-header__hide-first-line{% endif %}" style="padding-bottom: 0.5%;">
                             <a class="nav-header__item-link{% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}"{% if 'http' in page.link.slug %} target="_blank"{% endif %} title="{{ page.title }}" style="padding-bottom: 0.5%">{{ page.title }} </a>
                             {% if page.has_children_in_menu %}
                                 {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
@@ -108,7 +108,7 @@ function resizeIconObject() {
                     {% endif %}
                 {% endwith %}
             {% else %}
-                <li class="nav-header__item nav-header__bottom-menu-space">
+                <li class="nav-header__item nav-header__bottom-menu-space" style="padding-bottom: 0.5%;">
                     <a class="nav-header__item-link  {% if page.is_current_or_ascendant %} active{% endif %}" href="{{ page.get_absolute_url }}" title="{{ page.title }}" style="padding-bottom: 0.5%">{{ page.title }}</a>
                     {% if page.has_children_in_menu %}
                         {% page_menu page "pages/menus/header_tree_primary_dark.html" %}
@@ -119,11 +119,11 @@ function resizeIconObject() {
         {% if page.is_primary %}
             {% if forloop.last %}
 
-                <li class="nav-header__item nav-header__item--right nav-header__item--separator">
+                <li class="nav-header__item nav-header__item--right nav-header__item--separator" style="padding-bottom: 0.5%;">
                     {% include "includes/languages.html" %}
                 </li>
 
-                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
+                <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style" style="padding-bottom: 0.5%;">
 
                       <a href="#" class="nav-header__item-link fsxl nav-header__hide-now search-link-item " data-open-button="search" data-search-button >
                           <i class="fa fa-search" aria-hidden="true"></i>

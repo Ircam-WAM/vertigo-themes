@@ -7,12 +7,12 @@
         {% if profile_url %}
             <a href="{{ profile_url }}">{{ request.user|username_or:"email" }}</a>
         </p>
-            <a href="{% url "profile_update" %}" class="btn btn-small">
+            <a href="{% url "organization-network-profile" %}" class="btn btn-small">
                 <span class="icon icon__pencil"></span>
                 {% trans "Update profile" %}
             </a>
         {% else %}
-            <a href="{% url "profile_update" %}">{{ request.user|username_or:"email" }}</a>
+            <a href="{% url "organization-network-profile" %}">{{ request.user|username_or:"email" }}</a>
         </p>
         {% endif %}
         <a href="{% url "logout" %}?next={{ request.path }}" class="btn btn-full">

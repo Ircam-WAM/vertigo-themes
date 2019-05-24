@@ -94,12 +94,6 @@ $module: ".nav-header";
             margin-left: -107px;
 
         }
-        /*@include mq($until: lg) {
-            margin-left : auto;
-            margin-right : auto;
-            width : 50px;
-            height: 5Opx;
-        }*/
     }
 
     .translated {
@@ -123,12 +117,7 @@ $module: ".nav-header";
     }
 
     &__image-logo {
-
-      //width:174px;
-      //height:172.2px;
-      margin-top: -1em;
-      width:100%;
-      height:auto;
+      max-height: 40px;
     }
 
     &__switch-display {
@@ -146,41 +135,15 @@ $module: ".nav-header";
       display: none !important;
     }
 
-    &__non-responsive-image {
-
-      display: block !important;
-      width:40%  !important;
-      height:auto  !important;
-    }
-
     &__image-logo-responsive {
-
-      //width:80px !important;
-      //height:80px !important;
-      //width:50% !important;
-      //height:50% !important;
-      //margin-left:21% !important;
-      //margin-bottom:20% !important;
     }
 
     @media only screen and (max-width: 780px) {
 
       &__image-logo-responsive {
-
-        width:60% !important;
-        height:auto !important;
-        margin-left:21% !important;
-        margin-bottom:20% !important;
       }
 
       &__image-logo {
-
-        //width:80px !important;
-        //height:80px !important;
-        width:50% !important;
-        height:50% !important;
-        margin-top:-22% !important;
-        margin-left:25% !important;
       }
 
       &__switch-display {
@@ -199,17 +162,9 @@ $module: ".nav-header";
       }
 
       &__responsive-image {
-
-        display: block !important;
-      	margin-top: -5px !important;
-      	width: 40% !important;
-      	//margin-left: 105px !important;
       }
 
       &__non-responsive-image {
-
-        display: none !important;
-
       }
     }
 
@@ -241,9 +196,6 @@ $module: ".nav-header";
       display:block !important;
       color:white !important;
       padding-bottom: 8px !important;
-//      margin-top:5px !important;
-//      padding-left:30px !important;
-//      padding-right:30px !important;
       background: white !important;
     }
 
@@ -252,9 +204,6 @@ $module: ".nav-header";
       display:block !important;
       color: #000f24 !important;
       padding-bottom: 8px !important;
-//      margin-top:5px !important;
-//      padding-left:30px !important;
-//      padding-right:30px !important;
       background: #000f24 !important;
     }
 
@@ -262,7 +211,6 @@ $module: ".nav-header";
 
       display:block !important;
       color: #000f24 !important;
-//      padding-bottom:10px !important;
       margin-top:5px !important;
       padding-left:30px !important;
       padding-right:30px !important;
@@ -273,7 +221,6 @@ $module: ".nav-header";
 
       display:block !important;
       color: white !important;
-//      padding-bottom:10px !important;
       margin-top:5px !important;
       padding-left:30px !important;
       padding-right:30px !important;
@@ -283,7 +230,6 @@ $module: ".nav-header";
     &__dropdown-menu {
 
       font-weight:bold;
-//      position:relative;
       align:right;
       font-size:13px;
       float:right;
@@ -304,7 +250,6 @@ $module: ".nav-header";
       width:100%;
       height:1px;
       background:white;
-      //margin-bottom:10px;
     }
 
     &__content-header {
@@ -423,19 +368,6 @@ $module: ".nav-header";
             vertical-align: top;
             @include margin(0 0 0 .50);
             @include padding-right(.50);
-
-            @include mq($until: sm) {
-                img {
-                    height: 70px;
-                    width: auto;
-                    display: block;
-                }
-            }
-
-            /*@include mq($until: md) {
-                @include margin(0 0 0 .25);
-                @include padding-right(.25);
-            }*/
         }
 
         &--image-big {
@@ -445,61 +377,10 @@ $module: ".nav-header";
 
             margin-right: 0% !important;
 
-            @media screen and (min-width: 780px) {
-
-              margin-right: -20% !important;
-            }
-
-            @-moz-document url-prefix() {
-              @media screen and (min-width: 780px) {
-
-                margin-right: -20% !important;
-              }
-            }
-
-            @include mq($until: lg) {
-                height: $header-height - 10px;
-                img {
-                    width: 200px;
-                }
-            }
-            @include mq($until: md) {
-                height: $header-height - 10px;
-                img {
-                    width: 160px;
-                }
-            }
-
             @include mq($until: sm) {
-                position: absolute;
-                top: 20px;
-                left: 0;
-                width: 100%;
-                z-index: 2;
-                @include padding(0);
-                @include margin(0);
-                text-align: center;
-                img {
-                    // width: auto;
-                    height: 70px;
-                    display: block;
-                    margin: 0 auto;
-                }
+              padding-top: 15px;
+              margin-left: 25px;
             }
-
-            @include mq($until: xs) {
-
-                img {
-                    // width: 200px;
-                    height: auto;
-                    display: block;
-                    margin: 0 auto;
-                }
-
-            }
-
-            height: $header-height;
-
         }
 
         &--special {
@@ -507,11 +388,6 @@ $module: ".nav-header";
             vertical-align: top;
             @include margin(0 0 0 .5);
             @include padding-right(.5);
-
-            /*@include mq($until: md) {
-                @include margin(0 0 0 .25);
-                @include padding-right(.25);
-            }*/
         }
 
         &--centered {
@@ -941,7 +817,6 @@ $module: ".nav-header";
       @media only screen and (max-width: 780px) {
 
         width:90% !important;
-        margin-right: -20% !important;
         margin-top: 12% !important;
       }
     }
@@ -973,13 +848,13 @@ $module: ".nav-header";
 
       @media screen and (max-width: 780px) {
 
-        	font-size: 30px !important;
+          font-size: 30px !important;
       }
 
       @-moz-document url-prefix() {
         @media screen and (max-width: 780px) {
 
-        	font-size: 30px !important;
+          font-size: 30px !important;
         }
       }
     }
