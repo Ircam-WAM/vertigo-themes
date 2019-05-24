@@ -1,0 +1,27 @@
+$module: ".profile";
+
+#{$module} {
+    
+    #main-content {
+        padding-top: 36px;
+    }
+
+    .header {
+
+        &-background {
+            background-image: url('../img/profile/profile_pix_line_480.png');
+            background-repeat: repeat-x;
+            height: 480px;
+        }
+    }
+
+
+    .page {
+        &__option {
+            &-selected {
+                // border-bottom : none;
+            }
+        }
+    }
+
+}

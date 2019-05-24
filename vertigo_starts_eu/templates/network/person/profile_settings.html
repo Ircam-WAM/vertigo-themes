@@ -1,0 +1,176 @@
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% load i18n mezzanine_tags organization_tags staticfiles %}
+
+
+{% block page_content %}
+
+<script>
+
+function selectCurrentTab() {
+
+document.getElementById("select-profile").className = "page__option-selected";
+}
+
+window.onload = selectCurrentTab;
+
+</script>
+
+<div class="container page__margin-top">
+    <div class="page__item_info">
+        {{ block.super }}
+        <div class="page__item_content">
+            <div id="info-profile" class="page__info-block">
+                {% errors_for form %}
+                <form class="account-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row" >
+                        <div class="col-md-5" >
+
+                            <h3>{% trans "Public Informations" %}</h3>
+
+                            <!-- Profile image -->
+                            <div class="form-group">
+                                {{ form.profile_image.label_tag }}
+                                {{ form.profile_image.errors }}
+                                {% if person.profile_image.name %}
+                                    <img src="{{ MEDIA_URL }}{% thumbnail person.profile_image.name 0 165 %}" title="" />
+                                {% else %}
+                                    <img src="{% static 'vertigo_starts_eu/img/profile/profile_form_ph.png' %}" title="" />
+                                {% endif %}
+                                <div class="row image-field">
+                                    <div class="col-md-16" >
+                                        <span class="help_text">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
+                                    </div>
+                                    <div class="col-md-16 image-input" >
+                                        {{ form.profile_image }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Background image -->
+                            <div class="form-group">
+                                {{ form.background_image.label_tag }}
+                                {{ form.background_image.errors }}
+                                {% if person.background_image.name %}
+                                    <img src="{{ MEDIA_URL }}{% thumbnail person.background_image.name 0 165 %}" title="" />
+                                {% else %}
+                                    <img src="{% static 'vertigo_starts_eu/img/profile/bg_form_ph.png' %}" title="" />
+                                {% endif %}
+                                <div class="row image-field">
+                                    <div class="col-md-16" >
+                                        <span class="help_text">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
+                                    </div>
+                                    <div class="col-md-16 image-input" >
+                                        {{ form.background_image }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Biography -->
+                            <div class="form-group">
+                                {{ form.bio.errors }}
+                                {{ form.bio.label_tag }}
+                                {{ form.bio }}
+                            </div>
+                            
+                            <!-- URL -->
+                            <div class="form-group url-inline">
+                                {{ inlines.0.management_form }}
+                                {% for inline in inlines.0 %}
+                                    {{ inline.errors }}
+                                    {{ inline.label_tag }}
+                                    {{ inline }}
+                                {% endfor %}
+                            </div>
+                           
+                        </div>
+
+                        <div class="col-md-5" >
+
+                            <h3>{% trans "Private Informations" %}</h3>
+
+                            <!--Adress 1 -->
+                            <div class="form-group">
+                                {{ form.address.errors }}
+                                {{ form.address.label_tag }}
+                                {{ form.address }}
+                            </div>
+
+                            <!-- Address 2 -->
+                            <div class="form-group">
+                                {{ form.address_2.errors }}
+                                {{ form.address_2.label_tag }}
+                                {{ form.address_2 }}
+                            </div>
+
+                            <!-- ZIP Code -->
+                            <div class="form-group">
+                                {{ form.postal_code.errors }}
+                                {{ form.postal_code.label_tag }}
+                                {{ form.postal_code }}
+                            </div>
+                            
+                            <!-- Country -->
+                            <div class="form-group">
+                                {{ form.country.errors }}
+                                {{ form.country.label_tag }}
+                                {{ form.country }}
+                            </div>
+                            
+                            <!-- Phone 1 -->
+                            <div class="form-group">
+                                {{ form.telephone.errors }}
+                                {{ form.telephone.label_tag }}
+                                {{ form.telephone }}
+                            </div>
+
+                            <!-- Phone 2 -->
+                            <div class="form-group">
+                                {{ form.telephone_2.errors }}
+                                {{ form.telephone_2.label_tag }}
+                                {{ form.telephone_2 }}
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="form-group">
+                                {{ form.birthday.errors }}
+                                {{ form.birthday.label_tag }}
+                                {{ form.birthday }}
+                                <span class="help_text">{{ form.birthday.help_text }}</span>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="form-group">
+                                {{ form.gender.errors }}
+                                {{ form.gender.label_tag }}
+                                {{ form.gender }}
+                            </div>
+                            
+                            <!-- Citizenship -->
+                            <div class="form-group">
+                                {{ form.citizenship.errors }}
+                                {{ form.citizenship.label_tag }}
+                                {{ form.citizenship }}
+                            </div>
+
+                            <h3>{% trans "Options" %}</h3>
+                            <!-- Options -->
+                            <div class="form-group">
+                                {{ inlines.1.management_form }}
+                                {% for inline in inlines.1.0 %}
+                                    <div class="checkbox">
+                                    {{ inline.errors }}
+                                    {{ inline.label_tag }}
+                                    {{ inline }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <input type="submit" value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

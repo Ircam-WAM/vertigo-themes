@@ -3,7 +3,11 @@
 <div class="navbar-right navbar-account-controls">
     {% if request.user.is_authenticated %}
     {% url "profile" request.user.username as profile_url %}
+<<<<<<< HEAD
     {% if not profile_url %}{% url "organization-network-profile" as profile_url %}{% endif %}
+=======
+    {% if not profile_url %}{% url "organization-network-profile-edit" as profile_url %}{% endif %}
+>>>>>>> vertigo-dev
     <p class="navbar-text">
         <a class="navbar-link" href="{{ profile_url }}">
             {{ request.user|username_or:"email" }}</a></p>

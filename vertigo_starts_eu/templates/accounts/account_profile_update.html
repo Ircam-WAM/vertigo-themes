@@ -21,9 +21,6 @@ window.onload = selectCurrentTab;
 <div class="container page__margin-top">
   <div class="page__item_info">
 
-
-
-
   {{ block.super }}
 
       <div class="page__item_content">
@@ -42,32 +39,7 @@ window.onload = selectCurrentTab;
                 </div>
                 </fieldset>
             </form>
-            <!--
-            {% if request.user.address %}
-              <div class="page__center-bio" style="color:white">
-                {{ request.user.address }}<br/><br/>
-                {{ request.user.email }}<br/><br/>
-                ({{ request.user.telephone }})
-              </div>
 
-              {% if request.user.city and request.user.country %}
-              <div class="page__center-bio" style="color:white">
-                {{ request.user.city }}, {{ request.user.country }}
-              </div>
-              {% endif %}
-
-              {% if request.user.short_url %}
-              <div class="page__center-bio">
-                <a href="{{ request.short_url }}" style="color:white">{{ request.user.short_url }}</a>
-              </div>
-              {% endif %}
-            {% else %}
-              {% if request.user.site %}
-                <div class="page__center-bio">
-                  <a href="{{ request.user.site }}" style="color:white">{{ request.user.site }}</a>
-                </div>
-              {% endif %}
-            {% endif %}-->
          </div>
       </div>
   </div>
