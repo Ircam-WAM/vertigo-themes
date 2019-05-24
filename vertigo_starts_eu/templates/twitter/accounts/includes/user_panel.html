@@ -7,20 +7,12 @@
         {% if profile_url %}
             <a href="{{ profile_url }}">{{ request.user|username_or:"email" }}</a>
         </p>
-<<<<<<< HEAD
-            <a href="{% url "organization-network-profile" %}" class="btn btn-small">
-=======
             <a href="{% url "organization-network-profile-edit" %}" class="btn btn-small">
->>>>>>> vertigo-dev
                 <span class="icon icon__pencil"></span>
                 {% trans "Update profile" %}
             </a>
         {% else %}
-<<<<<<< HEAD
-            <a href="{% url "organization-network-profile" %}">{{ request.user|username_or:"email" }}</a>
-=======
             <a href="{% url "organization-network-profile-edit" %}">{{ request.user|username_or:"email" }}</a>
->>>>>>> vertigo-dev
         </p>
         {% endif %}
         <a href="{% url "logout" %}?next={{ request.path }}" class="btn btn-full">
