@@ -23,6 +23,14 @@ window.onload = selectCurrentTab;
                 {% errors_for form %}
                 <form class="account-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {% for formset in inlines %}
+                        {{ formset.management_form }}
+                        {% for form in formset %}
+                            <div style="display: none;">
+                                {{ form }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
                     <div class="row" >
                         <div class="col-md-5" >
 
@@ -72,7 +80,7 @@ window.onload = selectCurrentTab;
                                 {{ form.bio.label_tag }}
                                 {{ form.bio }}
                             </div>
-                            
+
                             <!-- URL -->
                             <div class="form-group url-inline">
                                 {{ inlines.0.management_form }}
@@ -82,7 +90,7 @@ window.onload = selectCurrentTab;
                                     {{ inline }}
                                 {% endfor %}
                             </div>
-                           
+
                         </div>
 
                         <div class="col-md-5" >
@@ -109,14 +117,14 @@ window.onload = selectCurrentTab;
                                 {{ form.postal_code.label_tag }}
                                 {{ form.postal_code }}
                             </div>
-                            
+
                             <!-- Country -->
                             <div class="form-group">
                                 {{ form.country.errors }}
                                 {{ form.country.label_tag }}
                                 {{ form.country }}
                             </div>
-                            
+
                             <!-- Phone 1 -->
                             <div class="form-group">
                                 {{ form.telephone.errors }}
@@ -145,7 +153,7 @@ window.onload = selectCurrentTab;
                                 {{ form.gender.label_tag }}
                                 {{ form.gender }}
                             </div>
-                            
+
                             <!-- Citizenship -->
                             <div class="form-group">
                                 {{ form.citizenship.errors }}
