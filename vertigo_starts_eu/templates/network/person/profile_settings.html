@@ -25,11 +25,6 @@ window.onload = selectCurrentTab;
                     {% csrf_token %}
                     {% for formset in inlines %}
                         {{ formset.management_form }}
-                        {% for form in formset %}
-                            <div style="display: none;">
-                                {{ form }}
-                            </div>
-                        {% endfor %}
                     {% endfor %}
                     <div class="row" >
                         <div class="col-md-5" >
