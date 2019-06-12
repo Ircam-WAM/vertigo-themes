@@ -57,6 +57,10 @@ node_modules
 **/static/starts_eu/css/
 **/static/starts_eu/img/
 **/static/starts_eu/vendors/
+**/static/vertigo_ircam_fr/js/
+**/static/vertigo_ircam_fr/css/
+**/static/vertigo_ircam_fr/img/
+**/static/vertigo_ircam_fr/vendors/
 
 ### SublimeText ###
 ###################
