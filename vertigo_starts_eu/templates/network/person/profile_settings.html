@@ -1,30 +1,20 @@
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% extends "accounts/base.html" %}
+
 {% load i18n mezzanine_tags organization_tags staticfiles %}
 
 
 {% block page_content %}
 
-<script>
 
-function selectCurrentTab() {
-
-document.getElementById("select-profile").className = "page__option-selected";
-}
-
-window.onload = selectCurrentTab;
-
-</script>
-
-<div class="container page__margin-top">
+<div class="container page__margin-top" data-profile-tab="select-profile" id="settings-profile-container">
     <div class="page__item_info">
-        {{ block.super }}
         <div class="page__item_content">
             <div id="info-profile" class="page__info-block">
                 {% errors_for form %}
                 <form class="account-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row" >
-                        <div class="col-md-5" >
+                        <div class="col-md-5 offset-md-1" >
 
                             <h3>{% trans "Public Informations" %}</h3>
 
@@ -38,10 +28,10 @@ window.onload = selectCurrentTab;
                                     <img src="{% static 'vertigo_starts_eu/img/profile/profile_form_ph.png' %}" title="" />
                                 {% endif %}
                                 <div class="row image-field">
-                                    <div class="col-md-16" >
+                                    <div class="col-md-12" >
                                         <span class="help_text">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
                                     </div>
-                                    <div class="col-md-16 image-input" >
+                                    <div class="col-md-12 image-input" >
                                         {{ form.profile_image }}
                                     </div>
                                 </div>
@@ -57,10 +47,10 @@ window.onload = selectCurrentTab;
                                     <img src="{% static 'vertigo_starts_eu/img/profile/bg_form_ph.png' %}" title="" />
                                 {% endif %}
                                 <div class="row image-field">
-                                    <div class="col-md-16" >
+                                    <div class="col-md-12" >
                                         <span class="help_text">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
                                     </div>
-                                    <div class="col-md-16 image-input" >
+                                    <div class="col-md-12 image-input" >
                                         {{ form.background_image }}
                                     </div>
                                 </div>
@@ -174,3 +164,5 @@ window.onload = selectCurrentTab;
     </div>
 </div>
 {% endblock %}
+
+

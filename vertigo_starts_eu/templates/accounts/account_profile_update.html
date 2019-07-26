@@ -2,30 +2,19 @@
 {% load i18n mezzanine_tags %}
 
 {% block page_title %}
-	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
+
 {% endblock %}
 
 
 {% block page_content %}
-<script>
 
-function selectCurrentTab() {
-
-  document.getElementById("select-settings").className = "page__option-selected";
-}
-
-window.onload = selectCurrentTab;
-
-</script>
-
-<div class="container page__margin-top">
+<div class="container page__margin-top col-md-5" data-profile-tab="select-settings" id="settings-profile-container">
   <div class="page__item_info">
-
-  {{ block.super }}
 
       <div class="page__item_content">
           <div id="info-profile" class="page__info-block">
-
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
             {% errors_for form %}
 
             <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
@@ -39,7 +28,8 @@ window.onload = selectCurrentTab;
                 </div>
                 </fieldset>
             </form>
-
+              </div>
+            </div>
          </div>
       </div>
   </div>

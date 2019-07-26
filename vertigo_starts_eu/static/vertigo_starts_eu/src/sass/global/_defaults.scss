@@ -37,7 +37,11 @@ html, body {
 a {
     outline: none;
 	color: $links-color;
-	text-decoration: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 img {

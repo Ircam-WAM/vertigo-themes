@@ -58,21 +58,21 @@
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
     <div class="container">
         <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+            <div class="col-sm-12 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Current Residencies" %}</h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-2 page__sidebar"></div>
-            <div class="mb2 col-sm-16 col-md-12 page__content">
+            <div class="mb2 col-sm-12 col-md-12 page__content">
                 <p>{{ call.description }}</p>
             </div>
         </div>
 
         <div class ="row">
             <div class="col-md-2 page__sidebar"></div>
-            <div class="mb2 col-sm-16 col-md-12">
+            <div class="mb2 col-sm-12 col-md-12">
                 {% for keyword in keywords %}
                     <span class="button button-residency" onclick="addFilter(this, '{{ keyword.id }}')">{{ keyword }}</span>
                 {% endfor %}

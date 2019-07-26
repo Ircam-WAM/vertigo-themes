@@ -1,4 +1,4 @@
-$module: ".profile";
+$module: ".account";
 
 #{$module} {
     
@@ -12,6 +12,7 @@ $module: ".profile";
             background-image: url('../img/profile/profile_pix_line_480.png');
             background-repeat: repeat-x;
             height: 480px;
+            width: 100%;
         }
     }
 
@@ -22,6 +23,11 @@ $module: ".profile";
                 // border-bottom : none;
             }
         }
+    }
+
+
+    #account-menu {
+        border-bottom: 1px solid $color-gray;
     }
 
 }

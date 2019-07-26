@@ -12,7 +12,7 @@
     <div class="page page--search">
         <div class="container">
             <div class="row">
-                <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+                <div class="col-sm-12 col-md-10 col-md-push-3 tac">
                     <form action="{% url "search" %}" role="search" class="search-form mb4">
                         <input class="form-control" placeholder="{% trans "Type something" %}" type="text" name="q" value="{{ request.GET.q }}">
                         <button type="submit">

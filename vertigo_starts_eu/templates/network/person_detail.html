@@ -1,5 +1,4 @@
-{# {% extends "vertigo_starts_eu/pages/page_profile_detail.html" %} #}
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations_detail.html" %}
+{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
 {% load mezzanine_tags keyword_tags i18n organization_tags pages_tags %}
 
 {% block meta_title %}{{ person.meta_title }}{% endblock %}
@@ -23,227 +22,92 @@
 
 {% block page_title %}
 
-      <script type="text/javascript">
-
-      function selectCurrentTab() {
+      {{ block.super }}
 
 
+     
+{% endblock %}
 
-        //document.getElementById("select-messages").className = "page__option-selected";
-      }
-
-      function changePublicView(event, object) {
-
-        event.preventDefault();
-
-        var profile = document.getElementById("public-profile-item");
-        var blog = document.getElementById("public-residency-blog-item");
-        var following = document.getElementById("public-following-item");
-        var follower = document.getElementById("public-follower-item");
-        var applicationForm = document.getElementById("public-application-form");
-        var profileSettings = document.getElementById("public-profile-settings");
-
-        document.getElementById("content_public-profile-item").style.display = "none";
-        document.getElementById("content_public-residency-blog-item").style.display = "none";
-        document.getElementById("content_public-following-item").style.display = "none";
-        document.getElementById("content_public-follower-item").style.display = "none";
-
-        if (applicationForm != null) {
-          document.getElementById("content_public-application-form").style.display = "none";
-        }
-
-        if (profileSettings != null) {
-          document.getElementById("content_public-profile-settings").style.display = "none";
-        }
-
-        profile.classList.remove("page__option-selected");
-        blog.classList.remove("page__option-selected");
-				if (following) {
-					following.classList.remove("page__option-selected");
-				}
-				if (follower) {
-					follower.classList.remove("page__option-selected");
-				}
-
-        if (applicationForm != null) {
-          applicationForm.classList.remove("page__option-selected");
-        }
-
-        if (profileSettings != null) {
-          profileSettings.classList.remove("page__option-selected");
-        }
-
-        profile.classList.add("page__option-unselected");
-        blog.classList.add("page__option-unselected");
-				if (following) {
-					following.classList.add("page__option-unselected");
-				}
-				if (follower) {
-					follower.classList.add("page__option-unselected");
-				}
-
-        if (applicationForm != null) {
-          applicationForm.classList.add("page__option-unselected");
-        }
-
-        if (profileSettings != null) {
-          profileSettings.classList.add("page__option-unselected");
-        }
-
-        object.classList.add("page__option-selected");
-        object.classList.remove("page__option-unselected");
-
-        var contentDisplay = document.getElementById("content_" + object.id);
-        contentDisplay.style.display = "block";
-      }
-
-      function changeFollowStatus(event,object) {
-
-        event.preventDefault();
-
-        var styleList = document.getElementById("element-social").classList;
-
-        var followItem = document.getElementById("element-social-follow");
-        var unfollowItem = document.getElementById("element-social-unfollow");
-
-        var followItemContent = document.getElementById("start-follow-item");
-        var unfollowItemContent = document.getElementById("stop-follow-item");
-
-        for (var i = 0; i < styleList.length;i++) {
-
-          var currentStyle = styleList[i];
-
-          if (currentStyle == "page__circle-cross-red") {
-
-            object.classList.add("page__circle-check-green");
-            object.classList.remove("page__circle-cross-red");
-
-            followItem.style.display = "block";
-            unfollowItem.style.display = "none";
-
-            followItemContent.style.display = "block";
-            unfollowItemContent.style.display = "none";
-            break;
-          }
-
-          if (currentStyle == "page__circle-check-green") {
-
-            object.classList.add("page__circle-cross-red");
-            object.classList.remove("page__circle-check-green");
-
-            followItem.style.display = "none";
-            unfollowItem.style.display = "block";
-
-            followItemContent.style.display = "none";
-            unfollowItemContent.style.display = "block";
-            break;
-          }
-        }
-      }
-
-      function shareActionButton(event, object) {
-
-        event.preventDefault();
-
-        var idObject = object.id;
-
-        if (idObject == "share-twitter") {
-
-        }
-
-        if (idObject == "share-linkedin") {
-
-        }
-
-        if (idObject == "share-facebook") {
-
-        }
-
-        if (idObject == "share-instagram") {
-
-        }
-
-        if (idObject == "share-youtube") {
-
-        }
-      }
-
-      window.onload = selectCurrentTab;
-
-      </script>
+{% block main %}
+    {{ block.super }}
 
 
-      {# Public and Private section #}
-      {% with person.images.all|get_type:'card' as card_images %}
-        {% if card_images %}
 
-            <div class="page__image-container page__padding-container-main page__top-padding-container" style="height:auto;background:gray;">
-              <div style="position:relative">
-                {% if card_images.first %}
-                <img class="lazyload page__image-main_banner_profile" src="{{ MEDIA_URL }}{% thumbnail card_images.first 200 200 top=0.5 %}" alt="person"/>
-                {% else %}
-                <div class="page__image-main_banner_profile page__circle-gray">
-                  <i class="fa fa-user page__style-user-icon" style="display:block;font-size:170px;text-align:center;" aria-hidden="true"></i>
-                </div>
-                {% endif %}
-								{% comment %}
-                <div id="element-social" class="page__circle-cross-red page__icon-follow-action" onclick="changeFollowStatus(event,this);">
-                  <i id="element-social-follow" class="fa fa-check page__style-check-icon" style="display:none;" aria-hidden="true"></i>
-                  <i id="element-social-unfollow" class="fa fa-close page__style-cross-icon" style="display:block;" aria-hidden="true"></i>
-                </div>
-								{% endcomment %}
-              </div>
-              <div class="page__main-title-profile-public">{{ person.title }}</div>
-              <div class="page__container-info-profile-user">
+<script type="text/javascript">
 
-                {% comment %}
-                {% with person.links.all.0 as link %}
-                    {% if person.links.all.0 %}
-                        <a href="{{ link }}" blank="true" class="page__link-public-profile" >{{ link }}</a><br/><br/>
+function changeBackground() {
+
+  document.getElementById("main-content").style.background = "white";
+
+  document.getElementById("body").style.background = "white";
+
+  var items = document.getElementsByTagName("p");
+
+  for (var i = 0; i < items.length; i++) {
+
+    var links = items[i].getElementsByTagName("a");
+
+    for (var j = 0; j < links.length; j++) {
+
+      var link = links[j];
+
+      link.style.color = "black";
+    }
+  }
+
+  var outLinks = document.getElementsByClassName("mb2 col-sm-12 page__content");
+
+    // @TodoDelete 
+    /*for (var i = 0;i < outLinks.length; i++) {
+    outLinks[i].style.display = "none";
+    }*/
+}
+
+window.onload = changeBackground;
+
+</script>
+
+
+{% endblock %}
+
+{% block page_content %}
+
+{% comment %}
+    {% editable person.bio %}
+        {{ person.bio|richtext_filters|safe }}
+    {% endeditable %}
+
+    {% if not person.email and person.activities.all and person.activities.all.0.teams.all %}<p><strong>{% trans 'Email' %} :</strong> {{ person_email }}</p>{% elif person.email %}<p><strong>{% trans 'Email' %} :</strong> {{ person.email|unspam }}</p>{% endif %}
+
+    {% with person.activities.all as activities %}
+      {% if activities %}
+        {# <h2 class="dotted">{% trans 'Activities' %}</h2>#}
+        <ul class="unstyled-list">
+          {% with activities.0 as activity %}
+            <li class="mb1">
+                {% with activity.teams.all as teams %}
+                 {% with activity.organizations.all|is_not_host as organizations %}
+                  {% with activity.employers.all|is_not_host as employers %}
+                    {% if teams %}
+                        <strong>{% trans 'Team' %} : </strong>
+                        {% for team in teams %}
+                            <a href="{% url "page" team.pages.all.0 %}">{{ team.name }}</a>
+                            {% if organizations %}({% for organization in organizations %}{{ organization.name }}{% if not forloop.last %}, {% endif %}{% endfor %})
+                            {% elif employers %}({% for employer in employers %}{{ employer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}){% endif %}
+                            <br />
+                        {% endfor %}
                     {% endif %}
+                   {% endwith %}
+                  {% endwith %}
                 {% endwith %}
-                {% endcomment %}
+            </li>
+          {% endwith %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+{% endcomment %}
 
-                {% with person.links.all.0 as link %}
-                    {% if person.links.all.0 %}
-                        <a href="{{ link }}" target="_blank" blank="true" class="page__link-public-profile" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ link }}</a>
-                    {% else %}
-                        <a href="http://vertigo.starts.eu/" target="_blank" blank="true" class="page__link-public-profile" style="text-align:left;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">http://wekit.eu/</a>
-                    {% endif %}
-                {% endwith %}
-                <div class="page__bottom-space-city" style="margin:0 auto;margin;padding-left:1%">{{ person.city }}, {{ person.country }}</div>
-                  <!--<a href="{{ link }}" blank="true" class="page__link-public-profile">http://wekit.eu/</a>-->
-                  <div class="page__container-buttons-share">
-                    <div id="share-twitter" class="page__circle-small-share-button page__twitter-share-container" onclick="shareActionButton(event, this);">
-                      <i class="fa fa-twitter page__twitter-icon-style" aria-hidden="true"></i>
-                    </div>
-                    <div id="share-linkedin" class="page__circle-small-share-button page__linkedin-share-container" onclick="shareActionButton(event, this);">
-                      <i class="fa fa-linkedin page__linkedin-icon-style" aria-hidden="true"></i>
-                    </div>
-                    <div id="share-facebook" class="page__circle-small-share-button page__facebook-share-container" onclick="shareActionButton(event, this);">
-                      <i class="fa fa-facebook page__facebook-icon-style" aria-hidden="true"></i>
-                    </div>
-                    <div id="share-instagram" class="page__circle-small-share-button page__instagram-share-container" onclick="shareActionButton(event, this);">
-                      <i class="fa fa-instagram page__instagram-icon-style" aria-hidden="true"></i>
-                    </div>
-                    <div id="share-youtube" class="page__circle-small-share-button page__youtube-share-container" onclick="shareActionButton(event, this);">
-                      <i class="fa fa-youtube-play page__youtube-icon-style" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        {% else %}
-            <div style="padding-botton:2%">
-
-            </div>
-        {% endif %}
-      {% endwith %}
-
-      <div class="page__submenu-public-profile" {% if person.images.all|length == 0 %} style="padding-top:5%"{% endif %}>
-	        {% include 'vertigo_starts_eu/accounts/accout_form_profile_menu.html' %}
-      </div>
-
-      <div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
+ <div style="background:lightgray;width:100%;height:2px;margin-top:5px"></div>
 
 			{% comment %}
       <div id="start-follow-item" style="display:none" class="page__follow-public-text">
@@ -346,118 +210,41 @@
           </div>
           {% endif %}
 
-      {% comment %}
-      {% endif %}
-
-      <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
-        {% with person.links.all.0 as link %}
-            {% if link %}
-                Site: <a href="{{ link }}" blank="true" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ link }}</a><br/><br/>
+            {% comment %}
             {% endif %}
-        {% endwith %}
-      </div>
+
+            <div class="page__center-bio" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">
+                {% with person.links.all.0 as link %}
+                    {% if link %}
+                        Site: <a href="{{ link }}" blank="true" style="{% if request.user.is_authenticated %}color:black{% else %}color:white{% endif %}">{{ link }}</a><br/><br/>
+                    {% endif %}
+                {% endwith %}
+            </div>
+                {% endcomment %}
+
+        {% comment %}
+            {% editable person.title %}
         {% endcomment %}
 
-{% comment %}
-    {% editable person.title %}
-{% endcomment %}
-
-{% comment %}
-    {% endeditable %}
-{% endcomment %}
-{% comment %}
-    {% with person.images.all|get_type:'card' as card_images %}
-        {% if card_images %}
-            <div class="page__image-container">
-              <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
-              {% if card_images.first.credits|length > 0 %}
-                <div style="text-align:left">
-                  <p sytle="color:white;font-size:12px;">Credits: {{ card_images.first.credits }}</p>
-                </div>
-              {% endif %}
-            </div>
-        {% endif %}
-    {% endwith %}
-{% endcomment %}
-{% endblock %}
-
-{% block main %}
-    {{ block.super }}
-
-
-
-<script type="text/javascript">
-
-function changeBackground() {
-
-  document.getElementById("main-content").style.background = "white";
-
-  document.getElementById("body").style.background = "white";
-
-  var items = document.getElementsByTagName("p");
-
-  for (var i = 0; i < items.length; i++) {
-
-    var links = items[i].getElementsByTagName("a");
-
-    for (var j = 0; j < links.length; j++) {
-
-      var link = links[j];
-
-      link.style.color = "black";
-    }
-  }
-
-  var outLinks = document.getElementsByClassName("mb2 col-sm-16 page__content");
-
-  for (var i = 0;i < outLinks.length; i++) {
-    outLinks[i].style.display = "none";
-  }
-}
-
-window.onload = changeBackground;
-
-</script>
-
-
-{% endblock %}
-
-{% block page_content %}
-
-{% comment %}
-    {% editable person.bio %}
-        {{ person.bio|richtext_filters|safe }}
-    {% endeditable %}
-
-    {% if not person.email and person.activities.all and person.activities.all.0.teams.all %}<p><strong>{% trans 'Email' %} :</strong> {{ person_email }}</p>{% elif person.email %}<p><strong>{% trans 'Email' %} :</strong> {{ person.email|unspam }}</p>{% endif %}
-
-    {% with person.activities.all as activities %}
-      {% if activities %}
-        {# <h2 class="dotted">{% trans 'Activities' %}</h2>#}
-        <ul class="unstyled-list">
-          {% with activities.0 as activity %}
-            <li class="mb1">
-                {% with activity.teams.all as teams %}
-                 {% with activity.organizations.all|is_not_host as organizations %}
-                  {% with activity.employers.all|is_not_host as employers %}
-                    {% if teams %}
-                        <strong>{% trans 'Team' %} : </strong>
-                        {% for team in teams %}
-                            <a href="{% url "page" team.pages.all.0 %}">{{ team.name }}</a>
-                            {% if organizations %}({% for organization in organizations %}{{ organization.name }}{% if not forloop.last %}, {% endif %}{% endfor %})
-                            {% elif employers %}({% for employer in employers %}{{ employer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}){% endif %}
-                            <br />
-                        {% endfor %}
+        {% comment %}
+            {% endeditable %}
+        {% endcomment %}
+        {% comment %}
+            {% with person.images.all|get_type:'card' as card_images %}
+                {% if card_images %}
+                    <div class="page__image-container">
+                    <img style="width:100%;" class="lazyload" src="{{ MEDIA_URL }}{% thumbnail card_images.first 1030 400 top=0.5 %}" alt="person"/>
+                    {% if card_images.first.credits|length > 0 %}
+                        <div style="text-align:left">
+                        <p sytle="color:white;font-size:12px;">Credits: {{ card_images.first.credits }}</p>
+                        </div>
                     {% endif %}
-                   {% endwith %}
-                  {% endwith %}
-                {% endwith %}
-            </li>
-          {% endwith %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-{% endcomment %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endcomment %}
+
+
 {% endblock %}
 
 {% block page_related_content %}
