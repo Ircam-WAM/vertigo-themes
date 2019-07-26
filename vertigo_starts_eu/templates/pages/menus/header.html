@@ -62,29 +62,16 @@ function resizeIconObject() {
                         <span class="second"></span>
                     </li>
                     <li class="nav-header__item nav-header__item--image-big ">
-
                       <div class="nav-header__non-responsive-image" >
                         <a href="{% url "home" %}" title="{% trans 'Home' %}">
-                          {% with host_organization.images|get_type:"logo_header" as images %}
-                            {% if images %}
-                             {% with images|first as img %}
-                              <img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo"  style="width:auto;height:78px;padding-top:6%;margin-top:-21%"/>
-                             {% endwith %}
-                            {% endif %}
-                          {% endwith %}
+                            <img src="{{ STATIC_URL }}vertigo_starts_eu/src/assets/img/starts_res_logo.png" title="STARTS Residencies logo" class="nav-header__image-logo"  style="width:auto;height:78px;padding-top:6%;margin-top:-21%"/>
                         </a>
                       </div>
 
                       <div class="nav-header__responsive-image">
-                          {% with host_organization.images|get_type:"logo_header" as images %}
-                            {% if images %}
-                             {% with images|first as img %}
-                              {#<img id="image-responsive" src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo " />#}
-
-                              <a href="/"><img src="{{ MEDIA_URL }}{{ img }}" title="{{ img.title }}" class="nav-header__image-logo item-image-menu" /></a>
-                             {% endwith %}
-                            {% endif %}
-                          {% endwith %}
+                        <a href="/">
+                            <img src="{{ STATIC_URL }}vertigo_starts_eu/src/assets/img/starts_res_logo.png" title="STARTS Residencies logo" class="nav-header__image-logo item-image-menu" />
+                        </a>
                       </div>
                     </li>
 

@@ -13,6 +13,9 @@
                 {% errors_for form %}
                 <form class="account-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {% for formset in inlines %}
+                        {{ formset.management_form }}
+                    {% endfor %}
                     <div class="row" >
                         <div class="col-md-5 offset-md-1" >
 
@@ -62,7 +65,7 @@
                                 {{ form.bio.label_tag }}
                                 {{ form.bio }}
                             </div>
-                            
+
                             <!-- URL -->
                             <div class="form-group url-inline">
                                 {{ inlines.0.management_form }}
@@ -72,7 +75,7 @@
                                     {{ inline }}
                                 {% endfor %}
                             </div>
-                           
+
                         </div>
 
                         <div class="col-md-5" >
@@ -99,14 +102,14 @@
                                 {{ form.postal_code.label_tag }}
                                 {{ form.postal_code }}
                             </div>
-                            
+
                             <!-- Country -->
                             <div class="form-group">
                                 {{ form.country.errors }}
                                 {{ form.country.label_tag }}
                                 {{ form.country }}
                             </div>
-                            
+
                             <!-- Phone 1 -->
                             <div class="form-group">
                                 {{ form.telephone.errors }}
@@ -135,7 +138,7 @@
                                 {{ form.gender.label_tag }}
                                 {{ form.gender }}
                             </div>
-                            
+
                             <!-- Citizenship -->
                             <div class="form-group">
                                 {{ form.citizenship.errors }}
