@@ -9,29 +9,26 @@
 {% block page_content %}
 
 <div class="container page__margin-top col-md-5" data-profile-tab="select-settings" id="settings-profile-container">
-  <div class="page__item_info">
-
-      <div class="page__item_content">
-          <div id="info-profile" class="page__info-block">
-            <div class="row">
-              <div class="col-md-8 offset-md-2">
-            {% errors_for form %}
-
-            <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-                <fieldset>
-                <legend>{% trans 'Private Informations' %}</legend>
-                {% fields_for form %}
-                <div class="form-actions">
-                    {% block account_form_actions %}
-                    <input class="btn btn-primary btn-lg pull-right" type="submit" value="{{ title }}">
-                    {% endblock %}
-                </div>
-                </fieldset>
-            </form>
-              </div>
+    <div class="page__item_info">
+        <div class="page__item_content">
+            <div id="info-profile" class="page__info-block">
+             {% errors_for form %}
+                <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                        
+                                <fieldset>
+                                    <legend>{% trans 'Private Informations' %}</legend>
+                                    {% fields_for form %}
+                                </fieldset>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <input type="submit" value="{{ title }}">
+                    </div>
+                 </form>
             </div>
-         </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
