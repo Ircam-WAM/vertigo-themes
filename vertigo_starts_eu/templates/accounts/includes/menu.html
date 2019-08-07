@@ -1,7 +1,7 @@
 <div id="account-menu" class="row justify-content-md-center">
 	<div class="page__item_selector col-md-auto">
 		<a href="{% url 'organization-network-profile-edit' %}"><span id="select-profile" class="page__option-unselected">Profile</span></a>
-		<a href="#" style="margin: 0 auto"><span id="public-residency-blog-item" onclick="changePublicView(event,this);" class="page__option-unselected">Residency Blog</span></a>
+		<a href="{% url 'organization-project-profile-residency-blog' %}"><span id="public-residency-blog-item" class="page__option-unselected">Residency Blog</span></a>
 		<!-- <a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
 		<!-- <a href="{% url 'organization-network-profile-following' request.user %}"><span id="select-following" class="page__option-unselected">Following</span></a>
 		<a href="{% url 'organization-network-profile-followers' request.user %}><span id="select-follower" class="page__option-unselected">Followers</span></a> -->
