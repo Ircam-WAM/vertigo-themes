@@ -1,9 +1,10 @@
 $module: ".account";
 
 #{$module} {
-    
+
     #main-content {
         padding-top: 36px;
+        color: $color-black;
     }
 
     .header {
@@ -23,11 +24,37 @@ $module: ".account";
                 // border-bottom : none;
             }
         }
-    }
 
+        &__content {
+            margin-top : 2em;
+        }
+
+        font-family: $serif;
+    }
 
     #account-menu {
         border-bottom: 1px solid $color-gray;
     }
+
+    .profile-pic {
+        margin-top: 1em;
+        img {
+            clip-path: ellipse(145px 145px at 50% 50%);
+        }
+    }
+
+    #settings-profile-container {
+        p {
+            text-align: justify;
+
+            &.notice {
+                font-style: italic;
+                color: $color-link-menu;
+                text-align: center;
+            }
+        
+        }
+    }
+
 
 }

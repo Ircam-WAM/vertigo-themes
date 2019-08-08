@@ -1,0 +1,14 @@
+{% extends "accounts/base.html" %}
+
+{% load i18n %}
+
+{% block page_content %}
+    <div class="container page__margin-top col-md-5" data-profile-tab="about-item" id="settings-profile-container">
+        
+        {% if object.bio %}
+            {{ object.bio|safe }}
+        {% else %}
+            <p class="notice">{% trans "Your biography seems to be empty. You can fill it " %}<a href="{% url "organization-network-profile-edit" %}" title="Profile Edit">{% trans "here" %}</a></p>
+        {% endif %}
+    </div>
+{% endblock %}

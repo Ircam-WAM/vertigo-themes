@@ -24,24 +24,27 @@
 
     <div id="main-content" class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}" style="background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 15, 36, 1) 0%, rgba(236,235,235, 1) 20%);">
         {# --- Header --- #}
-        <div class="row">
-            <div class="header-background">
-                {% if request.user.is_authenticated %}
-                <div class="col-sm-12 col-md-12 col-md-push-2 tac">
-                {% else %}
-                <div>
-                {% endif %}
-                    
-                    {% block page_title %}
+        <div class="header-background">
+            <div class="row justify-content-md-center">
+                <div class="col-md-2 text-center profile-pic">
+                    {% if object.profile_image %}
+                        <img src="{{ MEDIA_URL }}{% thumbnail object.profile_image.name 290 290 top=0.5 %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
+                    {% else %}
+                        <img src="{% static 'vertigo_starts_eu/img/profile/placeholder_profile_320x320.png' %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
+                    {% endif %}
+                    {% block page_title %}                                        
+                        <h1>{{ object.first_name }} {{ object.last_name }}
                     {% endblock %}
                 </div>
             </div>
         </div>
 
         {# --- Menu --- #}
-        {% include 'accounts/includes/menu.html' %}
+        {% block menu %}
+            {% include 'accounts/includes/menu.html' %}
+        {% endblock %}
 
-        <div class="row">
+        <div class="row row justify-content-md-center"">
             <div class="mb2 col-sm-12 page__content" data-summary-content>
                 {# --- Page Content --- #}
                 {% block page_content %}
@@ -52,7 +55,6 @@
     </div>
 
 {% endblock %}
-
 
 {% block footer_scripts %}
     {{ block.super }}
