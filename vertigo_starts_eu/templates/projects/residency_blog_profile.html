@@ -1,0 +1,30 @@
+{% extends "accounts/base.html" %}
+{% load mezzanine_tags staticfiles %}
+
+{% block meta_title %}
+    {% if page %}
+        {{ page.title }}
+    {% else %}
+				My residency Blog
+    {% endif %}
+{% endblock %}
+
+{% block meta_description %}
+    {% metablock %}
+        {{ page.description }}
+    {% endmetablock %}
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static "components/vendors~residency_blog_form~residency_blog_list.js" %}"></script>
+<script type="text/javascript" src="{% static "components/residency_blog_form.js" %}"></script>
+<script type="text/javascript" src="{% static "components/residency_blog_list.js" %}"></script>
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+<div class="container" data-profile-tab="public-residency-blog-item" id="settings-profile-container">
+	<div id="residency_blog_form"></div>
+	<div id="residency_blog_list"></div>
+</div>
+{% endblock %}
