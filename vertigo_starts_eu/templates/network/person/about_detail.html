@@ -8,7 +8,11 @@
         {% if object.bio %}
             {{ object.bio|safe }}
         {% else %}
+            {% if user.is_authenticated %}
             <p class="notice">{% trans "Your biography seems to be empty. You can fill it " %}<a href="{% url "organization-network-profile-edit" %}" title="Profile Edit">{% trans "here" %}</a></p>
+            {% else %}
+            <p class="notice">{% trans "No biography available" %}</p>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
