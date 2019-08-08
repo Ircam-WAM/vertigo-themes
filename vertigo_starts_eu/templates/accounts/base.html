@@ -27,7 +27,7 @@
         {# --- Header --- #}
         <div class="header-background">
             <div class="row justify-content-md-center">
-                <div class="col-md-2 text-center profile-pic">
+                <div class="col-md-3 text-center profile-pic">
                     {% if object.profile_image %}
                         <img src="{{ MEDIA_URL }}{% thumbnail object.profile_image.name 290 290 top=0.5 %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
                     {% else %}
