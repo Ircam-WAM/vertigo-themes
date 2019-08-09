@@ -16,13 +16,13 @@
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{% static "components/vendors~residency_blog_form~residency_blog_list.js" %}"></script>
-<script type="text/javascript" src="{% static "components/residency_blog_list.js" %}"></script>
+<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
+<script type="text/javascript" src="{% static "components/residency-blog-feed.js" %}"></script>
 {% endblock %}
 
 {% block page_content %}
 {% csrf_token %}
 <div class="container" data-profile-tab="public-residency-blog-item" id="settings-residency-blog-container">
-	<div id="residency_blog_list"></div>
+	<div id="residency-blog-feed"></div>
 </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends "accounts/base.html" %}
-{% load mezzanine_tags staticfiles %}
+{% load mezzanine_tags staticfiles organization_tags %}
 
 {% block meta_title %}
     {% if page %}
@@ -15,16 +15,37 @@
     {% endmetablock %}
 {% endblock %}
 
+{% comment %}
+`if user.person == object` means if the user is on his own profile page
+`else` when the user is on someone else profile page
+{% endcomment %}
+
 {% block extra_js %}
-<script type="text/javascript" src="{% static "components/vendors~residency_blog_form~residency_blog_list.js" %}"></script>
-<script type="text/javascript" src="{% static "components/residency_blog_form.js" %}"></script>
-<script type="text/javascript" src="{% static "components/residency_blog_list.js" %}"></script>
+
+	<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
+
+	{% if user.person == object %}
+		<script type="text/javascript" src="{% static "components/residency-blog-profile.js" %}"></script>
+	{% else %}
+		<script>
+			window.globalVars = {
+				username: "{{ object.user.username }}"
+			}
+		</script>
+		<script type="text/javascript" src="{% static "components/residency-blog-list-user.js" %}"></script>
+	{% endif %}
+
 {% endblock %}
 
 {% block page_content %}
-{% csrf_token %}
-<div class="container" data-profile-tab="public-residency-blog-item" id="settings-profile-container">
-	<div id="residency_blog_form"></div>
-	<div id="residency_blog_list"></div>
-</div>
+
+	{% csrf_token %}
+	<div class="container" data-profile-tab="public-residency-blog-item" id="settings-profile-container">
+		{% if user.person == object %}
+			<div id="residency-blog-profile"></div>
+		{% else %}
+			<div id="residency-blog-list-user"></div>
+		{% endif %}
+	</div>
+
 {% endblock %}

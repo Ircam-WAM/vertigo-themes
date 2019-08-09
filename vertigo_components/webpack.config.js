@@ -5,10 +5,10 @@ const path = require('path')
 const appPath = path.join('src', 'apps')
 
 const entries = fs.readdirSync(appPath)
-  .filter((file) => file.match(/.*\.js$/))
-  .reduce((obj, fileName) => {
-    const entryKey = fileName.split('.').slice(0, -1).join('.')
-    obj[entryKey] = path.join('apps', fileName)
+  // .filter((file) => file.match(/.*\.js$/))
+  .reduce((obj, dirName) => {
+    // const entryKey = fileName.split('.').slice(0, -1).join('.')
+    obj[dirName] = path.join('apps', dirName, 'index.js')
     return obj
   }, {})
 
@@ -63,7 +63,14 @@ module.exports = {
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          name: 'vendors',
+          enforce: true
+        }
+      }
     }
   }
 }

@@ -1,26 +1,11 @@
 <template>
   <div class="residency-blog-list">
-    <h4>Residencies blog</h4>
-    <div class="selector">
-      <button
-        :class="[ {'active': filter === 'all'} ]"
-        @click="filter = 'all'"
-      >
-        All activity
-      </button>
-      <button
-        :class="[ {'active': filter === 'followed'} ]"
-        @click="filter = 'followed'"
-      >
-        People I Follow
-      </button>
-    </div>
     <Loading v-if="loading === true" />
     <div v-else-if="articles.length === 0">
       There is no articles available
     </div>
     <template v-else>
-      <ResidencyBlogArticle
+      <Article
         v-for="blog of articles"
         :key="blog.id"
         :blog="blog"
@@ -31,22 +16,44 @@
 </template>
 
 <script>
-import Loading from '~/components/Loading'
-import ResidencyBlogArticle from '~/components/ResidencyBlogArticle'
+import Loading from '~/components/common/Loading'
 import fetchDrf from '~/utils/fetchDrf'
+
+import Article from './Article'
 
 export default {
   name: 'ResidencyBlogList',
   components: {
     Loading,
-    ResidencyBlogArticle
+    Article
+  },
+  props: {
+    filter: {
+      type: Object,
+      required: false,
+      default: () => ({ type: 'all' }),
+      validator: (val) => {
+        return ['all', 'followed', 'myposts', 'user'].indexOf(val.type) !== -1
+      }
+    }
   },
   data () {
     return {
       loading: false,
       articles: [],
-      residencies: [],
-      filter: 'all'
+      residencies: []
+    }
+  },
+  computed: {
+    queryParams () {
+      const params = new URLSearchParams()
+
+      params.append('filter', this.filter.type)
+      for (const p in this.filter.params) {
+        params.append(`filter.${p}`, this.filter.params[p])
+      }
+
+      return params.toString()
     }
   },
   watch: {
@@ -77,12 +84,7 @@ export default {
     async getPosts () {
       this.loading = true
 
-      let resp
-      if (this.filter === 'all') {
-        resp = await fetchDrf('/api/residency-blog/')
-      } else if (this.filter === 'followed') {
-        resp = await fetchDrf('/api/residency-blog/followed')
-      }
+      const resp = await fetchDrf(`/api/residency-blog/?${this.queryParams}`)
 
       if (resp.status >= 400) {
         alert(JSON.stringify(await resp.json()))
@@ -101,30 +103,5 @@ export default {
   background: white;
   color: black;
   padding: 20px;
-}
-
-h4 {
-  font-size: 20px;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration: underline;
-}
-
-.selector {
-  text-align: center;
-
-  & button {
-    border: none;
-    color: grey;
-    background: none;
-    font-size: 18px;
-    padding: 20px;
-
-    &.active {
-      color: black;
-      outline: none;
-      text-decoration: underline;
-    }
-  }
 }
 </style>
