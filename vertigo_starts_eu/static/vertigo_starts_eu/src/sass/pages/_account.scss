@@ -3,20 +3,39 @@ $module: ".account";
 #{$module} {
 
     #main-content {
+        background: rgb(236,235,235);
         padding-top: 36px;
         color: $color-black;
+
+        .background-img {
+            height: 480px;
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+            }
+            
+        }
+    
     }
 
-    .header {
+    .background {
 
-        &-background {
+        &-placeholder {
             background-image: url('../img/profile/profile_pix_line_480.png');
             background-repeat: repeat-x;
             height: 480px;
             width: 100%;
         }
-    }
 
+        &-user {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
 
     .page {
         &__option {

@@ -21,15 +21,16 @@
 
     {% block hero %}
     {% endblock %}
-
-    <div id="main-content" class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"
-			style="background: rgb(236,235,235);">
+    
+    {% with object|default:user.person as object %}
+    <div id="main-content" class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
         {# --- Header --- #}
-        <div class="header-background">
+        <div class="background-placeholder {% if object.background_image.name %} background-user {% endif %}"
+            {% if object.background_image.name%} style="background-image: url('{{ MEDIA_URL }}{{ object.background_image.name }}');" {% endif %}>
             <div class="row justify-content-md-center">
                 <div class="col-md-3 text-center profile-pic">
                     {% if object.profile_image %}
-                        <img src="{{ MEDIA_URL }}{% thumbnail object.profile_image.name 290 290 top=0.5 %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
+                        <img src="{{ MEDIA_URL }}{% thumbnail object.profile_image.name 290 290 %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
                     {% else %}
                         <img src="{% static 'vertigo_starts_eu/img/profile/placeholder_profile_320x320.png' %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
                     {% endif %}
@@ -54,7 +55,7 @@
             </div>
         </div>
     </div>
-
+    {% endwith %}
 {% endblock %}
 
 {% block footer_scripts %}
