@@ -7,6 +7,15 @@ $module: ".account";
         padding-top: 36px;
         color: $color-black;
 
+        h1 {
+            font-size: 3em;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: $primary-font-family;
+        }
+
         .background-img {
             height: 480px;
             overflow: hidden;
@@ -19,50 +28,8 @@ $module: ".account";
             }
             
         }
-    
-    }
 
-    .background {
 
-        &-placeholder {
-            background-image: url('../img/profile/profile_pix_line_480.png');
-            background-repeat: repeat-x;
-            height: 480px;
-            width: 100%;
-        }
-
-        &-user {
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    }
-
-    .page {
-        &__option {
-            &-selected {
-                // border-bottom : none;
-            }
-        }
-
-        &__content {
-            margin-top : 2em;
-        }
-
-        font-family: $serif;
-    }
-
-    #account-menu {
-        border-bottom: 1px solid $color-gray;
-    }
-
-    .profile-pic {
-        margin-top: 1em;
-        img {
-            clip-path: ellipse(145px 145px at 50% 50%);
-        }
-    }
-
-    #settings-profile-container {
         p {
             text-align: justify;
 
@@ -73,7 +40,50 @@ $module: ".account";
             }
         
         }
+
+        #account-menu {
+            border-bottom: 1px solid $color-gray;
+        }
+    
+        .profile-pic {
+            margin-top: 1em;
+            img {
+                clip-path: ellipse(160px 160px at 50% 50%);
+            }
+        }    
+    
+        .background {
+
+            &-placeholder {
+                background-image: url('../img/profile/profile_pix_line_480.png');
+                background-repeat: repeat-x;
+                height: 480px;
+                width: 100%;
+            }
+    
+            &-user {
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    
+        .page {
+            &__option {
+                &-selected {
+                    // border-bottom : none;
+                }
+            }
+    
+            &__content {
+                margin-top : 2em;
+            }
+    
+            font-family: $serif;
+        }
+    
+
     }
+
 
 
 }
