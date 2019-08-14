@@ -39,7 +39,7 @@
                     {% endblock %}
                     {% if object.occupation %}
                     <h2>{{ object.occupation }}</h2>
-                    {% elif user.is_authenticated %}
+                    {% elif user.is_authenticated and user.person == object %}
                     <p class="notice">{% trans "Your occupation seems to be empty. You can fill it " %}<a href="{% url "organization-network-profile-edit" %}" title="Profile Edit">{% trans "here" %}</a></p>
                     {% endif %}
                 </div>
