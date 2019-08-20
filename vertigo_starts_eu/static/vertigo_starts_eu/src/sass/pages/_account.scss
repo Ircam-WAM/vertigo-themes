@@ -16,6 +16,12 @@ $module: ".account";
             font-family: $primary-font-family;
         }
 
+        hr {
+            width: 100%;
+            margin: 2.5rem 0 3rem 0;
+            background-color: $color-gray;
+        }
+
         .background-img {
             height: 480px;
             overflow: hidden;
@@ -28,7 +34,14 @@ $module: ".account";
             }
             
         }
+        
+        .link-wrapper {
+            width: 100%;
+        }
 
+        ul {
+            list-style-type: none;
+        }
 
         p {
             text-align: justify;
@@ -37,6 +50,14 @@ $module: ".account";
                 font-style: italic;
                 color: $color-link-menu;
                 text-align: center;
+                width: 100%;
+
+                a {
+                    color: $color-link-menu;
+                    &:href {
+                        color: $color-link-menu;
+                    }
+                }
             }
         
         }
