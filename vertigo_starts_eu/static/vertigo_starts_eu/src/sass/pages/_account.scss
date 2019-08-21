@@ -16,6 +16,16 @@ $module: ".account";
             font-family: $primary-font-family;
         }
 
+        h3 {
+            font-family: $sans-serif;
+            text-transform: none;
+            font-weight: font-weight(regular);
+            font-size: 1.2em;
+            &.options {
+                padding-top: 4.5em;
+            }
+        }
+
         hr {
             width: 100%;
             margin: 2.5rem 0 3rem 0;
@@ -101,7 +111,35 @@ $module: ".account";
     
             font-family: $serif;
         }
+
+        .help_text {
+            font-family: $primary-font-family;
+        }
+
+        .change_file_field {
+            font-family: $primary-font-family;
+            padding-left: 1rem;
+        }
+
+        label[for^='id_links'][for$='link_type'] {
+            padding-top: 1rem; 
+        }
     
+        .fg-image {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .checkbox {
+            height: 6rem;
+
+            label {
+                padding-top: 0;
+            }
+        }
+
+        .help_text {
+            font-size: 0.7rem;
+        }
 
     }
 
