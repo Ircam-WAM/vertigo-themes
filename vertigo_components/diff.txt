@@ -1,0 +1,25 @@
+diff --git a/vertigo_starts_eu/templates/projects/residency_blog_profile.html b/vertigo_starts_eu/templates/projects/residency_blog_profile.html
+index c8bc52e..f9bc2ec 100644
+--- a/vertigo_starts_eu/templates/projects/residency_blog_profile.html
++++ b/vertigo_starts_eu/templates/projects/residency_blog_profile.html
+@@ -22,17 +22,17 @@
+ 
+ {% block extra_js %}
+ 
+-	<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
++	<script type="text/javascript" src="{% static "components/vendors~residency_blog_form~residency_blog_list.js" %}"></script>
+ 
+ 	{% if user.person == object %}
+-		<script type="text/javascript" src="{% static "components/residency-blog-profile.js" %}"></script>
++		<script type="text/javascript" src="{% static "components/residency_blog_form.js" %}"></script>
+ 	{% else %}
+ 		<script>
+ 			window.globalVars = {
+ 				username: "{{ object.user.username }}"
+ 			}
+ 		</script>
+-		<script type="text/javascript" src="{% static "components/residency-blog-list-user.js" %}"></script>
++		<script type="text/javascript" src="{% static "components/residency_blog_list.js" %}"></script>
+ 	{% endif %}
+ 
+ {% endblock %}
