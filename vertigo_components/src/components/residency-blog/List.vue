@@ -61,14 +61,14 @@ export default {
       await this.getPosts()
     }
   },
-  mounted () {
+  mounted () { // init
     this.getResidencies()
     this.getPosts()
   },
   methods: {
     async getResidencies () {
       try {
-        const resp = await fetchDrf('/api/residency')
+        const resp = await fetchDrf('/api/residency') // fetch + header
 
         if (resp.status >= 400) {
           alert(JSON.stringify(await resp.json()))

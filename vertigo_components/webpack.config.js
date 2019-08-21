@@ -1,3 +1,13 @@
+//////////////////////////////////////////////////
+//////////////////// TLDR ////////////////////////
+//
+// This webpack config is used for :
+//      - Compile src into `static/components`
+//      - Apply babel on `<scripts>` / js files in Vue
+//      - Apply PostCSS on `<style>` / css files in Vue
+//
+//
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fs = require('fs')

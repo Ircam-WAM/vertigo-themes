@@ -5,6 +5,8 @@
         :class="[ {'active': filter === 'all'} ]"
         @click="filter = 'all'"
       >
+        <!-- all: cf data
+          the 'active' css class appear if filter==all -->
         All activity
       </button>
       <button
