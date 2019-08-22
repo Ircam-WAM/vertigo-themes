@@ -162,7 +162,7 @@ $module: ".account";
 
     }
 
-    @include mq($until: xs) {
+    @media screen and (max-width: 780px) {
 
         #main-content {
             .checkbox {

@@ -277,7 +277,7 @@ $module: ".account-form";
         display: inline-block;
     }
     
-    @include mq($until: xs) {
+    @media screen and (max-width: 780px) {
 
         label[for*="_image-clear_id"] {
             width: 16%;
