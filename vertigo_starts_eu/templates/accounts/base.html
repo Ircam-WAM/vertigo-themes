@@ -21,7 +21,7 @@
 
     {% block hero %}
     {% endblock %}
-    {% with person as user|get_person %}
+    {% with user|get_person as person %}
     {% with object|default:person as object %}
     <div id="main-content" class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}">
         {# --- Header --- #}
