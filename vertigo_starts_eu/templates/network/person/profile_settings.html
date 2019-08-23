@@ -115,6 +115,13 @@
 
                             <!-- Country -->
                             <div class="form-group">
+                                {{ form.city.errors }}
+                                {{ form.city.label_tag }}
+                                {{ form.city }}
+                            </div>
+
+                            <!-- City -->
+                            <div class="form-group">
                                 {{ form.country.errors }}
                                 {{ form.country.label_tag }}
                                 {{ form.country }}
