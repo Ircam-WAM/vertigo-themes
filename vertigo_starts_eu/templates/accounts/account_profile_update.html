@@ -1,16 +1,7 @@
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% extends "accounts/base.html" %}
 {% load i18n mezzanine_tags %}
 
-{% block page_title %}
-
-{% endblock %}
-
-{% block menu %}
-    {% include 'accounts/includes/menu.html' with display=1 %}
-{% endblock %}
-
 {% block page_content %}
-
 <div class="container col-md-5" data-profile-tab="select-settings" id="settings-profile-container">
     <div class="page__item_info">
         <div class="page__item_content">
@@ -20,11 +11,10 @@
                 <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
-                        
-                                <fieldset>
-                                    <h3 class="first">{% trans 'Private Informations' %}</h3>
-                                    {% fields_for form %}
-                                </fieldset>
+                            <fieldset>
+                                <h3 class="first">{% trans 'Private Informations' %}</h3>
+                                {% fields_for form %}
+                            </fieldset>
                         </div>
                     </div>
                     <div class="row justify-content-md-center">
