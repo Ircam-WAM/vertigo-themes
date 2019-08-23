@@ -64,4 +64,9 @@ $module: ".sidebar";
         @include margin(0 0 .5 0);
     }
 
+    @media screen and (max-width: 780px) {
+        hr {
+            margin: 2rem 0 1rem 0;
+        }
+    }
 }

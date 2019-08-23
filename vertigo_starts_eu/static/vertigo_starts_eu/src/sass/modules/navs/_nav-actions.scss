@@ -127,11 +127,14 @@ $module: ".nav-actions";
       margin-bottom:5%;
     }
 
+    
     @media screen and (max-width: 780px) {
-
-      &__transform-word {
+        &__item-link {
+            margin-left: 0.3rem;
+        }
+        
+        &__transform-word {
         text-transform: uppercase;
-      }
+        }
     }
-
 }
