@@ -11,7 +11,7 @@
 
 {% block page_content %}
 
-<div class="container page__margin-top col-md-5" data-profile-tab="select-settings" id="settings-profile-container">
+<div class="container col-md-5" data-profile-tab="select-settings" id="settings-profile-container">
     <div class="page__item_info">
         <div class="page__item_content">
             <div id="info-profile" class="page__info-block">
@@ -21,13 +21,15 @@
                         <div class="col-md-8 offset-md-2">
                         
                                 <fieldset>
-                                    <legend>{% trans 'Private Informations' %}</legend>
+                                    <h3 class="first">{% trans 'Private Informations' %}</h3>
                                     {% fields_for form %}
                                 </fieldset>
                         </div>
                     </div>
                     <div class="row justify-content-md-center">
-                        <input type="submit" value="{{ title }}">
+                        <div class="col-md-12">
+                            <input type="submit" value="{{ title }}">
+                        </div>
                     </div>
                  </form>
             </div>
