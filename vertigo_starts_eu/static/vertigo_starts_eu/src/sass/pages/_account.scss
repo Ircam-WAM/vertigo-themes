@@ -58,14 +58,14 @@ $module: ".account";
 
             &.notice {
                 font-style: italic;
-                color: $color-link-menu;
+                color: $color-dark-gray;
                 text-align: center;
                 width: 100%;
 
                 a {
-                    color: $color-link-menu;
+                    color: $color-dark-gray;
                     &:href {
-                        color: $color-link-menu;
+                        color: $color-dark-gray;
                     }
                 }
             }
@@ -112,8 +112,14 @@ $module: ".account";
             font-family: $serif;
         }
 
-        .help_text {
+        .helptext {
             font-family: $primary-font-family;
+            font-size: 0.7rem;
+            font-size: 0.8rem;
+            color: $color-dark-gray;
+            width: 100%;
+            text-align: left;
+            display: inline-block;
         }
 
         .change_file_field {
@@ -137,11 +143,6 @@ $module: ".account";
                 padding-top: 0;
             }
         }
-
-        .help_text {
-            font-size: 0.7rem;
-        }
-
 
         .url-inline {
             hr {

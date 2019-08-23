@@ -160,13 +160,13 @@
                             <!-- Options -->
                             <div class="form-group">
                                 {{ inlines.1.management_form }}
-                                {% for inline in inlines.1.0 %}
+                                {% for inline in inlines.1 %}
                                     {% if not inline.field.widget|is_object:'HiddenInput' %}
                                     <div class="checkbox">
                                         {{ inline.errors }}
                                         {{ inline.label_tag }}
                                         {{ inline }}
-                                        <span class="help_text">{{ inline.help_text }}</span>
+                                        {{ inline.help_text }}
                                     </div>
                                     {% endif %}
                                 {% endfor %}

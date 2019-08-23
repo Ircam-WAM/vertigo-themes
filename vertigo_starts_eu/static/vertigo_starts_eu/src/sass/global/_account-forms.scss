@@ -269,14 +269,6 @@ $module: ".account-form";
         font-size: 0.8rem;
     }
 
-    .help_text {
-        font-size: 0.8rem;
-        color: grey;
-        width: 100%;
-        text-align: left;
-        display: inline-block;
-    }
-    
     @media screen and (max-width: 780px) {
 
         label[for*="_image-clear_id"] {
