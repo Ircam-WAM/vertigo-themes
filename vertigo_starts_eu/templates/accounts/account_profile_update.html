@@ -15,6 +15,7 @@
     <div class="page__item_info">
         <div class="page__item_content">
             <div id="info-profile" class="page__info-block">
+            {% include 'core/inc/messages.html' %}
              {% errors_for form %}
                 <form class="account-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
                     <div class="row">
