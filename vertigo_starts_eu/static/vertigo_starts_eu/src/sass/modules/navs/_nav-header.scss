@@ -90,6 +90,7 @@ $module: ".nav-header";
       margin:0px !important;
       list-style:none !important;
       text-align:left !important;
+      width: 100%;
     }
 
     &__image-logo {
@@ -316,6 +317,7 @@ $module: ".nav-header";
       padding-bottom:10px;
       font-family:"Oswald",sans-serif;
       font-size:15px;
+      border-top: 1px solid $body-bg-color;
     }
 
     &__item-user {
@@ -953,7 +955,7 @@ $module: ".nav-header";
             }
 
             &--right {
-                float: none;
+                // float: none;
             }
 
             &--separator {
