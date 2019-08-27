@@ -48,8 +48,6 @@ html, body {
     color: white;
 
     @include mq($until: sm) {
-
-        overflow-x: hidden;
         height: 100%;
         -webkit-overflow-scrolling: touch;
 

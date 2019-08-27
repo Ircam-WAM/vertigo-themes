@@ -21,12 +21,8 @@
 $module: ".header";
 
 #{$module} {
-
-    z-index: 100;
-    position: relative;
-
     background: white;
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     left: 0;

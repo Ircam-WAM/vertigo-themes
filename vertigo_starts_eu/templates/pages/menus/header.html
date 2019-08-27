@@ -105,9 +105,14 @@ function resizeIconObject() {
         {% if page.is_primary %}
             {% if forloop.last %}
 
+                {% comment %}
+                  Multiple languages is disabled here. This leads to extra space outside of container
+                {% endcomment %}
+                {% comment %}
                 <li class="nav-header__item nav-header__item--right nav-header__item--separator">
                     {% include "includes/languages.html" %}
                 </li>
+                {% endcomment %}
 
                 <li class="nav-header__item nav-header__item--centered nav-header__item--right nav-header__item--no-separator nav-header__search-magnify-style">
 
