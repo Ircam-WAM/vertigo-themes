@@ -3,7 +3,7 @@ $module: ".section-title";
 #{$module} {
 
     @include typeface(sans-serif);
-    @include font-size(m);
+    @include font-size(xl);
     font-weight: weight(regular);
 
     text-align: center;
