@@ -25,18 +25,13 @@
 
         <div class="row">
 
-            {% if page.form.content %}
-                <div class="col-md-8">
+            <div class="col-md-16">
 
-                    {% if page.form.content %}
-                        {% editable page.form.content %}
-                            {{ page.form.content|richtext_filters|safe }}
-                        {% endeditable %}
-                    {% endif %}
-
-                </div>
-            {% endif %}
-            <div class="{% if page.form.content %}col-md-8{% else %}col-md-16{% endif %}">
+                {% if page.form.content and not request.GET.sent %}
+                    {% editable page.form.content %}
+                        {{ page.form.content|richtext_filters|safe }}
+                    {% endeditable %}
+                {% endif %}
 
                 {% if request.GET.sent %}
 
