@@ -94,7 +94,7 @@
                                     <div class="row">
                                         {% with project_type.objects as projects %}
                                             {% for object in projects %}
-                                                <div class="col-xs-8">
+                                                <div class="col-md-6">
                                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
                                                         {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_ict_card.html" as template %}
                                                             {% include template %}
