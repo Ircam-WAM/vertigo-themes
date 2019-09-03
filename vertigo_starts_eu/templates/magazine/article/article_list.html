@@ -71,7 +71,7 @@
                     <div class="container">
                         <div class="row">
                             {% for object in objects %}
-                                <div class="col-xs-8">
+                                <div class="col-md-6">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
                                         {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card.html" as template %}
                                             {% include template %}
