@@ -132,16 +132,16 @@ $module: ".form";
        border: 0;
        border-bottom: 1px solid white;
        outline: 0;
-       color: white;
+       color: black;
        -webkit-appearance: none;
-       background-color: rgba(#50E3C2, 0.05);
+       background-color: white;
        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#FFFFFF" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
        background-position: center right;
        background-repeat: no-repeat;
 
        &:focus {
            border-bottom: 1px solid $color-main;
-           background-color: rgba(#50E3C2, 0.05);
+           background-color: white;
            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#{$color-main}" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
            background-position: center right;
            background-repeat: no-repeat;
