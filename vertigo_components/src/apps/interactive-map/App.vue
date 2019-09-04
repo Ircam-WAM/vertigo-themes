@@ -1,7 +1,6 @@
 <template>
   <div class="interactive-map">
     <h1>STARTS Community Map</h1>
-    <Filters v-model="selectedFilters" />
     <!-- Search disabled because it adds an input and push it to the DOM when user click on it -->
     <Multiselect
       v-model="selectedFilters"
