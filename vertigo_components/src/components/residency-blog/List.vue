@@ -1,6 +1,9 @@
 <template>
   <div class="residency-blog-list">
-    <Loading v-if="loading === true" />
+    <Loading
+      v-if="loading === true"
+      color="black"
+    />
     <div v-else-if="articles.length === 0">
       There is no articles available
     </div>

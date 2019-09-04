@@ -1,248 +1,74 @@
 <template>
-  <svg
-    class="spinner"
-    width="100%"
-    height="100%"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 100 100"
-    preserveAspectRatio="xMidYMid"
-  ><g transform="rotate(0 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.7333333333333334s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(30 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.6666666666666666s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(60 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.6s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(90 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.5333333333333333s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(120 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.46666666666666673s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(150 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.4000000000000001s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(180 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.3333333333333333s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(210 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.26666666666666666s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(240 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.20000000000000004s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(270 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.13333333333333333s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(300 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="-0.06666666666666667s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g><g transform="rotate(330 50 50)">
-    <rect
-      x="47"
-      y="24"
-      rx="9.4"
-      ry="4.8"
-      width="6"
-      height="12"
-      fill="#484848"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0"
-        keyTimes="0;1"
-        dur="0.8s"
-        begin="0s"
-        repeatCount="indefinite"
-      />
-    </rect>
-  </g></svg>
+  <div :class="[ 'lds-ring', `color-${color}`]">
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
 </template>
 
+<script>
+export default {
+  name: 'Loading',
+  props: {
+    color: {
+      type: String,
+      default: 'white',
+      validator: (v) => !v || ['white', 'black'].indexOf(v) !== -1
+    }
+  }
+}
+</script>
+
 <style scoped>
-.spinner {
-  max-width: 200px;
-  /* center */
+.lds-ring {
   display: block;
-  margin: 0 auto;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  /* default color */
+  border-color: white transparent transparent transparent;
+}
+
+.lds-ring.color-black div {
+  border-color: black transparent transparent transparent;
+}
+
+.lds-ring.color-white div {
+  border-color: white transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

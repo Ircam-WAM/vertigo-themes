@@ -9,18 +9,18 @@ For example
 <!-- Include csrf token if you need to submit forms -->
 {% csrf_token %}
 <div class="container">
-  <!-- The id is the one inside src/apps/my_component.js file -->
-	<div id="residency_blog_form"></div>
-	<div id="residency_blog_list"></div>
+  <!-- The id is the one inside src/apps/my-component.js file -->
+	<div id="residency-blog-form"></div>
+	<div id="residency-blog-list"></div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <!-- Dependencies -->
-<script type="text/javascript" src="{% static "components/vendors~residency_blog_form~residency_blog_list.js" %}"></script>
+<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
 <!-- Components -->
-<script type="text/javascript" src="{% static "components/residency_blog_form.js" %}"></script>
-<script type="text/javascript" src="{% static "components/residency_blog_list.js" %}"></script>
+<script type="text/javascript" src="{% static "components/residency-blog-form.js" %}"></script>
+<script type="text/javascript" src="{% static "components/residency-blog-list.js" %}"></script>
 ```
 
 ## Architecture
@@ -28,8 +28,8 @@ For example
 ```
 src
 ├── apps
-│   ├── residency_blog_form.js
-│   └── residency_blog_list.js
+│   ├── residency-blog-form.js
+│   └── residency-blog-list.js
 ├── components
 │   ├── ResidencyBlogForm.vue
 │   └── ResidencyBlogList.vue

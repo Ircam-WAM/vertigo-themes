@@ -64,8 +64,18 @@ module.exports = {
           },
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/static/components'
+            }
+          }
+        ]
       }
-
     ]
   },
   plugins: [
@@ -78,7 +88,7 @@ module.exports = {
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          chunks: 'initial',
+          chunks: 'all',
           name: 'vendors',
           enforce: true
         }
