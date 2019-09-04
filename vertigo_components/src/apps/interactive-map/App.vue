@@ -182,6 +182,13 @@ export default {
         const resp = await fetch('/public-network-data-new/')
         const data = await resp.json()
         this.markers = data.objects
+
+        // Check markers
+        const nullSlug = this.markers.filter((m) => !m.slug)
+        if (nullSlug.length > 0) {
+          console.warn('some markers have invalid slug', nullSlug.map(m => Object.assign({}, m)))
+        }
+
         this.loading = false
       } catch (e) {
         console.error(e)
