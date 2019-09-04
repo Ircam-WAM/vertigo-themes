@@ -41,7 +41,10 @@
         >
           {{ truncate(selected.title, 40) }}
         </h3>
-        <div class="keywords-container">
+        <div
+          v-if="selected.keywords"
+          class="keywords-container"
+        >
           <div
             v-for="keyword of selected.keywords.slice(0, 2)"
             :key="`${selected.slug}-${keyword}`"
@@ -200,6 +203,9 @@ export default {
 
 .map-container {
   position: relative;
+
+  /* for text inside cluster markers color */
+  color: white;
 
   & .map, & .loading {
     min-height: calc(100vh - 450px);
