@@ -252,6 +252,9 @@ export default {
     color: white;
     opacity: 1;
 
+    border: none;
+    background: transparent;
+
     top: 2px;
     right: 8px;
     font-size: 30px;
