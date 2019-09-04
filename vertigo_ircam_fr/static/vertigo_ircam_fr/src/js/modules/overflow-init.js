@@ -15,9 +15,9 @@ OverflowInit.prototype.init = function() {
         selector: '[data-overflow]'
     });
 
-    Overflow.initialize({
-        selector: 'hr'
-    });
+    // Overflow.initialize({
+    //     selector: 'hr'
+    // });
 
 };
 

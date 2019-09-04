@@ -296,7 +296,7 @@ $module: ".home-page";
 
     &__private-content-main-left {
 
-      width:1440px;
+      max-width:1440px;
       height:auto;
       text-align:center;
       font-size:15px;
@@ -305,6 +305,9 @@ $module: ".home-page";
       position:relative;
       margin: 0 auto;
       transform: translateX(3.5%);
+
+      /* Content is moved with absolute positionning, this leads to extra space on firefox */
+      overflow: hidden;
 
       @media screen and (max-width: 1024px) {
         transform: translateX(0%);
@@ -720,14 +723,6 @@ $module: ".home-page";
       @media screen and (max-width: 780px) {
 
         margin-top:-45% !important;
-      }
-    }
-
-    &__responsive-footer-application-home {
-
-      @media screen and (max-width: 780px) {
-
-        position:relative !important;
       }
     }
 
@@ -1264,33 +1259,6 @@ $module: ".home-page";
       }
     }
 
-    &__footer-fix {
-
-      @media screen and (min-width: 1024px) {
-
-        //margin-right:-45.5% !important;
-        margin-right:-3.5% !important;
-        padding-bottom:1% !important;
-
-        @-moz-document url-prefix() {
-
-          //margin-right:-45.5% !important;
-          margin-right:-3.5% !important;
-          padding-bottom:1% !important;
-        }
-      }
-
-      @media screen and (min-width: 1440px) {
-
-        margin-right:-3.5% !important;
-
-        @-moz-document url-prefix() {
-
-          margin-right:-3.5% !important;
-        }
-      }
-    }
-
     &__overlay-style-home {
 
       position: fixed !important;
@@ -1616,5 +1584,6 @@ html body#tinymce.mce-content-body p::selection {
 
 html, body {
     max-width: 100%;
-    overflow-x: hidden;
 }
+
+

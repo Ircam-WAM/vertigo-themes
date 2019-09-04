@@ -24,7 +24,7 @@ $module: ".nav-header";
 
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0.1rem 0;
     text-align: center;
 
     @include margin(.5 0 0 0);
@@ -45,7 +45,7 @@ $module: ".nav-header";
         @media screen and (max-width: 780px) {
 
           font-size: 30px !important;
-          margin-top: 30% !important;
+          margin-top: 0.3rem !important;
         }
       }
     }
@@ -90,13 +90,21 @@ $module: ".nav-header";
       margin:0px !important;
       list-style:none !important;
       text-align:left !important;
+      width: 100%;
     }
 
     &__image-logo {
 
       //width:174px;
       //height:172.2px;
-      margin-top: -1.2em;
+        width:9rem;
+        height:auto;
+        padding-top:6%;
+        margin-top:-21%;
+        @include mq($until: sm) {
+            margin: 0;
+            padding: 0;
+        }
     }
 
     &__switch-display {
@@ -106,18 +114,22 @@ $module: ".nav-header";
 
     &__space-responsive {
 
-      padding-bottom:0% !important;
+			width: 100%;
     }
 
     &__responsive-image {
-
       display: none !important;
       margin-top:0px;
     }
 
     &__non-responsive-image {
-
       display: block !important;
+      width: 10rem;
+      @include mq($until: sm) {
+        width: 10rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     &__image-logo-responsive {
@@ -130,6 +142,17 @@ $module: ".nav-header";
       margin-left:21% !important;
       margin-bottom:20% !important;
     }
+
+
+    @include mq($until: sm) {
+        &__switch-display {
+            display:none;
+        }
+    }
+
+
+
+
 
     @media screen and (min-width: 780px) {
 
@@ -149,14 +172,9 @@ $module: ".nav-header";
     @media screen and (max-width: 779px) {
 
       &__image-logo {
-
-        //width:80px !important;
-        //height:80px !important;
         width:80% !important;
         height:50% !important;
-        margin-top:10% !important;
-        margin-left:auto !important;
-        margin-right: 40% !important;
+        padding-top:0;
       }
 
       &__switch-display {
@@ -170,11 +188,11 @@ $module: ".nav-header";
       }
 
       &__responsive-image {
-
         display: block !important;
-        margin-top:-27px !important;
-        width: 60% !important;
-        margin-left:30px !important;
+        // margin-top:-18px !important;
+        width: 10rem !important;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       &__non-responsive-image {
@@ -316,6 +334,7 @@ $module: ".nav-header";
       padding-bottom:10px;
       font-family:"Oswald",sans-serif;
       font-size:15px;
+      border-top: 1px solid $body-bg-color;
     }
 
     &__item-user {
@@ -365,6 +384,11 @@ $module: ".nav-header";
 
       top:0 !important;
 
+      @include mq($until: sm) {
+        margin-top: 2px !important;
+        margin-left: 10px !important;
+      }
+
       @media screen and (max-width: 780px) {
 
         margin-top:20px !important;
@@ -375,7 +399,7 @@ $module: ".nav-header";
       @-moz-document url-prefix() {
         @media screen and (max-width: 780px) {
 
-        	margin-top: 10px !important;
+        	margin-top: 2px !important;
         	margin-left: 10px !important;
         	margin-bottom: -18px !important;
         }
@@ -407,6 +431,9 @@ $module: ".nav-header";
         vertical-align: top;
         position: relative;
 
+        @include mq($until: sm) {
+            display: block;
+        }
 
         &:before {
             content: "";
@@ -485,70 +512,51 @@ $module: ".nav-header";
         }
 
         &--image-big {
-            vertical-align: top;
+
             @include margin(0 1 0 2.5);
             @include padding-right(.50);
 
             @include mq($until: lg) {
                 height: $header-height - 10px;
                 img {
-                    //width: 200px;
-                    //height: 200px;
-                    width: 100%;
-                    height: 100%;
-                    margin-top: -1em;
+                    width: 9rem;
+                    height: auto;
                 }
             }
             @include mq($until: md) {
+                margin-left: auto;
+                margin-right: auto;
                 height: $header-height - 10px;
                 img {
-                    //width: 160px;
-                    //height: 160px;
                     width: 80%;
                     height: 80%;
-                    margin-top: 0;
                 }
             }
 
             @include mq($until: sm) {
-                position: absolute;
-                top: 20px;
-                left: 50%;
-                z-index: 2;
-                @include padding(0);
-                @include margin(0);
-                margin-left: -80px;
-                text-align: center;
-                img {
-                    // width: auto;
-                    display: block;
-                    margin: 0 auto;
-                }
+                width: 86%;
+                padding-right: 0;
             }
 
             @include mq($until: xs) {
-
+                width: 80%;
                 img {
-                    // width: 200px;
-                    //height: auto;
                     display: block;
                     margin: 0 auto;
                 }
-
             }
 
+            @include mq($until: xxs) {
+                width: 76%
+            }
+            @include mq($until: xxxs) {
+                width: 69%;
+            }
+
+            vertical-align: top;
+            margin: 0 1.5rem 0 3.75rem;
             height: $header-height;
-
             float:left !important;
-
-            @media screen and (max-width: 780px) {
-
-              float:none !important;
-            }
-
-            @media screen and (min-width: 952px) and (max-width: 952px) {
-              margin-top: 4% !important;
-            }
         }
 
         &--special {
@@ -659,7 +667,14 @@ $module: ".nav-header";
             @include font-size(s);
             @include padding-right(.5);
         }
+        
+        @include mq($until: sm) {
+            font-size: 2rem;
+            margin-top: 1.2rem;
+        }
 
+
+        font-size: 1.25rem;
 
         &:before {
             display: inline-block;
@@ -710,6 +725,10 @@ $module: ".nav-header";
 
             font-size: 25px !important;
           }
+        }
+
+        &.user-link-item {
+            margin-top:0;
         }
 
     }
@@ -852,7 +871,7 @@ $module: ".nav-header";
             padding: 0 5px;
 
             @include mq($until: sm) {
-                font-size: 18px;
+                font-size: 1.3rem;
             }
 
             @include mq($until: xs) {
@@ -953,7 +972,7 @@ $module: ".nav-header";
             }
 
             &--right {
-                float: none;
+                // float: none;
             }
 
             &--separator {
@@ -994,8 +1013,6 @@ $module: ".nav-header";
 
       background:white;
       float:right;
-      padding-right:2%;
-      padding-bottom:8px;
       position:relative;
 
       @media screen and (max-width: 780px) {
@@ -1013,7 +1030,7 @@ $module: ".nav-header";
 
         @media screen and (max-width: 780px) {
 
-          margin-top:5.5% !important;
+          margin-top:1rem !important;
           margin-bottom:-40px !important;
         }
       }

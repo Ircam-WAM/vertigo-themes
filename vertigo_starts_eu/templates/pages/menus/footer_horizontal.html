@@ -1,25 +1,35 @@
 {% load i18n pages_tags staticfiles organization_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-{% spaceless %}
-{% if page_branch_in_menu %}
-    {% for page in page_branch %}
-        {% if page.is_primary %}
-            {% if forloop.first %}
-                <ul class="nav-footer nav-footer--horizontal" role="navigation">
-            {% endif %}
-        {% endif %}
-        {% if page.in_menu %}
-            <li class="nav-footer__item {% if page.is_current_or_ascendant %}active{% endif %}">
-                <a class="nav-footer__item-link" href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
+<div class="copyright">
+	&copy; 2019 Vertigo Starts. All rights reserved.
+</div>
 
-        {% endif %}
-            </li>
-        {% if page.is_primary %}
-            {% if forloop.last %}
-                </ul>
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+{% if page_branch_in_menu %}
+<div class="links">
+{% for page in page_branch %}
+  {% if page.in_menu and page.content_model == "custompage" %}
+		<a href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{ page.title }}</a>
+	{% endif %}
+{% endfor %}
+</div>
+
+<div class="socials">
+{% for page in page_branch %}
+  {% if page.in_menu and page.content_model == "link" %}
+		{% with image=page.link|get_image_link %}
+			<a href="{{ page.get_absolute_url }}" title="{{ page.title }}">
+				<img src="{{ image.url }}" alt="{{ image.alt }}">
+			</a>
+		{% endwith %}
+	{% endif %}
+{% endfor %}
+{% comment %}
+{% for link in host_organization.links.all %}
+	<a href="{{ link.url }}" title="{{ link.title }}">
+		<i class="fa fa-{{ link.link_type.fa_option }}"></i>
+	</a>
+{% endfor %}
+{% endcomment %}
+</div>
 {% endif %}
-{% endspaceless %}

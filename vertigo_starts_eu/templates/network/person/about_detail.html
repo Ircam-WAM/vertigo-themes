@@ -1,0 +1,45 @@
+{% extends "accounts/base.html" %}
+
+{% load i18n %}
+
+{% block page_content %}
+    <div class="container col-md-5" data-profile-tab="about-item" id="settings-profile-container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h3>{% trans 'Biography' %}</h3>
+                {% if object.bio %}
+                    <p>{{ object.bio|safe }}</p>
+                {% else %}
+                    {% if user.is_authenticated and user.person == object %}
+                    <p class="notice">{% trans "Your biography seems to be empty. You can fill it " %}<a href="{% url "organization-network-profile-edit" %}" title="Profile Edit">{% trans "here" %}</a></p>
+                    {% else %}
+                    <p class="notice">{% trans "No biography available" %}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div> 
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+            <hr>
+            <h3>{% trans 'Links' %}</h3>
+            {% if object.links.all %}
+                <ul>
+                {% for link in object.links.all %}
+                    <li>
+                        <i class="fa fa-{{ link.link_type|lower }}"></i>
+                        {{ link.url }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+                {% if user.is_authenticated and user.person == object %}
+                <p class="notice">{% trans "You can add some external links " %}<a href="{% url "organization-network-profile-edit" %}" title="Profile Edit">{% trans "here" %}</a></p>
+                {% else %}
+                <p class="notice">{% trans "No links available" %}</p>
+                {% endif %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

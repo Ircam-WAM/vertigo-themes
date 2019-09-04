@@ -356,7 +356,7 @@ function selectDesectedTag(object, event) {
 <div class="page page--{% spaceless %}{% block page_class %}{% endblock %}{% endspaceless %}"  style="margin-top:-3%">
     <div class="container">
         <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+            <div class="col-sm-12 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline" style="margin-bottom:0px;">{% trans "Producers" %}</h1>
 
                     {% comment %}
@@ -412,7 +412,7 @@ function selectDesectedTag(object, event) {
                     <div class="container">
                         <div id="producer-list" class="row" style="display:block">
                             {% for producer in object_list %}
-                                <div class="col-md-16">
+                                <div class="col-md-12">
                                    {# Card included for each producer #}
                                    {% include "network/inc/producers/producers_list_card_box.html" %}
                                 </div>
