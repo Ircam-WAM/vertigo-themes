@@ -26,7 +26,8 @@ $module: ".header";
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 100;
+		/* because /network/ pages uses leaflet which uses z-index 1000 */
+    z-index: 1100;
 
     @include mq($until: sm) {
         height: $header-height-tablet;
