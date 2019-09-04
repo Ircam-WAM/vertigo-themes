@@ -15,7 +15,7 @@
       track-by="name"
       :options="[
         { name: 'Residencies', id: 'residencies' },
-        { name: 'Users', id: 'users' },
+        { name: 'Persons', id: 'persons' },
         { name: 'Organizations', id: 'organizations' },
         { name: 'Producers', id: 'producers' }
       ]"
@@ -58,7 +58,7 @@
           {{ truncate(selected.description, 50) }}
         </h4>
         <h4
-          v-if="selected.mappable_location && selected.categories.indexOf('users') !== -1"
+          v-if="selected.mappable_location && selected.categories.indexOf('persons') !== -1"
           class="location"
         >
           {{ selected.mappable_location }}
