@@ -34,7 +34,7 @@
       >
         <button
           class="close"
-          @click="selectedId = null"
+          @click.stop.prevent="selectedId = null"
         >
           &times;
         </button>
