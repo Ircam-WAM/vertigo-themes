@@ -21,8 +21,11 @@
       class="filters"
     />
     <div class="map-container">
-      <div
+      <component
+        :is="selected.url ? 'a' : 'div'"
         v-if="selected !== null"
+        :href="selected.url ? selected.url : null"
+        :target="selected.url ? '_blank' : null"
         class="selected-container"
         :style="{ backgroundImage: selected.card ?
           `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${selected.card}')` :
@@ -60,12 +63,12 @@
           {{ truncate(selected.description, 50) }}
         </h4>
         <h4
-          v-if="selected.mappable_location && selected.categories.indexOf('persons') !== -1"
+          v-if="selected.mappable_location && selected.categories.indexOf('persons') === -1"
           class="location"
         >
           {{ selected.mappable_location }}
         </h4>
-      </div>
+      </component>
       <div
         v-if="loading"
         class="loading"
