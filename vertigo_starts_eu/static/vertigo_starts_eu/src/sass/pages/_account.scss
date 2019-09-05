@@ -1,0 +1,190 @@
+$module: ".account";
+
+#{$module} {
+
+    #main-content {
+        background: rgb(236,235,235);
+        color: $color-black;
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: $primary-font-family;
+        }
+
+        h3 {
+            font-family: $sans-serif;
+            text-transform: none;
+            font-weight: weight(regular);
+            font-size: 1.2em;
+            &.options {
+                margin-top: 4.5em;
+            }
+        }
+
+        hr {
+            width: 100%;
+            margin: 2.5rem 0 3rem 0;
+            background-color: $color-gray;
+        }
+
+        .background-img {
+            height: 480px;
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+            }
+            
+        }
+        
+        .link-wrapper {
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        p {
+            text-align: justify;
+
+            &.notice {
+                font-style: italic;
+                color: $color-dark-gray;
+                text-align: center;
+                width: 100%;
+
+                a {
+                    color: $color-dark-gray;
+                    &:href {
+                        color: $color-dark-gray;
+                    }
+                }
+            }
+        
+        }
+
+        #account-menu {
+            border-bottom: 1px solid $color-gray;
+        }
+    
+        .profile-pic {
+            margin-top: 1em;
+            img {
+                clip-path: ellipse(160px 160px at 50% 50%);
+            }
+        }    
+    
+        .background {
+
+            &-placeholder {
+                background-image: url('../img/profile/profile_pix_line_480.png');
+                background-repeat: repeat-x;
+                height: 480px;
+                width: 100%;
+            }
+    
+            &-user {
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    
+        .page {
+            &__option {
+                &-selected {
+                    // border-bottom : none;
+                }
+            }
+    
+            &__content {
+                margin-top : 2em;
+            }
+    
+            font-family: $serif;
+        }
+
+        .helptext {
+            font-family: $primary-font-family;
+            font-size: 0.7rem;
+            font-size: 0.8rem;
+            color: $color-dark-gray;
+            width: 100%;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .change_file_field {
+            font-family: $primary-font-family;
+            padding-left: 1rem;
+        }
+
+        label[for^='id_links'][for$='link_type'] {
+            padding-top: 1rem; 
+        }
+    
+        .form-group {
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 1rem;
+        }
+
+        .checkbox {
+            height: 14rem;
+
+            label {
+                padding-top: 0;
+            }
+        }
+
+        .url-inline {
+            hr {
+                background-color: initial;
+                border-top: 1px solid  $color-gray;
+                margin-top: 3.5rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        #profile_image-clear_id,
+        #background_image-clear_id {
+            margin-top: 0.2rem;
+        }
+
+    }
+
+    @media screen and (max-width: 780px) {
+
+        #main-content {
+            .checkbox {
+                height: 19rem;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+            }
+
+            label[for^="id_links-"][for$="-DELETE"] {
+                width: 17%;
+            }
+
+    
+            h3 {
+                margin-top: 3rem;
+                &.options {
+                    margin-top: 3rem;
+                }
+                &.first {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+}

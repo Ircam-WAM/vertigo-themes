@@ -18,6 +18,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+@import "bootstrap/scss/bootstrap";
+
 @import "compass-mixins/lib/compass/reset/utilities";
 @import "compass-mixins/lib/compass/utilities";
 @import "compass-mixins/lib/compass/css3";
@@ -45,7 +47,7 @@
 @import 'global/wysiwyg';
 
 @import 'layout/global';
-@import 'layout/grid';
+// @import 'layout/grid';
 @import 'layout/header';
 @import 'layout/footer';
 

@@ -1,0 +1,16 @@
+{% load i18n mezzanine_tags keyword_tags organization_tags pages_tags staticfiles %}
+
+<div id="account-menu" class="row justify-content-md-center">
+	<div class="page__item_selector col-md-auto">
+		<a href="{% url 'organization-network-profile-about' object.slug %}" style="margin: 0 auto"><span id="about-item" class="page__option-unselected">{% trans "About" %}</span></a>
+		<a href="{% url 'organization-project-profile-residency-blog' object.user.username %}"><span id="public-residency-blog-item" class="page__option-unselected">Residency Blog</span></a>
+		<!-- <a href="/profiles/{{ request.user }}/detail/"><span id="select-messages" class="page__option-unselected">Message</span></a>-->
+		<!-- <a href="{% url 'organization-network-profile-following' request.user %}"><span id="select-following" class="page__option-unselected">Following</span></a>
+		<a href="{% url 'organization-network-profile-followers' request.user %}><span id="select-follower" class="page__option-unselected">Followers</span></a> -->
+		{% if user.person == object or display %}
+			<a href="{% url 'organization-network-profile-applications' %}"><span id="select-application-form" class="page__option-unselected">{% trans "Application form(s)" %}</span></a>
+			<a href="{% url 'organization-network-profile-edit' %}"><span id="select-profile" class="page__option-unselected">{% trans "Profile" %}</span></a>
+			<a href="{% url 'profile_update' %}"><span id="select-settings" class="page__option-unselected">{% trans "Settings" %}</span></a>
+		{% endif %}
+	</div>
+</div>

@@ -88,7 +88,7 @@ $(function() {
 
 {% comment %}
 <div class="row">
-    <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+    <div class="col-sm-12 col-md-10 col-md-push-3 tac">
         <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "Current Residencies" %}</h1>
     </div>
 </div>
@@ -153,13 +153,7 @@ $(function() {
 </div>
 
 <div class="page__submenu-public-profile" style="padding-top:3.5%">
-  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">Tech Project</span></a>
-  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artistic Proposal</span></a>
-  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
-       {% comment %}
-  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="blog-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Residency Blog</span></a>
-  <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="followers-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Followers</span></a>
-       {% endcomment %}
+	{% include 'accounts/includes/menu.html' %}*
 </div>
 
 <div class="page__container-inforesidency-detail"></div>
@@ -422,7 +416,7 @@ $(function() {
 
 
     <div class ="row residency-detail__margin-row">
-            <div class="col-sm-16 col-md-12 residency-detail__center-buttons">
+            <div class="col-sm-12 col-md-12 residency-detail__center-buttons">
                 <a id='artist' class="residency-detail__button-residency-style residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The artist" %}</a>
                 <a id='artist_residency' class="residency-detail__button-residency-style residency-detail__button active" href="#" onclick="clickedLink(this,event);">{% trans "Artist residency" %}</a>
                 <a id='project' class="residency-detail__button-residency-style residency-detail__button" href="#" onclick="clickedLink(this,event);">{% trans "The project" %}</a>
@@ -806,7 +800,7 @@ $(function() {
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+                <div class="col-sm-12 col-md-10 col-md-push-3 tac">
                     <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "News" %}</h1>
                 </div>
             </div>
@@ -840,7 +834,7 @@ $(function() {
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-16 col-md-12 col-md-push-2 tac">
+                <div class="col-sm-12 col-md-12 col-md-push-2 tac">
                     <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{% trans "Events" %}</h1>
                 </div>
             </div>

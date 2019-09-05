@@ -1,108 +1,89 @@
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% extends "accounts/base.html" %}
 {% load i18n mezzanine_tags %}
-
-{% block page_title %}
-	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
-{% endblock %}
 
 {% block page_content %}
 
-<script>
+<div class="container" data-profile-tab="select-application-form" id="settings-profile-container">
 
-function selectCurrentTab() {
+  <div class="page__item_info">
 
-  document.getElementById("select-application-form").className = "page__option-selected";
-}
-
-window.onload = selectCurrentTab;
-
-</script>
-
-<div class="container page__margin-top">
-
-<div class="page__item_info">
-
-{{ block.super }}
-
-    <div class="page__item_content">
-      <div id="info-following" class="page__info-block">
-        <div class="page__row-app-space-form page__row-app-space-bottom-form"></div>
-        {% if projects or draft_applications or submitted_applications %}
-          {% for project in projects %}
+      <div class="page__item_content">
+        <div id="info-following" class="page__info-block">
+          <div class="page__row-app-space-form page__row-app-space-bottom-form"></div>
+          {% if projects or draft_applications or submitted_applications %}
+            {% for project in projects %}
+                <div class="page__row-app-form page__row-app-space-bottom-form">
+                  <div class="page__column-app-form page__column-space">
+                    <div class="page__inner-row-content page__inner-item-bold">{{ project.title }}</div>
+                    <div class="page__inner-row-content page__inner-item">{{ project.call }}</div>
+                  </div>
+                  <div class="page__column-app-form page__column-space">
+                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
+                      {% if project.validation_status == 'accepted' %}
+                          Submitted
+                      {% else %}
+                          Closed
+                      {% endif %}
+                    </div>
+                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ project.call.date_to }}</div>
+                  </div>
+                  <div class="page__column-app-form">
+                    {% if project.validation_status == 3 %}
+                        <a href="{% url "organization-call-project-detail" project.call.slug project.slug %}" class="page__button-row-profile-view">View form</a>
+                    {% else %}
+                        <a href="{% url "organization-call-project-update" project.call.slug project.slug %}" class="page__button-row-profile-edit">Edit form</a>
+                    {% endif %}
+                  </div>
+                </div>
+            {% endfor %}
+            {% for draft_application in draft_applications %}
+                <div class="page__row-app-form page__row-app-space-bottom-form">
+                  <div class="page__column-app-form page__column-space">
+                    <div class="page__inner-row-content page__inner-item-bold">{{ draft_application.competition.title }}</div>
+                    <!-- <div class="page__inner-row-content page__inner-item">{{ draft_application }}</div> -->
+                  </div>
+                  <div class="page__column-app-form page__column-space">
+                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
+                      {% if draft_application.validation_status == 'accepted' %}
+                          Submitted
+                      {% else %}
+                          Draft
+                      {% endif %}
+                    </div>
+                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ draft_application.competition.closing_date }}</div>
+                  </div>
+                  <div class="page__column-app-form">
+                        <a href="{% url 'web:show_application_form' draft_application.competition.url %}?show_draft" class="page__button-row-profile-edit">Edit form</a>
+                  </div>
+                </div>
+            {% endfor %}
+            {% for submitted_application in submitted_applications %}
               <div class="page__row-app-form page__row-app-space-bottom-form">
-                 <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item-bold">{{ project.title }}</div>
-                   <div class="page__inner-row-content page__inner-item">{{ project.call }}</div>
-                 </div>
-                 <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
-                     {% if project.validation_status == 'accepted' %}
-                        Submitted
-                     {% else %}
-                        Closed
-                     {% endif %}
-                   </div>
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ project.call.date_to }}</div>
-                 </div>
-                 <div class="page__column-app-form">
-                   {% if project.validation_status == 3 %}
-                      <a href="{% url "organization-call-project-detail" project.call.slug project.slug %}" class="page__button-row-profile-view">View form</a>
-                   {% else %}
-                      <a href="{% url "organization-call-project-update" project.call.slug project.slug %}" class="page__button-row-profile-edit">Edit form</a>
-                   {% endif %}
-                 </div>
+                <div class="page__column-app-form page__column-space">
+                    <div class="page__inner-row-content page__inner-item-bold">{{ submitted_application.competition.title }}</div>
+                    <!-- <div class="page__inner-row-content page__inner-item">{{ submitted_application }}</div> -->
+                </div>
+                <div class="page__column-app-form page__column-space">
+                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
+                      {% if project.validation_status != 'accepted' %}
+                      Submitted
+                      {% else %}
+                      Accepted
+                      {% endif %}
+                    </div>
+                    <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ submitted_application.competition.closing_date }}</div>
+                </div>
+                <div class="page__column-app-form">
+                  <a href="{% url 'web:show_application_form' submitted_application.competition.url %}?show_draft" class="page__button-row-profile-edit">View</a>
+                </div>
               </div>
-          {% endfor %}
-          {% for draft_application in draft_applications %}
-              <div class="page__row-app-form page__row-app-space-bottom-form">
-                 <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item-bold">{{ draft_application.competition.title }}</div>
-                   <!-- <div class="page__inner-row-content page__inner-item">{{ draft_application }}</div> -->
-                 </div>
-                 <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
-                     {% if draft_application.validation_status == 'accepted' %}
-                        Submitted
-                     {% else %}
-                        Draft
-                     {% endif %}
-                   </div>
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ draft_application.competition.closing_date }}</div>
-                 </div>
-                 <div class="page__column-app-form">
-                      <a href="{% url 'web:show_application_form' draft_application.competition.url %}?show_draft" class="page__button-row-profile-edit">Edit form</a>
-                 </div>
-              </div>
-          {% endfor %}
-          {% for submitted_application in submitted_applications %}
-              <div class="page__row-app-form page__row-app-space-bottom-form">
-                 <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item-bold">{{ submitted_application.competition.title }}</div>
-                   <!-- <div class="page__inner-row-content page__inner-item">{{ submitted_application }}</div> -->
-                 </div>
-                 <div class="page__column-app-form page__column-space">
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">
-                     {% if project.validation_status != 'accepted' %}
-                        Submitted
-                     {% else %}
-                        Accepted
-                     {% endif %}
-                   </div>
-                   <div class="page__inner-row-content page__inner-item{% if project.validation_status != 'accepted' %}-red{% endif %}">Deadline: {{ submitted_application.competition.closing_date }}</div>
-                 </div>
-                 <div class="page__column-app-form">
-                    <div class="page__column-app-form">
-                      <a href="{% url 'web:show_application_form' submitted_application.competition.url %}?show_draft" class="page__button-row-profile-edit">View</a>
-                 </div>
-                 </div>
-              </div>
-          {% endfor %}
-        {% else %}
-          <p style="text-align:center;color:black">No application forms available for this user</p>
-        {% endif %}
+            {% endfor %}
+          {% else %}
+            <p style="text-align:center;color:black">No application forms available for this user</p>
+          {% endif %}
 
-    </div>
-</div>
+      </div>
+  </div>
 
 </div>
 

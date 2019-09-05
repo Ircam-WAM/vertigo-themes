@@ -1,25 +1,16 @@
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
+{% extends "accounts/base.html" %}
+
 {% load i18n mezzanine_tags organization_tags staticfiles %}
 
 
 {% block page_content %}
 
-<script>
 
-function selectCurrentTab() {
-
-document.getElementById("select-profile").className = "page__option-selected";
-}
-
-window.onload = selectCurrentTab;
-
-</script>
-
-<div class="container page__margin-top">
+<div class="container" data-profile-tab="select-profile" id="settings-profile-container">
     <div class="page__item_info">
-        {{ block.super }}
         <div class="page__item_content">
             <div id="info-profile" class="page__info-block">
+                {% include 'core/inc/messages.html' %}
                 {% errors_for form %}
                 <form class="account-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -27,9 +18,9 @@ window.onload = selectCurrentTab;
                         {{ formset.management_form }}
                     {% endfor %}
                     <div class="row" >
-                        <div class="col-md-5" >
+                        <div class="col-md-5 offset-md-1" >
 
-                            <h3>{% trans "Public Informations" %}</h3>
+                            <h3 class="first">{% trans "Public Informations" %}</h3>
 
                             <!-- Profile image -->
                             <div class="form-group">
@@ -41,10 +32,10 @@ window.onload = selectCurrentTab;
                                     <img src="{% static 'vertigo_starts_eu/img/profile/profile_form_ph.png' %}" title="" />
                                 {% endif %}
                                 <div class="row image-field">
-                                    <div class="col-md-16" >
-                                        <span class="help_text">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
+                                    <div class="col-md-12" >
+                                        <span class="helptext">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
                                     </div>
-                                    <div class="col-md-16 image-input" >
+                                    <div class="col-md-12 image-input" >
                                         {{ form.profile_image }}
                                     </div>
                                 </div>
@@ -60,13 +51,20 @@ window.onload = selectCurrentTab;
                                     <img src="{% static 'vertigo_starts_eu/img/profile/bg_form_ph.png' %}" title="" />
                                 {% endif %}
                                 <div class="row image-field">
-                                    <div class="col-md-16" >
-                                        <span class="help_text">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
+                                    <div class="col-md-12" >
+                                        <span class="helptext">{% trans "Supported Formats : jpg, png 100MB max." %}</span>
                                     </div>
-                                    <div class="col-md-16 image-input" >
+                                    <div class="col-md-12 image-input" >
                                         {{ form.background_image }}
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Occupation -->
+                            <div class="form-group">
+                                {{ form.occupation.errors }}
+                                {{ form.occupation.label_tag }}
+                                {{ form.occupation }}
                             </div>
 
                             <!-- Biography -->
@@ -77,12 +75,15 @@ window.onload = selectCurrentTab;
                             </div>
 
                             <!-- URL -->
-                            <div class="form-group url-inline">
+                            <div class="form-group url-inline clearfix">
                                 {{ inlines.0.management_form }}
                                 {% for inline in inlines.0 %}
                                     {{ inline.errors }}
                                     {{ inline.label_tag }}
                                     {{ inline }}
+                                    {% if not forloop.last %}
+                                        <hr>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
 
@@ -115,6 +116,13 @@ window.onload = selectCurrentTab;
 
                             <!-- Country -->
                             <div class="form-group">
+                                {{ form.city.errors }}
+                                {{ form.city.label_tag }}
+                                {{ form.city }}
+                            </div>
+
+                            <!-- City -->
+                            <div class="form-group">
                                 {{ form.country.errors }}
                                 {{ form.country.label_tag }}
                                 {{ form.country }}
@@ -139,7 +147,7 @@ window.onload = selectCurrentTab;
                                 {{ form.birthday.errors }}
                                 {{ form.birthday.label_tag }}
                                 {{ form.birthday }}
-                                <span class="help_text">{{ form.birthday.help_text }}</span>
+                                <span class="helptext">{{ form.birthday.help_text }}</span>
                             </div>
 
                             <!-- Gender -->
@@ -156,20 +164,27 @@ window.onload = selectCurrentTab;
                                 {{ form.citizenship }}
                             </div>
 
-                            <h3>{% trans "Options" %}</h3>
+                            <h3 class="options">{% trans "Options" %}</h3>
                             <!-- Options -->
                             <div class="form-group">
                                 {{ inlines.1.management_form }}
-                                {% for inline in inlines.1.0 %}
+                                {% for inline in inlines.1 %}
+                                    {% if not inline.field.widget|is_object:'HiddenInput' %}
                                     <div class="checkbox">
-                                    {{ inline.errors }}
-                                    {{ inline.label_tag }}
-                                    {{ inline }}
+                                        {{ inline.errors }}
+                                        {{ inline.label_tag }}
+                                        {{ inline }}
+                                        {{ inline.help_text }}
                                     </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
-                        <input type="submit" value="Save" />
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-12">
+                            <input type="submit" value="Save" />
+                        </div>
                     </div>
                 </form>
             </div>
@@ -177,3 +192,5 @@ window.onload = selectCurrentTab;
     </div>
 </div>
 {% endblock %}
+
+

@@ -23,12 +23,6 @@ $module: ".account-form";
 
 #{$module} {
 
-    h3 {
-        font-family: $sans-serif;
-        text-transform: none;
-        font-weight: weight(regular);
-    }
-
     fieldset {
       border: 0px;
       border-bottom: 0px solid transparent;
@@ -45,6 +39,8 @@ $module: ".account-form";
 
     .form-group {
         @include margin-bottom(.5);
+
+        padding: 0 1em;
 
         ul {
             list-style-type: none;
@@ -68,14 +64,11 @@ $module: ".account-form";
         display: block;
         vertical-align: top;
         float: left;
-        width: 60%;
-
-        @include padding(0.25 1 0.6 0);
+        width: 100%;
         @include font-size(m);
         @include line-height(1);
         //@include typeface(sans-serif);
         font-family: "Helvetica";
-        font-weight: small;
         text-transform: capitalize;
         color: rgba(0, 15, 36, 1);
         @include mq($until: xs) {
@@ -122,16 +115,14 @@ $module: ".account-form";
         @include transition(all 0.25s ease-in-out);
         border: 1px solid #ccc;
         border-radius: 4px;
-        outline: 0;
-        border: 0;
-        border-bottom: 1px solid transparent;
+        outline: 1px;
         width: 100%;
         color: black;
         font-family: "Helvetica";
         background: white;
 
         &:focus {
-            border-color: transparent;
+            border-color: $color-border-form;
             border-color: rgba(0,0,0,0);
         }
 
@@ -153,21 +144,21 @@ $module: ".account-form";
        text-overflow: ellipsis;
        padding-right: 28px;
        border-radius: 0;
-       border: 0;
-       border-bottom: 1px solid transparent;
+       border: 1px solid $color-border-form;
        outline: 0;
        -webkit-appearance: none;
        background-color: rgba(#50E3C2, 0.05);
        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#FFFFFF" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
        background-position: center right;
        background-repeat: no-repeat;
+       font-family: $primary-font-family;
 
        &:focus {
-           border-bottom: 1px solid transparent;
-           background-color: rgba(#50E3C2, 0.05);
-           background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#{$color-main}" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
-           background-position: center right;
-           background-repeat: no-repeat;
+            border-color: $color-border-form;
+            background-color: rgba(#50E3C2, 0.05);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#{$color-main}" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
+            background-position: center right;
+            background-repeat: no-repeat;
       }
     }
 
@@ -196,20 +187,13 @@ $module: ".account-form";
     input[id^='id_links-'][id$='-DELETE'] {
         float: left;
         margin-top: 1.25rem;
+        margin-left: 0.3rem;
     }
 
     label[for^='id_links-'][for$='-url'] {
         clear: left;
     }
 
-    // .url-inline {
-    //     -moz-column-count: 2;
-    //     -moz-column-gap: 50%;
-    //     -webkit-column-count: 2;
-    //     -webkit-column-gap: 50%;
-    //     column-count: 2;
-    //     column-gap: 50%;
-    // }
 
     // link type
     /*label[for^='id_links-'][for$='-url'] {
@@ -266,9 +250,6 @@ $module: ".account-form";
         clear: both;
     }
 
-    .checkbox {
-        height: 3rem;
-    }
 
     label[for="id_personoptions-0-id"],
     label[for="id_personoptions-0-person"] {
@@ -280,7 +261,7 @@ $module: ".account-form";
     }
 
     input[id^="id_personoptions-"] {
-        margin-top: 0.6rem;
+        margin-top: 0.3rem;
     }
 
     .errorlist {
@@ -288,14 +269,12 @@ $module: ".account-form";
         font-size: 0.8rem;
     }
 
-    .help_text {
-        font-size: 0.8rem;
-        color: grey;
-        width: 100%;
-        text-align: left;
-        display: inline-block;
-    }
+    @media screen and (max-width: 780px) {
 
+        label[for*="_image-clear_id"] {
+            width: 16%;
+        }
+    }
 }
 
 #info-profile .form-errors {
@@ -314,5 +293,10 @@ $module: ".account-form";
 
     @include mq($until: xs) {
         padding-left: 0;
+
+
     }
 }
+
+
+

@@ -28,7 +28,7 @@
 {% block main %}
 
 <div class ="row residency-detail__margin-row">
-    <div class="col-sm-16 col-md-12 event-line-box__center-buttons">
+    <div class="col-sm-12 col-md-12 event-line-box__center-buttons">
         <a id='event_news' class="button event-line-box__event-button event-line-box__underline-text-green active" href="/article/list">{% trans "News" %}</a>
         <a id='event_items' class="button event-line-box__event-button" href="/agenda">{% trans "Events" %}</a>
     </div>
@@ -38,7 +38,7 @@
 <div class="page__block event-line-box__block--white">
     <div class="container">
         <div class="row" data-summary-content>
-            <div class="col-sm-16 col-md-12 col-md-push-2 event-line-box__margin-paragraph-bottom">
+            <div class="col-sm-12 col-md-12 col-md-push-2 event-line-box__margin-paragraph-bottom">
                 <div class="event-line-box__text-event-paragraph event-line-box__dark-blue">
                     <h2 class="event-line-box__bold-text event-line-box__center-text">VERTIGO news</h2><br>
                     <div class="event-line-box__margins">
@@ -58,7 +58,7 @@
 
         <!--
         <div class="row">
-            <div class="col-sm-16 col-md-10 col-md-push-3 tac">
+            <div class="col-sm-12 col-md-10 col-md-push-3 tac">
                 <h1 class="section-title section-title--uppercase section-title--main section-title--underline">{% trans "News" %}</h1>
             </div>
         </div>
@@ -71,7 +71,7 @@
                     <div class="container">
                         <div class="row">
                             {% for object in objects %}
-                                <div class="col-xs-8">
+                                <div class="col-md-6">
                                     {% with app_label=object|app_label_short classname=object|classname|lower  %}
                                         {% with app_label|add:"/"|add:classname|add:"/includes/"|add:classname|add:"_card.html" as template %}
                                             {% include template %}
