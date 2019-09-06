@@ -24,7 +24,7 @@ $module: ".nav-header";
 
     list-style-type: none;
     margin: 0;
-    padding: 0 0 0.1rem 0;
+    padding: 0;
     text-align: center;
 
     @include margin(.5 0 0 0);
@@ -207,7 +207,7 @@ $module: ".nav-header";
       text-align:center !important;
       left:0px !important;
       padding:0px !important;
-      margin-top: 10px !important;
+      margin-top: 0;
     }
 
     &__item-subheader-menu {
@@ -651,6 +651,11 @@ $module: ".nav-header";
         position: relative;
         z-index: 4;
         vertical-align: top;
+
+        /* Force item to take full height */
+        /* workaround for a a bug with dropdown item */
+        display: block;
+        height: 45px;
 
         @include font-size(l);
         @include line-height($header-pre-height);
