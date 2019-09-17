@@ -1,11 +1,7 @@
-//////////////////////////////////////////////////
-//////////////////// TLDR ////////////////////////
-//
-// This webpack config is used for :
+// This webpack config is used to :
 //      - Compile src into `static/components`
 //      - Apply babel on `<scripts>` / js files in Vue
 //      - Apply PostCSS on `<style>` / css files in Vue
-//
 //
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -23,8 +19,11 @@ const entries = fs.readdirSync(appPath)
     return obj
   }, {})
 
+const env = process.env.NODE_ENV === 'production' ? 'production' : 'development'
+console.info(`Building for ${env} environment`)
+
 module.exports = {
-  mode: 'development',
+  mode: env,
   entry: entries,
   output: {
     filename: '[name].js',
