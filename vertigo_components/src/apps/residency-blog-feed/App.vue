@@ -1,5 +1,8 @@
 <template>
   <div class="blog-list">
+    <div class="title-container">
+      <h1>Residencies blog</h1>
+    </div>
     <div class="selector">
       <button
         :class="[ {'active': filter === 'all'} ]"
@@ -36,7 +39,28 @@ export default {
 }
 </script>
 
+<!-- Style for page container -->
+<style>
+.page--white-bg {
+  background: white;
+}
+</style>
+
 <style scoped>
+.title-container {
+  text-align: center;
+
+  & h1 {
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000f24;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000f24;
+    margin-bottom: 20px;
+  }
+}
+
 .selector {
   text-align: center;
 
@@ -44,13 +68,17 @@ export default {
     border: none;
     color: grey;
     background: none;
-    font-size: 18px;
-    padding: 20px;
+    font-size: 20px;
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 20px;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
 
     &.active {
       color: black;
       outline: none;
-      text-decoration: underline;
+      border-bottom: 2px solid #000f24;
     }
   }
 }

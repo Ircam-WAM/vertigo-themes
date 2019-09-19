@@ -8,7 +8,6 @@
         <select
           v-model="form.selectedResidency"
           autofocus
-          required
         >
           <option
             selected
@@ -18,7 +17,7 @@
             Residency
           </option>
           <option
-            v-for="res of residencies"
+            v-for="res of userResidencies"
             :key="res.id"
             :value="res.id"
           >
@@ -64,7 +63,7 @@
 
 <script>
 // import { validationMixin, required } from 'vuelidate'
-import fetchDrf from '~/utils/fetchDrf'
+import { mapGetters } from 'vuex'
 
 export default {
   /*
@@ -94,58 +93,38 @@ export default {
         title: '',
         content: '',
         selectedResidency: 'default'
-      },
-      residencies: []
+      }
     }
   },
   computed: {
-    csrfToken () {
-      const el = document.querySelector('input[name="csrfmiddlewaretoken"]')
-      if (!el) {
-        return null
-      }
-      return el.value
-    }
+    ...mapGetters('residencies', [
+      'userResidencies'
+    ])
   },
-  mounted () {
-    this.getResidencies()
+  async mounted () {
+    await Promise.all([
+      this.$store.dispatch('residencies/getResidencies'),
+      this.$store.dispatch('user/getUser')
+    ])
   },
   methods: {
-    async getResidencies () {
-      try {
-        const resp = await fetchDrf('/api/residency')
-
-        if (resp.status >= 400) {
-          this.apiError = `${resp.status}: ${JSON.stringify(await resp.json())}`
-          return
-        }
-
-        this.residencies = await resp.json()
-      } catch (e) {
-        this.apiError = e.toString()
-      }
-    },
     async submit (e) {
       this.processing = true
+
       const body = {
         article: {
           title: this.form.title,
           content: this.form.content
-        },
-        residency: this.form.selectedResidency
+        }
+      }
+
+      if (this.form.selectedResidency !== 'default') {
+        body.residency = this.form.selectedResidency
       }
 
       try {
-        const resp = await fetchDrf('/api/residency-blog/', {
-          method: 'POST',
-          body: JSON.stringify(body)
-        })
-
-        if (resp.status >= 400) {
-          this.apiError = `${resp.status}: ${JSON.stringify(await resp.json())}`
-          this.processing = false
-          return
-        }
+        // API call
+        await this.$store.dispatch('blog/addPost', body)
 
         // Reset fields
         this.form.title = ''
@@ -155,11 +134,14 @@ export default {
         e.target.reset()
 
         this.success = true
+
+        // Success message disappear in 5s
         setTimeout(() => (this.success = false), 5000)
       } catch (e) {
         this.processing = false
         this.apiError = e.toString()
       }
+
       this.processing = false
     }
   }

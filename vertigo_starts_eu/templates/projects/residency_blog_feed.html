@@ -1,6 +1,11 @@
 {% extends "pages/page.html" %}
 {% load mezzanine_tags staticfiles %}
 
+{% comment %}Style for this class defined in components{% endcomment %}
+{% block page_class %}
+    white-bg
+{% endblock %}
+
 {% block meta_title %}
     {% if page %}
         {{ page.title }}
