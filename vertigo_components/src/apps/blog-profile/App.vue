@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Form from '~/components/residency-blog/Form'
-import List from '~/components/residency-blog/List'
+import Form from '~/components/blog/Form'
+import List from '~/components/blog/List'
 
 export default {
   name: 'App',

@@ -5,27 +5,6 @@
       @submit.prevent="submit"
     >
       <div class="field-container">
-        <select
-          v-model="form.selectedResidency"
-          autofocus
-        >
-          <option
-            selected
-            disabled
-            value="default"
-          >
-            Residency
-          </option>
-          <option
-            v-for="res of userResidencies"
-            :key="res.id"
-            :value="res.id"
-          >
-            {{ res.title }}
-          </option>
-        </select>
-      </div>
-      <div class="field-container">
         <label>Title</label>
         <input
           v-model="form.title"
@@ -39,6 +18,27 @@
           v-model="form.content"
           required
         />
+      </div>
+      <div class="field-container">
+        <select
+          v-model="form.selectedResidency"
+          autofocus
+        >
+          <option
+            selected
+            disabled
+            value="default"
+          >
+            Residency (optional)
+          </option>
+          <option
+            v-for="res of userResidencies"
+            :key="res.id"
+            :value="res.id"
+          >
+            {{ res.title }}
+          </option>
+        </select>
       </div>
       <input
         :disabled="processing"

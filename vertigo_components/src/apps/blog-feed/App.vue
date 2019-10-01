@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import List from '~/components/residency-blog/List'
+import List from '~/components/blog/List'
 
 export default {
   name: 'App',
