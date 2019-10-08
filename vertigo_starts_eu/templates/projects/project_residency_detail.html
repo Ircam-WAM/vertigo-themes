@@ -174,7 +174,7 @@ $(function() {
 
 <div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style"  style="display:block;margin-right:20%;margin-left:20%">
   <div class="page__descrition-residencies-content">
-    <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
+    <div class="residency-detail__title page__style-text-profile">{{ object.title }}</div>
     <br>
     {% with object.project.public_data.all|first as project_public_data %}
         <div class="residency-detail__text-detail page__style-text-profile" style="text-align:justify;;white-space:pre-line">
