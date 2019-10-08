@@ -103,7 +103,7 @@ $(function() {
 {% endwith %}
   <div class="page__content-detail-header">
     <div class="page__center-element">
-      <div class="page__title-detail-residencies">{{ object.project.title }}</div>
+      <div class="page__title-detail-residencies">{{ object.title }}</div>
 			{% comment %}
       <div id="element-social" class="page__circle-cross-red-detail-residencies page__residencies-red-banner" onclick="changeFollowStatus(event,this);">
         <i id="element-social-follow" class="fa fa-check page__style-cross-icon-detail-residencies" style="display:none;" aria-hidden="true"></i>
@@ -174,7 +174,7 @@ $(function() {
 
 <div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style"  style="display:block;margin-right:20%;margin-left:20%">
   <div class="page__descrition-residencies-content">
-    <div class="residency-detail__title page__style-text-profile">{{ object.title }}</div>
+    <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
     <br>
     {% with object.project.public_data.all|first as project_public_data %}
         <div class="residency-detail__text-detail page__style-text-profile" style="text-align:justify;;white-space:pre-line">
