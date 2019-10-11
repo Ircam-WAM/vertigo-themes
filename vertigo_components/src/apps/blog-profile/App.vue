@@ -1,6 +1,12 @@
 <template>
   <div class="residency-blog-profile">
-    <Form />
+    <p class="title">
+      Write a blog post
+    </p>
+    <Form class="form" />
+    <p class="title">
+      Your published posts
+    </p>
     <List :filter="{ type: 'myposts' }" />
   </div>
 </template>
@@ -17,3 +23,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+</style>

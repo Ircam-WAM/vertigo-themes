@@ -5,6 +5,7 @@
 //
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fs = require('fs')
 const path = require('path')
@@ -41,6 +42,12 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader'
@@ -80,7 +87,10 @@ module.exports = {
   plugins: [
     // make sure to include the plugin for the magic
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new StylelintPlugin({
+      files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}']
+    })
   ],
   optimization: {
     splitChunks: {

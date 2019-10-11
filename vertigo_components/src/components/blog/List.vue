@@ -72,11 +72,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.residency-blog-list {
-  background: white;
-  color: black;
-  padding: 20px;
-}
-</style>

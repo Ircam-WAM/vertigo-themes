@@ -5,7 +5,7 @@
     {% if page %}
         {{ page.title }}
     {% else %}
-				My residency Blog
+				Blog
     {% endif %}
 {% endblock %}
 
@@ -40,7 +40,7 @@
 {% block page_content %}
 
 	{% csrf_token %}
-	<div class="container" data-profile-tab="public-residency-blog-item" id="settings-profile-container">
+	<div class="container" data-profile-tab="public-blog-item" id="settings-profile-container">
 		{% if user.person == object %}
 			<div id="blog-profile"></div>
 		{% else %}

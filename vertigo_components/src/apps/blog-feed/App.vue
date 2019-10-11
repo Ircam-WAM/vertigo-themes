@@ -1,7 +1,7 @@
 <template>
   <div class="blog-list">
     <div class="title-container">
-      <h1>Residencies blog</h1>
+      <h1>Blog Feed</h1>
     </div>
     <div class="selector">
       <button
@@ -41,8 +41,8 @@ export default {
 
 <!-- Style for page container -->
 <style>
-.page--white-bg {
-  background: white;
+.page--grey-bg {
+  background: #ecebeb;
 }
 </style>
 
