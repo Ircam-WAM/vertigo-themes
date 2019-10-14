@@ -6,13 +6,20 @@
       @submit.prevent="submit"
       @focusin="formHasFocus = true"
       @focusout="setFocus"
+      novalidate
     >
       <div class="field-container">
         <MarkdownField
           id="content"
-          v-model="form.content"
-          :required="true"
+          v-model.trim="form.content"
+          @blur="$v.form.content.$touch"
         />
+        <div
+          v-if="$v.form.content.$error && !$v.form.content.required"
+          class="error"
+        >
+          Content is required
+        </div>
       </div>
       <transition name="fade-height">
         <div v-show="formHasFocus || !isDefaultFormData">
@@ -26,10 +33,16 @@
             </label>
             <input
               id="title"
-              v-model="form.title"
+              v-model.trim="form.title"
               type="text"
-              required
+              @blur="$v.form.title.$touch"
             >
+            <div
+              v-if="$v.form.title.$error && !$v.form.title.required"
+              class="error"
+            >
+              Title is required
+            </div>
           </div>
           <div class="field-container picture-field">
             <label
@@ -81,7 +94,7 @@
             >Residency</label>
             <select
               id="residency"
-              v-model="form.selectedResidency"
+              v-model.trim="form.selectedResidency"
               autofocus
             >
               <option
@@ -123,7 +136,8 @@
 </template>
 
 <script>
-// import { validationMixin, required } from 'vuelidate'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
 import { mapGetters } from 'vuex'
 import MarkdownField from '~/components/common/MarkdownField'
 
@@ -138,24 +152,19 @@ export default {
   components: {
     MarkdownField
   },
-  /*
   mixins: [
     validationMixin
   ],
-  validation: {
+  validations: {
     form: {
       title: {
         required
       },
       content: {
         required
-      },
-      selectedResidency: {
-        required
       }
     }
   },
-  */
   data () {
     return {
       form: {
@@ -225,6 +234,11 @@ export default {
       this.$refs.file.value = ''
     },
     async submit (e) {
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        return
+      }
+
       this.processing = true
 
       const body = {
@@ -257,6 +271,7 @@ export default {
 
         // Reset validation
         e.target.reset()
+        this.$v.$reset()
         this.success = true
 
         // Success message disappear in 5s
@@ -277,7 +292,6 @@ export default {
       })
     },
     async handleFileChange (e) {
-      console.log('handleFileChange')
       const files = e.target.files || e.dataTransfer.files
       if (!files.length) {
         return
@@ -367,6 +381,8 @@ label,
 
 .error {
   color: red;
+  margin: 0;
+  text-align: left;
 }
 
 .mandatory {
