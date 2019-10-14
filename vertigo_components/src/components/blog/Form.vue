@@ -3,10 +3,10 @@
     <form
       ref="form"
       class="form"
+      novalidate
       @submit.prevent="submit"
       @focusin="formHasFocus = true"
       @focusout="setFocus"
-      novalidate
     >
       <div class="field-container">
         <MarkdownField

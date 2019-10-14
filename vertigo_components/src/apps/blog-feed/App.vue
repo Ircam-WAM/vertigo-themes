@@ -3,7 +3,10 @@
     <div class="title-container">
       <h1>Blog Feed</h1>
     </div>
-    <div class="selector">
+    <div
+      v-if="isLogged"
+      class="selector"
+    >
       <button
         :class="[ {'active': filter === 'all'} ]"
         @click="filter = 'all'"
@@ -24,6 +27,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import List from '~/components/blog/List'
 
 export default {
@@ -35,6 +39,14 @@ export default {
     return {
       filter: 'all'
     }
+  },
+  computed: {
+    ...mapState('user', [
+      'isLogged'
+    ])
+  },
+  mounted () {
+    this.$store.dispatch('user/getUser')
   }
 }
 </script>
