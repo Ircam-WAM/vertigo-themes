@@ -86,17 +86,31 @@ body #container .blog-article {
 
   & .head {
     display: flex;
+    align-items: center;
     margin-bottom: 20px;
+
+    @media (width <= 600px) {
+      flex-direction: column;
+    }
 
     & h3 {
       font-size: 40px;
     }
 
-    & .profile-image img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 50%;
+    & .profile-image {
+      margin-right: 20px;
+
+      & img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      @media (width <= 600px) {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
     }
 
     & .infos {
