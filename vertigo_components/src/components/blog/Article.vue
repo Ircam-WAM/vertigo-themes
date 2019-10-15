@@ -86,15 +86,17 @@ body #container .blog-article {
 
   & .head {
     display: flex;
+    margin-bottom: 20px;
 
     & h3 {
       font-size: 40px;
     }
 
-    & .profile-image {
-      margin-right: 20px;
-      max-width: 40%;
-      max-height: 200px;
+    & .profile-image img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     & .infos {
