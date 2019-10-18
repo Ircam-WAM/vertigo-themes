@@ -58,6 +58,8 @@ export default {
       }
 
       commit('addPosts', jsonResp)
+
+      return jsonResp
     }
   },
 

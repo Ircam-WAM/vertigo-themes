@@ -211,17 +211,24 @@ export default {
   margin: 0 auto;
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .map-container {
   position: relative;
 
   /* for text inside cluster markers color */
   color: white;
 
-  & .map, & .loading {
+  & .map,
+  & .loading {
     min-height: calc(100vh - 450px);
 
     @media (width <= 600px) {
-      min-height: calc(100vh - 200px)
+      min-height: calc(100vh - 200px);
     }
   }
 }
@@ -235,18 +242,13 @@ export default {
   }
 }
 
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .selected-container {
   /* background-image is overidden by inlined style */
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.6)
-  );
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    );
   background-size: cover;
 
   padding: 20px;

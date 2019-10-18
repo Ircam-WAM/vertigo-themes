@@ -1,9 +1,12 @@
 <template>
   <div class="blog-list">
     <div class="title-container">
-      <h1>Residencies blog</h1>
+      <h1>Blog Feed</h1>
     </div>
-    <div class="selector">
+    <div
+      v-if="isLogged"
+      class="selector"
+    >
       <button
         :class="[ {'active': filter === 'all'} ]"
         @click="filter = 'all'"
@@ -24,7 +27,8 @@
 </template>
 
 <script>
-import List from '~/components/residency-blog/List'
+import { mapState } from 'vuex'
+import List from '~/components/blog/List'
 
 export default {
   name: 'App',
@@ -35,14 +39,22 @@ export default {
     return {
       filter: 'all'
     }
+  },
+  computed: {
+    ...mapState('user', [
+      'isLogged'
+    ])
+  },
+  mounted () {
+    this.$store.dispatch('user/getUser')
   }
 }
 </script>
 
 <!-- Style for page container -->
 <style>
-.page--white-bg {
-  background: white;
+.page--grey-bg {
+  background: #ecebeb;
 }
 </style>
 

@@ -5,13 +5,15 @@ export default {
 
   state () {
     return {
-      user: null
+      user: null,
+      isLogged: false
     }
   },
 
   mutations: {
     setUser (state, user) {
       state.user = user
+      state.isLogged = true
     }
   },
 

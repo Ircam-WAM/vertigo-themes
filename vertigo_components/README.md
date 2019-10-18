@@ -80,3 +80,7 @@ This project uses the following developer tools. Make sure that your code editor
 
 This project uses postcss and babel to transpile the project. So, IE11 and recent browsers are supported.
 For more information, please see the `browserlist` key of package.json
+
+# Authors
+
+- Copyright 2019 (c) Martin Desrumaux <martin.desrumaux@ircam.fr>

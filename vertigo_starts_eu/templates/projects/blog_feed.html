@@ -3,14 +3,14 @@
 
 {% comment %}Style for this class defined in components{% endcomment %}
 {% block page_class %}
-    white-bg
+    grey-bg
 {% endblock %}
 
 {% block meta_title %}
     {% if page %}
         {{ page.title }}
     {% else %}
-				Residency Blog
+				Blog
     {% endif %}
 {% endblock %}
 
@@ -21,13 +21,13 @@
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
-<script type="text/javascript" src="{% static "components/residency-blog-feed.js" %}"></script>
+	<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
+	<script type="text/javascript" src="{% static "components/blog-feed.js" %}"></script>
 {% endblock %}
 
 {% block page_content %}
 {% csrf_token %}
-<div class="container" data-profile-tab="public-residency-blog-item" id="settings-residency-blog-container">
-	<div id="residency-blog-feed"></div>
+<div class="container" data-profile-tab="public-blog-item" id="settings-blog-container">
+	<div id="blog-feed"></div>
 </div>
 {% endblock %}

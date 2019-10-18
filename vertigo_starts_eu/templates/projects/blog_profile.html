@@ -5,7 +5,7 @@
     {% if page %}
         {{ page.title }}
     {% else %}
-				My residency Blog
+				Blog
     {% endif %}
 {% endblock %}
 
@@ -25,14 +25,14 @@
 	<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
 
 	{% if user.person == object %}
-		<script type="text/javascript" src="{% static "components/residency-blog-profile.js" %}"></script>
+		<script type="text/javascript" src="{% static "components/blog-profile.js" %}"></script>
 	{% else %}
 		<script>
 			window.globalVars = {
 				username: "{{ object.user.username }}"
 			}
 		</script>
-		<script type="text/javascript" src="{% static "components/residency-blog-list-user.js" %}"></script>
+		<script type="text/javascript" src="{% static "components/blog-list-user.js" %}"></script>
 	{% endif %}
 
 {% endblock %}
@@ -40,11 +40,11 @@
 {% block page_content %}
 
 	{% csrf_token %}
-	<div class="container" data-profile-tab="public-residency-blog-item" id="settings-profile-container">
+	<div class="container" data-profile-tab="public-blog-item" id="settings-profile-container">
 		{% if user.person == object %}
-			<div id="residency-blog-profile"></div>
+			<div id="blog-profile"></div>
 		{% else %}
-			<div id="residency-blog-list-user"></div>
+			<div id="blog-list-user"></div>
 		{% endif %}
 	</div>
 

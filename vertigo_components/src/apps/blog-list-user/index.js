@@ -14,4 +14,4 @@ new Vue({
     }
   }),
   render: h => h(App)
-}).$mount('#residency-blog-profile')
+}).$mount('#blog-list-user')
