@@ -209,6 +209,10 @@ export default {
 .interactive-map {
   max-width: 80vw;
   margin: 0 auto;
+
+  @media (width <= 800px) {
+    max-width: 95vw;
+  }
 }
 
 .loading {
@@ -225,10 +229,11 @@ export default {
 
   & .map,
   & .loading {
-    min-height: calc(100vh - 450px);
+    height: calc(100vh - 450px);
+    min-height: 500px;
 
     @media (width <= 600px) {
-      min-height: calc(100vh - 200px);
+      height: calc(100vh - 200px);
     }
   }
 }
