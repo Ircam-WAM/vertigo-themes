@@ -71,13 +71,15 @@ export default {
   mounted () {
     // Access leaflet instance through mapObject
     // See: https://github.com/KoRiGaN/Vue2Leaflet/blob/master/src/components/LMap.vue
-    this.$refs.map.mapObject.on('click', this.onMapClick)
+    this.$refs.map.mapObject.on('click', this.deselect)
+    this.$refs.map.mapObject.on('zoomstart', this.deselect)
   },
   beforeDestroy () {
-    this.$refs.map.mapObject.off('click', this.onMapClick)
+    this.$refs.map.mapObject.off('click', this.deselect)
+    this.$refs.map.mapObject.off('zoomstart', this.deselect)
   },
   methods: {
-    onMapClick (ev) {
+    deselect () {
       this.$emit('deselect')
     }
   }
