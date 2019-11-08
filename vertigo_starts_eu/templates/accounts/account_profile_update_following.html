@@ -1,35 +1,39 @@
-{% extends "vertigo_starts_eu/accounts/account_form_profile_operations.html" %}
-{% load i18n mezzanine_tags %}
+{% extends "accounts/base.html" %}
+{% load i18n mezzanine_tags static %}
 
-{% block page_title %}
-	<!--<h1 style="font-family:'Oswald';margin-bottom:100px;padding-top:200px;color:#000F24">{% trans "Update profile" %}</h1>-->
+{% block meta_title %}
+    {% if page %}
+        {{ page.title }}
+    {% else %}
+				Following
+    {% endif %}
+{% endblock %}
+
+{% block meta_description %}
+    {% metablock %}
+        {{ page.description }}
+    {% endmetablock %}
 {% endblock %}
 
 {% block page_content %}
 
+<div class="container" data-profile-tab="select-following" id="settings-profile-container">
+	<div id="following-list"></div>
+</div>
+
+{% csrf_token %}
+
+{% endblock %}
+
+{% block extra_js %}
+
 <script>
-
-function selectCurrentTab() {
-
-  document.getElementById("select-following").className = "page__option-selected";
+window.globalVars = {
+	username: "{{ object.user.username }}"
 }
-
-window.onload = selectCurrentTab;
-
 </script>
 
-<div class="container page__margin-top">
-  <div class="page__item_info">
-  {{ block.super }}
-
-      <div class="page__item_content">
-
-          <div id="info-following" class="page__info-block">
-              Submit FOLLOWING
-          </div>
-
-      </div>
-  </div>
-</div>
+<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
+<script type="text/javascript" src="{% static "components/following-list.js" %}"></script>
 
 {% endblock %}
