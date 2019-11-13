@@ -71,7 +71,8 @@ export default {
     return {
       profileImage: '/static/vertigo_starts_eu/img/profile/placeholder_profile_320x320.png', // Default image
       isFollowed: false,
-      processing: false
+      processing: false,
+      isValidUser: false
     }
   },
   computed: {
@@ -83,7 +84,10 @@ export default {
       // In order to follow, you have to:
       // - Be logged
       // - Be on something else's page (not yourself)
-      return this.isLogged && this.username !== this.user.username
+      // - API responded a valid request for this user
+      return this.isLogged &&
+        this.username !== this.user.username &&
+        this.isValidUser === true
     },
     // Username of the profile in the current page
     username () {
@@ -100,10 +104,12 @@ export default {
     // Get current page's profile
     const resp = await fetchDrf(`/api/person/${this.username}/`)
     if (resp.status >= 400) {
+      this.$toasted.error(`Unable to get user ${this.username}`)
       throw new Error(`${resp.status}: ${JSON.stringify(await resp.json())}`)
     }
     const person = await resp.json()
 
+    this.isValidUser = true
     if (person['profile_image']) {
       this.profileImage = person['profile_image']
     }
@@ -117,6 +123,8 @@ export default {
       })
 
       if (resp.status >= 400) {
+        this.processing = false
+        this.$toasted.error(`Unable to follow ${this.username}`)
         throw new Error(`${resp.status}: ${JSON.stringify(await resp.json())}`)
       }
 
@@ -133,6 +141,8 @@ export default {
       })
 
       if (resp.status >= 400) {
+        this.processing = false
+        this.$toasted.error(`Unable to unfollow ${this.username}`)
         throw new Error(`${resp.status}: ${JSON.stringify(await resp.json())}`)
       }
 
