@@ -5,7 +5,8 @@ export default {
 
   state () {
     return {
-      posts: []
+      posts: [],
+      lastPromise: null
     }
   },
 
@@ -15,11 +16,14 @@ export default {
     },
     addPosts (state, ...post) {
       state.posts.unshift(...post)
+    },
+    setLastPromise (state, promise) {
+      state.lastPromise = promise
     }
   },
 
   actions: {
-    async getPosts ({ commit }, filter) {
+    async getPosts ({ state, commit }, filter) {
       const queryParams = ((filter) => {
         if (!filter) {
           return null
@@ -35,14 +39,24 @@ export default {
         return params.toString()
       })(filter)
 
-      const resp = await fetchDrf(`/api/residency-blog/${queryParams ? `?${queryParams}` : ''}`)
+      const promise = fetchDrf(`/api/residency-blog/${queryParams ? `?${queryParams}` : ''}`)
+      commit('setLastPromise', promise)
+
+      const resp = await promise
+
+      // Another request is currently loading
+      if (promise !== state.lastPromise) {
+        return
+      }
 
       if (resp.status >= 400) {
         commit('setPosts', [])
+        commit('setLastPromise', null)
         throw new Error(`${resp.status}: ${JSON.stringify(await resp.json())}`)
       }
 
       commit('setPosts', await resp.json())
+      commit('setLastPromise', null)
     },
 
     async addPost ({ commit }, body) {

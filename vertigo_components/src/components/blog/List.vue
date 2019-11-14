@@ -40,35 +40,29 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      loading: false
-    }
-  },
   computed: {
     ...mapState('residencies', [
       'residencies'
     ]),
     ...mapState('blog', [
       'posts'
-    ])
+    ]),
+    loading () {
+      const state = this.$store.state
+      return state.blog.lastPromise !== null ||
+        state.residencies.lastPromise !== null
+    }
   },
   watch: {
     async filter () {
-      this.loading = true
       await this.$store.dispatch('blog/getPosts', this.filter)
-      this.loading = false
     }
   },
   async mounted () { // init
-    this.loading = true
-
     await Promise.all([
       this.$store.dispatch('residencies/getResidencies'),
       this.$store.dispatch('blog/getPosts', this.filter)
     ])
-
-    this.loading = false
   }
 }
 </script>
