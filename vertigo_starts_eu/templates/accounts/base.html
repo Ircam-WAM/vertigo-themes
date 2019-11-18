@@ -33,6 +33,7 @@
 									username: "{{ object.user.username }}"
 								}
 								</script>
+								{% csrf_token %}
 								<div id="profile-header"></div>
 								{% comment %}
                 {% if object.profile_image %}

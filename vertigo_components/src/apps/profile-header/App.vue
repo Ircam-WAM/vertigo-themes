@@ -53,6 +53,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import djangoErrors from '~/utils/django-errors'
 import fetchDrf from '~/utils/fetchDrf'
 import EventBus from '~/utils/EventBus'
 
@@ -124,8 +125,13 @@ export default {
 
       if (resp.status >= 400) {
         this.processing = false
-        this.$toasted.error(`Unable to follow ${this.username}`)
-        throw new Error(`${resp.status}: ${JSON.stringify(await resp.json())}`)
+        const payload = await resp.json()
+        if (resp.status === 403 && payload.detail === djangoErrors.invalidCsrf) {
+          this.$toasted.error(`You are not logged in. Please login or refresh before following.`)
+        } else {
+          this.$toasted.error(`Unable to follow ${this.username}`)
+        }
+        throw new Error(`${resp.status}: ${JSON.stringify(payload)}`)
       }
 
       this.$toasted.show(`You started following ${this.username}`)
@@ -142,8 +148,13 @@ export default {
 
       if (resp.status >= 400) {
         this.processing = false
-        this.$toasted.error(`Unable to unfollow ${this.username}`)
-        throw new Error(`${resp.status}: ${JSON.stringify(await resp.json())}`)
+        const payload = await resp.json()
+        if (resp.status === 403 && payload.detail === djangoErrors.invalidCsrf) {
+          this.$toasted.error(`You are not logged in. Please login or before unfollowing.`)
+        } else {
+          this.$toasted.error(`Unable to unfollow ${this.username}`)
+        }
+        throw new Error(`${resp.status}: ${JSON.stringify(payload)}`)
       }
 
       this.$toasted.show(`You unfollowed ${this.username}`)
