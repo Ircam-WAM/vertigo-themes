@@ -93,13 +93,16 @@ export default {
     }
   },
   methods: {
-    async onFollow ({ username }) {
+    async onFollow ({ detail: { username } }) {
       // We have to reload the follow list because
       // we do not have all the details of the newly follower
       // (first_name, last_name etc...)
       await this.getPosts()
     },
-    onUnfollow ({ username }) {
+    onUnfollow ({ detail: { username } }) {
+      if (!username) {
+        throw new Error(`onUnfollow expect a username, received ${username}`)
+      }
       // Remove username from list
       this.items = this.items.filter((item) => item.username !== username)
     },
@@ -120,7 +123,8 @@ export default {
         profileImage: item['profile_image'],
         url: item.url,
         location: item.location,
-        occupation: item.occupation
+        occupation: item.occupation,
+        username: item.username
       }))
       this.isFollowed = person['is_followed_by_me']
 

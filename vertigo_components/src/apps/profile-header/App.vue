@@ -149,7 +149,7 @@ export default {
       }
 
       this.$toasted.show(`You started following ${this.username}`)
-      EventBus.dispatchEvent('follow', { username: this.username })
+      EventBus.dispatchEvent('follow', { username: this.user.username })
       this.isFollowed = true
       this.processing = false
     },
@@ -172,7 +172,7 @@ export default {
       }
 
       this.$toasted.show(`You unfollowed ${this.username}`)
-      EventBus.dispatchEvent('unfollow', { username: this.username })
+      EventBus.dispatchEvent('unfollow', { username: this.user.username })
       this.isFollowed = false
       this.processing = false
     }

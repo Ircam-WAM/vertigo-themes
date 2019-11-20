@@ -28,6 +28,7 @@ class EventBus {
   }
 }
 
+// Singleton
 if (!window.EventBus) {
   window.EventBus = new EventBus()
 }
