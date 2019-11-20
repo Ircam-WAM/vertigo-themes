@@ -48,6 +48,20 @@
         </button>
       </template>
     </div>
+    <button
+      v-if="canFollow"
+      class="action-button"
+      :title="isFollowed ? 'Unfollow' : 'Follow'"
+      :disabled="processing"
+      @click="isFollowed ? unfollow() : follow()"
+    >
+      <span v-if="processing" class="loading">
+        …
+      </span>
+      <span v-else>
+        {{ isFollowed ? 'Unfollow' : 'Follow' }}
+      </span>
+    </button>
   </div>
 </template>
 
@@ -182,6 +196,7 @@ export default {
   max-width: 320px;
   max-height: 320px;
   margin: 0 auto;
+  margin-bottom: 10px;
 
   & .profile-image.can-follow {
     clip-path: url('#picto-path') !important;
@@ -203,6 +218,25 @@ export default {
     * 48 / 320 = 0.15
     */
     width: 15%;
+  }
+}
+
+.action-button {
+  background: #47dfba;
+  border: none;
+  margin: 5px;
+  margin-top: 10px;
+  font-family: "Oswald", sans-serif;
+  color: white;
+  min-width: 150px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  font-size: 20px;
+
+  & .loading {
+    font-size: 40px;
+    line-height: 0;
+    vertical-align: top;
   }
 }
 </style>
