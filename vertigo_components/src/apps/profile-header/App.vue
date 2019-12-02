@@ -232,6 +232,7 @@ export default {
   padding: 5px 20px;
   text-transform: uppercase;
   font-size: 20px;
+  border-radius: 5px;
 
   & .loading {
     font-size: 40px;
