@@ -55,7 +55,10 @@
       :disabled="processing"
       @click="isFollowed ? unfollow() : follow()"
     >
-      <span v-if="processing" class="loading">
+      <span
+        v-if="processing"
+        class="loading"
+      >
         …
       </span>
       <span v-else>
