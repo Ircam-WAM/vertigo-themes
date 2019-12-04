@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import getCsrfToken from './getCsrfToken'
 
+// Get token once on start
 const tok = getCsrfToken()
 
 export default async (url, params) => {

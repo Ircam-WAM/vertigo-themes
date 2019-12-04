@@ -28,11 +28,20 @@
         <div class="row justify-content-md-center background-placeholder {% if object.background_image.name %} background-user {% endif %}"
             {% if object.background_image.name%} style="background-image: url('{{ MEDIA_URL }}{{ object.background_image.name }}');" {% endif %}>
             <div class="col-md-3 text-center profile-pic">
+								<script>
+								window.globalVars = {
+									username: "{{ object.user.username }}"
+								}
+								</script>
+								{% csrf_token %}
+								<div id="profile-header"></div>
+								{% comment %}
                 {% if object.profile_image %}
                     <img src="{{ MEDIA_URL }}{% thumbnail object.profile_image.name 320 320 %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
                 {% else %}
                     <img src="{% static 'vertigo_starts_eu/img/profile/placeholder_profile_320x320.png' %}" class="img-fluid mx-auto" title="Profile image of {{ object.first_name }} {{ object.last_name }}" />
                 {% endif %}
+								{% endcomment %}
                 {% block page_title %}                                        
                     <h1>{{ object.first_name }} {{ object.last_name }}</h1>
                 {% endblock %}
@@ -65,5 +74,7 @@
 
 {% block footer_scripts %}
     {{ block.super }}
-    <script src="{% static 'vertigo_starts_eu/js/profile/tab-switcher.js' %}"></script>
+    <script type="text/javascript" src="{% static "vertigo_starts_eu/js/profile/tab-switcher.js" %}"></script>
+		<script type="text/javascript" src="{% static "components/vendors.js" %}"></script>
+		<script type="text/javascript" src="{% static "components/profile-header.js" %}"></script>
 {% endblock %}
