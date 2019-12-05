@@ -1,30 +1,6 @@
 <template>
   <div class="blog-article">
     <template v-if="blog.article">
-      <div
-        v-if="editable"
-        class="action-buttons"
-      >
-        <!--
-        <button
-          title="Update"
-          @click="updateArticle"
-        >
-          Edit
-          <FontAwesomeIcon :icon="[ 'fas', 'edit' ]" />
-        </button>
-        -->
-        <button
-          title="Delete"
-          :disabled="isDeleting"
-          @click="deleteArticle"
-        >
-          <FontAwesomeIcon
-            :icon="[ 'fas', 'trash-alt' ]"
-            size="lg"
-          />
-        </button>
-      </div>
       <div class="head">
         <div
           v-if="blog.article.user.profile_image"
@@ -66,86 +42,33 @@
 
 <script>
 import MarkdownIt from 'markdown-it'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-// import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const md = new MarkdownIt()
-library.add(faTrashAlt)
-// library.add(faEdit)
 
 export default {
   name: 'ResidencyArticle',
-  components: {
-    FontAwesomeIcon
-  },
-
   props: {
     blog: {
       type: Object,
       required: true
     },
-
     residencies: {
       type: Array,
       required: false,
       default: null
-    },
-
-    editable: {
-      type: Boolean,
-      default: true,
-      required: false
-    }
-
-  },
-
-  data () {
-    return {
-      // isUpdating: false,
-      isDeleting: false
     }
   },
-
   computed: {
     md () {
       return md
     }
   },
-
   methods: {
     getResidencyById (id) {
       if (!this.residencies) {
         return null
       }
       return this.residencies.find(i => i.id === id)
-    },
-
-    async deleteArticle () {
-      const confirmed = window.confirm(`Do you want to delete the article "${this.blog.article.title}" ?`)
-      if (!confirmed) {
-        return
-      }
-
-      this.isDeleting = true
-      await this.$store.dispatch('blog/deletePost', this.blog.id)
-      this.isDeleting = false
-    },
-
-    // Not implemented: For testing purposes
-    async updateArticle () {
-      // this.isUpdating = true
-      // Static data
-      await this.$store.dispatch('blog/updatePost', {
-        id: this.blog.id,
-        residency: undefined,
-        article: {
-          title: 'New title 3',
-          content: 'New content 3'
-        }
-      })
-      // this.isUpdating = false
     }
   }
 }
@@ -154,9 +77,6 @@ export default {
 <style scoped>
 /* Have to use a specific selector to avoid using !important */
 body #container .blog-article {
-  /* For buttons position */
-  position: relative;
-
   color: black;
   border: 1px solid #c9c9c9;
   margin-bottom: 20px;
@@ -232,18 +152,6 @@ body #container .blog-article {
     max-width: 100%;
     display: block;
     margin: 0 auto;
-  }
-
-  & .action-buttons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    & button {
-      background: none;
-      border: none;
-      padding: 10px;
-    }
   }
 }
 </style>

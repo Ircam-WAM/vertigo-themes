@@ -7,10 +7,7 @@
     <p class="title">
       Your published posts
     </p>
-    <List
-      :filter="{ type: 'myposts' }"
-      :editable="true"
-    />
+    <List :filter="{ type: 'myposts' }" />
   </div>
 </template>
 
