@@ -13,6 +13,7 @@
         :key="blog.id"
         :blog="blog"
         :residencies="residencies"
+        :editable="editable"
       />
     </template>
   </div>
@@ -38,6 +39,11 @@ export default {
       validator: (val) => {
         return ['all', 'followed', 'myposts', 'user'].indexOf(val.type) !== -1
       }
+    },
+    editable: {
+      type: Boolean,
+      default: true,
+      required: false
     }
   },
   computed: {

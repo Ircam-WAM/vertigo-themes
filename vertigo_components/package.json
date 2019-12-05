@@ -9,6 +9,9 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/vue-fontawesome": "^0.1.8",
     "js-cookie": "^2.2.0",
     "leaflet": "^1.5.1",
     "markdown-it": "^10.0.0",
