@@ -5,7 +5,7 @@
 //
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fs = require('fs')
 const path = require('path')
@@ -85,7 +85,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // make sure to include the plugin for the magic
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new StylelintPlugin({
@@ -96,7 +95,7 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/](vue|vuex)[\\/]/,
           chunks: 'all',
           name: 'vendors',
           enforce: true
