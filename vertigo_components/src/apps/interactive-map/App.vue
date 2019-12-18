@@ -144,10 +144,12 @@ export default {
 
   & .map,
   & .loading {
-    min-height: calc(100vh - 450px);
+    /* 350px is card's height + padding */
+    min-height: 350px;
+    height: calc(100vh - 450px);
 
     @media (width <= 600px) {
-      min-height: calc(100vh - 200px);
+      height: calc(100vh - 200px);
     }
   }
 }
