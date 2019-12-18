@@ -169,7 +169,6 @@ export default {
 }
 
 .statistics {
-  text-align: right;
   font-family: Oswald, sans-serif;
   color: black;
   text-align: right;
