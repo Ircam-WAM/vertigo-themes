@@ -107,6 +107,9 @@
         {% include "includes/footer_scripts.html" %}
     {% endblock %}
 
+		{% comment %} Use this block if you need to execute JS with libraries {% endcomment %}
+		{% block extra_js %}{% endblock %}
+
     {% endspaceless %}
 
 </body>
