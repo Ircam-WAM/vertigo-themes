@@ -39,6 +39,11 @@
           @select="selectedId = $event"
           @deselect="selectedId = null"
         />
+        <div class="statistics">
+          <div class="total">
+            Total number of places: {{ filteredMarkers.length }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -160,6 +165,19 @@ export default {
   /* because Leaflet control buttons has z-index 1000 */
   &.multiselect--active {
     z-index: 1050;
+  }
+}
+
+.statistics {
+  text-align: right;
+  font-family: Oswald, sans-serif;
+  color: black;
+  text-align: right;
+
+  & .total {
+    background: white;
+    padding: 0 5px;
+    display: inline-block;
   }
 }
 </style>
