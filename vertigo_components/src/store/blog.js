@@ -12,14 +12,26 @@ export default {
 
   mutations: {
     setPosts (state, posts) {
-      state.posts = posts
+      // Only keep valid blog posts
+      const validPosts = posts.filter(p => p.article !== null)
+
+      // Logging invalid blog posts for debugging
+      if (validPosts.length !== posts.length) {
+        const invalidPosts = posts.filter(p => p.article === null)
+        console.warn('invalid posts provided', invalidPosts)
+      }
+
+      state.posts = validPosts
     },
+
     addPosts (state, ...post) {
       state.posts.unshift(...post)
     },
+
     setLastPromise (state, promise) {
       state.lastPromise = promise
     }
+
   },
 
   actions: {
