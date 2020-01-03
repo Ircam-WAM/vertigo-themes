@@ -21,6 +21,15 @@
     >
       {{ truncate(title, 40) }}
     </h3>
+    <div class="categories">
+      <div
+        v-for="c of categories"
+        :key="c"
+        class="tag"
+      >
+        {{ categoryName[c] }}
+      </div>
+    </div>
     <div
       v-if="keywords"
       class="keywords-container"
@@ -92,6 +101,16 @@ export default {
       default: null
     }
   },
+  computed: {
+    categoryName () {
+      return {
+        persons: 'Person',
+        organizations: 'Organization',
+        residencies: 'Residency',
+        producers: 'Producer'
+      }
+    }
+  },
   methods: {
     truncate (str, length) {
       if (str.length < length) {
@@ -147,6 +166,20 @@ export default {
     font-size: 25px;
     font-family: Oswald, sans-serif;
     margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  & .categories {
+    & .tag {
+      background-color: white;
+      border-radius: 5px;
+      color: black;
+      font-family: "Oswald", sans-serif;
+      padding: 0 10px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
   }
 
   & .description {
@@ -161,6 +194,7 @@ export default {
     text-align: center;
     display: inline-block;
     padding: 8px;
+    line-height: 1;
 
     &:not(:last-child) {
       margin-right: 10px;

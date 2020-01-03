@@ -39,6 +39,11 @@
           @select="selectedId = $event"
           @deselect="selectedId = null"
         />
+        <div class="statistics">
+          <div class="total">
+            Total number of places: {{ filteredMarkers.length }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -144,10 +149,12 @@ export default {
 
   & .map,
   & .loading {
-    min-height: calc(100vh - 450px);
+    /* 350px is card's height + padding */
+    min-height: 350px;
+    height: calc(100vh - 450px);
 
     @media (width <= 600px) {
-      min-height: calc(100vh - 200px);
+      height: calc(100vh - 200px);
     }
   }
 }
@@ -158,6 +165,18 @@ export default {
   /* because Leaflet control buttons has z-index 1000 */
   &.multiselect--active {
     z-index: 1050;
+  }
+}
+
+.statistics {
+  font-family: Oswald, sans-serif;
+  color: black;
+  text-align: right;
+
+  & .total {
+    background: white;
+    padding: 0 5px;
+    display: inline-block;
   }
 }
 </style>
