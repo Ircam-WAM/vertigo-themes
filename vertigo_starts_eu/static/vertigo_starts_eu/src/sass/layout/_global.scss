@@ -30,14 +30,14 @@
 }
 
 html, body {
-
-    background: $color-background;
-    color: white;
-
     @include mq($until: sm) {
         height: 100%;
         -webkit-overflow-scrolling: touch;
-
     }
+}
 
+/* Background should be applied to the body only to be changed by TinyMCE's iframe */
+body {
+    background: $color-background;
+    color: white;
 }

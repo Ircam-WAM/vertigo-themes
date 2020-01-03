@@ -18,6 +18,17 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+/* Override black background on body set by _global.scss */
+#tinymce.mce-content-body {
+  background-color: white !important;
+	color: black;
+
+	/* We need to define some styles as tinyMCE use this to give style preview in menus */
+	h1, h2, h3 {
+		color: black;
+	}
+}
+
 .wys-button {
 
     @extend .button;
