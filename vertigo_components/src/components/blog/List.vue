@@ -13,6 +13,7 @@
         :key="blog.id"
         :blog="blog"
         :residencies="residencies"
+        :editable="editable"
       />
     </template>
   </div>
