@@ -38,6 +38,11 @@ export default {
       validator: (val) => {
         return ['all', 'followed', 'myposts', 'user'].indexOf(val.type) !== -1
       }
+    },
+    editable: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   computed: {
