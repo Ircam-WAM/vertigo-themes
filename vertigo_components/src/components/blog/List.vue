@@ -42,7 +42,7 @@ export default {
     },
     editable: {
       type: Boolean,
-      default: true,
+      default: false,
       required: false
     }
   },
