@@ -160,6 +160,8 @@ export default {
   * https://stackoverflow.com/a/45018255/4680909
   */
   & > .item-container {
+    background-size: cover;
+
     &::before {
       display: table;
       padding-top: 100%;
