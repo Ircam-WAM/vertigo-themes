@@ -232,6 +232,13 @@ $module: ".account-form";
         font-size: 0.8rem;
     }
 
+    label.required:after {
+        content: ' (mandatory field)';
+        color: red;
+        font-size: 12px;
+        text-transform: none;
+    }
+
     .image {
         &-field {
             background-color: rgba(255, 255, 255, 0.3);
