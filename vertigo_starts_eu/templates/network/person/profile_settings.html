@@ -171,6 +171,13 @@
                                 {{ form.citizenship }}
                             </div>
 
+                            <!-- Citizenship -->
+                            <div class="form-group">
+                                {{ form.signup_reason.errors }}
+                                {{ form.signup_reason.label_tag }}
+                                {{ form.signup_reason }}
+                            </div>
+
                             <h3 class="options">{% trans "Options" %}</h3>
                             <!-- Options -->
                             <div class="form-group">
