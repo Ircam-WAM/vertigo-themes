@@ -1,6 +1,19 @@
 <template>
   <div class="interactive-map">
     <h1>STARTS Community Map</h1>
+    <p class="introduction">
+      Here is THE place to find the STARTS community members disseminated worldwide.<br>
+      Discover new people and follow them to see their news, by using the categories' filters or passing over the users' locations. You can also be inspired by the residencies promoted by the initiative. The STARTS community gains weight every day, be part of it!
+      <br><br>
+
+      The community in numbers:<br>
+      <ul>
+        <li>{{ stats.total }} members in total</li>
+        <li>{{ stats.residencies }} residencies</li>
+        <li>{{ stats.individuals }} individuals - artists & designers, scientists / researchers, technologists and supporters</li>
+        <li>{{ stats.organizations }} organisations - artistic and cultural institutions, universities and research centres, industry leaders & start-ups, producers & hubs</li>
+      </ul>
+    </p>
     <!-- Search disabled because it adds an input and push it to the DOM when user click on it -->
     <Multiselect
       v-model="selectedFilters"
@@ -97,7 +110,27 @@ export default {
       }
       const filtersKey = this.selectedFilters.map((f) => f.id)
       // filter markers to only get the ones with the selected categories
-      return this.markers.filter((m) => m.categories.some((c) => filtersKey.indexOf(c) !== -1))
+      return this.markers.filter((m) => m.categories.some((c) => filtersKey.includes(c)))
+    },
+
+    stats () {
+      const getMarkersByCatgory = (categoryKey) => {
+        return this.markers.filter((m) => m.categories.includes(categoryKey))
+      }
+
+      const total = this.markers.length
+      const residencies = getMarkersByCatgory('residencies').length
+      const organizations = getMarkersByCatgory('organizations').length
+      const individuals = getMarkersByCatgory('persons').length
+      const producers = getMarkersByCatgory('producers').length
+
+      return {
+        total,
+        residencies,
+        organizations,
+        individuals,
+        producers
+      }
     }
   },
   mounted () {
