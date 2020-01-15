@@ -60,6 +60,13 @@
                                 </div>
                             </div>
 
+                            <!-- Account type -->
+                            <div class="form-group">
+                                {{ form.account_type.errors }}
+                                {{ form.account_type.label_tag }}
+                                {{ form.account_type }}
+                            </div>
+
                             <!-- Professionnal category -->
                             <div class="form-group">
                                 {{ form.professional_category.errors }}
@@ -171,7 +178,7 @@
                                 {{ form.citizenship }}
                             </div>
 
-                            <!-- Citizenship -->
+                            <!-- Signup reason -->
                             <div class="form-group">
                                 {{ form.signup_reason.errors }}
                                 {{ form.signup_reason.label_tag }}
@@ -197,6 +204,7 @@
                     </div>
                     <div class="row justify-content-md-center">
                         <div class="col-md-12-center">
+                            <p>Private informations (right column) are just a way for us to know who is part of the STARTS community. These won´t appear in your public profile</p>
                             <p>Before saving your own profile, you should have read and accept the <a href="https://www.starts.eu/starts-privacy-policy/" target="_blank">terms of use and privacy policy</a> of the STARTS Platform.</p>
                         </div>
                     </div>
