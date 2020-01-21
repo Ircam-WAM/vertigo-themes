@@ -5,21 +5,16 @@
 		<a href="{% url 'organization-network-profile-about' object.slug %}" style="margin: 0 auto">
 			<span id="about-item" class="page__option-unselected">{% trans "About" %}</span>
 		</a>
-		<a href="{% url 'organization-project-profile-blog' object.user.username %}">
-			<span id="public-blog-item" class="page__option-unselected">{% trans "Blog" %}</span>
-		</a>
 
 		{% if user.person == object or display %}
-			<a href="{% url 'organization-network-profile-applications' %}">
-				<span id="select-application-form" class="page__option-unselected">{% trans "Application form(s)" %}</span>
-			</a>
 			<a href="{% url 'organization-network-profile-edit' %}">
 				<span id="select-profile" class="page__option-unselected">{% trans "Profile" %}</span>
 			</a>
-			<a href="{% url 'profile_update' %}">
-				<span id="select-settings" class="page__option-unselected">{% trans "Settings" %}</span>
-			</a>
 		{% endif %}
+
+		<a href="{% url 'organization-project-profile-blog' object.user.username %}">
+			<span id="public-blog-item" class="page__option-unselected">{% trans "Blog" %}</span>
+		</a>
 
 		<a href="{% url 'organization-network-profile-following' object.user.username %}">
 			<span id="select-following" class="page__option-unselected">{% trans "Following" %}</span>
@@ -27,5 +22,15 @@
 		<a href="{% url 'organization-network-profile-followers' object.user.username %}">
 			<span id="select-followers" class="page__option-unselected">{% trans "Followers" %}</span>
 		</a>
+
+		{% if user.person == object or display %}
+			<a href="{% url 'organization-network-profile-applications' %}">
+				<span id="select-application-form" class="page__option-unselected">{% trans "Application form(s)" %}</span>
+			</a>
+
+			<a href="{% url 'profile_update' %}">
+				<span id="select-settings" class="page__option-unselected">{% trans "Settings" %}</span>
+			</a>
+		{% endif %}
 	</div>
 </div>

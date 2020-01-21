@@ -483,6 +483,8 @@ $module: ".page";
     &__item_selector {
 
       a {
+				/* For profile, we don't want text to be cut */
+				display: inline-block;
         color: $color-dark-gray;
         &:hover {
           color: $color-black;
@@ -515,7 +517,6 @@ $module: ".page";
       @include font-size(l);
       font-family: "Oswald", sans-serif !important;
       color: #000000 !important;
-      margin: 1em;
       padding-bottom: 0.1em;
       border-bottom: 0.2em solid #000000;
       font-size:20px !important;

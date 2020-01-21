@@ -6,6 +6,9 @@
     <div class="container col-md-5" data-profile-tab="about-item" id="settings-profile-container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+							<p class="introduction">
+								This is all about you here! This section shows you how the other members of the community will see you. The fields completed in your profile appear automatically here.
+							</p>
                 <h3>{% trans 'Biography' %}</h3>
                 {% if object.bio %}
                     <p>{{ object.bio|safe }}</p>

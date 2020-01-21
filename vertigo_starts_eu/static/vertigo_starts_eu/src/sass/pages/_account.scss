@@ -2,6 +2,13 @@ $module: ".account";
 
 #{$module} {
 
+		.introduction {
+			color: white;
+			background: #000F24;
+			padding: 10px 20px;
+			border-radius: 5px;
+		}
+
     #main-content {
         background: rgb(236,235,235);
         color: $color-black;
