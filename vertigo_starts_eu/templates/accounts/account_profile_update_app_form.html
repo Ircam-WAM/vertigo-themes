@@ -1,6 +1,10 @@
 {% extends "accounts/base.html" %}
 {% load i18n mezzanine_tags %}
 
+{% block account_introduction %}
+Here you can find all the applications you sent via starts. Only you can see this.
+{% endblock %}
+
 {% block page_content %}
 
 <div class="container" data-profile-tab="select-application-form" id="settings-profile-container">
@@ -8,9 +12,6 @@
   <div class="page__item_info">
 
       <div class="page__item_content">
-				<p class="introduction">
-					Here you can find all the applications you sent via starts. Only you can see this.
-				</p>
         <div id="info-following" class="page__info-block">
           <div class="page__row-app-space-form page__row-app-space-bottom-form"></div>
           {% if projects or draft_applications or submitted_applications %}

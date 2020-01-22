@@ -60,6 +60,18 @@
 
         <div class="row justify-content-md-center">
             <div class="mb2 col-sm-12 page__content" data-summary-content>
+							{% captureas introduction_content %}{% spaceless %}{% block account_introduction %}{% endblock %}{% endspaceless %}{% endcaptureas %}
+							{% if introduction_content and user.person == object %}
+								<div class="container">
+									<div class="row">
+										<div class="col-md-12">
+											<p class="introduction">
+											{{ introduction_content }}
+											</p>
+										</div>
+									</div>
+								</div>
+							{% endif %}
                 {# --- Page Content --- #}
                 {% block page_content %}
                     {{ page.content }}

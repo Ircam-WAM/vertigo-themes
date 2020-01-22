@@ -37,17 +37,11 @@
 
 {% endblock %}
 
-{% block page_content %}
+{% block account_introduction %}
+Post here your news! Tell the community what you are up to, the events you go, the projects you participate in, the exhibitions you organise. You can also share some useful STARTS related resources. The news posted in the blog will appear publicly.
+{% endblock %}
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<p class="introduction">
-				Post here your news! Tell the community what you are up to, the events you go, the projects you participate in, the exhibitions you organise. You can also share some useful STARTS related resources. The news posted in the blog will appear to the people following you!
-			</p>
-		</div>
-	</div>
-</div>
+{% block page_content %}
 
 	{% csrf_token %}
 	<div class="container" data-profile-tab="public-blog-item" id="settings-profile-container">
