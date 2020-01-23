@@ -10,6 +10,28 @@ This is all about you here! This section shows you how the other members of the 
     <div class="container col-md-5" data-profile-tab="about-item" id="settings-profile-container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <h3>{% trans 'Account Type' %}</h3>
+                <p>{{ object.get_account_type_display|safe }}</p>
+            </div>
+        </div>
+        {% if object.professional_category %}
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h3>{% trans 'Category' %}</h3>
+                <p>{{ object.professional_category|safe }}</p>
+            </div>
+        </div>
+        {% endif %}
+        {% if object.occupation %}
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h3>{% trans 'Occupation' %}</h3>
+                <p>{{ object.occupation|safe }}</p>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-md-12">
                 <h3>{% trans 'Biography' %}</h3>
                 {% if object.bio %}
                     <p>{{ object.bio|safe }}</p>
@@ -21,7 +43,7 @@ This is all about you here! This section shows you how the other members of the 
                     {% endif %}
                 {% endif %}
             </div>
-        </div> 
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
             <hr>
