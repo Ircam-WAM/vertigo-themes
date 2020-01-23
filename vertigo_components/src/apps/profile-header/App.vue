@@ -203,6 +203,10 @@ export default {
 
   & .profile-image.can-follow {
     clip-path: url('#picto-path') !important;
+
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
   }
 
   & .follow {
