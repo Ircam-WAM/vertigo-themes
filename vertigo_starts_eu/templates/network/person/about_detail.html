@@ -52,8 +52,8 @@ This is all about you here! This section shows you how the other members of the 
                 <ul>
                 {% for link in object.links.all %}
                     <li>
-                        <i class="fa fa-{{ link.link_type|lower }}"></i>
-                        {{ link.url }}
+                        <i class="link-icon fa fa-{{ link.link_type|lower }}"></i>
+                        <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.url }}</a>
                     </li>
                 {% endfor %}
                 </ul>
