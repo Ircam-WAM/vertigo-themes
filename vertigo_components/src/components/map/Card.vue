@@ -174,7 +174,8 @@ export default {
   }
 
   & .categories {
-    margin-bottom: 0px;
+    margin-bottom: 0;
+
     & .tag {
       background-color: white;
       border-radius: 5px;
