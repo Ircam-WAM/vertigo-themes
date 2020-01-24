@@ -31,7 +31,7 @@
       </div>
     </div>
     <div
-      v-if="keywords"
+      v-if="keywords && keywords.length > 0"
       class="keywords-container"
     >
       <div
@@ -174,6 +174,7 @@ export default {
   }
 
   & .categories {
+    margin-bottom: 0px;
     & .tag {
       background-color: white;
       border-radius: 5px;
@@ -182,10 +183,12 @@ export default {
       padding: 0 10px;
       font-size: 18px;
       line-height: 1.5;
+      margin: 3px;
     }
   }
 
   & .description {
+    margin-top: 0;
     font-size: 1rem;
   }
 
