@@ -71,7 +71,12 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 // import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-const md = new MarkdownIt()
+// See https://github.com/markdown-it/markdown-it
+const md = new MarkdownIt({
+  breaks: true,
+  linkify: true
+})
+
 library.add(faTrashAlt)
 // library.add(faEdit)
 
