@@ -104,10 +104,10 @@ export default {
   computed: {
     categoryName () {
       return {
-        persons: 'Person',
-        organizations: 'Organization',
+        persons: 'Individual',
+        organizations: 'Organisation',
         residencies: 'Residency',
-        producers: 'Producer'
+        producers: 'Producer / Supporter'
       }
     }
   },

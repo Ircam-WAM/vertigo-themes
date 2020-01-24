@@ -27,9 +27,12 @@
       track-by="name"
       :options="[
         { name: 'Residencies', id: 'residencies' },
-        { name: 'Persons', id: 'persons' },
-        { name: 'Organizations', id: 'organizations' },
-        { name: 'Producers', id: 'producers' }
+        { name: 'Individuals', id: 'persons' },
+        { name: 'Organisations', id: 'organizations' },
+        { name: 'Producers / Supporters', id: 'producers' },
+        { name: 'Artist', id: 'Artist' },
+        { name: 'Technologist', id: 'Technologist' },
+        { name: 'Scientist / Researcher', id: 'Scientist / Researcher' }
       ]"
       class="filters"
     />
@@ -91,19 +94,9 @@ export default {
       if (this.selectedId === null) {
         return null
       }
-
-      const originalSelected = this.markers.find(it => it.slug === this.selectedId)
-      if (!originalSelected) {
-        return null
-      }
-
-      // Rename 'mappable-location' to mappableLocation
-      const { 'mappable-location': mappableLocation, ...others } = originalSelected
-      return {
-        mappableLocation,
-        ...others
-      }
+      return this.markers.find(it => it.slug === this.selectedId) || null
     },
+
     filteredMarkers () {
       if (!this.selectedFilters || this.selectedFilters.length === 0) {
         return this.markers
@@ -145,6 +138,20 @@ export default {
 
         // filter markers to remove the ones without latitute or longitude
         this.markers = data.objects.filter(marker => marker.lat && marker.lon)
+
+        // Rename fields to camelCase
+        // Example: 'mappable-location' to mappableLocation
+        this.markers = this.markers.map(m => {
+          const {
+            'mappable-location': mappableLocation,
+            ...others
+          } = m
+
+          return {
+            mappableLocation,
+            ...others
+          }
+        })
 
         // Warn about markers without slug
         const nullSlug = this.markers.filter((m) => !m.slug)
