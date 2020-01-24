@@ -107,7 +107,10 @@ export default {
         persons: 'Individual',
         organizations: 'Organisation',
         residencies: 'Residency',
-        producers: 'Producer / Supporter'
+        producers: 'Producer / Supporter',
+        Technologist: 'Technologist',
+        Artist: 'Artist',
+        'Scientist / Researcher': 'Scientist / Researcher'
       }
     }
   },
