@@ -26,20 +26,26 @@
         </button>
       </div>
       <div class="head">
-        <div
+        <a
           v-if="blog.article.user.profile_image"
+          :href="blog.article.user.url"
           class="profile-image"
         >
           <img :src="blog.article.user.profile_image">
-        </div>
+        </a>
         <div>
           <h2 class="title">
             {{ blog.article.title }}
           </h2>
           <div class="infos">
-            <p>{{ blog.article.user.first_name }} {{ blog.article.user.last_name }}</p>
+            <a :href="blog.article.user.url">
+              {{ blog.article.user.first_name }} {{ blog.article.user.last_name }}
+            </a>
             <p v-if="getResidencyById(blog.residency)">
               About the {{ getResidencyById(blog.residency).title }} Residency
+            </p>
+            <p v-if="articleDate">
+              {{ articleDate }}
             </p>
           </div>
         </div>
@@ -116,6 +122,15 @@ export default {
   computed: {
     md () {
       return md
+    },
+
+    articleDate () {
+      const raw = this.blog.article.publish_date
+      if (!raw) {
+        return undefined
+      }
+      const date = new Date(raw)
+      return date.toLocaleDateString()
     }
   },
 
@@ -188,6 +203,7 @@ body #container .blog-article {
       & img {
         width: 150px;
         height: 150px;
+        max-width: none; /* defined by global layout */
         object-fit: cover;
         border-radius: 50%;
       }
