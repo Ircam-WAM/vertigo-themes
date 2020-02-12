@@ -8,10 +8,11 @@
 
       The community in numbers:<br>
       <ul>
-        <li>{{ stats.total }} members in total</li>
-        <li>{{ stats.residencies }} residencies</li>
-        <li>{{ stats.individuals }} individuals - artists & designers, scientists / researchers, technologists and supporters</li>
-        <li>{{ stats.organizations }} organisations - artistic and cultural institutions, universities and research centres, industry leaders & start-ups, producers & hubs</li>
+        <li> {{ apiStats.total }} members in total</li>
+        <li>{{ mapStats.total }} on the map (displays only the members who agree too. Don´t forget to accept this condition on your profile so you have more visibility!):</li>
+        <li>{{ mapStats.residencies }} residencies</li>
+        <li>{{ mapStats.individuals }} individuals - artists & designers, scientists / researchers, technologists and supporters</li>
+        <li>{{ mapStats.organizations }} organisations - artistic and cultural institutions, universities and research centres, industry leaders & start-ups, producers & hubs</li>
       </ul>
     </p>
     <!-- Search disabled because it adds an input and push it to the DOM when user click on it -->
@@ -86,7 +87,10 @@ export default {
       loading: true,
       markers: [],
       selectedId: null,
-      selectedFilters: []
+      selectedFilters: [],
+      apiStats: {
+        total: 0
+      }
     }
   },
   computed: {
@@ -106,7 +110,7 @@ export default {
       return this.markers.filter((m) => m.categories.some((c) => filtersKey.includes(c)))
     },
 
-    stats () {
+    mapStats () {
       const getMarkersByCatgory = (categoryKey) => {
         return this.markers.filter((m) => m.categories.includes(categoryKey))
       }
@@ -127,11 +131,28 @@ export default {
     }
   },
   mounted () {
-    this.getMarkers()
+    this.loading = true
+    Promise.all([this.getMarkers(), this.getStats()])
+      .then((values) => {
+        this.loading = false
+      })
   },
   methods: {
+    async getStats () {
+      try {
+        const resp = await fetch('/public-network-stats/')
+        const data = await resp.json()
+
+        this.apiStats = {
+          total: data.total
+        }
+      } catch (e) {
+        console.error(e)
+        alert('Unable to load stats')
+      }
+    },
+
     async getMarkers () {
-      this.loading = true
       try {
         const resp = await fetch('/public-network-data-new/')
         const data = await resp.json()
@@ -158,8 +179,6 @@ export default {
         if (nullSlug.length > 0) {
           console.warn('some markers have invalid slug', nullSlug.map(m => Object.assign({}, m)))
         }
-
-        this.loading = false
       } catch (e) {
         console.error(e)
         alert('Unable to load map')
