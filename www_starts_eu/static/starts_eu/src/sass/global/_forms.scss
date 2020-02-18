@@ -62,6 +62,10 @@ $module: ".form";
         }
     }
 
+    label[for="id_privacy_checkbox"] {
+      width: auto;
+    }
+
     span.help-block {
         float: right;
     }

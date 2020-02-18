@@ -76,6 +76,14 @@ $module: ".account-form";
         }
     }
 
+    label[for="id_privacy_checkbox"] {
+      width: auto;
+
+      & a {
+        color: black;
+      }
+    }
+
     span.help-block {
         float: right;
         color: black;
