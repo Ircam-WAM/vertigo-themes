@@ -521,6 +521,8 @@ $module: ".nav-header";
         }
 
         &.active {
+            color: white;
+
             &:after {
                 position: absolute;
                 height: 80%;
@@ -528,7 +530,7 @@ $module: ".nav-header";
                 top: 10%;
                 left: 0px;
                 content: "";
-                background: $color-main;
+                background: black;
                 z-index: -1;
                 right: 1px;
             }
