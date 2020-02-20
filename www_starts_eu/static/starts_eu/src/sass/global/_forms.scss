@@ -62,8 +62,22 @@ $module: ".form";
         }
     }
 
+    input#id_privacy_checkbox {
+      vertical-align: middle;
+    }
+
     label[for="id_privacy_checkbox"] {
       width: auto;
+      padding-top: 5px;
+
+      & a {
+        color: black !important;
+
+        &:hover {
+          box-shadow: inset 0 -30px black !important;
+          color: white !important;
+        }
+      }
     }
 
     span.help-block {
