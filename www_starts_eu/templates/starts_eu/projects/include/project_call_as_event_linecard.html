@@ -30,6 +30,12 @@
                     </div>
                 </div>
 
+                {% if event.category %}
+                <div class="event-line-box__category">
+                  {{ event.category }}
+                </div>
+                {% endif %}
+
             </div>
 
         </a>
