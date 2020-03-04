@@ -118,6 +118,9 @@
         {% include "vertigo_starts_eu/includes/footer_scripts.html" %}
     {% endblock %}
 
+		<!-- Shows a user warning for old/unsupported browsers -->
+		{% include "starts_eu/includes/browser_update_js.html" %}
+
 		{% comment %} Use this block if you need to execute JS with libraries {% endcomment %}
 		{% block extra_js %}{% endblock %}
 

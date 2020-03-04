@@ -103,6 +103,9 @@
 
     {% search_form %}
 
+		<!-- Shows a user warning for old/unsupported browsers -->
+		{% include "starts_eu/includes/browser_update_js.html" %}
+
     {% block footer_scripts %}
         {% include "includes/footer_scripts.html" %}
     {% endblock %}
