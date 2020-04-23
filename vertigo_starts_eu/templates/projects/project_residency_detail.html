@@ -154,8 +154,8 @@ $(function() {
 
 <div class="page__submenu-public-profile" style="padding-top:3.5%">
 	{% comment %} {% include 'accounts/includes/menu.html' %}* {% endcomment %}
-    <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">Tech Project</span></a>
-    <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artistic Proposal</span></a>
+    <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">Artistic Proposal</span></a>
+    <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Tech Project</span></a>
     <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
 </div>
 
@@ -172,7 +172,7 @@ $(function() {
 </div>
 {% endcomment %}
 
-<div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style"  style="display:block;margin-right:20%;margin-left:20%">
+<div id="content-about-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style"  style="display:none;margin-right:20%;margin-left:20%">
   <div class="page__descrition-residencies-content">
     <div class="residency-detail__title page__style-text-profile">{{ object.project.title }}</div>
     <br>
@@ -196,7 +196,7 @@ $(function() {
     {% endwith %}
   </div>
 </div>
-<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="margin-right:20%;margin-left:20%;text-align:justify;white-space:none;display:none">
+<div id="content-artistic-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="margin-right:20%;margin-left:20%;text-align:justify;white-space:none;display:block">
 
   <div class="residency-detail__title">{{ object.title }}</div>
   <p style="text-align:left">{{ object.content|safe }}</p>
