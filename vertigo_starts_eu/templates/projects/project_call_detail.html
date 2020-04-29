@@ -100,12 +100,15 @@
                         </div>
                     </a>
                     {# Residency form #}
-                    <a href="{% url 'web:show_application_form' object.slug %}?show_draft">
-                        <div class="call__button call__button-artist">
-                            <div class="call__button_text_top">SUBMIT</div>
-                            <div class="call__button_text_bottom">an Artistic Proposal</div>
-                        </div>
-                    </a>
+                    {% comment %}
+                      Disable this link
+                      See https://taiga.ircam.fr/project/yomguy-vertigo/issue/1046
+                    {% endcomment %}
+                    {% comment %}<a href="{% url 'web:show_application_form' object.slug %}?show_draft"></a>{% endcomment %}
+                    <div class="call__button call__button-artist" style="cursor: not-allowed;">
+                        <div class="call__button_text_top">SUBMIT</div>
+                        <div class="call__button_text_bottom">an Artistic Proposal</div>
+                    </div>
                 </div>
 
                 <div class="call__subcall_info call__responsive-text-section">
