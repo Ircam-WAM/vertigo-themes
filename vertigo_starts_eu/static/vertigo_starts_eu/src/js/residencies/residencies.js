@@ -6,20 +6,19 @@ function changeOptionDetail(event,link) {
     var aboutItemContent = document.getElementById("content-about-item");
     var artisticItemContent = document.getElementById("content-artistic-item");
     var artistItemContent = document.getElementById("content-artist-item");
-    var blogItemContent = document.getElementById("content-blog-item");
-    var followersTitemContent = document.getElementById("content-followers-item");
+    var outcomeItemContent = document.getElementById("content-outcome-item");
 
     aboutItemContent.style.display = 'none';
     artisticItemContent.style.display = 'none';
     artistItemContent.style.display = 'none';
-    blogItemContent.style.display = 'none';
-    followersTitemContent.style.display = 'none';
+    outcomeItemContent.style.display = 'none';
 
     var linkAbout = document.getElementById("about-item");
     var linkArtistic = document.getElementById("artistic-item");
     var linkArtist = document.getElementById("artist-item");
     var linkBlog = document.getElementById("blog-item");
     var linkFollowers = document.getElementById("followers-item");
+    var linkOutcome = document.getElementById("outcome-item")
 
     var buttons = document.getElementsByClassName('link-sections');
 
@@ -60,18 +59,11 @@ function changeOptionDetail(event,link) {
         linkArtist.classList.remove('page__option-unselected');
     }
 
-    if (link.id === 'blog-item')
+    if (link.id === 'outcome-item')
     {
-        blogItemContent.style.display = 'block';
-        linkBlog.classList.add('page__option-selected');
-        linkBlog.classList.remove('page__option-unselected');
-    }
-
-    if (link.id === 'followers-item')
-    {
-        followersTitemContent.style.display = 'block';
-        linkFollowers.classList.add('page__option-selected');
-        linkFollowers.classList.remove('page__option-unselected');
+        outcomeItemContent.style.display = 'block';
+        linkOutcome.classList.add('page__option-selected');
+        linkOutcome.classList.remove('page__option-unselected');
     }
 }
 

@@ -157,6 +157,7 @@ $(function() {
     <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artistic-item" onclick="changeOptionDetail(event,this);" class="page__option-selected link-sections">Artistic Proposal</span></a>
     <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="about-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Tech Project</span></a>
     <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="artist-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Artist</span></a>
+    <a href="#" style="margin: 0 auto;display:inline-block;margin-bottom:8px"><span id="outcome-item" onclick="changeOptionDetail(event,this);" class="page__option-unselected link-sections">Outcome</span></a>
 </div>
 
 <div class="page__container-inforesidency-detail"></div>
@@ -365,17 +366,8 @@ $(function() {
 
   </div>
 </div>
-<div id="content-blog-item" style="display:none;" class="page__content-blog-detail-residencies">
-  content-blog-item<br/>Missing backend object
-
-  <div class="page__residency-blog-content">
-    {{ object.project.title }} hasn't shared any update yet.
-    <br/><br/>
-    Follow {{ object.project.title }} to receive notifications about future updates.
-  </div>
-</div>
-<div id="content-followers-item" style="display:none;" class="page__content-blog-residencies-detail">
-  content-followers-item<br/>Missing backend object
+<div id="content-outcome-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="margin-right: 20%; margin-left: 20%; text-align: justify; display: block;">
+	{{ object.outcome|safe }}
 </div>
 
 <div id="map-element-content" style="position:relative;display:block;margin-right:-3.5%;margin-top:2%;height:300px">
