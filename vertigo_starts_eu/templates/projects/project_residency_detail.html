@@ -367,7 +367,9 @@ $(function() {
   </div>
 </div>
 <div id="content-outcome-item" class="residency-detail__block--white residency-detail__margin-white-extra residency-detail__custom-text-style" style="margin-right: 20%; margin-left: 20%; text-align: justify; display: block;">
-	{{ object.outcome|safe }}
+	{% if object.outcome %}
+		{{ object.outcome|safe }}
+	{% endif %}
 </div>
 
 <div id="map-element-content" style="position:relative;display:block;margin-right:-3.5%;margin-top:2%;height:300px">
