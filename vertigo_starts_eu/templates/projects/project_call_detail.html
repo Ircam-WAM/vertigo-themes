@@ -125,21 +125,23 @@
 
                 <div id="call-steps-list-project" class="call__steps {% if object.call_default_profile == 'project'%}call__call-step-project-responsive{% endif %}">
                     {# Public Project form #}
-                    <a href="{% url "organization-call-project-create" object.slug 'public' %}">
-                        <div class="call__button call__button-project">
+                    {% comment %}<a href="{% url "organization-call-project-create" object.slug 'public' %}">{% endcomment %}
+                    <div>
+                        <div class="call__button call__button-project" style="cursor: not-allowed;">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">a Tech Project</div>
                             <div class="call__button_text_bottom">(PUBLIC FUNDED)</div>
                         </div>
-                    </a>
+                    </div>
                      {# Private Project form #}
-                    <a href="{% url "organization-call-project-create" object.slug 'private' %}">
-                        <div class="call__button call__button-project">
+                    {% comment %}<a href="{% url "organization-call-project-create" object.slug 'private' %}">{% endcomment %}
+                    <div>
+                        <div class="call__button call__button-project" style="cursor: not-allowed;">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">a Tech Project</div>
                             <div class="call__button_text_bottom">(PRIVATELY FUNDED)</div>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
                 <div class="call__subcall_info call__responsive-text-section">
@@ -157,10 +159,11 @@
                 <div class="call__steps">
                     <div class="call__button call__button-producer">
                         {# Producer form #}
-                        <a href="{% url "organization-producer-create" %}">
+                        {% comment %}<a href="{% url "organization-producer-create" %}">{% endcomment %}
+                          <div style="cursor: not-allowed;">
                             <div class="call__button_text_top">SUBMIT</div>
                             <div class="call__button_text_bottom">a Production Offer</div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
