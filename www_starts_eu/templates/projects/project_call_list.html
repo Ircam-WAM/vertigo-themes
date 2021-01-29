@@ -37,39 +37,33 @@
                     Calls
                 </h2>
             </div>
-            {% if open_calls %}
+            {% if objects %}
                 <div class="row">
                     <div class="col-sm-16 col-md-12 col-md-push-2 tac">
-                        <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{% trans "Open Calls" %}</h1>
-
+                        <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{{ title }}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
                         <div class="page__content">
-                            {% for event in open_calls reversed %}
+                            {% for event in objects %}
                                 {% include 'starts_eu/projects/include/project_call_as_event_linecard.html' %}
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-            {% endif %}
-            {% if closed_calls %}
-                <div class="row">
-                    <div class="col-sm-16 col-md-12 col-md-push-2 tac">
-                        <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{% trans "Closed Calls" %}</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
-                        <div class="page__content">
-                            {% for event in closed_calls reversed %}
-                                {% include 'starts_eu/projects/include/project_call_as_event_linecard.html' %}
-                            {% endfor %}
+                {% if not closed %}
+                    <div class="row">
+                        <div class="col-sm-16 col-md-12 col-md-push-2 tac">
+                            <h2>
+                                <a class="wys-button-black" href="{% url 'organization-call-closed-list' %}">CLOSED CALLS</a>
+                            </h4>
+                            <br />
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endif %}
         </div>
+        {% pagination_for objects %}
     </div>
 {% endblock %}
