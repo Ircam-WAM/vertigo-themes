@@ -35,7 +35,7 @@
             {% if events %}
                 <div class="row">
                     <div class="col-sm-16 col-md-12 col-md-push-2 tac">
-                        <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{% trans "Events" %}</h1>
+                        <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{{ title }}</h1>
 
                     </div>
                 </div>
@@ -48,23 +48,20 @@
                         </div>
                     </div>
                 </div>
-            {% endif %}
-            {% if past_events %}
-                <div class="row">
-                    <div class="col-sm-16 col-md-12 col-md-push-2 tac">
-                        <h1 class="section-title section-title--uppercase section-title--main project-ict-detail__big-text">{% trans "Past events" %}</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb2 col-md-12 col-md-push-2 page__content" data-summary-content>
-                        <div class="page__content">
-                            {% for event in past_events %}
-                                {% include 'starts_eu/agenda/includes/event_linecard.html' %}
+                {% if not past %}
+                    <div class="row">
+                        <div class="col-sm-16 col-md-12 col-md-push-2 tac">
+                            {% for year in year_range %}
+                            <h2>
+                                <a class="wys-button-black" href="{% url 'event_list_year' year %}">Season {{ year }} - {{ year|add:1 }}</a>
+                            </h2>
                             {% endfor %}
+                            <br />
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endif %}
         </div>
+        {% pagination_for events %}
     </div>
 {% endblock %}
