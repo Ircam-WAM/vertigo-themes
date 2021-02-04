@@ -68,7 +68,7 @@ $module: ".slider-home";
         @include transition(background 0.5s ease-in-out);
         border: 1px solid $color-main;
         &:hover {
-            background: $color-main;
+            background: $color-background;
             #{$module}__image-container {
                 background: black;
             }
@@ -77,16 +77,16 @@ $module: ".slider-home";
                 filter: grayscale(0);
             }
             .article-box__title {
-                color: $color-background;
+                color: $color-main;
             }
             .article-box__tags {
-                color: $color-background;
+                color: $color-main;
             }
             .article-box__subtitle {
-                color: $color-background;
+                color: $color-main;
             }
             .article-box__desc {
-                color: $color-background;
+                color: $color-main;
             }
         }
 
@@ -112,16 +112,16 @@ $module: ".slider-home";
                     filter: grayscale(0);
                 }
                 .article-box__title--accent {
-                    color: $color-background;
+                    color: $color-main;
                 }
                 .article-box__tags {
-                    color: $color-background;
+                    color: $color-main;
                 }
                 .article-box__subtitle {
-                    color: $color-background;
+                    color: $color-main;
                 }
                 .article-box__desc {
-                    color: $color-background;
+                    color: $color-main;
                 }
             }
         }
@@ -137,12 +137,12 @@ $module: ".slider-home";
 
         width: 100%;
         display: block;
-        @include transition(all 0.5s ease-in-out);
+        // @include transition(all 0.5s ease-in-out);
 
-        -webkit-filter: grayscale(1);
-        filter: grayscale(1);
-        mix-blend-mode: screen;
-        transition: all 0.5s ease-in-out;
+        // -webkit-filter: grayscale(1);
+        // filter: grayscale(1);
+        // mix-blend-mode: screen;
+        // transition: all 0.5s ease-in-out;
 
     }
 
