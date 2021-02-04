@@ -4,7 +4,7 @@
 
     <div class="col-sm-16">
 
-        <a class="event-line-box" href="{{ event.links.all|first }}">
+        <a class="event-line-box" target="_blank" href="{{ event.links.all|first }}">
             {% with event.images.all|get_type:'card' as images %}
                 {% if images %}
                     <figure class="event-line-box__image">
