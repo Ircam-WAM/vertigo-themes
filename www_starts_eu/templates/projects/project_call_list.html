@@ -52,7 +52,8 @@
                         </div>
                     </div>
                 </div>
-                {% if not closed and not page_obj.has_next or not page_obj %}
+                {% if not closed %}
+                  {% if not page_obj.has_next or page_obj.paginator.num_pages == 2 %}
                     <div class="row">
                         <div class="col-sm-16 col-md-12 col-md-push-2 tac">
                             <h2>
@@ -61,6 +62,7 @@
                             <br />
                         </div>
                     </div>
+                  {% endif %}
                 {% endif %}
             {% endif %}
         </div>
