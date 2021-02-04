@@ -50,7 +50,7 @@ $module: ".pagination";
         font-weight: weight(regular);
 
         display: block;
-        background: #001B42;
+        background: black;
         color: white;
 
         border: 1px solid black;
@@ -59,8 +59,8 @@ $module: ".pagination";
         @include transition(all .25s ease-in-out);
 
         &.active, &:hover {
-            background: #002C6B;
-            color: white;
+            background: white;
+            color: black;
         }
 
     }
