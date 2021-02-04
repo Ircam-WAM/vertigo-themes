@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                {% if not closed %}
+                {% if not closed and not page_obj.has_next %}
                     <div class="row">
                         <div class="col-sm-16 col-md-12 col-md-push-2 tac">
                             <h2>
