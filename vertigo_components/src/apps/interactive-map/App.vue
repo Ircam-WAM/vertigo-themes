@@ -210,7 +210,7 @@ export default {
   & .loading {
     /* 350px is card's height + padding */
     min-height: 350px;
-    height: calc(100vh - 450px);
+    height: calc(100vh - 250px);
 
     @media (width <= 600px) {
       height: calc(100vh - 200px);
