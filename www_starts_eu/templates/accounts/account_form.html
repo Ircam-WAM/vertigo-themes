@@ -23,11 +23,9 @@
 
     <div class="form-actions">
         {% block account_form_actions %}
-
         <p>{% trans "After signing up, you'll receive an email with a link you need to click, in order to activate your account." %}</p>
         <br />
-
-        <input class="btn btn-primary btn-lg pull-right" type="submit" value="{{ title }}">
+        <input type="submit" value="{{ title }}">
         {% endblock %}
     </div>
 
