@@ -1,2 +1,2 @@
 {% load i18n %}
-{% trans "Activate your account" %}
+[STARTS] {% trans "Activate your account" %}
