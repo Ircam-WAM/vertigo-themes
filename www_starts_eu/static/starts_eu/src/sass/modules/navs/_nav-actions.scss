@@ -41,11 +41,11 @@ $module: ".nav-actions";
 
         }
 
-        &:nth-child(2):after {
+        &:not(:first-child):before {
 
             content: '|';
             display: inline-block;
-            @include margin(0 0 0 1);
+            @include margin(0 1 0 0);
             color: white;
 
         }
